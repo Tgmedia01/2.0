@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TG MEDIA — Studio Beta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
+            <span class="group-hover:mr-2 transition-all">Menu</span>
+            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <section class="bg-[#080808] text-[#F2F2F2] min-h-screen pt-24">
+
+        <div class="px-6 md:px-12 mb-12 flex flex-col md:flex-row justify-between md:items-end">
+            <div>
+                <a href="work.html" class="text-xs font-mono border-b border-[#FF6309] pb-1 mb-8 inline-block text-[#FF6309] hover:text-white hover:border-white transition-colors">← BACK TO ARCHIVE</a>
+                <!-- EDIT: Project title -->
+                <h1 class="hero-title-responsive font-black uppercase leading-none text-white mt-8">
+                    <div class="overflow-hidden"><span class="block">Studio</span></div>
+                    <div class="overflow-hidden"><span class="block text-[#FF6309]">Beta</span></div>
+                </h1>
+            </div>
+            <!-- EDIT: Case study label -->
+            <div class="hidden md:block text-right font-mono text-xs mb-4 text-[#FF6309]">
+                CASE STUDY 002<br>ECOMMERCE ARCHITECTURE
+            </div>
+        </div>
+
+        <!-- EDIT: Hero project image -->
+        <div class="w-full h-[60vh] border-y border-[#333] overflow-hidden relative group">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2000" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute bottom-6 left-6 bg-[#FF6309] text-black px-4 py-2 font-bold font-mono text-xs">
+                LIVE SITE PREVIEW <!-- EDIT: Image caption -->
+            </div>
+        </div>
+
+        <div class="p-6 md:p-12 grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-[#333]">
+
+            <!-- EDIT: Project metadata -->
+            <div class="md:col-span-4 font-mono text-sm space-y-6 text-gray-400">
+                <div class="flex justify-between border-b border-[#333] pb-2"><span>CLIENT</span> <span class="text-white">STUDIO BETA</span></div>
+                <div class="flex justify-between border-b border-[#333] pb-2"><span>YEAR</span> <span class="text-white">2023</span></div>
+                <div class="flex justify-between border-b border-[#333] pb-2"><span>STACK</span> <span class="text-white">SHOPIFY PLUS / WEBGL</span></div>
+                <div class="flex justify-between border-b border-[#333] pb-2"><span>ROLE</span> <span class="text-white">FULL STACK</span></div>
+            </div>
+
+            <div class="md:col-span-8">
+                <!-- EDIT: Project headline and description -->
+                <h3 class="text-3xl font-black uppercase mb-6 text-[#FF6309]">The "Anti-Store" Concept</h3>
+                <p class="text-xl leading-relaxed mb-8 text-gray-300">
+                    Studio Beta required a digital storefront that felt less like a shop and more like an archive. We stripped away standard e-commerce tropes, replacing them with a brutalist, list-based interface that prioritizes speed and raw data over marketing fluff.
+                </p>
+
+                <!-- EDIT: Stats/results - update numbers and labels -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-[#1a1a1a] p-8 border border-[#333] hover:border-[#FF6309] transition-colors">
+                        <span class="text-4xl font-black text-[#FF6309] block mb-2">0.4s</span>
+                        <span class="font-mono text-xs uppercase">Load Time Average</span>
+                    </div>
+                    <div class="bg-[#1a1a1a] p-8 border border-[#333] hover:border-[#FF6309] transition-colors">
+                        <span class="text-4xl font-black text-[#FF6309] block mb-2">+45%</span>
+                        <span class="font-mono text-xs uppercase">Conversion Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT: Additional project images -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="aspect-square bg-[#111] border-r border-b border-[#333] p-12 flex items-center justify-center group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" class="w-2/3 shadow-2xl group-hover:-rotate-6 transition-transform duration-500">
+            </div>
+            <div class="aspect-square bg-[#111] border-b border-[#333] p-12 flex items-center justify-center group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800" class="w-2/3 shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+            </div>
+        </div>
+
+        <!-- Next project link -->
+        <div class="border-t border-[#333] p-6 md:p-12 flex justify-between items-center">
+            <span class="font-mono text-xs text-gray-600">NEXT PROJECT</span>
+            <a href="project-aura.html" class="text-2xl md:text-4xl font-black uppercase hover:text-[#FF6309] transition-colors flex items-center gap-4">
+                Aura Identity <i data-lucide="arrow-right" class="w-8 h-8"></i>
+            </a>
+        </div>
+
+    </section>
+</div>
+
+<footer class="bg-black text-white p-6 md:p-12 border-t border-[#333]">
+    <div class="flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500">
+        <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
+        <div class="flex gap-6 text-white/50">
+            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+            <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+            <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

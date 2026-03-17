@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TG MEDIA — Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
+            <span class="group-hover:mr-2 transition-all">Menu</span>
+            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <div class="min-h-screen bg-[#F0F0F0] pt-24">
+
+        <div class="p-6 md:p-12">
+            <!-- EDIT: Page intro text -->
+            <h1 class="hero-title-responsive font-black uppercase mb-12 text-[#0033FF]">
+                <div class="overflow-hidden"><span class="block">Services</span></div>
+            </h1>
+            <p class="max-w-2xl text-lg leading-relaxed mb-12">
+                We don't offer a menu. We offer a methodology. Our services are broken down into three distinct phases of execution.
+            </p>
+        </div>
+
+        <!-- EDIT: Service 01 - change title, description, and the 3 sub-services -->
+        <div class="border-t border-black bg-white p-6 md:p-12 hover:bg-[#0033FF] hover:text-white transition-colors group">
+            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8">
+                <h2 class="text-4xl md:text-6xl font-black uppercase">01 / Digital</h2>
+                <div class="max-w-md mt-4 md:mt-0 font-mono text-xs group-hover:text-white/80">
+                    PROTOCOL: AUDIT → STRATEGY → DESIGN → DEPLOY
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Web Experience</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Custom React / Next.js</li>
+                        <li>WebGL & 3D</li>
+                        <li>Headless CMS</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">E-Commerce</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Shopify Custom Themes</li>
+                        <li>Migration Strategy</li>
+                        <li>App Integration</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Product</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>UI/UX Design</li>
+                        <li>Design Systems</li>
+                        <li>Prototyping</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT: Service 02 -->
+        <div class="border-t border-black bg-white p-6 md:p-12 hover:bg-[#FF6309] hover:text-black transition-colors group">
+            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8">
+                <h2 class="text-4xl md:text-6xl font-black uppercase">02 / Brand</h2>
+                <div class="max-w-md mt-4 md:mt-0 font-mono text-xs opacity-60 group-hover:opacity-100">
+                    PROTOCOL: WORKSHOP → IDENTITY → GUIDELINES
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Identity</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Logo & Wordmark</li>
+                        <li>Brand Strategy</li>
+                        <li>Tone of Voice</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Guidelines</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Brand Book</li>
+                        <li>Typography Suite</li>
+                        <li>Colour Theory</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Systems</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Iconography</li>
+                        <li>Social Assets</li>
+                        <li>Motion Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT: Service 03 -->
+        <div class="border-t border-black bg-white p-6 md:p-12 hover:bg-black hover:text-white transition-colors group">
+            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8">
+                <h2 class="text-4xl md:text-6xl font-black uppercase">03 / Content</h2>
+                <div class="max-w-md mt-4 md:mt-0 font-mono text-xs opacity-60 group-hover:opacity-100">
+                    PROTOCOL: CONCEPT → PRODUCTION → POST
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Art Direction</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Campaign Shoots</li>
+                        <li>Product Photography</li>
+                        <li>Set Design</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">3D & CGI</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Product Rendering</li>
+                        <li>Abstract Motion</li>
+                        <li>Virtual Environments</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold uppercase mb-2 text-xl">Motion</h3>
+                    <ul class="text-sm opacity-70 group-hover:opacity-100 space-y-1">
+                        <li>Kinetic Typography</li>
+                        <li>Logo Animation</li>
+                        <li>UI Interaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer id="sticky-footer" class="bg-black text-white">
+    <div class="w-full h-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto text-center mt-12 md:mt-24">
+            <span class="font-mono text-xs text-[#FF6309] mb-4 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2025</span>
+            <h2 class="text-4xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 mt-8">Let's Build<br>The Future.</h2>
+            <div class="flex justify-center">
+                <a href="contact.html" class="magnetic-btn px-12 py-6 bg-[#0033FF] text-white font-black text-xl md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
+                    Initiate Project
+                </a>
+            </div>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500 mt-12 border-t border-white/20 pt-6">
+            <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
+            <div class="flex gap-6 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

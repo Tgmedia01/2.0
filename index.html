@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TG MEDIA — Not Just Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .happen-image {
+            position: absolute; width: 280px; height: auto;
+            opacity: 0; transform: translateY(200px) scale(0.8) rotate(-5deg);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5); z-index: 30;
+            border: 1px solid rgba(255,255,255,0.1); transition: filter 0.3s;
+        }
+        .happen-image:hover { filter: brightness(1.2); z-index: 40; }
+        .happen-image img { width: 100%; display: block; filter: grayscale(100%) contrast(1.2); mix-blend-mode: luminosity; }
+        .img-1 { top: 15%; left: 10%; width: 220px; }
+        .img-2 { top: 55%; right: 12%; width: 300px; }
+        .img-3 { bottom: 10%; left: 35%; width: 320px; z-index: 35; }
+        .img-4 { top: 20%; right: 20%; width: 200px; }
+        .img-5 { top: 65%; left: 18%; width: 240px; z-index: 22; }
+        .img-6 { bottom: 25%; right: 28%; width: 260px; }
+        @media (max-width: 768px) {
+            .happen-image { transform: translateY(100px) scale(0.9); }
+            .img-1 { top: 10%; left: 5%; width: 150px; }
+            .img-2 { top: 60%; right: 5%; width: 180px; }
+            .img-3 { bottom: 5%; left: 10%; width: 180px; }
+            .img-4 { top: 20%; right: 5%; width: 120px; }
+            .img-5 { top: 70%; left: 8%; width: 140px; }
+            .img-6 { bottom: 15%; right: 12%; width: 130px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black cursor-pointer">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
+            <span class="group-hover:mr-2 transition-all">Menu</span>
+            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+    <!-- HERO -->
+    <section class="min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between p-4 md:p-12 relative overflow-hidden bg-[#EAEAEA] text-black pt-24 md:pt-12">
+        <div class="grid-bg"></div>
+        <div class="relative z-10 pt-4 md:pt-12">
+            <div class="flex gap-4 mb-4 md:mb-8">
+                <span class="text-[10px] border border-black/30 px-2 py-1 font-mono bg-white/50">EST. 2019</span>
+                <span class="text-[10px] border border-black/30 px-2 py-1 font-mono text-[#0033FF] animate-pulse bg-white/50">● SYSTEM ONLINE</span>
+            </div>
+            <h1 class="hero-title-responsive font-black tracking-tighter uppercase mt-4">
+                <div class="overflow-hidden"><span class="block">NOT</span></div>
+                <div class="overflow-hidden"><span class="block text-[#0033FF]">JUST</span></div>
+                <div class="overflow-hidden"><span class="block">DESIGN</span></div>
+            </h1>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-12 relative z-10">
+            <div class="max-w-md bg-white border border-black p-4 md:p-6 mb-8 md:mb-0">
+                <div class="flex justify-between items-start mb-4 border-b border-gray-200 pb-2">
+                    <span class="text-xs font-mono text-gray-400">STATUS</span>
+                    <span class="text-xs font-mono text-[#FF6309] bg-black px-1">ACTIVE</span>
+                </div>
+                <p class="text-lg font-bold uppercase mb-2">Defining the Grey Area</p>
+                <p class="text-sm leading-relaxed text-gray-700 font-mono">
+                    TG Media is a multi-disciplinary design studio based in Warwick. 
+                    We bridge the gap between street culture and corporate structure.
+                </p>
+            </div>
+            <a href="work.html" class="cursor-pointer magnetic-btn">
+                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full bg-[#0033FF] border-2 border-black flex items-center justify-center relative hover:scale-110 transition-transform duration-300 group hover:bg-[#FF6309]">
+                    <div class="absolute inset-0 animate-[spin_10s_linear_infinite]">
+                        <svg viewBox="0 0 100 100" width="100%" height="100%">
+                            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                            <text font-size="12" font-weight="bold" fill="white" letter-spacing="2" class="group-hover:fill-black">
+                                <textPath href="#circlePath">VIEW SELECTED PROJECTS — VIEW SELECTED PROJECTS —</textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <i data-lucide="arrow-down-right" class="w-8 h-8 text-white group-hover:text-black group-hover:rotate-45 transition-transform duration-300"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="py-24 px-6 md:px-12 bg-white border-b border-black">
+        <div class="max-w-[95%] mx-auto">
+            <span class="font-mono text-xs uppercase mb-8 block text-gray-400">01 — What We Do</span>
+            <h2 class="section-headline text-black mb-16 max-w-6xl">
+                We are artists, designers, producers, creatives, clients and technicians. We work together to create immersive experiences and bring ideas to life in real-world spaces.
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-black pt-12">
+                <div>
+                    <p class="text-xl font-black uppercase mb-4 text-[#FF6309]">Functional Aesthetics</p>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        We reject decoration. Every pixel, every line of code, and every layout must serve a purpose. We believe in the Swiss design principles of grid, clarity, and hierarchy, evolved for the digital age.
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xl font-black uppercase mb-4 text-[#FF6309]">Visual Engineering</p>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        Based in Warwick, we take a technical approach to creativity. We don't just "design" websites; we engineer visual systems that scale, perform, and convert.
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xl font-black uppercase mb-4 text-[#FF6309]">Systemic Architecture</p>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        We build for the future, not just the launch. Our digital infrastructures are modular, allowing your brand to evolve without breaking the foundation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="border-y border-black bg-white text-black py-4 overflow-hidden">
+        <div class="marquee-container font-black text-4xl uppercase tracking-widest italic">
+            <div class="marquee-content">
+                <span class="mx-8">VISUAL ENGINEERING</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span> <span class="text-[#FF6309] mx-8">●</span>
+            </div>
+            <div class="marquee-content">
+                <span class="mx-8">VISUAL ENGINEERING</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span> <span class="text-[#FF6309] mx-8">●</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAPABILITIES -->
+    <section class="p-6 md:p-12 bg-[#F2F2F2] border-b border-black">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <h2 class="text-3xl md:text-4xl font-black uppercase mb-4 md:mb-0">Capabilities</h2>
+            <span class="font-mono text-xs opacity-50">CORE DISCIPLINES</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black">
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300">
+                <div class="flex justify-between mb-12"><span class="font-mono text-xs">01</span><i data-lucide="fingerprint" class="w-6 h-6"></i></div>
+                <h3 class="text-3xl font-black uppercase">Identity</h3>
+                <p class="font-mono text-xs mt-4 opacity-50 group-hover:text-white">STRATEGY / LOGOS</p>
+            </a>
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300">
+                <div class="flex justify-between mb-12"><span class="font-mono text-xs">02</span><i data-lucide="monitor" class="w-6 h-6"></i></div>
+                <h3 class="text-3xl font-black uppercase">Digital</h3>
+                <p class="font-mono text-xs mt-4 opacity-50 group-hover:text-white">WEB / COMMERCE</p>
+            </a>
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300">
+                <div class="flex justify-between mb-12"><span class="font-mono text-xs">03</span><i data-lucide="box" class="w-6 h-6"></i></div>
+                <h3 class="text-3xl font-black uppercase">Physical</h3>
+                <p class="font-mono text-xs mt-4 opacity-50 group-hover:text-white">PRINT / SPACE</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- SELECTED WORKS -->
+    <section class="p-6 md:p-12 bg-white">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter">Selected<br>Works</h2>
+            <a href="work.html" class="hidden md:block text-xs font-bold uppercase border-b-2 border-black pb-1 hover:text-[#0033FF]">View Archive</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="project-aura.html" class="group">
+                <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
+                    <div class="absolute inset-0 bg-[#0033FF] mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-start border-b border-black pb-2">
+                    <h3 class="text-xl md:text-2xl font-bold uppercase">Aura Identity</h3>
+                    <span class="font-mono text-xs bg-black text-white px-2 py-1">BRANDING</span>
+                </div>
+            </a>
+            <a href="project-studio-beta.html" class="group md:mt-24">
+                <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
+                    <div class="absolute inset-0 bg-[#FF6309] mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-start border-b border-black pb-2">
+                    <h3 class="text-xl md:text-2xl font-bold uppercase">Studio Beta</h3>
+                    <span class="font-mono text-xs bg-black text-white px-2 py-1">WEB</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- LET'S MAKE THINGS HAPPEN -->
+    <section id="happen-section" class="relative h-[400vh] border-t border-black bg-[#FF6309]">
+        <div class="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden" style="position:sticky;top:0;">
+            <div class="bg-layer bg-blue absolute inset-0 bg-[#0033FF] z-20"></div>
+            <div class="grid-bg z-30 mix-blend-overlay opacity-20"></div>
+            <div class="relative z-40 text-center">
+                <p class="font-mono text-xs uppercase mb-4 text-white/60 tracking-widest">Get Started</p>
+                <h1 class="hero-title-responsive font-black uppercase leading-none text-white">Let's Make<br>Things Happen.</h1>
+            </div>
+            <div class="happen-image img-1"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600" alt="Project"></div>
+            <div class="happen-image img-2"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=600" alt="Project"></div>
+            <div class="happen-image img-3"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600" alt="Project"></div>
+            <div class="happen-image img-4"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt="Project"></div>
+            <div class="happen-image img-5"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" alt="Project"></div>
+            <div class="happen-image img-6"><img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600" alt="Project"></div>
+        </div>
+    </section>
+
+</div><!-- end #main-content -->
+
+<!-- FOOTER -->
+<footer id="sticky-footer" class="bg-black text-white">
+    <div class="w-full h-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto text-center mt-12 md:mt-24">
+            <span class="font-mono text-xs text-[#FF6309] mb-4 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2025</span>
+            <h2 class="text-4xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 mt-8">
+                Let's Build<br>The Future.
+            </h2>
+            <div class="flex justify-center">
+                <a href="contact.html" class="magnetic-btn relative overflow-hidden px-12 py-6 bg-[#0033FF] text-white font-black text-xl md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
+                    Initiate Project
+                </a>
+            </div>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500 mt-12 border-t border-white/20 pt-6">
+            <div class="mb-4 md:mb-0">
+                <span class="text-[#0033FF]">TG MEDIA™</span><br>
+                WARWICK, UK © 2024
+            </div>
+            <div class="flex gap-6 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309] transition-colors">HOME</a>
+                <a href="services.html" class="hover:text-[#FF6309] transition-colors">SERVICES</a>
+                <a href="work.html" class="hover:text-[#FF6309] transition-colors">WORK</a>
+                <a href="#" class="hover:text-[#FF6309] transition-colors">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309] transition-colors">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+    // HOME-SPECIFIC: Happen section scroll animation
+    function initScrollAnimations() {
+        gsap.utils.toArray('.section-headline, .hero-title-responsive').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: { trigger: title, start: "top 85%", toggleActions: "play none none reverse" },
+                y: 50, opacity: 0, duration: 1, ease: "power3.out"
+            });
+        });
+        gsap.utils.toArray('img').forEach(img => {
+            gsap.to(img, {
+                scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: 1 },
+                y: -30, ease: "none"
+            });
+        });
+
+        const happenSection = document.getElementById('happen-section');
+        if (happenSection) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#happen-section",
+                    start: "top top",
+                    end: "+=300%",
+                    scrub: 0.5,
+                    pin: true,
+                }
+            });
+            tl.to(".bg-blue", { opacity: 0, ease: "none", duration: 3 }, 0);
+            tl.fromTo(".img-1", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.1).to(".img-1", { y: -200, opacity: 0, duration: 0.8 }, 1.8);
+            tl.fromTo(".img-4", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.3).to(".img-4", { y: -200, opacity: 0, duration: 0.8 }, 2.0);
+            tl.fromTo(".img-5", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.7).to(".img-5", { y: -200, opacity: 0, duration: 0.8 }, 2.4);
+            tl.fromTo(".img-2", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.9).to(".img-2", { y: -200, opacity: 0, duration: 0.8 }, 2.6);
+            tl.fromTo(".img-6", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 1.3).to(".img-6", { y: -200, opacity: 0, duration: 0.8 }, 2.9);
+            tl.fromTo(".img-3", { y: 250, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, 1.5).to(".img-3", { y: -250, opacity: 0, duration: 1 }, 3.2);
+        }
+    }
+</script>
+</body>
+</html>

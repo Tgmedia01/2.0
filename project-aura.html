@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TG MEDIA — Aura Identity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
+            <span class="group-hover:mr-2 transition-all">Menu</span>
+            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <section class="bg-white min-h-screen pt-24">
+
+        <div class="px-6 md:px-12 mb-12">
+            <a href="work.html" class="text-xs font-mono border-b border-black pb-1 mb-8 inline-block hover:text-[#0033FF]">← BACK TO ARCHIVE</a>
+            <!-- EDIT: Project title -->
+            <h1 class="hero-title-responsive font-black uppercase leading-none mt-8">
+                <div class="overflow-hidden"><span class="block">Aura</span></div>
+                <div class="overflow-hidden"><span class="block text-[#0033FF]">Identity</span></div>
+            </h1>
+        </div>
+
+        <!-- EDIT: Hero project image -->
+        <div class="w-full h-[60vh] bg-gray-200 border-y border-black overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000" class="w-full h-full object-cover grayscale">
+        </div>
+
+        <div class="p-6 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            <!-- EDIT: Project metadata -->
+            <div class="font-mono text-sm space-y-4">
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span>CLIENT</span> <span>AURA FASHION</span></div>
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span>YEAR</span> <span>2024</span></div>
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span>SECTOR</span> <span>RETAIL</span></div>
+                <div class="flex justify-between border-b border-gray-200 pb-2"><span>SERVICES</span> <span>BRANDING</span></div>
+            </div>
+
+            <div class="md:col-span-2">
+                <!-- EDIT: Project description -->
+                <h3 class="text-2xl font-bold uppercase mb-4">Project Overview</h3>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    We engineered a complete visual overhaul for Aura, focusing on modular design systems that could scale across physical and digital touchpoints. The goal was to create a language that felt timeless yet aggressively modern.
+                </p>
+
+                <!-- EDIT: Project images - add as many rows as needed -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="aspect-square border border-black overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square border border-black overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529139574466-a302c275af73?q=80&w=800" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- EDIT: Add more images or a full-width image below if needed -->
+                <!-- <div class="w-full aspect-video border border-black overflow-hidden mt-4">
+                    <img src="YOUR_IMAGE_URL" class="w-full h-full object-cover">
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Next project link -->
+        <div class="border-t border-black p-6 md:p-12 flex justify-between items-center">
+            <span class="font-mono text-xs text-gray-400">NEXT PROJECT</span>
+            <a href="project-studio-beta.html" class="text-2xl md:text-4xl font-black uppercase hover:text-[#0033FF] transition-colors flex items-center gap-4">
+                Studio Beta <i data-lucide="arrow-right" class="w-8 h-8"></i>
+            </a>
+        </div>
+
+    </section>
+</div>
+
+<footer class="bg-black text-white p-6 md:p-12">
+    <div class="flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500">
+        <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
+        <div class="flex gap-6 text-white/50">
+            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+            <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+            <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
