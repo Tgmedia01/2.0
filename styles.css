@@ -104,6 +104,19 @@ body {
     header button.menu-toggle { display: none !important; }
 }
 
+/* Global mobile overflow fix */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* Prevent grid children from overflowing */
+[class*="col-span"] {
+    min-width: 0;
+}
+
 @media (max-width: 768px) {
     #sticky-footer { position: relative; height: auto; padding-bottom: 4rem; }
     #main-content { margin-bottom: 0; box-shadow: none; }

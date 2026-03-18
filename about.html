@@ -2,15 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TG MEDIA — About</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-title {
+            font-size: clamp(2.8rem, 8vw, 9rem);
+            line-height: 0.88;
+            letter-spacing: -0.03em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .about-h2 {
+            font-size: clamp(1.6rem, 4vw, 3.2rem);
+            line-height: 1.1;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-white">
 
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
@@ -22,9 +37,9 @@
 <div id="cursor"></div>
 
 <header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
         </a>
         <div class="hidden md:flex h-full">
             <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
@@ -36,11 +51,10 @@
             </nav>
         </div>
     </div>
-    <div class="flex h-full">
+    <div class="flex h-full flex-shrink-0">
         <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
-            <span class="group-hover:mr-2 transition-all">Menu</span>
-            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">
+            MENU
         </button>
     </div>
 </header>
@@ -57,73 +71,65 @@
 </div>
 
 <div id="main-content">
-    <section class="min-h-screen bg-white pt-24 pb-24 px-6 md:px-12">
+    <section class="bg-white pt-24 pb-24 px-5 md:px-12">
 
-        <div class="border-b-2 border-black pb-12 mb-12">
+        <!-- PAGE TITLE -->
+        <div class="border-b-2 border-black pb-10 mb-10">
             <span class="font-mono text-xs text-[#FF6309] mb-4 block">COMPANY PROFILE // V.26</span>
-            <h1 class="hero-title-responsive text-black font-black uppercase leading-[0.8]">
-                <div class="overflow-hidden"><span class="block">System</span></div>
-                <div class="overflow-hidden"><span class="block">Architecture</span></div>
-            </h1>
+            <h1 class="page-title text-black">System<br>Architecture</h1>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24">
-            <div class="col-span-12 md:col-span-4 font-mono text-xs leading-relaxed border-t border-black pt-4 mb-8 md:mb-0">
-                <!-- EDIT: Update these details -->
-                <p class="mb-4"><strong class="block mb-1">LOCATION:</strong>WARWICK, UK</p>
-                <p class="mb-4"><strong class="block mb-1">EST:</strong>2019</p>
-                <p class="mb-4"><strong class="block mb-1">TYPE:</strong>DESIGN & DEVELOPMENT STUDIO</p>
-                <p><strong class="block mb-1">FOCUS:</strong>DIGITAL SYSTEMS & BRANDING</p>
-            </div>
+        <!-- METADATA -->
+        <div class="font-mono text-xs leading-relaxed border-t border-black pt-4 mb-10 grid grid-cols-2 gap-y-4 gap-x-6 md:flex md:gap-12">
+            <!-- EDIT: Update these details -->
+            <div><strong class="block mb-1">LOCATION:</strong>WARWICK, UK</div>
+            <div><strong class="block mb-1">EST:</strong>2019</div>
+            <div><strong class="block mb-1">TYPE:</strong>DESIGN & DEV STUDIO</div>
+            <div><strong class="block mb-1">FOCUS:</strong>DIGITAL & BRANDING</div>
+        </div>
 
-            <div class="col-span-12 md:col-span-8">
-                <!-- EDIT: Your about headline -->
-                <h2 class="text-3xl md:text-5xl font-bold uppercase mb-8 leading-tight">
-                    Strategic Design &<br>
-                    <span class="text-[#FF6309]">Digital Development.</span>
-                </h2>
-                <!-- EDIT: Your about body text - 4 paragraphs -->
-                <div class="columns-1 md:columns-2 gap-12 text-sm md:text-base leading-relaxed text-gray-800 space-y-6 md:space-y-0">
-                    <p class="mb-6">
-                        TG Media is a Warwick-based design practice specialising in building distinct brand identities and scalable digital platforms. We partner with ambitious businesses to translate complex requirements into clear, functional user experiences.
-                    </p>
-                    <p class="mb-6">
-                        We approach every project with "Visual Engineering." This means we don't just prioritise aesthetics; we build systems based on solid logic and clean code. Our work is designed to look exceptional while performing reliably across all devices.
-                    </p>
-                    <p class="mb-6">
-                        Operating outside the traditional agency model, we maintain a focused, multidisciplinary team. This allows us to work directly with our clients, removing administrative layers and ensuring that every decision serves a tangible business goal.
-                    </p>
-                    <p>
-                        We bridge the gap between creative vision and technical reality. Whether launching a new e-commerce store or refreshing a corporate identity, we deliver assets that are built to perform and engineered to grow.
-                    </p>
-                </div>
+        <!-- HEADLINE + BODY -->
+        <div class="mb-16">
+            <!-- EDIT: Your about headline -->
+            <h2 class="about-h2 mb-8">
+                Strategic Design &<br>
+                <span class="text-[#FF6309]">Digital Development.</span>
+            </h2>
+            <!-- EDIT: Your about body text -->
+            <div class="text-sm md:text-base leading-relaxed text-gray-700 max-w-3xl space-y-5">
+                <p>TG Media is a Warwick-based design practice specialising in building distinct brand identities and scalable digital platforms. We partner with ambitious businesses to translate complex requirements into clear, functional user experiences.</p>
+                <p>We approach every project with "Visual Engineering." This means we don't just prioritise aesthetics; we build systems based on solid logic and clean code. Our work is designed to look exceptional while performing reliably across all devices.</p>
+                <p>Operating outside the traditional agency model, we maintain a focused, multidisciplinary team. This allows us to work directly with our clients, removing administrative layers and ensuring that every decision serves a tangible business goal.</p>
+                <p>We bridge the gap between creative vision and technical reality. Whether launching a new e-commerce store or refreshing a corporate identity, we deliver assets that are built to perform and engineered to grow.</p>
             </div>
         </div>
 
-        <!-- EDIT: Replace with your own workspace/office/studio image -->
-        <div class="w-full h-[40vh] md:h-[50vh] bg-[#F2F2F2] mb-12 md:mb-24 relative overflow-hidden group border border-black">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+        <!-- WORKSPACE IMAGE -->
+        <!-- EDIT: Replace src with your own image URL -->
+        <div class="w-full h-56 md:h-[50vh] bg-[#F2F2F2] mb-16 relative overflow-hidden group border border-black">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="The Workspace" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
             <div class="absolute bottom-0 left-0 bg-black text-white px-4 py-2 font-mono text-xs">
                 FIG 1.0 — THE WORKSPACE
             </div>
         </div>
 
+        <!-- 3 VALUES -->
+        <!-- EDIT: Your 3 core values -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- EDIT: Your 3 core values -->
             <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-4">01</span>
-                <h3 class="font-bold uppercase mb-2">Clarity</h3>
-                <p class="text-sm text-gray-600">We prioritise clear communication. We strip away unnecessary elements to ensure your message is received instantly and your users know exactly where to go.</p>
+                <span class="text-4xl font-black text-[#FF6309] block mb-3">01</span>
+                <h3 class="font-bold uppercase mb-2 text-sm">Clarity</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">We prioritise clear communication. We strip away unnecessary elements to ensure your message is received instantly and your users know exactly where to go.</p>
             </div>
             <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-4">02</span>
-                <h3 class="font-bold uppercase mb-2">Function</h3>
-                <p class="text-sm text-gray-600">Design must work. We build responsive, accessible, and fast-loading websites that perform flawlessly across all modern devices and networks.</p>
+                <span class="text-4xl font-black text-[#FF6309] block mb-3">02</span>
+                <h3 class="font-bold uppercase mb-2 text-sm">Function</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Design must work. We build responsive, accessible, and fast-loading websites that perform flawlessly across all modern devices and networks.</p>
             </div>
             <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-4">03</span>
-                <h3 class="font-bold uppercase mb-2">Scalability</h3>
-                <p class="text-sm text-gray-600">We build for growth. Our design systems are modular, allowing your brand and platform to expand easily as your business requirements evolve.</p>
+                <span class="text-4xl font-black text-[#FF6309] block mb-3">03</span>
+                <h3 class="font-bold uppercase mb-2 text-sm">Scalability</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">We build for growth. Our design systems are modular, allowing your brand and platform to expand easily as your business requirements evolve.</p>
             </div>
         </div>
 
@@ -131,20 +137,18 @@
 </div>
 
 <footer id="sticky-footer" class="bg-black text-white">
-    <div class="w-full h-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
         <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-6xl mx-auto text-center mt-12 md:mt-24">
-            <span class="font-mono text-xs text-[#FF6309] mb-4 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-4xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 mt-8">Let's Build<br>The Future.</h2>
-            <div class="flex justify-center">
-                <a href="contact.html" class="magnetic-btn px-12 py-6 bg-[#0033FF] text-white font-black text-xl md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
-                    Initiate Project
-                </a>
-            </div>
+        <div class="relative z-10 w-full max-w-4xl mx-auto text-center py-16 md:py-24">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10 mt-6">Let's Build<br>The Future.</h2>
+            <a href="contact.html" class="inline-block px-10 py-5 bg-[#0033FF] text-white font-black text-lg uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
+                Initiate Project
+            </a>
         </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500 mt-12 border-t border-white/20 pt-6">
-            <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
-            <div class="flex gap-6 text-white/50">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50">
                 <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
                 <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
                 <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
