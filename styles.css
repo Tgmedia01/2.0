@@ -99,8 +99,38 @@ body {
     background-color: var(--black);
 }
 
+/* Hide menu button on desktop since nav links are already visible */
+@media (min-width: 768px) {
+    header button.menu-toggle { display: none !important; }
+}
+
 @media (max-width: 768px) {
     #sticky-footer { position: relative; height: auto; padding-bottom: 4rem; }
     #main-content { margin-bottom: 0; box-shadow: none; }
     .magnetic-btn { transform: none !important; }
+
+    /* Fix mobile overflow */
+    * { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    
+    .hero-title-responsive {
+        font-size: clamp(2.8rem, 15vw, 5rem);
+        word-break: break-word;
+    }
+    .section-headline {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+        word-break: break-word;
+    }
+
+    /* Prevent text from overflowing containers */
+    h1, h2, h3, p, span, a {
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Fix column layouts on mobile */
+    .columns-1.md\:columns-2 {
+        columns: 1 !important;
+    }
 }
