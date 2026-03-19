@@ -159,3 +159,6 @@ body {
         max-width: 100%;
     }
 }
+
+/* Ensure reveal items are always visible — GSAP animates from 0 to 1 */
+.reveal-item { opacity: 1; }

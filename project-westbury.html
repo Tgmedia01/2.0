@@ -10,283 +10,280 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body { background:#0A0A0A; }
-        .cs-title { font-size:clamp(2.8rem,8vw,8rem); font-weight:900; line-height:0.88; letter-spacing:-0.03em; text-transform:uppercase; }
-        .section-num { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.15em; color:#C9A84C; }
-        .gold-line { width:40px; height:2px; background:#C9A84C; display:block; }
-        .stat-number { font-size:clamp(2.5rem,6vw,4rem); font-weight:900; line-height:1; color:#C9A84C; letter-spacing:-0.03em; }
-        .img-ph { background:#141414; border:1px solid rgba(255,255,255,0.06); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:rgba(255,255,255,0.18); font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; }
-        .collab-badge { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(201,168,76,0.3); padding:8px 16px; border-radius:100px; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#C9A84C; }
-        .reveal { opacity:0; transform:translateY(30px); }
-        .next-lnk { transition:letter-spacing 0.4s,color 0.3s; }
-        .next-lnk:hover { letter-spacing:0.04em; color:#C9A84C; }
-        @media(max-width:768px){ .cs-title { font-size:clamp(2.4rem,12vw,4rem); } }
+        .case-title {
+            font-size: clamp(3.5rem, 12vw, 10rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-[#F2F2F2]">
+
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
     <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
     <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
 </div>
+
 <div class="grain"></div>
 <div id="cursor"></div>
-<header class="fixed top-0 w-full z-50 backdrop-blur-md border-b flex justify-between items-center h-16" style="background:rgba(10,10,10,0.92);border-color:rgba(255,255,255,0.08);">
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
     <div class="flex h-full overflow-hidden">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r flex-shrink-0" style="background:#000;border-color:rgba(255,255,255,0.08);">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
             <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
         </a>
         <div class="hidden md:flex h-full">
-            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase" style="color:rgba(255,255,255,0.5);">
-                <a href="index.html" class="hover:text-white transition-colors">Home</a>
-                <a href="about.html" class="hover:text-white transition-colors">About</a>
-                <a href="services.html" class="hover:text-white transition-colors">Services</a>
-                <a href="work.html" style="color:#C9A84C;">Work</a>
-                <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
             </nav>
         </div>
     </div>
     <div class="flex h-full flex-shrink-0">
-        <div class="px-6 h-full items-center border-l hidden md:flex font-mono text-[10px]" style="color:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.08);">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full font-bold text-xs tracking-widest uppercase transition-colors" style="background:#C9A84C;color:#000;border-left:1px solid rgba(255,255,255,0.08);">MENU</button>
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
     </div>
 </header>
-<div id="mobile-menu" style="background:#0A0A0A;">
-    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono px-3 py-1" style="border:1px solid rgba(255,255,255,0.2);">CLOSE</button>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
     <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
-        <a href="index.html" class="hover:text-[#C9A84C] transition-colors">Home</a>
-        <a href="about.html" class="hover:text-[#C9A84C] transition-colors">About</a>
-        <a href="services.html" class="hover:text-[#C9A84C] transition-colors">Services</a>
-        <a href="work.html" class="hover:text-[#C9A84C] transition-colors">Work</a>
-        <a href="contact.html" class="hover:text-[#C9A84C] transition-colors">Contact</a>
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
     </nav>
 </div>
 
-<!-- HERO -->
-<section class="flex flex-col justify-end pt-32 pb-12 md:pb-20 px-5 md:px-12 relative overflow-hidden" style="min-height:100vh;background:#0A0A0A;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(201,168,76,0.1) 0%,transparent 65%);z-index:1;pointer-events:none;"></div>
-    <div class="grid-bg" style="opacity:0.04;"></div>
-    <!-- Westbury Music hero video -->
-    <div style="position:absolute;inset:0;z-index:0;">
-        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
-            <source src="https://westburymusic.net/wp-content/uploads/2023/11/gregyoung3_logo1.webm" type="video/webm">
-        </video>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,#0A0A0A 20%,rgba(10,10,10,0.5) 60%,rgba(10,10,10,0.2) 100%);"></div>
-    </div>
-    <div class="relative z-10 max-w-5xl">
-        <div class="flex flex-wrap items-center gap-3 mb-8">
-            <span class="collab-badge"><span style="width:6px;height:6px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Brand Partnership × Digital Architecture</span>
-            <span class="font-mono text-[10px] tracking-widest" style="color:rgba(255,255,255,0.3);">2024</span>
-        </div>
-        <h1 class="cs-title text-white mb-6">Westbury<br><span style="color:#C9A84C;">Music</span></h1>
-        <p class="font-mono text-xs md:text-sm leading-relaxed max-w-xl mb-8" style="color:rgba(255,255,255,0.5);">Partnered with Anti-Ordinary to translate a refined brand identity into a structured, high-performance digital platform for the global music licensing industry.</p>
-        <div class="flex flex-wrap gap-3">
-            <span class="font-mono text-[10px] px-3 py-1.5" style="border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);">DIGITAL DESIGN</span>
-            <span class="font-mono text-[10px] px-3 py-1.5" style="border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);">DEVELOPMENT</span>
-            <span class="font-mono text-[10px] px-3 py-1.5" style="border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);">BRAND TRANSLATION</span>
-            <a href="https://westburymusic.net" target="_blank" class="font-mono text-[10px] px-3 py-1.5 hover:bg-[#C9A84C] hover:text-black transition-colors" style="border:1px solid rgba(201,168,76,0.4);color:#C9A84C;">VISIT SITE ↗</a>
-        </div>
-    </div>
-    <div class="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2" style="opacity:0.2;">
-        <div style="width:1px;height:48px;background:white;"></div>
-        <span class="font-mono text-[9px] tracking-widest text-white" style="writing-mode:vertical-rl;">SCROLL</span>
-    </div>
-</section>
+<div id="main-content">
 
-<!-- OVERVIEW -->
-<section style="background:#F5F3EE;" class="px-5 md:px-12 py-16 md:py-24">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-        <div class="md:col-span-4">
-            <span class="section-num block mb-4">01 — OVERVIEW</span>
-            <span class="gold-line mb-8"></span>
-            <div class="space-y-3 font-mono text-xs mt-6" style="color:rgba(10,10,10,0.5);">
-                <div class="flex justify-between border-b pb-2" style="border-color:rgba(0,0,0,0.08);"><span>CLIENT</span><span style="color:#0A0A0A;font-weight:700;">WESTBURY MUSIC</span></div>
-                <div class="flex justify-between border-b pb-2" style="border-color:rgba(0,0,0,0.08);"><span>YEAR</span><span style="color:#0A0A0A;">2024</span></div>
-                <div class="flex justify-between border-b pb-2" style="border-color:rgba(0,0,0,0.08);"><span>SECTOR</span><span style="color:#0A0A0A;">MUSIC LICENSING</span></div>
-                <div class="flex justify-between border-b pb-2" style="border-color:rgba(0,0,0,0.08);"><span>BRAND</span><a href="https://anti-ordinary.co.uk" target="_blank" class="text-[#0033FF] hover:underline">ANTI-ORDINARY ↗</a></div>
-                <div class="flex justify-between border-b pb-2" style="border-color:rgba(0,0,0,0.08);"><span>DIGITAL</span><span style="color:#0A0A0A;">TG MEDIA</span></div>
-                <div class="flex justify-between pb-2"><span>LIVE</span><a href="https://westburymusic.net" target="_blank" class="text-[#0033FF] hover:underline">WESTBURYMUSIC.NET ↗</a></div>
+    <!-- HERO -->
+    <section class="bg-[#080808] min-h-screen flex flex-col justify-end pt-16 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <svg class="absolute right-0 top-0 w-full h-full opacity-10" viewBox="0 0 800 600" fill="none">
+                <circle cx="650" cy="200" r="150" stroke="white" stroke-width="0.5"/>
+                <circle cx="650" cy="200" r="280" stroke="white" stroke-width="0.5"/>
+                <circle cx="650" cy="200" r="420" stroke="white" stroke-width="0.5"/>
+                <circle cx="650" cy="200" r="560" stroke="white" stroke-width="0.5"/>
+            </svg>
+            <!-- EDIT: Add your Westbury site screenshot here as a background -->
+            <!-- <img src="YOUR_WESTBURY_HERO.jpg" class="w-full h-full object-cover opacity-25"> -->
+        </div>
+
+        <div class="relative z-10 p-5 md:p-12 pb-12 md:pb-16">
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="font-mono text-[10px] border border-white/20 px-3 py-1 text-white/50 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-[#FF6309] rounded-full inline-block"></span>
+                    BRAND PARTNERSHIP × DIGITAL ARCHITECTURE
+                </span>
+                <span class="font-mono text-[10px] border border-white/20 px-3 py-1 text-white/50">2024</span>
+            </div>
+
+            <h1 class="case-title text-white mb-6">
+                Westbury<br><span class="text-[#FF6309]">Music</span>
+            </h1>
+
+            <p class="font-mono text-sm text-white/50 max-w-xl mb-10 leading-relaxed">
+                Partnered with Anti-Ordinary to translate a refined brand identity into a structured, high-performance digital platform for the global music licensing industry.
+            </p>
+
+            <div class="flex flex-wrap gap-3 items-center">
+                <span class="font-mono text-xs border border-white/20 px-3 py-2 text-white/40">DIGITAL DESIGN</span>
+                <span class="font-mono text-xs border border-white/20 px-3 py-2 text-white/40">DEVELOPMENT</span>
+                <span class="font-mono text-xs border border-white/20 px-3 py-2 text-white/40">BRAND TRANSLATION</span>
+                <!-- EDIT: Add actual Westbury URL -->
+                <a href="https://westburymusic.net" target="_blank" class="font-mono text-xs border border-[#FF6309] px-4 py-2 text-[#FF6309] hover:bg-[#FF6309] hover:text-black transition-colors">
+                    VISIT SITE ↗
+                </a>
             </div>
         </div>
-        <div class="md:col-span-8 min-w-0">
-            <h2 class="text-2xl md:text-4xl font-black uppercase leading-tight mb-8 reveal" style="color:#0A0A0A;">A digital platform built for the global music licensing industry.</h2>
-            <div class="space-y-5 text-sm md:text-base leading-relaxed reveal" style="color:rgba(10,10,10,0.65);">
-                <p>Westbury Music required a digital presence that reflected its position within the global music licensing industry — balancing creative culture with commercial credibility.</p>
-                <p>We collaborated closely with <a href="https://anti-ordinary.co.uk" target="_blank" class="text-[#0033FF] hover:underline font-medium">Anti-Ordinary</a>, who led brand development, while we engineered the digital system — ensuring the visual language translated seamlessly into a scalable web platform.</p>
-                <p>The result is a platform that operates at the intersection of creative credibility and commercial precision.</p>
-            </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="bg-white border-b border-black p-5 md:p-12">
+        <span class="section-label block mb-6">Overview</span>
+        <h2 class="text-2xl md:text-4xl font-bold leading-tight mb-8 max-w-4xl reveal-item">
+            Westbury Music required a digital presence that reflected its position within the global music licensing industry — balancing creative culture with commercial credibility.
+        </h2>
+        <div class="border-t border-black pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 reveal-item">
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                We collaborated closely with <a href="https://anti-ordinary.co.uk/" target="_blank" class="text-[#0033FF] border-b border-[#0033FF]/30 hover:border-[#0033FF] transition-colors">Anti-Ordinary</a>, who led brand development, while we engineered the digital system — ensuring the visual language translated seamlessly into a scalable web platform.
+            </p>
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                This project demonstrates the importance of structured collaboration — where creative direction and technical execution operate in alignment, without compromise on either side.
+            </p>
         </div>
+    </section>
+
+    <!-- FULL WIDTH SCREENSHOT -->
+    <div class="w-full border-b border-black bg-[#0a0a0a] relative overflow-hidden" style="height:55vw;min-height:280px;max-height:680px;">
+        <!-- EDIT: Replace with actual screenshot -->
+        <!-- <img src="YOUR_WESTBURY_SCREENSHOT.jpg" class="w-full h-full object-cover object-top"> -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <span class="font-mono text-xs text-white/20 border border-white/10 px-4 py-2">EDIT: ADD WESTBURY HOMEPAGE SCREENSHOT</span>
+        </div>
+        <div class="absolute bottom-4 left-5 md:left-12 font-mono text-[10px] text-white/20">FIG 1.0 — HOMEPAGE</div>
     </div>
-</section>
 
-<!-- FULL WIDTH IMAGE — Old vs New Brand Comparison -->
-<div class="reveal" style="height:55vh;min-height:300px;overflow:hidden;">
-    <img src="https://anti-ordinary.com/_next/image?url=https%3A%2F%2Fanti-ordinary.co%2Fantiordinary%2Fwp-content%2Fuploads%2F2024%2F06%2Fold-v-new-westbury-1536x864.jpg&w=3840&q=75" 
-         alt="Westbury Music — Old vs New Brand" 
-         style="width:100%;height:100%;object-fit:cover;display:block;">
-</div>
-
-<!-- THE APPROACH -->
-<section style="background:#0F0F0F;" class="px-5 md:px-12 py-16 md:py-24">
-    <div class="max-w-6xl mx-auto">
-        <span class="section-num block mb-4">02 — THE APPROACH</span>
-        <span class="gold-line mb-12"></span>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background:rgba(255,255,255,0.05);">
-            <div style="background:#0A0A0A;" class="p-8 md:p-12 reveal">
-                <div class="w-10 h-10 flex items-center justify-center mb-8" style="border:1px solid rgba(201,168,76,0.25);">
-                    <i data-lucide="layers" style="width:18px;height:18px;color:#C9A84C;"></i>
+    <!-- THE APPROACH -->
+    <section class="bg-[#F2F2F2] border-b border-black p-5 md:p-12">
+        <span class="section-label block mb-10">The Approach</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border border-black">
+            <div class="bg-[#F2F2F2] p-8 md:p-10 reveal-item">
+                <div class="flex justify-between items-start mb-8">
+                    <span class="font-mono text-xs text-[#FF6309]">01</span>
+                    <i data-lucide="layers" class="w-5 h-5 opacity-30"></i>
                 </div>
-                <h3 class="text-xl md:text-2xl font-black uppercase text-white mb-6">Brand Translation</h3>
-                <p class="text-sm leading-relaxed mb-4" style="color:rgba(255,255,255,0.45);">The identity developed by Anti-Ordinary carried clarity and restraint. Our role was to preserve that integrity while adapting it for digital interaction.</p>
-                <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.45);">Typography, grid structure and motion were carefully implemented to maintain consistency across all devices and contexts.</p>
+                <h3 class="text-2xl md:text-3xl font-black uppercase mb-4">Brand<br>Translation</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">The identity developed by Anti-Ordinary carried clarity and restraint. Our role was to preserve that integrity while adapting it for digital interaction.</p>
+                <p class="text-gray-600 text-sm leading-relaxed">Typography, grid structure and motion were carefully implemented to maintain consistency across all devices and touchpoints.</p>
             </div>
-            <div style="background:#0A0A0A;" class="p-8 md:p-12 reveal">
-                <div class="w-10 h-10 flex items-center justify-center mb-8" style="border:1px solid rgba(201,168,76,0.25);">
-                    <i data-lucide="cpu" style="width:18px;height:18px;color:#C9A84C;"></i>
+            <div class="bg-[#F2F2F2] p-8 md:p-10 reveal-item">
+                <div class="flex justify-between items-start mb-8">
+                    <span class="font-mono text-xs text-[#FF6309]">02</span>
+                    <i data-lucide="cpu" class="w-5 h-5 opacity-30"></i>
                 </div>
-                <h3 class="text-xl md:text-2xl font-black uppercase text-white mb-6">Digital Architecture</h3>
-                <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.45);">We designed and developed a modular website framework allowing Westbury Music to:</p>
-                <ul class="space-y-3 text-sm font-mono" style="color:rgba(255,255,255,0.45);">
-                    <li class="flex gap-3"><span style="color:#C9A84C;">→</span>Showcase licensed music in film &amp; television</li>
-                    <li class="flex gap-3"><span style="color:#C9A84C;">→</span>Present artists with clarity and structure</li>
-                    <li class="flex gap-3"><span style="color:#C9A84C;">→</span>Maintain performance across global audiences</li>
+                <h3 class="text-2xl md:text-3xl font-black uppercase mb-4">Digital<br>Architecture</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">We designed and developed a modular website framework allowing Westbury Music to:</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                        <span class="text-[#FF6309] font-black flex-shrink-0">→</span>
+                        Showcase licensed music in film & television
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                        <span class="text-[#FF6309] font-black flex-shrink-0">→</span>
+                        Present artists with clarity and structure
+                    </li>
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                        <span class="text-[#FF6309] font-black flex-shrink-0">→</span>
+                        Maintain performance across global audiences
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- DIGITAL EXECUTION IMAGE GRID -->
-<section style="background:#0A0A0A;" class="px-5 md:px-12 pb-16 md:pb-24 pt-4">
-    <div class="max-w-6xl mx-auto">
-        <span class="section-num block mb-4">03 — DIGITAL EXECUTION</span>
-        <span class="gold-line mb-10"></span>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-            <div class="reveal" style="overflow:hidden;">
-                <img src="https://anti-ordinary.com/_next/image?url=https%3A%2F%2Fanti-ordinary.co%2Fantiordinary%2Fwp-content%2Fuploads%2F2024%2F06%2FWestbury-2-1536x1024.jpg&w=3840&q=75" 
-                     alt="Westbury Music Brand" 
-                     style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform 0.5s;" 
-                     onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <!-- COLLABORATION -->
+    <section class="bg-black text-white border-b border-black p-5 md:p-12 reveal-item">
+        <span class="section-label block mb-8 text-white/30">Collaboration</span>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-0 md:justify-between md:items-end">
+            <div>
+                <p class="font-mono text-xs text-white/30 mb-3">BRAND IDENTITY</p>
+                <a href="https://anti-ordinary.co.uk/" target="_blank" class="text-3xl md:text-5xl font-black uppercase hover:text-[#FF6309] transition-colors">
+                    Anti-Ordinary ↗
+                </a>
             </div>
-            <div class="reveal" style="overflow:hidden;">
-                <img src="https://anti-ordinary.com/_next/image?url=https%3A%2F%2Fanti-ordinary.co%2Fantiordinary%2Fwp-content%2Fuploads%2F2024%2F06%2FPhone-scaled.jpg&w=3840&q=75" 
-                     alt="Westbury Music Mobile" 
-                     style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;transition:transform 0.5s;"
-                     onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="hidden md:block w-px h-16 bg-white/10"></div>
+            <div>
+                <p class="font-mono text-xs text-white/30 mb-3">DIGITAL DESIGN & DEVELOPMENT</p>
+                <span class="text-3xl md:text-5xl font-black uppercase text-[#0033FF]">TG Media</span>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div class="img-ph aspect-square reveal"><i data-lucide="type" style="width:20px;height:20px;opacity:0.12;"></i><span>TYPOGRAPHY — add screenshot</span></div>
-            <div class="img-ph aspect-square reveal"><i data-lucide="grid" style="width:20px;height:20px;opacity:0.12;"></i><span>GRID SYSTEM — add screenshot</span></div>
-            <div class="img-ph aspect-square reveal"><i data-lucide="smartphone" style="width:20px;height:20px;opacity:0.12;"></i><span>MOBILE VIEW — add screenshot</span></div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- COLLABORATION -->
-<section style="background:#C9A84C;" class="px-5 md:px-12 py-16 md:py-20">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-            <span class="font-mono text-[10px] tracking-widest uppercase block mb-4" style="color:rgba(0,0,0,0.45);">04 — Collaboration</span>
-            <h2 class="text-3xl md:text-5xl font-black uppercase text-black leading-tight mb-6">Structured<br>Partnership.</h2>
-            <p class="text-sm md:text-base leading-relaxed max-w-md" style="color:rgba(0,0,0,0.65);">This project demonstrates the importance of structured collaboration — where creative direction and technical execution operate in alignment, without friction.</p>
-        </div>
-        <div class="space-y-3 reveal">
-            <div class="p-6" style="background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08);">
-                <span class="font-mono text-[10px] tracking-widest uppercase block mb-3" style="color:rgba(0,0,0,0.45);">Brand Identity</span>
-                <a href="https://anti-ordinary.co.uk" target="_blank" class="text-2xl font-black uppercase text-black hover:text-[#0033FF] transition-colors">Anti-Ordinary ↗</a>
-                <p class="font-mono text-xs mt-2" style="color:rgba(0,0,0,0.5);">Brand strategy, visual identity, creative direction</p>
+    <!-- UI DETAIL IMAGES -->
+    <section class="border-b border-black">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black">
+            <div class="aspect-square bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden group">
+                <!-- EDIT: <img src="UI_DETAIL_1.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"> -->
+                <span class="font-mono text-[10px] text-white/20 text-center px-4">EDIT: UI DETAIL 01</span>
             </div>
-            <div class="p-6" style="background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08);">
-                <span class="font-mono text-[10px] tracking-widest uppercase block mb-3" style="color:rgba(0,0,0,0.45);">Digital Design &amp; Development</span>
-                <span class="text-2xl font-black uppercase text-black">TG Media</span>
-                <p class="font-mono text-xs mt-2" style="color:rgba(0,0,0,0.5);">Web design, front-end development, digital architecture</p>
+            <div class="aspect-square bg-[#111] flex items-center justify-center relative overflow-hidden group">
+                <!-- EDIT: <img src="UI_DETAIL_2.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"> -->
+                <span class="font-mono text-[10px] text-white/20 text-center px-4">EDIT: UI DETAIL 02</span>
+            </div>
+            <div class="aspect-square bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden group">
+                <!-- EDIT: <img src="UI_DETAIL_3.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"> -->
+                <span class="font-mono text-[10px] text-white/20 text-center px-4">EDIT: UI DETAIL 03</span>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- RESULTS -->
-<section style="background:#F5F3EE;" class="px-5 md:px-12 py-16 md:py-24">
-    <div class="max-w-6xl mx-auto">
-        <span class="section-num block mb-4">05 — RESULTS</span>
-        <span class="gold-line mb-12"></span>
-        <!-- EDIT: Replace symbols with real numbers if you have them -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:1.5rem;" class="reveal">
-                <div class="stat-number">↑</div>
-                <p class="font-mono text-xs uppercase mt-2 leading-relaxed" style="color:rgba(10,10,10,0.45);">Improved content structure</p>
+    <!-- RESULTS -->
+    <section class="bg-[#F2F2F2] border-b border-black p-5 md:p-12">
+        <span class="section-label block mb-10">Results</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black">
+            <div class="bg-white p-6 md:p-8 reveal-item">
+                <span class="text-4xl font-black text-[#0033FF] block mb-3">01</span>
+                <p class="font-mono text-xs uppercase leading-relaxed text-gray-700">Improved content structure</p>
             </div>
-            <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:1.5rem;" class="reveal">
-                <div class="stat-number">✓</div>
-                <p class="font-mono text-xs uppercase mt-2 leading-relaxed" style="color:rgba(10,10,10,0.45);">Enhanced usability across devices</p>
+            <div class="bg-white p-6 md:p-8 reveal-item">
+                <span class="text-4xl font-black text-[#0033FF] block mb-3">02</span>
+                <p class="font-mono text-xs uppercase leading-relaxed text-gray-700">Enhanced usability across devices</p>
             </div>
-            <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:1.5rem;" class="reveal">
-                <div class="stat-number">∞</div>
-                <p class="font-mono text-xs uppercase mt-2 leading-relaxed" style="color:rgba(10,10,10,0.45);">Scalable CMS-ready framework</p>
+            <div class="bg-white p-6 md:p-8 reveal-item">
+                <span class="text-4xl font-black text-[#0033FF] block mb-3">03</span>
+                <p class="font-mono text-xs uppercase leading-relaxed text-gray-700">Scalable CMS-ready framework</p>
             </div>
-            <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:1.5rem;" class="reveal">
-                <div class="stat-number">→</div>
-                <p class="font-mono text-xs uppercase mt-2 leading-relaxed" style="color:rgba(10,10,10,0.45);">Strengthened digital presence</p>
+            <div class="bg-white p-6 md:p-8 reveal-item">
+                <span class="text-4xl font-black text-[#0033FF] block mb-3">04</span>
+                <p class="font-mono text-xs uppercase leading-relaxed text-gray-700">Strengthened industry presence</p>
             </div>
         </div>
-        <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:3rem;" class="reveal">
-            <p class="text-2xl md:text-4xl font-black uppercase leading-tight max-w-3xl" style="color:#0A0A0A;">"A structured digital platform built to reflect creative credibility and commercial precision."</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- CLOSING IMAGE -->
-<!-- EDIT: Replace with device mockup or detail shot -->
-<div class="img-ph reveal" style="height:45vh;min-height:260px;">
-    <i data-lucide="monitor" style="width:28px;height:28px;opacity:0.12;"></i>
-    <span>CLOSING IMAGE — device mockup or project detail</span>
-    <span style="font-size:9px;opacity:0.3;">Replace with your image — recommended 2400x1000px</span>
+    <!-- CLOSING STATEMENT -->
+    <section class="bg-[#0033FF] text-white p-5 md:p-12 reveal-item border-b border-black">
+        <span class="section-label block mb-6 text-white/40">Closing Statement</span>
+        <h2 class="text-3xl md:text-6xl font-black uppercase leading-tight max-w-4xl">
+            A structured digital platform built to reflect creative credibility and commercial precision.
+        </h2>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="bg-white p-5 md:p-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <a href="work.html" class="font-mono text-xs border-b border-black pb-1 hover:text-[#0033FF] transition-colors">← BACK TO ARCHIVE</a>
+        <a href="project-aura.html" class="text-2xl md:text-4xl font-black uppercase hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
+            Next: Aura Identity
+            <i data-lucide="arrow-right" class="w-7 h-7 group-hover:translate-x-2 transition-transform"></i>
+        </a>
+    </section>
+
 </div>
 
-<!-- NEXT PROJECT -->
-<section style="background:#0A0A0A;border-top:1px solid rgba(255,255,255,0.08);" class="px-5 md:px-12 py-12 md:py-16">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div>
-            <span class="font-mono text-[10px] tracking-widest uppercase block mb-2" style="color:rgba(255,255,255,0.25);">Next Project</span>
-            <a href="project-aura.html" class="text-2xl md:text-5xl font-black uppercase text-white next-lnk flex items-center gap-4">
-                Aura Identity <i data-lucide="arrow-right" style="width:28px;height:28px;flex-shrink:0;"></i>
-            </a>
-        </div>
-        <a href="work.html" class="font-mono text-xs px-5 py-3 uppercase tracking-widest hover:text-white transition-colors" style="color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.1);">← Back to Archive</a>
-    </div>
-</section>
-
-<footer style="background:#000;border-top:1px solid rgba(255,255,255,0.08);" class="px-6 md:px-12 py-8">
-    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] gap-4" style="color:rgba(255,255,255,0.25);">
+<footer class="bg-black text-white p-6 md:p-12">
+    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 gap-4">
         <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-        <div class="flex flex-wrap gap-5">
-            <a href="index.html" class="hover:text-[#C9A84C] transition-colors">HOME</a>
-            <a href="services.html" class="hover:text-[#C9A84C] transition-colors">SERVICES</a>
-            <a href="work.html" class="hover:text-[#C9A84C] transition-colors">WORK</a>
-            <a href="#" class="hover:text-[#C9A84C] transition-colors">INSTAGRAM</a>
-            <a href="#" class="hover:text-[#C9A84C] transition-colors">LINKEDIN</a>
+        <div class="flex flex-wrap gap-4 text-white/50">
+            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+            <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+            <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
         </div>
     </div>
 </footer>
 
 <script src="shared.js"></script>
 <script>
-    function initScrollAnimations() {
-        gsap.utils.toArray('.reveal').forEach((el,i) => {
-            gsap.to(el, {
-                scrollTrigger:{ trigger:el, start:'top 88%', toggleActions:'play none none none' },
-                y:0, opacity:1, duration:0.9, ease:'power3.out', delay:(i%3)*0.07
-            });
-        });
-        gsap.from('.cs-title',{ y:80, opacity:0, duration:1.2, ease:'power4.out', delay:0.4 });
-        gsap.utils.toArray('.gold-line').forEach(line => {
-            gsap.from(line,{
-                scrollTrigger:{ trigger:line, start:'top 90%' },
-                width:0, duration:0.8, ease:'power3.out'
-            });
-        });
-    }
+function initScrollAnimations() {
+    gsap.from("h1.case-title", {
+        y: 80, opacity: 0, duration: 1.2, ease: "power4.out", delay: 0.3
+    });
+    gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+        gsap.fromTo(el,
+            { y: 40, opacity: 0 },
+            {
+                scrollTrigger: { trigger: el, start: "top 92%" },
+                y: 0, opacity: 1, duration: 0.8, delay: i * 0.06, ease: "power3.out"
+            }
+        );
+    });
+}
 </script>
 </body>
 </html>

@@ -293,10 +293,13 @@ function initScrollAnimations() {
 
     // --- REVEAL ON SCROLL ---
     gsap.utils.toArray('.reveal-item').forEach((el, i) => {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
-            y: 40, opacity: 0, duration: 0.8, delay: i * 0.08, ease: "power3.out"
-        });
+        gsap.fromTo(el,
+            { y: 40, opacity: 0 },
+            {
+                scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" },
+                y: 0, opacity: 1, duration: 0.8, delay: i * 0.08, ease: "power3.out"
+            }
+        );
     });
 
     // --- SECTION HEADLINES ---
