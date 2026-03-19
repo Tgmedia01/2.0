@@ -142,5 +142,15 @@
 </footer>
 
 <script src="shared.js"></script>
+<script>
+function initScrollAnimations() {
+    gsap.utils.toArray(".fade-up, .section-headline, h1, h2").forEach(function(el) {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
+            y: 40, opacity: 0, duration: 0.9, ease: "power3.out"
+        });
+    });
+}
+</script>
 </body>
 </html>
