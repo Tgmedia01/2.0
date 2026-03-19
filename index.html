@@ -10,11 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* HAPPEN SECTION */
         .happen-image {
             position: absolute;
-            width: 220px;
-            height: auto;
             opacity: 0;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             z-index: 30;
@@ -26,77 +23,28 @@
             filter: grayscale(100%) contrast(1.1);
             mix-blend-mode: luminosity;
         }
-        .img-1 { top: 12%; left: 6%; width: 180px; }
+        .img-1 { top: 12%; left: 6%;  width: 180px; }
         .img-2 { top: 50%; right: 8%; width: 240px; }
         .img-3 { bottom: 12%; left: 32%; width: 260px; z-index: 35; }
         .img-4 { top: 18%; right: 16%; width: 160px; }
         .img-5 { top: 62%; left: 12%; width: 190px; }
         .img-6 { bottom: 22%; right: 24%; width: 200px; }
 
-        /* Floating counter */
-        .stat-pill {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            padding: 8px 16px;
-            font-family: 'Space Mono', monospace;
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Scroll indicator */
-        @keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
-        }
-        .scroll-indicator { animation: bounce-down 1.8s ease-in-out infinite; }
-
-        /* Card hover lift */
-        .project-card { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .project-card { transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
         .project-card:hover { transform: translateY(-8px); }
 
-        /* Footer fixed reveal — desktop only */
-        @media (min-width: 769px) {
-            #main-content {
-                position: relative; z-index: 20;
-                background-color: #F2F2F2;
-                margin-bottom: 90vh;
-                box-shadow: 0 50px 100px rgba(0,0,0,0.5);
-            }
-            #sticky-footer {
-                position: fixed; bottom: 0; left: 0;
-                width: 100%; height: 90vh; z-index: 10;
-            }
+        @keyframes bounce-down {
+            0%,100% { transform: translateY(0) translateX(-50%); }
+            50%      { transform: translateY(8px) translateX(-50%); }
         }
-        @media (max-width: 768px) {
-            #main-content { margin-bottom: 0; box-shadow: none; }
-            #sticky-footer { position: relative; height: auto; }
-            .happen-image { display: none; } /* Hide floaters on mobile - too cluttered */
-        }
-
-        /* Glitch text effect on hero */
-        @keyframes glitch {
-            0%, 95%, 100% { clip-path: none; transform: none; }
-            96% { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
-            97% { clip-path: inset(60% 0 10% 0); transform: translate(4px, 0); }
-            98% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 0); }
-        }
-        .glitch-text { position: relative; }
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute; inset: 0;
-            color: #FF6309;
-            animation: glitch 6s infinite;
-        }
+        .scroll-indicator { animation: bounce-down 1.8s ease-in-out infinite; }
     </style>
 </head>
 <body class="antialiased">
 
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
     <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
 </div>
 
@@ -121,9 +69,7 @@
     </div>
     <div class="flex h-full flex-shrink-0">
         <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">
-            MENU
-        </button>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
     </div>
 </header>
 
@@ -157,22 +103,15 @@
                 <div class="overflow-hidden"><span class="block hero-word">DESIGN</span></div>
             </h1>
         </div>
-
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-10 relative z-10 gap-6">
             <div class="max-w-md bg-white border border-black p-4 md:p-6">
                 <div class="flex justify-between items-start mb-3 border-b border-gray-200 pb-2">
                     <span class="text-xs font-mono text-gray-400">STATUS</span>
                     <span class="text-xs font-mono text-[#FF6309] bg-black px-1">ACTIVE</span>
                 </div>
-                <!-- EDIT: Your tagline -->
                 <p class="text-base md:text-lg font-bold uppercase mb-2">Defining the Grey Area</p>
-                <!-- EDIT: Your short description -->
-                <p class="text-sm leading-relaxed text-gray-700 font-mono">
-                    TG Media is a multi-disciplinary design studio based in Warwick. 
-                    We bridge the gap between street culture and corporate structure.
-                </p>
+                <p class="text-sm leading-relaxed text-gray-700 font-mono">TG Media is a multi-disciplinary design studio based in Warwick. We bridge the gap between street culture and corporate structure.</p>
             </div>
-
             <a href="work.html" class="magnetic-btn flex-shrink-0">
                 <div class="w-32 h-32 md:w-44 md:h-44 rounded-full bg-[#0033FF] border-2 border-black flex items-center justify-center relative hover:bg-[#FF6309] transition-colors duration-300 group">
                     <div class="absolute inset-0 animate-[spin_12s_linear_infinite]">
@@ -187,9 +126,7 @@
                 </div>
             </a>
         </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-indicator hidden md:flex flex-col items-center gap-2 z-10">
+        <div class="scroll-indicator absolute bottom-6 left-1/2 hidden md:flex flex-col items-center gap-2 z-10">
             <span class="font-mono text-[9px] text-black/40 tracking-widest">SCROLL</span>
             <div class="w-px h-8 bg-black/20"></div>
         </div>
@@ -198,12 +135,8 @@
     <!-- WHAT WE DO -->
     <section class="py-16 md:py-24 px-5 md:px-12 bg-white border-b border-black">
         <span class="font-mono text-xs uppercase mb-6 block text-gray-400">01 — What We Do</span>
-        <!-- EDIT: Main homepage statement -->
-        <h2 class="section-headline text-black mb-12 md:mb-16 max-w-5xl">
-            We are artists, designers, producers, creatives, clients and technicians. We work together to create immersive experiences and bring ideas to life in real-world spaces.
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 border-t border-black pt-10">
-            <!-- EDIT: 3 pillars -->
+        <h2 class="section-headline text-black mb-12 max-w-5xl reveal-item">We are artists, designers, producers, creatives, clients and technicians. We work together to create immersive experiences and bring ideas to life in real-world spaces.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black pt-10">
             <div class="reveal-item">
                 <p class="text-lg font-black uppercase mb-3 text-[#FF6309]">Functional Aesthetics</p>
                 <p class="text-gray-600 leading-relaxed text-sm">We reject decoration. Every pixel, every line of code, and every layout must serve a purpose. Swiss design principles evolved for the digital age.</p>
@@ -223,18 +156,18 @@
     <div class="border-y border-black bg-black text-white py-4 overflow-hidden">
         <div class="marquee-container font-black text-3xl md:text-4xl uppercase tracking-widest italic">
             <div class="marquee-content">
-                <span class="mx-8">VISUAL ENGINEERING</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">TG MEDIA</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">SYSTEMS ARCHITECTURE</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">WARWICK UK</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">GLOBAL REACH</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">VISUAL ENGINEERING</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span><span class="text-[#FF6309] mx-8">●</span>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <span class="mx-8">VISUAL ENGINEERING</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">TG MEDIA</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">SYSTEMS ARCHITECTURE</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">WARWICK UK</span> <span class="text-[#FF6309] mx-8">●</span>
-                <span class="mx-8">GLOBAL REACH</span> <span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">VISUAL ENGINEERING</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span><span class="text-[#FF6309] mx-8">●</span>
             </div>
         </div>
     </div>
@@ -268,10 +201,9 @@
     <section class="p-5 md:p-12 bg-white border-b border-black">
         <div class="flex justify-between items-end mb-10">
             <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none">Selected<br>Works</h2>
-            <a href="work.html" class="hidden md:block text-xs font-bold uppercase border-b-2 border-black pb-1 hover:text-[#0033FF] transition-colors">View Archive →</a>
+            <a href="work.html" class="hidden md:block text-xs font-bold uppercase border-b-2 border-black pb-1 hover:text-[#0033FF]">View Archive →</a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <!-- EDIT: Featured project 1 -->
             <a href="project-aura.html" class="group project-card block">
                 <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
                     <div class="absolute inset-0 bg-[#0033FF] mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
@@ -285,7 +217,6 @@
                     <span class="font-mono text-xs bg-black text-white px-2 py-1 flex-shrink-0">BRANDING</span>
                 </div>
             </a>
-            <!-- EDIT: Featured project 2 -->
             <a href="project-studio-beta.html" class="group project-card block md:mt-20">
                 <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
                     <div class="absolute inset-0 bg-[#FF6309] mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
@@ -305,23 +236,17 @@
         </div>
     </section>
 
-    <!-- LET'S MAKE THINGS HAPPEN — tighter scroll distance -->
-    <section id="happen-section" class="relative border-t border-black bg-[#FF6309]" style="height: 250vh;">
-        <div class="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden" style="position:sticky;top:0;">
-            <div class="bg-layer bg-blue absolute inset-0 bg-[#0033FF] z-20"></div>
-            <div class="grid-bg z-30 mix-blend-overlay opacity-10"></div>
-
+    <!-- LET'S MAKE THINGS HAPPEN -->
+    <!-- On desktop: GSAP pins this section for scroll animation -->
+    <!-- On mobile: static section, no pin -->
+    <section id="happen-section" class="relative border-t border-black">
+        <div id="happen-inner" class="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-[#0033FF]">
+            <div class="grid-bg mix-blend-overlay opacity-10"></div>
             <div class="relative z-40 text-center px-5">
                 <p class="font-mono text-xs uppercase mb-4 text-white/50 tracking-widest">Get Started</p>
-                <h2 class="hero-title-responsive font-black uppercase leading-none text-white">Let's Make<br>Things Happen.</h2>
-                <div class="mt-8 flex justify-center gap-4 flex-wrap">
-                    <span class="stat-pill">7+ Years Studio</span>
-                    <span class="stat-pill">● Available Now</span>
-                    <span class="stat-pill">Warwick, UK</span>
-                </div>
+                <h2 class="hero-title-responsive font-black uppercase leading-none text-white happen-title">Let's Make<br>Things Happen.</h2>
             </div>
-
-            <!-- Floating images — hidden on mobile -->
+            <!-- Floating images — desktop only via JS -->
             <div class="happen-image img-1"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600" alt=""></div>
             <div class="happen-image img-2"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=600" alt=""></div>
             <div class="happen-image img-3"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600" alt=""></div>
@@ -335,25 +260,23 @@
 
 <!-- FOOTER -->
 <footer id="sticky-footer" class="bg-black text-white">
-    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden min-h-[60vh] md:h-[90vh]">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:60vh;">
         <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center flex-1 py-16 md:py-0">
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
             <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-10">
-                Let's Build<br>The Future.
-            </h2>
-            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 md:py-6 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">
+            <h2 class="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-10">Let's Build<br>The Future.</h2>
+            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">
                 Initiate Project
             </a>
         </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4 mt-8">
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
             <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
             <div class="flex flex-wrap gap-4 text-white/50">
-                <a href="index.html" class="hover:text-[#FF6309] transition-colors">HOME</a>
-                <a href="services.html" class="hover:text-[#FF6309] transition-colors">SERVICES</a>
-                <a href="work.html" class="hover:text-[#FF6309] transition-colors">WORK</a>
-                <a href="#" class="hover:text-[#FF6309] transition-colors">INSTAGRAM</a>
-                <a href="#" class="hover:text-[#FF6309] transition-colors">LINKEDIN</a>
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
             </div>
         </div>
     </div>
@@ -361,72 +284,89 @@
 
 <script src="shared.js"></script>
 <script>
-    function initScrollAnimations() {
-        // Hero words stagger
-        gsap.from(".hero-word", {
-            y: 120, opacity: 0, stagger: 0.12, duration: 1.2, ease: "power4.out", delay: 0.2
+function initScrollAnimations() {
+
+    // --- HERO WORDS ---
+    gsap.from(".hero-word", {
+        y: 100, opacity: 0, stagger: 0.12, duration: 1.1, ease: "power4.out"
+    });
+
+    // --- REVEAL ON SCROLL ---
+    gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
+            y: 40, opacity: 0, duration: 0.8, delay: i * 0.08, ease: "power3.out"
+        });
+    });
+
+    // --- SECTION HEADLINES ---
+    gsap.utils.toArray('.section-headline').forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: "top 88%" },
+            y: 40, opacity: 0, duration: 1, ease: "power3.out"
+        });
+    });
+
+    // --- HAPPEN SECTION ---
+    // Desktop: full scroll-pinned animation with floating images
+    // Mobile: simple colour fade animation, no pin
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+        // Extend the section height for the pin scroll distance
+        document.getElementById('happen-section').style.height = '250vh';
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top top",
+                end: "+=150%",
+                scrub: 0.8,
+                pin: "#happen-inner",
+                anticipatePin: 1,
+            }
         });
 
-        // Reveal items on scroll
-        gsap.utils.toArray('.reveal-item').forEach((el, i) => {
-            gsap.from(el, {
-                scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-                y: 40, opacity: 0, duration: 0.8, delay: i * 0.1, ease: "power3.out"
-            });
+        // Background shifts orange
+        tl.to("#happen-inner", { backgroundColor: "#FF6309", duration: 2, ease: "none" }, 0);
+
+        // Images fly in with rotation, then exit
+        tl.fromTo(".img-1", { y: 180, opacity: 0, rotation: -8 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.1)
+          .to(".img-1", { y: -150, opacity: 0, duration: 0.4 }, 0.9);
+        tl.fromTo(".img-4", { y: 180, opacity: 0, rotation: 6 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.2)
+          .to(".img-4", { y: -150, opacity: 0, duration: 0.4 }, 1.0);
+        tl.fromTo(".img-5", { y: 180, opacity: 0, rotation: -5 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.4)
+          .to(".img-5", { y: -150, opacity: 0, duration: 0.4 }, 1.1);
+        tl.fromTo(".img-2", { y: 180, opacity: 0, rotation: 7 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.5)
+          .to(".img-2", { y: -150, opacity: 0, duration: 0.4 }, 1.2);
+        tl.fromTo(".img-6", { y: 180, opacity: 0, rotation: -4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.65)
+          .to(".img-6", { y: -150, opacity: 0, duration: 0.4 }, 1.35);
+        tl.fromTo(".img-3", { y: 220, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: 0, duration: 0.6 }, 0.75)
+          .to(".img-3", { y: -180, opacity: 0, duration: 0.5 }, 1.5);
+
+    } else {
+        // Mobile: simple scroll-triggered colour fade, no pin, no images
+        gsap.to("#happen-inner", {
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top 80%",
+                end: "bottom 20%",
+                scrub: 1,
+            },
+            backgroundColor: "#FF6309",
+            ease: "none"
         });
 
-        // Section headlines
-        gsap.utils.toArray('.section-headline').forEach(title => {
-            gsap.from(title, {
-                scrollTrigger: { trigger: title, start: "top 85%", toggleActions: "play none none none" },
-                y: 40, opacity: 0, duration: 1, ease: "power3.out"
-            });
+        // Title slides up on mobile
+        gsap.from(".happen-title", {
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top 85%",
+            },
+            y: 60, opacity: 0, duration: 1, ease: "power3.out"
         });
-
-        // Subtle image parallax
-        gsap.utils.toArray('section img').forEach(img => {
-            gsap.to(img, {
-                scrollTrigger: { trigger: img.closest('section'), start: "top bottom", end: "bottom top", scrub: 1.5 },
-                y: -20, ease: "none"
-            });
-        });
-
-        // HAPPEN SECTION — tighter, snappier
-        const happenSection = document.getElementById('happen-section');
-        if (happenSection && window.innerWidth > 768) {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#happen-section",
-                    start: "top top",
-                    end: "+=150%",
-                    scrub: 0.8,
-                    pin: true,
-                }
-            });
-
-            // Blue fades to orange faster
-            tl.to(".bg-blue", { opacity: 0, ease: "power1.in", duration: 1 }, 0);
-
-            // Images fly in and out — tighter timing
-            tl.fromTo(".img-1", { y: 180, opacity: 0, rotate: -8 }, { y: 0, opacity: 1, rotate: 0, duration: 0.5 }, 0.05)
-              .to(".img-1", { y: -180, opacity: 0, duration: 0.4 }, 0.8);
-
-            tl.fromTo(".img-4", { y: 180, opacity: 0, rotate: 6 }, { y: 0, opacity: 1, rotate: 0, duration: 0.5 }, 0.2)
-              .to(".img-4", { y: -180, opacity: 0, duration: 0.4 }, 0.9);
-
-            tl.fromTo(".img-5", { y: 180, opacity: 0, rotate: -5 }, { y: 0, opacity: 1, rotate: 0, duration: 0.5 }, 0.4)
-              .to(".img-5", { y: -180, opacity: 0, duration: 0.4 }, 1.1);
-
-            tl.fromTo(".img-2", { y: 180, opacity: 0, rotate: 7 }, { y: 0, opacity: 1, rotate: 0, duration: 0.5 }, 0.5)
-              .to(".img-2", { y: -180, opacity: 0, duration: 0.4 }, 1.2);
-
-            tl.fromTo(".img-6", { y: 180, opacity: 0, rotate: -4 }, { y: 0, opacity: 1, rotate: 0, duration: 0.5 }, 0.65)
-              .to(".img-6", { y: -180, opacity: 0, duration: 0.4 }, 1.35);
-
-            tl.fromTo(".img-3", { y: 220, opacity: 0, rotate: 3 }, { y: 0, opacity: 1, rotate: 0, duration: 0.6, ease: "power2.out" }, 0.75)
-              .to(".img-3", { y: -220, opacity: 0, duration: 0.5 }, 1.5);
-        }
     }
+}
 </script>
 </body>
 </html>
