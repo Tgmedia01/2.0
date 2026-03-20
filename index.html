@@ -135,17 +135,17 @@
     <!-- WHAT WE DO -->
     <section class="py-16 md:py-24 px-5 md:px-12 bg-white border-b border-black">
         <span class="font-mono text-xs uppercase mb-6 block text-gray-400">01 — What We Do</span>
-        <h2 class="section-headline text-black mb-12 max-w-5xl reveal-item">We are artists, designers, producers, creatives, clients and technicians. We work together to create immersive experiences and bring ideas to life in real-world spaces.</h2>
+        <h2 class="section-headline text-black mb-12 max-w-5xl">We are artists, designers, producers, creatives, clients and technicians. We work together to create immersive experiences and bring ideas to life in real-world spaces.</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black pt-10">
-            <div class="reveal-item">
+            <div>
                 <p class="text-lg font-black uppercase mb-3 text-[#FF6309]">Functional Aesthetics</p>
                 <p class="text-gray-600 leading-relaxed text-sm">We reject decoration. Every pixel, every line of code, and every layout must serve a purpose. Swiss design principles evolved for the digital age.</p>
             </div>
-            <div class="reveal-item">
+            <div>
                 <p class="text-lg font-black uppercase mb-3 text-[#FF6309]">Visual Engineering</p>
                 <p class="text-gray-600 leading-relaxed text-sm">Based in Warwick, we take a technical approach to creativity. We don't just "design" websites; we engineer visual systems that scale, perform, and convert.</p>
             </div>
-            <div class="reveal-item">
+            <div>
                 <p class="text-lg font-black uppercase mb-3 text-[#FF6309]">Systemic Architecture</p>
                 <p class="text-gray-600 leading-relaxed text-sm">We build for the future, not just the launch. Our digital infrastructures are modular, allowing your brand to evolve without breaking the foundation.</p>
             </div>
@@ -291,13 +291,13 @@ function initScrollAnimations() {
         y: 100, opacity: 0, stagger: 0.12, duration: 1.1, ease: "power4.out"
     });
 
-    // --- REVEAL ON SCROLL ---
+    // --- REVEAL ON SCROLL --- only animates, never hides
     gsap.utils.toArray('.reveal-item').forEach((el, i) => {
         gsap.fromTo(el,
-            { y: 40, opacity: 0 },
+            { y: 30 },
             {
                 scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" },
-                y: 0, opacity: 1, duration: 0.8, delay: i * 0.08, ease: "power3.out"
+                y: 0, duration: 0.7, delay: i * 0.06, ease: "power3.out"
             }
         );
     });
