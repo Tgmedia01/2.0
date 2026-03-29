@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — Terms & Conditions</title>
+    <meta name="description" content="Terms and Conditions for TG Media, a web design and branding studio based in Warwick, UK.">
+    <meta name="robots" content="noindex">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-body h2 { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+        .legal-body p { font-size: 0.9rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+        .legal-body ul { font-size: 0.9rem; line-height: 1.8; color: #444; margin-bottom: 1rem; padding-left: 1.25rem; list-style: disc; }
+        .legal-body a { color: #0033FF; border-bottom: 1px solid rgba(0,51,255,0.3); }
+        .legal-body a:hover { border-color: #0033FF; }
+        .legal-body strong { color: #080808; }
+    </style>
+</head>
+<body class="antialiased bg-[#F2F2F2]">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <section class="bg-white pt-24 pb-24 px-5 md:px-12">
+
+        <div class="border-b-2 border-black pb-10 mb-10">
+            <span class="font-mono text-xs text-[#FF6309] mb-4 block">LEGAL</span>
+            <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">Terms &<br>Conditions</h1>
+            <p class="font-mono text-xs text-gray-400 mt-6">Last updated: March 2026</p>
+        </div>
+
+        <div class="max-w-3xl legal-body">
+
+            <p>These Terms and Conditions govern the provision of web design, branding, and digital production services by TG Media ("we", "us", "our") to clients ("you", "the client"). By engaging our services — whether verbally, by email, or by signing a project agreement — you agree to these terms.</p>
+
+            <p>TG Media is a freelance studio based in Warwick, United Kingdom. <!-- EDIT: Add your email --> Contact: <a href="mailto:hello@tgmedia.uk">hello@tgmedia.uk</a></p>
+
+            <h2>1. Scope of Work</h2>
+            <p>All project work is agreed in writing before commencement, either via a formal proposal, a project brief, or an email exchange confirming the scope. Any work outside the agreed scope — additional pages, features, revisions beyond the agreed number, or new requirements introduced during the project — will be quoted and agreed separately before being carried out.</p>
+            <p>We reserve the right to decline any work we consider unlawful, unethical or incompatible with our values.</p>
+
+            <h2>2. Fees & Payment</h2>
+            <p>Project fees are agreed in advance and outlined in a proposal or quote. Unless otherwise agreed in writing:</p>
+            <ul>
+                <li>A deposit of <strong>50% of the total project fee</strong> is required before work commences</li>
+                <li>The remaining balance is due on project completion, prior to final files or live deployment being delivered</li>
+                <li>Invoices are payable within <strong>14 days</strong> of the invoice date</li>
+                <li>Late payments will incur interest at 8% above the Bank of England base rate per annum under the Late Payment of Commercial Debts (Interest) Act 1998</li>
+            </ul>
+            <p>All fees are quoted in GBP and are exclusive of VAT where applicable. Expenses such as stock imagery, fonts, hosting, domain registration or third-party software licences are charged at cost and are the client's responsibility unless otherwise agreed.</p>
+
+            <h2>3. Revisions</h2>
+            <p>Each project includes a reasonable number of revision rounds as agreed in the project scope. We define a revision as a set of consolidated feedback applied in a single round. Revisions do not include new features, structural changes, or changes to content that was signed off at an earlier stage. Additional revision rounds will be charged at our standard day rate.</p>
+
+            <h2>4. Client Responsibilities</h2>
+            <p>To deliver your project on time and to the agreed standard, we require you to:</p>
+            <ul>
+                <li>Provide all necessary content, assets, logins and information promptly when requested</li>
+                <li>Consolidate feedback from all relevant stakeholders before submitting it to us</li>
+                <li>Respond to questions and review requests within a reasonable timeframe</li>
+                <li>Ensure all content and materials provided to us are owned by you or that you have the right to use them</li>
+            </ul>
+            <p>Delays caused by late or incomplete client input may result in revised delivery timelines. Extended delays of more than 30 days may result in the project being rescheduled and a restart fee applied.</p>
+
+            <h2>5. Intellectual Property</h2>
+            <p><strong>Upon receipt of full payment</strong>, ownership of the final deliverables — including design files, website code and brand assets — transfers to the client. Until full payment is received, all work remains the intellectual property of TG Media.</p>
+            <p>We retain the right to display all completed work in our portfolio, on our website, and across our social media channels, unless you explicitly request otherwise in writing.</p>
+            <p>Any third-party assets used in the project (fonts, stock imagery, plugins, frameworks) remain subject to their own licence terms. We will advise you of any licences that require ongoing payment.</p>
+
+            <h2>6. Confidentiality</h2>
+            <p>We treat all client information as confidential. We will not share details of your business, project brief, or any proprietary information with third parties without your consent, except where required by law or where we work with trusted subcontractors who are bound by equivalent confidentiality obligations.</p>
+
+            <h2>7. Warranties & Liability</h2>
+            <p>We will deliver all work with reasonable skill and care. However:</p>
+            <ul>
+                <li>We do not guarantee specific business outcomes such as increased revenue, search engine rankings or conversion rates</li>
+                <li>We are not liable for any indirect, consequential or economic loss arising from our services</li>
+                <li>Our total liability to you in connection with any project shall not exceed the total fees paid by you for that project</li>
+                <li>We are not responsible for issues arising from third-party platforms, hosting providers, plugins or services outside our direct control</li>
+            </ul>
+            <p>Nothing in these terms limits liability for death or personal injury caused by negligence, or for fraud or fraudulent misrepresentation.</p>
+
+            <h2>8. Cancellation</h2>
+            <p>Either party may cancel a project by giving written notice. In the event of cancellation:</p>
+            <ul>
+                <li>The deposit is non-refundable in all circumstances</li>
+                <li>If cancellation occurs after work has commenced beyond the deposit stage, fees are due for all work completed to the date of cancellation, calculated pro-rata against the agreed project fee</li>
+                <li>All work produced up to the point of cancellation remains the property of TG Media until outstanding fees are settled</li>
+            </ul>
+
+            <h2>9. Governing Law</h2>
+            <p>These terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+            <h2>10. Changes to These Terms</h2>
+            <p>We may update these Terms and Conditions periodically. The version in effect at the time a project is agreed will govern that engagement. The date at the top of this page reflects the most recent revision.</p>
+
+        </div>
+
+        <div class="border-t border-black pt-8 mt-16 flex flex-wrap gap-6 font-mono text-xs">
+            <a href="privacy.html" class="hover:text-[#0033FF]">Privacy Policy</a>
+            <a href="cookies.html" class="hover:text-[#0033FF]">Cookie Policy</a>
+            <a href="index.html" class="hover:text-[#0033FF]">← Back to Site</a>
+        </div>
+
+    </section>
+</div>
+
+<footer class="bg-black text-white p-6 md:p-12">
+    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 gap-4">
+        <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+        <div class="flex flex-wrap gap-4 text-white/50">
+            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+            <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+            <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+            <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

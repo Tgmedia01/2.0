@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — Privacy Policy</title>
+    <meta name="description" content="Privacy Policy for TG Media, a web design and branding studio based in Warwick, UK.">
+    <meta name="robots" content="noindex">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-body h2 { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+        .legal-body p { font-size: 0.9rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+        .legal-body ul { font-size: 0.9rem; line-height: 1.8; color: #444; margin-bottom: 1rem; padding-left: 1.25rem; list-style: disc; }
+        .legal-body a { color: #0033FF; border-bottom: 1px solid rgba(0,51,255,0.3); }
+        .legal-body a:hover { border-color: #0033FF; }
+    </style>
+</head>
+<body class="antialiased bg-[#F2F2F2]">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <section class="bg-white pt-24 pb-24 px-5 md:px-12">
+
+        <div class="border-b-2 border-black pb-10 mb-10">
+            <span class="font-mono text-xs text-[#FF6309] mb-4 block">LEGAL</span>
+            <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">Privacy<br>Policy</h1>
+            <p class="font-mono text-xs text-gray-400 mt-6">Last updated: March 2026</p>
+        </div>
+
+        <div class="max-w-3xl legal-body">
+
+            <p>This Privacy Policy explains how TG Media ("we", "us", "our") collects, uses and protects any personal information you provide when using this website (tgmedia.uk). We are committed to ensuring your privacy is protected in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.</p>
+
+            <p>The data controller responsible for your personal data is TG Media, based in Warwick, United Kingdom. <!-- EDIT: Add your email --> You can contact us at <a href="mailto:hello@tgmedia.uk">hello@tgmedia.uk</a>.</p>
+
+            <h2>What Information We Collect</h2>
+            <p>We may collect the following personal information:</p>
+            <ul>
+                <li>Your name and email address when you submit our contact form</li>
+                <li>The content of any message you send us</li>
+                <li>Basic technical data such as your IP address, browser type and pages visited (only if analytics are enabled — currently they are not)</li>
+            </ul>
+            <p>We do not collect sensitive personal data. We do not use third-party tracking or advertising cookies.</p>
+
+            <h2>How We Use Your Information</h2>
+            <p>We use the information you provide solely to:</p>
+            <ul>
+                <li>Respond to your enquiry or project request</li>
+                <li>Communicate with you about a potential or ongoing project</li>
+                <li>Comply with any legal obligations</li>
+            </ul>
+            <p>We will never sell, rent or share your personal data with third parties for marketing purposes.</p>
+
+            <h2>Legal Basis for Processing</h2>
+            <p>Under UK GDPR, our legal basis for processing your personal data is:</p>
+            <ul>
+                <li><strong>Legitimate interests</strong> — responding to your enquiry and managing our business relationship with you</li>
+                <li><strong>Contractual necessity</strong> — where you become a client, processing your data is necessary to fulfil our contract with you</li>
+                <li><strong>Legal obligation</strong> — where we are required to retain certain records by law</li>
+            </ul>
+
+            <h2>How We Store Your Data</h2>
+            <p>Contact form submissions are processed via Formspree and stored securely. We retain enquiry data for up to 12 months, after which it is deleted unless an ongoing client relationship exists.</p>
+            <p>We do not transfer your data outside the UK or European Economic Area (EEA) except where services such as Formspree process data in line with UK GDPR-equivalent protections.</p>
+
+            <h2>Your Rights</h2>
+            <p>Under UK GDPR you have the right to:</p>
+            <ul>
+                <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+                <li><strong>Rectification</strong> — ask us to correct inaccurate or incomplete data</li>
+                <li><strong>Erasure</strong> — request that we delete your personal data where there is no legitimate reason to continue processing it</li>
+                <li><strong>Restriction</strong> — ask us to restrict processing of your data in certain circumstances</li>
+                <li><strong>Portability</strong> — request your data in a structured, machine-readable format</li>
+                <li><strong>Objection</strong> — object to processing based on legitimate interests</li>
+            </ul>
+            <p>To exercise any of these rights, contact us at <a href="mailto:hello@tgmedia.uk">hello@tgmedia.uk</a>. We will respond within 30 days.</p>
+
+            <h2>Third-Party Services</h2>
+            <p>This website uses the following third-party services which may process data on our behalf:</p>
+            <ul>
+                <li><strong>Google Fonts</strong> — used to load typefaces. Google may log requests from your browser. See <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+                <li><strong>Formspree</strong> — used to process contact form submissions. See <a href="https://formspree.io/legal/privacy-policy" target="_blank">Formspree's Privacy Policy</a>.</li>
+                <li><strong>GitHub Pages</strong> — used to host this website. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">GitHub's Privacy Statement</a>.</li>
+            </ul>
+
+            <h2>Cookies</h2>
+            <p>This website uses only technically necessary processes to function. We do not use tracking, analytics or advertising cookies. For more information see our <a href="cookies.html">Cookie Policy</a>.</p>
+
+            <h2>Complaints</h2>
+            <p>If you are unhappy with how we handle your personal data, you have the right to lodge a complaint with the UK's data protection authority, the Information Commissioner's Office (ICO): <a href="https://ico.org.uk" target="_blank">ico.org.uk</a> or by calling 0303 123 1113.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. The date at the top of this page reflects the most recent revision. Continued use of this website after any changes constitutes acceptance of the updated policy.</p>
+
+        </div>
+
+        <div class="border-t border-black pt-8 mt-16 flex flex-wrap gap-6 font-mono text-xs">
+            <a href="terms.html" class="hover:text-[#0033FF]">Terms & Conditions</a>
+            <a href="cookies.html" class="hover:text-[#0033FF]">Cookie Policy</a>
+            <a href="index.html" class="hover:text-[#0033FF]">← Back to Site</a>
+        </div>
+
+    </section>
+</div>
+
+<footer class="bg-black text-white p-6 md:p-12">
+    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 gap-4">
+        <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+        <div class="flex flex-wrap gap-4 text-white/50">
+            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+            <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+            <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+            <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
