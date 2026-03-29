@@ -162,3 +162,72 @@ body {
 
 /* Ensure reveal items are always visible — GSAP animates from 0 to 1 */
 .reveal-item { opacity: 1; }
+
+/* ============================================================
+   AWARD-LEVEL ANIMATION SUPPORT
+   ============================================================ */
+
+/* Page fade in on load */
+#main-content, footer {
+    opacity: 1;
+}
+
+/* Hero word clip containers */
+.hero-word-wrap {
+    overflow: hidden;
+    display: block;
+}
+
+/* Smooth skew transition */
+#main-content {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* Split text chars */
+.split-char {
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Reveal items — always visible as base state */
+.reveal { opacity: 1; }
+.reveal-item { opacity: 1; }
+
+/* Stagger grid children base state */
+.stagger-grid > * { opacity: 1; }
+
+/* Smooth image transitions */
+.parallax-img {
+    will-change: transform;
+}
+
+/* Page transition overlay */
+.page-transition-out {
+    opacity: 0;
+    transform: translateY(-16px);
+}
+
+/* Legal page typography */
+.legal-body {
+    line-height: 1.8;
+}
+.legal-title {
+    opacity: 1;
+}
+
+/* Cursor blend mode refinement */
+#cursor {
+    mix-blend-mode: difference;
+}
+#cursor.active {
+    mix-blend-mode: normal;
+}
+
+/* Mobile: disable skew and complex transforms */
+@media (max-width: 768px) {
+    #main-content {
+        transform: none !important;
+        will-change: auto;
+    }
+}
