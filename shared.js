@@ -200,16 +200,7 @@ function runPageAnimations() {
         );
     });
 
-    // --- SKEW ON SCROLL (subtle) ---
-    let lastScrollY = window.scrollY;
-    let skewSetter = gsap.quickSetter('#main-content', 'skewY', 'deg');
-    let clamp = gsap.utils.clamp(-2, 2);
-    ScrollTrigger.create({
-        onUpdate(self) {
-            const vel = self.getVelocity() / 300;
-            skewSetter(clamp(-vel));
-        }
-    });
+    // Skew removed — too aggressive for this aesthetic
 
     // --- MAGNETIC BUTTONS ---
     document.querySelectorAll('.magnetic-btn').forEach(btn => {

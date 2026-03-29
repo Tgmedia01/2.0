@@ -178,12 +178,6 @@ body {
     display: block;
 }
 
-/* Smooth skew transition */
-#main-content {
-    will-change: transform;
-    transform-style: preserve-3d;
-}
-
 /* Split text chars */
 .split-char {
     display: inline-block;
@@ -224,10 +218,4 @@ body {
     mix-blend-mode: normal;
 }
 
-/* Mobile: disable skew and complex transforms */
-@media (max-width: 768px) {
-    #main-content {
-        transform: none !important;
-        will-change: auto;
-    }
-}
+
