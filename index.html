@@ -48,6 +48,28 @@
         }
         .scroll-indicator { animation: bounce-down 1.8s ease-in-out infinite; }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TG Media",
+        "url": "https://tgmedia.uk",
+        "logo": "https://tgmedia.uk/logo.png",
+        "description": "TG Media is a design, branding and web development studio based in Warwick, UK. We build brand identities and high-performance websites for ambitious businesses.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Warwick",
+            "addressRegion": "Warwickshire",
+            "addressCountry": "GB"
+        },
+        "areaServed": "United Kingdom",
+        "serviceType": ["Web Design", "Brand Identity", "Web Development", "Digital Production"],
+        "priceRange": "££",
+        "email": "hello@tgmedia.uk",
+        "sameAs": []
+    }
+    </script>
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body class="antialiased">
 
@@ -71,7 +93,6 @@
                 <a href="index.html" class="text-[#0033FF]">Home</a>
                 <a href="about.html" class="hover:text-[#0033FF]">About</a>
                 <a href="services.html" class="hover:text-[#0033FF]">Services</a>
-                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
                 <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
             </nav>
         </div>
@@ -89,7 +110,6 @@
         <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
         <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
         <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
         <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
     </nav>
 </div>
@@ -143,7 +163,7 @@
 
     <!-- WHAT WE DO -->
     <section class="py-16 md:py-24 px-5 md:px-12 bg-white border-b border-black">
-        <span class="font-mono text-xs uppercase mb-6 block text-gray-400">01 — What We Do</span>
+        <span class="font-mono text-xs uppercase mb-6 block text-gray-400">What We Do</span>
         <h2 class="section-headline text-black mb-4 max-w-5xl">We are a collective of artists, designers, and technicians.</h2>
         <p class="text-gray-600 leading-relaxed text-sm md:text-base max-w-3xl mb-12">Based in Warwick, we apply a technical lens to web design and digital production — transforming abstract concepts into functional digital objects. We engineer high-performance infrastructures for brands that exist in the physical and digital space. <span class="font-mono text-xs text-black/30">[ SCALE 1:1 ]</span></p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black pt-10">
@@ -216,42 +236,27 @@
         </div>
     </section>
 
-    <!-- SELECTED WORKS -->
+    <!-- COMING SOON WORK TEASER -->
     <section class="p-5 md:p-12 bg-white border-b border-black">
-        <div class="flex justify-between items-end mb-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
             <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none">Selected<br>Works</h2>
-            <a href="work.html" class="hidden md:block text-xs font-bold uppercase border-b-2 border-black pb-1 hover:text-[#0033FF]">View Archive →</a>
+            <p class="font-mono text-xs text-gray-400 max-w-xs leading-relaxed">Case studies and portfolio work coming soon. Currently in production.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 stagger-grid">
-            <a href="project-aura.html" class="group project-card block">
-                <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
-                    <div class="absolute inset-0 bg-[#0033FF] mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
-                    <div class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="font-black text-white text-sm uppercase border border-white px-4 py-2">View Project →</span>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200" class="w-full h-full object-cover parallax-img grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border border-black stagger-grid">
+            <div class="bg-[#F2F2F2] aspect-[4/3] flex items-center justify-center relative overflow-hidden group">
+                <div class="text-center z-10">
+                    <p class="font-mono text-xs text-black/30 uppercase tracking-widest mb-2">Case Study</p>
+                    <p class="font-black text-2xl uppercase text-black/20">Coming Soon</p>
                 </div>
-                <div class="flex justify-between items-start border-b border-black pb-2">
-                    <h3 class="text-xl md:text-2xl font-bold uppercase">Aura Identity</h3>
-                    <span class="font-mono text-xs bg-black text-white px-2 py-1 flex-shrink-0">BRANDING</span>
+                <div class="absolute inset-0 bg-[#0033FF] opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            </div>
+            <div class="bg-[#EAEAEA] aspect-[4/3] flex items-center justify-center relative overflow-hidden group md:mt-20">
+                <div class="text-center z-10">
+                    <p class="font-mono text-xs text-black/30 uppercase tracking-widest mb-2">Case Study</p>
+                    <p class="font-black text-2xl uppercase text-black/20">Coming Soon</p>
                 </div>
-            </a>
-            <a href="project-studio-beta.html" class="group project-card block md:mt-20">
-                <div class="aspect-[4/3] bg-gray-100 border border-black overflow-hidden relative mb-4">
-                    <div class="absolute inset-0 bg-[#FF6309] mix-blend-multiply opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10"></div>
-                    <div class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="font-black text-white text-sm uppercase border border-white px-4 py-2">View Project →</span>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" class="w-full h-full object-cover parallax-img grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105">
-                </div>
-                <div class="flex justify-between items-start border-b border-black pb-2">
-                    <h3 class="text-xl md:text-2xl font-bold uppercase">Studio Beta</h3>
-                    <span class="font-mono text-xs bg-black text-white px-2 py-1 flex-shrink-0">WEB</span>
-                </div>
-            </a>
-        </div>
-        <div class="mt-8 md:hidden">
-            <a href="work.html" class="block text-center text-xs font-bold uppercase border border-black py-4 hover:bg-black hover:text-white transition-colors">View All Work →</a>
+                <div class="absolute inset-0 bg-[#FF6309] opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            </div>
         </div>
     </section>
 
@@ -293,7 +298,6 @@
             <div class="flex flex-wrap gap-4 text-white/50">
                 <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
                 <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-                <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
                 <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
                 <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
                 <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>

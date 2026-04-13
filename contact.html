@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TG MEDIA — Start a Project | Design Studio Warwick</title>
     <meta name="description" content="Start a project with TG Media — a design, branding and web development studio based in Warwick. Get in touch to discuss your brand identity, website or digital platform.">
     <meta property="og:title" content="Start a Project with TG Media">
@@ -19,7 +19,7 @@
 
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
     <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
 </div>
 
@@ -27,26 +27,22 @@
 <div id="cursor"></div>
 
 <header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
         </a>
         <div class="hidden md:flex h-full">
             <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
                 <a href="index.html" class="hover:text-[#0033FF]">Home</a>
                 <a href="about.html" class="hover:text-[#0033FF]">About</a>
                 <a href="services.html" class="hover:text-[#0033FF]">Services</a>
-                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
                 <a href="contact.html" class="text-[#0033FF]">Contact</a>
             </nav>
         </div>
     </div>
-    <div class="flex h-full">
+    <div class="flex h-full flex-shrink-0">
         <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
-            <span class="group-hover:mr-2 transition-all">Menu</span>
-            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-        </button>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
     </div>
 </header>
 
@@ -56,7 +52,6 @@
         <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
         <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
         <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
         <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
     </nav>
 </div>
@@ -67,96 +62,145 @@
         <!-- LEFT: Info panel -->
         <div class="w-full md:w-1/2 p-6 md:p-12 bg-black text-white flex flex-col justify-between min-h-[50vh] md:min-h-screen relative overflow-hidden">
             <div class="grid-bg opacity-10"></div>
-            <div class="relative z-10 pt-12">
-                <!-- EDIT: Left panel headline -->
+            <div class="relative z-10 pt-8">
                 <h1 class="hero-title-responsive font-black uppercase text-[#FF6309]">
-                    <div class="overflow-hidden"><span class="block">Let's talk.</span></div>
+                    <div class="overflow-hidden"><span class="block hero-word">Let's</span></div>
+                    <div class="overflow-hidden"><span class="block hero-word">talk.</span></div>
                 </h1>
-                <p class="mt-8 text-xl max-w-sm font-light">
+                <p class="mt-8 text-lg max-w-sm font-light leading-relaxed text-white/70">
                     We work with a small number of clients at a time so every project gets the attention it deserves. If the fit is right, we move fast.
                 </p>
             </div>
-            <div class="relative z-10 font-mono text-sm text-gray-400 mt-12 md:mt-0">
-                <!-- EDIT: Your location and email -->
-                <p>HEADQUARTERS:</p>
-                <p class="text-white">WARWICK, UNITED KINGDOM</p>
-                <br>
-                <p>DIRECT LINE:</p>
-                <a href="/cdn-cgi/l/email-protection#325a575e5e5d7246551f5f57565b531c515d5f" class="text-[#FF6309] hover:underline"><span class="__cf_email__" data-cfemail="b2faf7fefefdf2e6f59ffff7f6fbf39cf1fdff">[email&#160;protected]</span></a>
+            <div class="relative z-10 font-mono text-sm text-gray-400 mt-12 md:mt-0 space-y-4">
+                <div>
+                    <p class="text-white/30 text-xs mb-1">HEADQUARTERS</p>
+                    <p class="text-white">WARWICK, UNITED KINGDOM</p>
+                </div>
+                <div>
+                    <p class="text-white/30 text-xs mb-1">DIRECT LINE</p>
+                    <!-- EDIT: Replace with your actual email -->
+                    <a href="/cdn-cgi/l/email-protection#d8b0bdb4b4b798acbfb5bdbcb1b9f6adb3" class="text-[#FF6309] hover:underline"><span class="__cf_email__" data-cfemail="327a777e7e7d7266757f77767b731c6779">[email&#160;protected]</span></a>
+                </div>
+                <div>
+                    <p class="text-white/30 text-xs mb-1">RESPONSE TIME</p>
+                    <p class="text-white">WITHIN 24 HOURS</p>
+                </div>
             </div>
         </div>
 
         <!-- RIGHT: Form panel -->
-        <div class="w-full md:w-1/2 p-6 md:p-24 bg-[#F2F2F2] flex flex-col justify-center">
-            <!-- 
-                EDIT: This form currently uses a browser alert on submit.
-                To make it actually send emails, replace the onsubmit with a service like:
-                - Formspree.io (free, just change the action URL)
-                - Netlify Forms (if hosting on Netlify, add netlify attribute)
+        <div class="w-full md:w-1/2 p-6 md:p-16 bg-[#F2F2F2] flex flex-col justify-center">
+
+            <div class="mb-10">
+                <p class="font-mono text-xs text-gray-400 uppercase mb-2">Start a project</p>
+                <h2 class="text-2xl md:text-3xl font-black uppercase">Tell us about<br>what you need.</h2>
+            </div>
+
+            <!--
+                EDIT: To connect this form to your email:
+                1. Go to formspree.io and create a free account
+                2. Create a new form — you'll get an ID like xpzgkwqr
+                3. Replace YOUR_FORM_ID below with your actual ID
+                4. Remove the onsubmit attribute once Formspree is set up
             -->
-            <form 
-                action="https://formspree.io/f/YOUR_FORM_ID" 
+            <form
+                action="https://formspree.io/f/YOUR_FORM_ID"
                 method="POST"
-                onsubmit="handleSubmit(event)"
-                class="space-y-12"
+                id="contact-form"
+                class="space-y-8"
             >
                 <div class="group">
-                    <label class="font-mono text-xs uppercase text-gray-500 mb-2 block group-focus-within:text-[#0033FF]">Identification</label>
-                    <input type="text" name="name" placeholder="NAME / ORGANISATION" class="w-full bg-transparent border-b-2 border-black py-4 font-bold text-2xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors" required>
+                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Your Name / Organisation</label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="e.g. Acme Studio"
+                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors"
+                        required
+                    >
                 </div>
+
                 <div class="group">
-                    <label class="font-mono text-xs uppercase text-gray-500 mb-2 block group-focus-within:text-[#0033FF]">Communication</label>
-                    <input type="email" name="email" placeholder="EMAIL ADDRESS" class="w-full bg-transparent border-b-2 border-black py-4 font-bold text-2xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors" required>
+                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Email Address</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="hello@yourbusiness.com"
+                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors"
+                        required
+                    >
                 </div>
+
                 <div class="group">
-                    <label class="font-mono text-xs uppercase text-gray-500 mb-2 block group-focus-within:text-[#0033FF]">Parameters</label>
-                    <!-- EDIT: Add/change project type options -->
-                    <select name="project_type" class="w-full bg-transparent border-b-2 border-black py-4 font-bold text-2xl outline-none focus:border-[#0033FF] text-black appearance-none rounded-none cursor-pointer">
-                        <option>PROJECT TYPE...</option>
-                        <option>DIGITAL / WEB</option>
-                        <option>BRAND IDENTITY</option>
-                        <option>CONTENT PRODUCTION</option>
+                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">What do you need?</label>
+                    <select
+                        name="project_type"
+                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] text-black appearance-none rounded-none cursor-pointer"
+                    >
+                        <option value="">Select a service...</option>
+                        <option>Web Design & Development</option>
+                        <option>Brand Identity</option>
+                        <option>Both — Brand & Web</option>
+                        <option>Design & Content Production</option>
+                        <option>Not sure yet — let's talk</option>
                     </select>
                 </div>
+
                 <div class="group">
-                    <label class="font-mono text-xs uppercase text-gray-500 mb-2 block group-focus-within:text-[#0033FF]">Message</label>
-                    <textarea name="message" placeholder="TELL US ABOUT YOUR PROJECT..." rows="4" class="w-full bg-transparent border-b-2 border-black py-4 font-bold text-lg outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors resize-none"></textarea>
+                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Tell us about your project</label>
+                    <textarea
+                        name="message"
+                        placeholder="What are you building, what's the problem you're trying to solve, and when do you need it?"
+                        rows="4"
+                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-base outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors resize-none leading-relaxed"
+                    ></textarea>
                 </div>
-                <button type="submit" class="w-full bg-[#0033FF] text-white py-6 font-black uppercase hover:bg-black hover:text-[#FF6309] transition-all duration-300 tracking-widest text-lg flex justify-between px-8 items-center group">
-                    <span>Initialize</span>
-                    <i data-lucide="arrow-right" class="group-hover:translate-x-2 transition-transform"></i>
+
+                <!-- Success message (hidden by default) -->
+                <div id="form-success" class="hidden bg-black text-white p-4 font-mono text-sm">
+                    <span class="text-[#FF6309]">✓</span> Message received. We'll be in touch within 24 hours.
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-[#0033FF] text-white py-5 font-black uppercase hover:bg-black hover:text-[#FF6309] transition-all duration-300 tracking-widest text-base flex justify-between px-8 items-center group"
+                >
+                    <span>Send Message</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
                 </button>
+
+                <p class="font-mono text-[10px] text-gray-400 leading-relaxed">
+                    Your details are used solely to respond to your enquiry. See our <a href="privacy.html" class="underline hover:text-black">Privacy Policy</a>.
+                </p>
             </form>
         </div>
 
     </section>
 </div>
 
-<!-- No sticky footer on contact — the page IS the CTA -->
 <footer class="bg-black text-white p-6 md:p-12">
-    <div class="flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500">
-        <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
-        <div class="flex gap-6 text-white/50">
+    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 gap-4">
+        <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+        <div class="flex flex-wrap gap-4 text-white/50">
             <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
             <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
             <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
             <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
             <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+            <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+            <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+            <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
         </div>
     </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
 <script>
-function initScrollAnimations() {
-    gsap.utils.toArray(".fade-up, .section-headline, h1, h2").forEach(function(el) {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-            y: 40, opacity: 0, duration: 0.9, ease: "power3.out"
-        });
-    });
-}
-</script>
-<script>
-    function handleSubmit(e) {
-   
+    // Form submission handler
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            // Only intercept if Formspree ID has been set
+            if (form.action.includes('YOUR_FORM_ID')) {
+                e.preventDefault();
+                do
