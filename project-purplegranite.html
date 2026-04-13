@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TG MEDIA — Westbury Music | Case Study</title>
-    <meta name="description" content="Case study — Westbury Music website. Design and development by TG Media.">
+    <title>TG MEDIA — Purple Granite | Case Study</title>
+    <meta name="description" content="Case study — Purple Granite website and worktop visualiser. Design and development by TG Media.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
         .cs-body { font-family: 'Inter', sans-serif; }
         .case-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(8,8,8,0.3); }
         .case-label-light { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
@@ -18,26 +17,27 @@
         .meta-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 16px 0; }
         .meta-key { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 120px; flex-shrink: 0; }
         .meta-val { font-size: 13px; color: #080808; font-weight: 500; }
-        .mockup-device { background: #1d1d1f; border-radius: 14px 14px 0 0; padding: 10px 10px 0; box-shadow: 0 0 0 1px #3a3a3c, 0 60px 120px rgba(0,0,0,0.3); position: relative; }
+        .mockup-device { background: #1d1d1f; border-radius: 14px 14px 0 0; padding: 10px 10px 0; box-shadow: 0 0 0 1px #3a3a3c, 0 60px 120px rgba(0,0,0,0.25); position: relative; }
         .mockup-device::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: #2c2c2e; border-radius: 50%; }
         .mockup-screen { background: #000; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; }
         .mockup-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .mockup-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0c1a1a; flex-direction: column; gap: 8px; }
+        .mockup-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1008; flex-direction: column; gap: 8px; }
         .mockup-base { background: linear-gradient(180deg, #2c2c2e, #1d1d1f); height: 20px; border-radius: 0 0 4px 4px; box-shadow: 0 0 0 1px #3a3a3c; position: relative; }
         .mockup-base::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 28%; height: 4px; background: #111; border-radius: 2px 2px 0 0; }
         .mockup-stand { width: 56%; height: 10px; background: linear-gradient(180deg, #232325, #1d1d1f); margin: 0 auto; border-radius: 0 0 6px 6px; box-shadow: 0 0 0 1px #3a3a3c; }
-        .iphone-body { background: #1d1d1f; border-radius: 38px; padding: 13px 8px; box-shadow: 0 0 0 1px #3a3a3c, 0 40px 80px rgba(0,0,0,0.45); position: relative; }
+        .iphone-body { background: #1d1d1f; border-radius: 38px; padding: 13px 8px; box-shadow: 0 0 0 1px #3a3a3c, 0 40px 80px rgba(0,0,0,0.4); position: relative; }
         .iphone-body::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 54px; height: 5px; background: #2c2c2e; border-radius: 3px; }
         .iphone-screen { background: #000; border-radius: 27px; overflow: hidden; aspect-ratio: 9/19.5; }
-        .iphone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .iphone-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0c1a1a; }
+        .iphone-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1008; }
         .ru { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .ru.on { opacity: 1; transform: translateY(0); }
         .tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; border-radius: 2px; color: rgba(0,0,0,0.4); }
-        .grid-line { border-top: 1px solid rgba(0,0,0,0.08); }
         .credit-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 14px 0; align-items: baseline; gap: 12px; }
         .credit-role { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 160px; flex-shrink: 0; }
         .credit-val { font-size: 13px; font-weight: 500; }
+        /* Visualiser feature highlight */
+        .vis-feature { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 24px; background: white; }
+        .vis-feature-icon { width: 36px; height: 36px; border-radius: 6px; background: #0033FF; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
     </style>
 </head>
 <body class="cs-body antialiased bg-[#F8F8F6]">
@@ -86,39 +86,39 @@
     <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-6 mb-12 ru">
             <a href="index.html" class="font-mono text-xs border-b border-black/20 pb-0.5 hover:text-[#0033FF] transition-colors">← Back</a>
-            <span class="case-label">Case Study — 01</span>
+            <span class="case-label">Case Study — 02</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-20 ru">
             <div>
-                <div class="flex gap-2 mb-6">
+                <div class="flex gap-2 flex-wrap mb-6">
                     <span class="tag">Web Design</span>
+                    <span class="tag">UX Design</span>
                     <span class="tag">Development</span>
-                    <span class="tag">2024</span>
+                    <span class="tag">Visualiser</span>
+                    <span class="tag">2025</span>
                 </div>
-                <h1 class="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.82] mb-0">
-                    Westbury<br><span class="text-[#0033FF]">Music</span>
+                <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.82]">
+                    Purple<br><span class="text-[#0033FF]">Granite</span>
                 </h1>
             </div>
             <div class="pb-2">
                 <p class="text-base md:text-lg text-gray-500 leading-relaxed mb-8">
-                    A structured digital platform for one of the UK's leading independent music publishers — built to reflect the weight of their catalogue and the breadth of their global reach.
+                    A full digital transformation for the UK's leading stone worktop specialists — including a bespoke interactive visualiser that puts the buying decision in the customer's hands.
                 </p>
                 <div>
-                    <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val">Westbury Music Ltd</span></div>
-                    <div class="meta-row"><span class="meta-key">Sector</span><span class="meta-val">Music Publishing / Sync Licensing</span></div>
-                    <div class="meta-row"><span class="meta-key">Services</span><span class="meta-val">Website Design, Development</span></div>
-                    <div class="meta-row"><span class="meta-key">Live</span><a href="https://westburymusic.net" target="_blank" class="meta-val text-[#0033FF] hover:underline">westburymusic.net ↗</a></div>
+                    <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val">Purple Granite Ltd</span></div>
+                    <div class="meta-row"><span class="meta-key">Sector</span><span class="meta-val">Home Improvement / Stone Worktops</span></div>
+                    <div class="meta-row"><span class="meta-key">Services</span><span class="meta-val">Web Design, UX, Development, Custom Visualiser</span></div>
+                    <div class="meta-row"><span class="meta-key">Live</span><a href="https://purplegranite.co.uk" target="_blank" class="meta-val text-[#0033FF] hover:underline">purplegranite.co.uk ↗</a></div>
                 </div>
             </div>
         </div>
-
-        <!-- Hero visual — MacBook mockup suggestion -->
         <div class="ru" style="max-width:900px;margin:0 auto;">
             <div class="mockup-device">
                 <div class="mockup-screen">
                     <div class="screen-ph">
-                        <!-- REPLACE WITH: Full homepage screenshot of westburymusic.net -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em;text-align:center;padding:20px;">Suggested mockup:<br>westburymusic.net homepage screenshot</span>
+                        <!-- REPLACE WITH: purplegranite.co.uk homepage screenshot -->
+                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:20px;">Suggested: purplegranite.co.uk homepage screenshot</span>
                     </div>
                 </div>
             </div>
@@ -140,10 +140,10 @@
             <div class="md:col-span-9">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Project Overview</h2>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-4">
-                    Westbury Music is an independent music publisher operating at the intersection of creative talent and global commerce. Their catalogue spans decades of recorded music, and their sync licensing operation places tracks in film, television, advertising and gaming for some of the world's most recognised brands — from Nike and PlayStation to Netflix and the UEFA Champions League.
+                    Purple Granite is one of the UK's most established stone worktop specialists, operating showrooms in Kidderminster and Worcester and supplying granite, quartz, porcelain and marble worktops nationally. The company fabricates and installs entirely in-house — a direct operation that gives them a significant quality and speed advantage over the majority of the market.
                 </p>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl">
-                    The project required a website that could simultaneously serve two distinct audiences: artists and labels looking for a trusted publishing partner, and music supervisors seeking licensable content fast. One platform needed to speak credibly to both without compromise.
+                    The project required a complete digital overhaul — from brand expression through to e-commerce experience — to match the premium positioning of the product range and better serve the modern home buyer who expects to research and shortlist entirely online before committing to a showroom visit or purchase.
                 </p>
             </div>
         </div>
@@ -160,17 +160,15 @@
             </div>
             <div class="md:col-span-9">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Challenge</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <p class="text-base text-gray-600 leading-relaxed">
-                        The previous digital presence did not reflect the calibre of the company's catalogue or the sophistication of their client base. For a business whose currency is credibility — in both the creative and commercial music worlds — the disconnect between the quality of the work and the quality of the website was a tangible problem.
-                    </p>
-                    <p class="text-base text-gray-600 leading-relaxed">
-                        The challenge was to build something that felt authoritative without being cold, and creative without sacrificing structure. Music publishing is a niche industry where first impressions carry significant weight. A music supervisor browsing for sync opportunities makes judgements within seconds. The platform needed to earn trust immediately.
-                    </p>
-                </div>
+                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
+                    Stone worktops are a considered purchase. The decision-making process is inherently visual — customers are trying to imagine how a material will look in their specific kitchen, with their specific cabinetry, under their specific light conditions. This creates a fundamental tension in the buying journey: the thing the customer most needs to see is the one thing a conventional product catalogue cannot show them.
+                </p>
+                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
+                    For Purple Granite, this meant that despite offering an exceptional product range and a best-in-class installation service, a significant proportion of potential customers were dropping off before reaching the enquiry stage — unable to bridge the gap between a flat product photograph and the finished result in their home.
+                </p>
                 <div class="border-l-4 border-[#0033FF] pl-6">
                     <p class="text-lg font-medium text-gray-800 leading-relaxed">
-                        "A publishing company of this standing needed a platform that matched the weight of its catalogue — structured, direct, and built to be taken seriously."
+                        "The gap between product catalogue and customer confidence was costing enquiries. We needed to close that gap with technology."
                     </p>
                 </div>
             </div>
@@ -189,23 +187,23 @@
             <div class="md:col-span-9">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Approach</h2>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    We began by mapping the two user journeys in parallel — the artist seeking representation and the music supervisor seeking content. Rather than designing two separate experiences, we identified the shared language between them: quality, credibility, clarity.
+                    We approached this as a UX problem before a design problem. The primary friction point in the buying journey was the inability to visualise the product in context. That meant the solution had to be functional first — a tool that genuinely removes doubt — with the broader design system built around supporting it.
                 </p>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    The information architecture was rebuilt from the ground up. The Roster section was structured to present each artist with context — not just a name and headshot but a positioning statement and catalogue reference that speaks to their value as a publishing asset. The Sync section was designed as a functional tool rather than a showcase, allowing supervisors to move quickly from interest to contact.
+                    The website architecture was restructured around three core user intentions: browse the range, visualise the product, and make an enquiry. Every design decision — navigation structure, product page layout, CTA placement — was made in service of moving the user efficiently through those three stages.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black">
                     <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Dual Audience</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Architecture designed to serve both artist relations and sync licensing without compromise.</p>
+                        <p class="font-black uppercase text-sm mb-2">UX First</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Architecture mapped around the customer decision journey — browse, visualise, enquire.</p>
                     </div>
                     <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Content First</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Catalogue and featured sync placements surface early — the work leads, the company follows.</p>
+                        <p class="font-black uppercase text-sm mb-2">Product Led</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Stone photography at maximum scale — material texture and character visible at every stage.</p>
                     </div>
                     <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Trust Signals</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Brand placement logos positioned to communicate the scale of the operation immediately.</p>
+                        <p class="font-black uppercase text-sm mb-2">Conversion Focus</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Every page has a single, unambiguous next step. No dead ends in the buying journey.</p>
                     </div>
                 </div>
             </div>
@@ -224,71 +222,97 @@
             <div class="md:col-span-9">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6 text-white">Design System</h2>
                 <p class="text-base text-white/50 leading-relaxed max-w-2xl mb-8">
-                    The visual direction was derived from the brand's existing identity — a teal and dark palette that carries both the warmth of a creative organisation and the authority of a commercial one. We extended this into a structured digital language built around restraint and precision.
+                    The visual language was built to reflect the premium nature of the product — natural stone is inherently tactile, weighty and luxurious. The digital environment needed to carry that sense of material quality without resorting to visual excess.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
                         <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Typography</p>
-                        <p class="text-white/60 text-sm leading-relaxed">A clean sans-serif hierarchy — large, confident headings paired with structured body copy. Type sizes are deliberately calibrated so content reads at pace, not at leisure. The roster and sync sections use tabular-style layouts where typographic discipline does the structural work.</p>
+                        <p class="text-white/60 text-sm leading-relaxed">A refined serif for product headings — referencing the craft and permanence of natural stone — paired with a clean sans-serif for UI and body copy. The typographic contrast creates a clear premium signal without feeling dated or decorative.</p>
                     </div>
                     <div>
                         <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Colour</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Dark background primary — deep navy and near-black — with the brand's teal used as a precise accent for interaction states and featured content. The palette communicates seriousness without severity. White space is used generously to give the catalogue room to breathe.</p>
+                        <p class="text-white/60 text-sm leading-relaxed">Near-white and warm stone tones as the primary palette — allowing the product photography to carry the colour story rather than competing with it. Purple as a precise brand accent, used sparingly for CTAs, active states and key interaction points.</p>
                     </div>
                     <div>
                         <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Layout</p>
-                        <p class="text-white/60 text-sm leading-relaxed">A rigid grid system maintains consistency across every content type — artist profiles, sync listings, featured placements and brand partner logos all occupy defined structural positions. The grid is the discipline that holds the variety of content together.</p>
+                        <p class="text-white/60 text-sm leading-relaxed">Large-format product imagery at every opportunity. Stone textures deserve space. Product grids are generous — fewer products per row, each given room to communicate material quality. White space is as much a design element as the photography.</p>
                     </div>
                     <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Motion</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Subtle. Purposeful. Animation is present only where it adds clarity — content transitions, hover states, featured project carousels. Nothing is decorative. Motion is earned by function.</p>
+                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Photography Direction</p>
+                        <p class="text-white/60 text-sm leading-relaxed">Slab photography at close crop to show veining and texture. Kitchen lifestyle imagery selected for accuracy rather than aspiration — real environments, real light conditions, real installation quality.</p>
                     </div>
                 </div>
-                <!-- UI detail suggestion -->
-                <div style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
-                    <div style="aspect-ratio:16/6;background:#0c1a1a;display:flex;align-items:center;justify-content:center;">
-                        <!-- REPLACE WITH: Close-up UI screenshot of the roster or sync grid -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:16px;">Suggested: Roster grid UI close-up</span>
-                    </div>
-                </div>
-                <p class="case-label-light text-center mt-4">Fig 2.0 — Interface Detail</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ⑥ DEVELOPMENT -->
+<!-- ⑥ KEY FEATURE — VISUALISER -->
 <section class="py-20 px-6 md:px-16 bg-white border-b border-black">
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
             <div class="md:col-span-3">
                 <span class="case-label block mb-2">05</span>
-                <p class="section-num">Development</p>
+                <p class="section-num">Key Feature</p>
             </div>
             <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Development</h2>
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-2">The Worktop<br>Visualiser</h2>
+                <p class="font-mono text-[10px] text-[#0033FF] uppercase tracking-widest mb-6">Custom Interactive Tool</p>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    Built on WordPress with a custom theme — selected for its flexibility in handling varied content types and the Westbury team's ability to update catalogue listings, add new sync placements and manage the roster independently after handover.
+                    The centrepiece of the Purple Granite build is a bespoke interactive worktop visualiser — a custom-built tool that allows customers to preview different stone materials and finishes applied directly within a photorealistic kitchen environment.
                 </p>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Performance was a primary consideration. Large music catalogues with imagery and embedded media can be slow. We implemented lazy loading, optimised asset delivery and structured the database queries to keep load times fast regardless of catalogue size. The site is fully responsive — designed and tested across all viewports with the mobile experience treated as a primary context, not an afterthought.
+                    Rather than asking customers to imagine how a product will look in their kitchen, the visualiser removes that cognitive burden entirely. Customers can switch between granite, quartz, marble and porcelain options — comparing materials, colours and vein patterns in real time — within a rendered kitchen scene that reflects realistic light and shadow conditions.
                 </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black">
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">CMS</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">WordPress</p>
+
+                <!-- Visualiser mockup -->
+                <div style="background:#f5f5f5;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;margin-bottom:24px;">
+                    <div style="aspect-ratio:16/8;background:#1a1a1a;display:flex;align-items:center;justify-content:center;position:relative;">
+                        <!-- REPLACE WITH: Screenshot of the actual visualiser tool -->
+                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:20px;">Suggested: Full-width screenshot of the worktop visualiser<br>showing stone material applied to kitchen environment</span>
                     </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">Fast</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Core Vitals</p>
+                    <div style="padding:16px 20px;display:flex;gap:12px;align-items:center;border-top:1px solid rgba(0,0,0,0.06);">
+                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,0.3);text-transform:uppercase;letter-spacing:0.1em;">Material selector</span>
+                        <div style="display:flex;gap:8px;">
+                            <div style="width:28px;height:28px;border-radius:4px;background:#8B7355;border:2px solid rgba(0,0,0,0.1);"></div>
+                            <div style="width:28px;height:28px;border-radius:4px;background:#C8C8C8;border:2px solid rgba(0,0,0,0.1);"></div>
+                            <div style="width:28px;height:28px;border-radius:4px;background:#2C2C2C;border:2px solid rgba(0,0,0,0.1);"></div>
+                            <div style="width:28px;height:28px;border-radius:4px;background:#E8E0D0;border:2px solid #0033FF;"></div>
+                            <div style="width:28px;height:28px;border-radius:4px;background:#6B5E4E;border:2px solid rgba(0,0,0,0.1);"></div>
+                        </div>
                     </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">100%</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Responsive</p>
+                </div>
+                <p class="case-label mb-8">Fig 2.0 — Interactive Worktop Visualiser</p>
+
+                <!-- Feature grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="vis-feature">
+                        <div class="vis-feature-icon">
+                            <i data-lucide="layers" style="width:18px;height:18px;color:white;"></i>
+                        </div>
+                        <p class="font-black uppercase text-sm mb-2">Material Library</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Full product range accessible in the visualiser — granite, quartz, marble and porcelain. Materials render with accurate colour and vein mapping.</p>
                     </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">Custom</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Theme Build</p>
+                    <div class="vis-feature">
+                        <div class="vis-feature-icon">
+                            <i data-lucide="eye" style="width:18px;height:18px;color:white;"></i>
+                        </div>
+                        <p class="font-black uppercase text-sm mb-2">Kitchen Environment</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Multiple kitchen scene options covering different cabinet colours, styles and layouts — so customers can match to their specific context.</p>
+                    </div>
+                    <div class="vis-feature">
+                        <div class="vis-feature-icon">
+                            <i data-lucide="zap" style="width:18px;height:18px;color:white;"></i>
+                        </div>
+                        <p class="font-black uppercase text-sm mb-2">Real-time Switching</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">Instant material application — no reload, no delay. Customers can compare options side by side in a single session without friction.</p>
+                    </div>
+                    <div class="vis-feature">
+                        <div class="vis-feature-icon">
+                            <i data-lucide="arrow-right" style="width:18px;height:18px;color:white;"></i>
+                        </div>
+                        <p class="font-black uppercase text-sm mb-2">Direct to Enquiry</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">From the visualiser, customers can move directly to request a sample, book a showroom visit or request a quote — all within one continuous journey.</p>
                     </div>
                 </div>
             </div>
@@ -296,34 +320,73 @@
     </div>
 </section>
 
-<!-- ⑦ RESULTS -->
+<!-- ⑦ DEVELOPMENT -->
 <section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
             <div class="md:col-span-3">
                 <span class="case-label block mb-2">06</span>
+                <p class="section-num">Development</p>
+            </div>
+            <div class="md:col-span-9">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Development</h2>
+                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
+                    The website is built on Shopify — selected for its robust product management capabilities, its native e-commerce infrastructure and its ability to handle the breadth of the Purple Granite range across multiple material categories. The custom theme was built entirely from scratch to the design specification, with no reliance on templated frameworks.
+                </p>
+                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
+                    The visualiser is a bespoke JavaScript application integrated into the product pages — built to handle high-resolution material textures without performance compromise. Canvas-based rendering applies material maps to the kitchen environment in real time, with optimised asset loading to maintain speed across all devices including mobile. The tool was tested extensively across viewport sizes, connection speeds and device types before launch.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black">
+                    <div class="bg-white p-6 text-center">
+                        <p class="font-black text-lg mb-1">Shopify</p>
+                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Platform</p>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <p class="font-black text-lg mb-1">Custom</p>
+                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Theme Build</p>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <p class="font-black text-lg mb-1">Canvas</p>
+                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Visualiser Engine</p>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <p class="font-black text-lg mb-1">100%</p>
+                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Responsive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ⑧ RESULTS -->
+<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
+            <div class="md:col-span-3">
+                <span class="case-label block mb-2">07</span>
                 <p class="section-num">Results</p>
             </div>
             <div class="md:col-span-9">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Results</h2>
                 <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Westbury Music launched with a platform that matches the standing of the business. The website now serves as a credible, functional front door to a catalogue that reaches the world's most recognised entertainment and advertising brands.
+                    Purple Granite launched with a digital platform that genuinely reflects the premium quality of the product — and a visualiser tool that addresses the core friction point in the buying journey. The combination of a structured e-commerce experience and the interactive visualiser positions Purple Granite ahead of competitors who rely on static catalogues and showroom-only comparison.
                 </p>
                 <div class="space-y-0">
                     <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">A digital presence that reflects the calibre of the catalogue</p>
+                        <p class="text-sm font-medium">A digital experience that matches the quality of the product range</p>
                         <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
                     </div>
                     <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Dual-audience architecture serving both artist relations and sync</p>
+                        <p class="text-sm font-medium">Custom visualiser reducing pre-purchase uncertainty and drop-off</p>
                         <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
                     </div>
                     <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">CMS framework enabling the team to manage content independently</p>
+                        <p class="text-sm font-medium">Structured buying journey from browse to enquiry in three clear stages</p>
                         <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
                     </div>
                     <div style="border-top:1px solid rgba(0,0,0,0.08);border-bottom:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Scalable platform built to grow alongside the company's roster</p>
+                        <p class="text-sm font-medium">Scalable Shopify platform supporting the full product range and future growth</p>
                         <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
                     </div>
                 </div>
@@ -332,11 +395,10 @@
     </div>
 </section>
 
-<!-- ⑧ MOBILE + CREDITS -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
+<!-- ⑨ MOBILE + CREDITS -->
+<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 ru">
-            <!-- Mobile mockup -->
             <div>
                 <span class="case-label block mb-8">Mobile Experience</span>
                 <div class="flex gap-6 items-end">
@@ -345,7 +407,7 @@
                             <div class="iphone-screen">
                                 <div class="screen-ph">
                                     <!-- REPLACE WITH: Mobile homepage screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Mobile<br>homepage</span>
+                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Homepage<br>mobile</span>
                                 </div>
                             </div>
                         </div>
@@ -354,8 +416,8 @@
                         <div class="iphone-body">
                             <div class="iphone-screen">
                                 <div class="screen-ph">
-                                    <!-- REPLACE WITH: Mobile roster/sync screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Roster<br>mobile</span>
+                                    <!-- REPLACE WITH: Mobile visualiser screenshot -->
+                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Visualiser<br>mobile</span>
                                 </div>
                             </div>
                         </div>
@@ -363,15 +425,16 @@
                 </div>
                 <p class="case-label mt-6">Fig 3.0 — Mobile Interface</p>
             </div>
-            <!-- Credits -->
             <div>
                 <span class="case-label block mb-8">Credits</span>
                 <div>
                     <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
                     <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
+                    <div class="credit-row"><span class="credit-role">UX Design</span><span class="credit-val">TG Media</span></div>
                     <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Westbury Music Ltd</span></div>
-                    <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://westburymusic.net" target="_blank" class="credit-val text-[#0033FF] hover:underline">westburymusic.net</a></div>
+                    <div class="credit-row"><span class="credit-role">Visualiser</span><span class="credit-val">TG Media (Custom Build)</span></div>
+                    <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Purple Granite Ltd</span></div>
+                    <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://purplegranite.co.uk" target="_blank" class="credit-val text-[#0033FF] hover:underline">purplegranite.co.uk</a></div>
                 </div>
             </div>
         </div>
@@ -379,12 +442,12 @@
 </section>
 
 <!-- NEXT / CTA -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black ru">
+<section class="py-20 px-6 md:px-16 bg-white border-b border-black ru">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
         <div>
             <span class="case-label block mb-3">Next Case Study</span>
-            <a href="project-purplegranite.html" class="text-4xl md:text-6xl font-black uppercase tracking-tight hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
-                Purple Granite
+            <a href="project-barstudios.html" class="text-4xl md:text-6xl font-black uppercase tracking-tight hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
+                Bar Studios
                 <i data-lucide="arrow-right" class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
             </a>
         </div>
