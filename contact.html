@@ -89,26 +89,22 @@
         </div>
 
         <!-- RIGHT: Form panel -->
-        <div class="w-full md:w-1/2 p-6 md:p-16 bg-[#F2F2F2] flex flex-col justify-center">
+        <div class="w-full md:w-1/2 p-6 md:p-16 bg-[#F2F2F2] flex flex-col justify-center min-h-[60vh]">
 
             <div class="mb-10">
                 <p class="font-mono text-xs text-gray-400 uppercase mb-2">Start a project</p>
                 <h2 class="text-2xl md:text-3xl font-black uppercase">Tell us about<br>what you need.</h2>
             </div>
 
-            <!--
-                EDIT: To connect this form to your email:
-                1. Go to formspree.io and create a free account
-                2. Create a new form — you'll get an ID like xpzgkwqr
-                3. Replace YOUR_FORM_ID below with your actual ID
-                4. Remove the onsubmit attribute once Formspree is set up
-            -->
             <form
-                action="https://formspree.io/f/YOUR_FORM_ID"
+                action="https://formspree.io/f/myklyzqv"
                 method="POST"
                 id="contact-form"
                 class="space-y-8"
             >
+                <input type="hidden" name="_replyto" value="tom@tgmedia.uk">
+                <input type="hidden" name="_cc" value="tom@tgmedia.uk">
+                <input type="hidden" name="_subject" value="New enquiry from TG Media website">
                 <div class="group">
                     <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Your Name / Organisation</label>
                     <input
@@ -178,29 +174,38 @@
     </section>
 </div>
 
-<footer class="bg-black text-white p-6 md:p-12">
-    <div class="flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 gap-4">
-        <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-        <div class="flex flex-wrap gap-4 text-white/50">
-            <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
-            <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-            <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
-            <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
-            <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
-            <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
-            <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
-            <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+<footer class="bg-black text-white">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-12">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to be<br>the obvious choice?</h2>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="about.html" class="hover:text-[#FF6309]">ABOUT</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+            </div>
         </div>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script src="shared.js"></script>
 <script>
-    // Form submission handler
     const form = document.getElementById('contact-form');
     if (form) {
-        form.addEventListener('submit', async function(e) {
-            // Only intercept if Formspree ID has been set
-            if (form.action.includes('YOUR_FORM_ID')) {
-                e.preventDefault();
-                do
+        form.addEventListener('submit', function() {
+            const btn = form.querySelector('button[type="submit"]');
+            if (btn) { btn.innerText = 'Sending...'; btn.disabled = true; }
+        });
+    }
+</script>
+</body>
+</html>
