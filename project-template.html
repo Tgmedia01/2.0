@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — Project Name | Case Study</title>
+    <meta name="description" content="Case study — EDIT THIS">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── DEVICE FRAMES ─────────────────────────────── */
+        .macbook-frame {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .macbook-lid {
+            background: #1a1a1a;
+            border-radius: 14px 14px 0 0;
+            padding: 10px 10px 0;
+            position: relative;
+            box-shadow: 0 0 0 1px #333, 0 40px 80px rgba(0,0,0,0.35);
+        }
+        .macbook-lid::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 50%; transform: translateX(-50%);
+            width: 6px; height: 6px;
+            background: #2a2a2a;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .macbook-screen {
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            position: relative;
+        }
+        .macbook-screen img,
+        .macbook-screen .screen-placeholder {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+            display: block;
+        }
+        .screen-placeholder {
+            display: flex; align-items: center; justify-content: center;
+            background: #0a0a0a;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.15);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .macbook-base {
+            background: linear-gradient(to bottom, #2a2a2a, #222);
+            height: 22px;
+            border-radius: 0 0 4px 4px;
+            position: relative;
+            box-shadow: 0 0 0 1px #333;
+        }
+        .macbook-base::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 28%; height: 4px;
+            background: #111;
+            border-radius: 2px 2px 0 0;
+        }
+        .macbook-stand {
+            width: 58%; height: 12px;
+            background: linear-gradient(to bottom, #222, #1a1a1a);
+            margin: 0 auto;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 0 0 1px #333;
+        }
+
+        /* iPhone frame */
+        .iphone-frame {
+            position: relative;
+            width: 180px;
+            flex-shrink: 0;
+        }
+        .iphone-body {
+            background: #1a1a1a;
+            border-radius: 36px;
+            padding: 12px 8px;
+            box-shadow: 0 0 0 1px #333, 0 30px 60px rgba(0,0,0,0.4);
+            position: relative;
+        }
+        .iphone-body::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 5px;
+            background: #2a2a2a;
+            border-radius: 3px;
+        }
+        .iphone-screen {
+            background: #000;
+            border-radius: 26px;
+            overflow: hidden;
+            aspect-ratio: 9/19.5;
+        }
+        .iphone-screen img,
+        .iphone-screen .screen-placeholder {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+            display: block;
+        }
+
+        /* ── SECTION LABELS ────────────────────────────── */
+        .case-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(8,8,8,0.35);
+        }
+        .case-label-light {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ── UI CLOSE-UP CARDS ─────────────────────────── */
+        .ui-card {
+            background: #f5f5f5;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+        .ui-card img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+        }
+        .ui-card .ui-placeholder {
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            background: #ebebeb;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+            padding: 16px;
+        }
+
+        /* ── HERO META ─────────────────────────────────── */
+        .meta-row {
+            display: flex;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        .meta-row + .meta-row { border-top: 1px solid rgba(0,0,0,0.06); }
+        .meta-key {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.35);
+            width: 120px;
+            flex-shrink: 0;
+        }
+        .meta-val {
+            font-size: 13px;
+            color: #080808;
+            font-weight: 500;
+        }
+
+        /* ── SCROLL REVEAL ─────────────────────────────── */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MISC ──────────────────────────────────────── */
+        .divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 0; }
+    </style>
+</head>
+<body class="antialiased bg-[#F2F2F2]">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content" style="margin-bottom:0;box-shadow:none;">
+
+    <!-- ①  HERO SECTION -->
+    <section class="bg-white pt-32 pb-0 px-6 md:px-16 lg:px-24 border-b border-black">
+
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Back + label -->
+            <div class="flex items-center gap-6 mb-12 reveal-up">
+                <a href="index.html" class="font-mono text-xs border-b border-black/20 pb-0.5 hover:text-[#0033FF] hover:border-[#0033FF] transition-colors">← Back</a>
+                <span class="case-label">Case Study</span>
+            </div>
+
+            <!-- Title block -->
+            <div class="mb-16 reveal-up">
+                <!-- EDIT: Project name -->
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none mb-6">
+                    Project<br><span class="text-[#0033FF]">Name</span>
+                </h1>
+                <!-- EDIT: One-line summary -->
+                <p class="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed">
+                    A short, direct summary of what this project was and what was delivered. One or two sentences maximum.
+                </p>
+            </div>
+
+            <!-- Project meta -->
+            <div class="max-w-lg mb-16 reveal-up">
+                <!-- EDIT: Fill in your project details -->
+                <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val">Client Name</span></div>
+                <div class="meta-row"><span class="meta-key">Year</span><span class="meta-val">2025</span></div>
+                <div class="meta-row"><span class="meta-key">Services</span><span class="meta-val">Web Design, Development</span></div>
+                <div class="meta-row"><span class="meta-key">Live Site</span>
+                    <!-- EDIT: Add actual URL -->
+                    <a href="https://example.com" target="_blank" class="meta-val text-[#0033FF] hover:underline">example.com ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── MacBook Hero Mockup ── -->
+        <div class="max-w-5xl mx-auto pb-24 reveal-up">
+            <div class="macbook-frame">
+                <div class="macbook-lid">
+                    <div class="macbook-screen">
+                        <!--
+                            EDIT: Replace the placeholder below with your screenshot:
+                            <img src="YOUR_SCREENSHOT.jpg" alt="Project Name — homepage">
+                        -->
+                        <div class="screen-placeholder">
+                            <span>Add your desktop<br>screenshot here</span>
+                            <span style="opacity:0.5;font-size:9px;">Replace .screen-placeholder with &lt;img src="..."&gt;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="macbook-base"></div>
+                <div class="macbook-stand"></div>
+            </div>
+            <p class="case-label text-center mt-8">Fig 1.0 — Desktop Interface</p>
+        </div>
+
+    </section>
+
+
+    <!-- ②  INTERFACE SECTION — UI Close-ups -->
+    <section class="py-24 px-6 md:px-16 lg:px-24 bg-[#F2F2F2] border-b border-black">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="mb-16 reveal-up">
+                <span class="case-label block mb-4">Interface</span>
+                <!-- EDIT: Section headline -->
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-none">
+                    Designed to<br>convert.
+                </h2>
+            </div>
+
+            <!-- EDIT: Add your UI screenshots to each .ui-card -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 reveal-up">
+                <div class="ui-card">
+                    <!--
+                        EDIT: Replace with UI screenshot
+                        <img src="UI_SCREENSHOT_1.jpg" alt="Navigation detail">
+                    -->
+                    <div class="ui-placeholder">Navigation / Hero UI detail</div>
+                </div>
+                <div class="ui-card" style="margin-top:0;md:margin-top:40px">
+                    <div class="ui-placeholder">Typography / Content section detail</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal-up">
+                <div class="ui-card">
+                    <div class="ui-placeholder">Component detail 01</div>
+                </div>
+                <div class="ui-card">
+                    <div class="ui-placeholder">Component detail 02</div>
+                </div>
+                <div class="ui-card">
+                    <div class="ui-placeholder">Component detail 03</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ③  STRUCTURE SECTION — Copy about the build -->
+    <section class="py-24 px-6 md:px-16 lg:px-24 bg-white border-b border-black">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start reveal-up">
+
+                <div>
+                    <span class="case-label block mb-4">Structure</span>
+                    <!-- EDIT: Section headline -->
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-none mb-8">
+                        Built to<br>perform.
+                    </h2>
+                </div>
+
+                <div class="space-y-6 text-sm md:text-base text-gray-600 leading-relaxed pt-0 md:pt-16">
+                    <!-- EDIT: Describe the technical and design approach -->
+                    <p>
+                        Write about the approach here. What was the structure, the technology stack, the key decisions made. Keep it direct — clients and peers reading this want specifics, not marketing.
+                    </p>
+                    <p>
+                        Second paragraph. Focus on the outcome — what did the decisions deliver? Speed, clarity, conversion rate, something the client can measure.
+                    </p>
+                    <!-- EDIT: Add or remove result items -->
+                    <div class="grid grid-cols-2 gap-px bg-black border border-black mt-8">
+                        <div class="bg-white p-6">
+                            <span class="text-3xl font-black text-[#0033FF] block mb-1">Result</span>
+                            <span class="font-mono text-xs uppercase text-gray-400">Metric label</span>
+                        </div>
+                        <div class="bg-white p-6">
+                            <span class="text-3xl font-black text-[#0033FF] block mb-1">Result</span>
+                            <span class="font-mono text-xs uppercase text-gray-400">Metric label</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ④  MOBILE EXPERIENCE SECTION -->
+    <section class="py-24 px-6 md:px-16 lg:px-24 bg-[#080808] text-white border-b border-[#222]">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="flex flex-col md:flex-row gap-16 items-center reveal-up">
+
+                <!-- Text -->
+                <div class="md:w-1/2">
+                    <span class="case-label-light block mb-4">Mobile Experience</span>
+                    <!-- EDIT: Mobile section headline -->
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-none mb-8 text-white">
+                        Works on<br>every screen.
+                    </h2>
+                    <!-- EDIT: Mobile description -->
+                    <p class="text-sm md:text-base text-white/50 leading-relaxed mb-6">
+                        Describe the mobile design decisions here. What was prioritised, what was adapted, and how the experience holds up on smaller screens.
+                    </p>
+                    <p class="text-sm md:text-base text-white/50 leading-relaxed">
+                        Second paragraph if needed. Keep it tight.
+                    </p>
+                </div>
+
+                <!-- iPhone Mockups -->
+                <div class="md:w-1/2 flex gap-6 justify-center items-end">
+                    <!-- iPhone 1 -->
+                    <div class="iphone-frame" style="margin-bottom: 24px;">
+                        <div class="iphone-body">
+                            <div class="iphone-screen">
+                                <!--
+                                    EDIT: Replace with mobile screenshot
+                                    <img src="MOBILE_SCREENSHOT_1.jpg" alt="Mobile homepage">
+                                -->
+                                <div class="screen-placeholder" style="background:#0a0a0a;color:rgba(255,255,255,0.1);font-size:9px;">
+                                    Mobile<br>screenshot 1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 2 -->
+                    <div class="iphone-frame">
+                        <div class="iphone-body">
+                            <div class="iphone-screen">
+                                <!--
+                                    EDIT: Replace with mobile screenshot
+                                    <img src="MOBILE_SCREENSHOT_2.jpg" alt="Mobile inner page">
+                                -->
+                                <div class="screen-placeholder" style="background:#0a0a0a;color:rgba(255,255,255,0.1);font-size:9px;">
+                                    Mobile<br>screenshot 2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Optional: full-width mobile screenshot -->
+            <!--
+            <div class="mt-16 reveal-up">
+                <div class="bg-[#111] rounded-2xl overflow-hidden border border-[#222] aspect-[16/6]">
+                    <img src="MOBILE_FULLWIDTH.jpg" class="w-full h-full object-cover object-top">
+                </div>
+                <p class="case-label-light text-center mt-6">Fig 2.0 — Mobile viewport</p>
+            </div>
+            -->
+
+        </div>
+    </section>
+
+
+    <!-- ⑤  CLOSING + NEXT PROJECT -->
+    <section class="py-24 px-6 md:px-16 lg:px-24 bg-white border-b border-black">
+        <div class="max-w-5xl mx-auto reveal-up">
+
+            <!-- Closing statement -->
+            <div class="border-l-4 border-[#FF6309] pl-8 mb-20">
+                <!-- EDIT: Closing one-liner -->
+                <p class="text-2xl md:text-3xl font-bold leading-snug text-gray-700 max-w-2xl">
+                    "A short, punchy closing statement about the project outcome. What it achieved. Why it matters."
+                </p>
+            </div>
+
+            <!-- Next project -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div>
+                    <span class="case-label block mb-2">Next Project</span>
+                    <!-- EDIT: Update to actual next project -->
+                    <a href="#" class="text-3xl md:text-5xl font-black uppercase tracking-tight hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
+                        Next Project Name
+                        <i data-lucide="arrow-right" class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+                <a href="contact.html" class="font-mono text-xs border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors whitespace-nowrap">
+                    Start a project →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to be<br>the obvious choice?</h2>
+            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">
+                Start a Project
+            </a>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="about.html" class="hover:text-[#FF6309]">ABOUT</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal-up');
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 80);
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Stagger siblings in same section
+    document.querySelectorAll('section').forEach(section => {
+        const items = section.querySelectorAll('.reveal-up');
+        items.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+    });
+</script>
+</body>
+</html>
