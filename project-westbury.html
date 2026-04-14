@@ -51,6 +51,144 @@
         .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
         .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
         .credit-val{font-size:13px;font-weight:500}
+
+        /* ── MOBILE RESPONSIVE ─────────────────────────── */
+        @media (max-width: 768px) {
+            /* All inline grids collapse to single column */
+            [style*="grid-template-columns:1fr 1fr"],
+            [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            [style*="grid-template-columns:300px 1fr"],
+            [style*="grid-template-columns: 300px 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            [style*="grid-template-columns:repeat(2,1fr)"],
+            [style*="grid-template-columns: repeat(2,1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            [style*="grid-template-columns:repeat(4,1fr)"],
+            [style*="grid-template-columns: repeat(4,1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            /* Reduce large padding */
+            [style*="padding:80px 40px"] { padding: 48px 20px !important; }
+            [style*="padding:80px 24px"] { padding: 48px 20px !important; }
+            [style*="padding:60px 40px"] { padding: 40px 20px !important; }
+            [style*="padding:60px 24px"] { padding: 40px 20px !important; }
+            [style*="padding:48px 40px"] { padding: 32px 20px !important; }
+            [style*="padding:40px 40px"] { padding: 28px 20px !important; }
+            [style*="padding:32px 40px"] { padding: 24px 20px !important; }
+            /* Stat strips — allow wrap */
+            .stat-strip { flex-wrap: wrap !important; }
+            .stat-strip > div { min-width: 50% !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,.08); padding: 20px !important; }
+            /* Section intro text */
+            .section-intro { font-size: clamp(1.8rem, 8vw, 3rem) !important; }
+            /* Approach rows */
+            .approach-row { grid-template-columns: 32px 1fr !important; gap: 12px !important; }
+            /* iphone frames — smaller on mobile */
+            .iphone-b { border-radius: 28px !important; }
+            /* Hero title */
+            [style*="font-size:clamp(4rem,14vw,13rem)"] { font-size: clamp(3rem, 14vw, 9rem) !important; }
+            [style*="font-size:clamp(3rem,12vw,11rem)"] { font-size: clamp(2.5rem, 12vw, 7rem) !important; }
+            /* Ghost numbers — smaller on mobile */
+            .bg-num, .bg-num-light { font-size: clamp(6rem, 35vw, 14rem) !important; }
+            /* Next section */
+            [style*="padding:60px 40px;"] { padding: 40px 20px !important; }
+            /* Visualiser swatch bar */
+            [style*="padding:14px 20px;display:flex"] { flex-wrap: wrap; gap: 8px; }
+            /* Two-col split sections — stack vertically */
+            section[style*="display:grid;grid-template-columns:1fr 1fr"] {
+                display: block !important;
+            }
+            section[style*="display:grid;grid-template-columns:1fr 1fr"] > div {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+            section[style*="display:grid;grid-template-columns:1fr 1fr"] > div:last-child {
+                border-bottom: none !important;
+            }
+        }
+        @media (max-width: 480px) {
+            [style*="padding:80px 40px"] { padding: 36px 16px !important; }
+            [style*="padding:60px 40px"] { padding: 32px 16px !important; }
+            [style*="padding:48px 40px"] { padding: 28px 16px !important; }
+            [style*="padding:32px 40px"] { padding: 20px 16px !important; }
+            [style*="padding:80px 24px"] { padding: 36px 16px !important; }
+            [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
+            .mac-lid { border-radius: 8px 8px 0 0 !important; }
+        }
+
+        /* hero meta grid + stat strip mobile overrides */
+        @media (max-width: 768px) {
+            .hero-meta-grid {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            .stat-strip {
+                flex-wrap: wrap !important;
+                padding: 0 !important;
+            }
+            .stat-strip > div {
+                min-width: calc(50% - 1px) !important;
+                padding: 20px 16px !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255,255,255,.08) !important;
+                box-sizing: border-box;
+            }
+            .stat-strip > div:nth-child(odd) {
+                border-right: 1px solid rgba(255,255,255,.08) !important;
+            }
+            /* MacBook mockup — reduce padding on mobile */
+            .mac-lid { border-radius: 8px 8px 0 0 !important; }
+            /* Identity grid 2-col on mobile */
+            [style*="grid-template-columns:1fr 1fr;gap:1px"] {
+                grid-template-columns: 1fr !important;
+            }
+            /* Development 2-col description grid */
+            [style*="grid-template-columns:1fr 1fr;gap:48px"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            /* Mobile + credits grid */
+            [style*="grid-template-columns:1fr 1fr;gap:60px"] {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+            /* Approach section sidebar */
+            [style*="grid-template-columns:300px 1fr;gap:60px"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            /* Next section padding */
+            [style*="background:#0033FF;padding:60px 40px"] {
+                padding: 40px 20px !important;
+            }
+            [style*="background:#FF6309;padding:60px 40px"] {
+                padding: 40px 20px !important;
+            }
+            /* Visualiser swatch row */
+            [style*="background:#111;padding:14px 20px"] {
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+            /* iPhones — reduce size on small screens */
+            .iphone-b {
+                border-radius: 26px !important;
+            }
+            /* Section split — overview/challenge */
+            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"] {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            /* Work page card min-heights */
+            .proj-card[style*="min-height:480px"] { min-height: 380px !important; }
+            .proj-card[style*="min-height:400px"] { min-height: 320px !important; }
+        }
+        @media (max-width: 480px) {
+            .stat-strip > div { min-width: 100% !important; border-right: none !important; }
+            .stat-strip > div:nth-child(odd) { border-right: none !important; }
+        }
     </style>
 </head>
 <body class="antialiased" style="background:#F8F8F6;">
@@ -111,7 +249,7 @@
             </h1>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;max-width:900px;" class="ru">
+        <div class="hero-meta-grid" class="hero-meta-grid ru" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;max-width:900px;">
             <div>
                 <p style="font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;margin:0 0 20px;">
                     A structured digital platform for the UK's leading independent music publisher — built to serve artists, labels and global sync supervisors simultaneously.
@@ -239,7 +377,7 @@
 <!-- ⑤ DEVELOPMENT — stat strip + copy -->
 <section style="background:white;border-bottom:1px solid black;" class="ru">
     <!-- Orange stat strip -->
-    <div style="background:#FF6309;padding:32px 40px;display:flex;align-items:center;gap:0;overflow:hidden;">
+    <div class="stat-strip" style="background:#FF6309;padding:32px 40px;display:flex;align-items:center;gap:0;overflow:hidden;">
         <div style="flex:1;border-right:1px solid rgba(0,0,0,.15);padding-right:40px;">
             <p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Platform</p>
             <p style="font-size:28px;font-weight:900;color:#080808;letter-spacing:-.02em;">WordPress</p>

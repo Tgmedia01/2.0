@@ -19,6 +19,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
+
+        /* Index mobile fixes */
+        @media (max-width: 768px) {
+            /* Featured cards — reduce min height */
+            .feat-card { padding: 24px !important; }
+            section.bg-white > div[style*="min-height:520px"] { min-height: 380px !important; }
+            /* List rows — tighten padding */
+            .group.flex.items-center.justify-between { padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; }
+        }
         .happen-image {
             position: absolute;
             opacity: 0;
@@ -93,6 +102,7 @@
                 <a href="index.html" class="text-[#0033FF]">Home</a>
                 <a href="about.html" class="hover:text-[#0033FF]">About</a>
                 <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
                 <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
             </nav>
         </div>
@@ -110,6 +120,7 @@
         <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
         <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
         <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
         <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
     </nav>
 </div>
@@ -231,139 +242,143 @@
     </section>
 
     <!-- SELECTED WORKS -->
-    <section style="background:#080808;border-top:1px solid black;border-bottom:1px solid black;">
+    <section class="bg-white border-b border-black">
 
         <!-- Header -->
-        <div style="padding:48px 40px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:16px;" class="md:flex-row md:items-end md:justify-between">
+        <div class="px-5 md:px-12 pt-12 pb-10 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-black">
             <div>
-                <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:12px;">Selected Work — 2024/25</span>
-                <h2 style="font-size:clamp(3rem,8vw,7rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;color:white;margin:0;">Case<br>Studies</h2>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-gray-400 block mb-3">Selected Work — 2024/25</span>
+                <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">Selected<br>Works</h2>
             </div>
-            <p style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.25);max-width:220px;line-height:1.7;">Four projects.<br>Four industries.<br>One standard.</p>
+            <a href="work.html" class="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-gray-400 hover:text-[#0033FF] transition-colors pb-1 border-b border-transparent hover:border-[#0033FF] whitespace-nowrap">
+                View all case studies
+                <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
-        <!-- 01 — Westbury Music -->
-        <a href="project-westbury.html" class="group" style="display:block;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;transition:background 0.3s ease;">
-            <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,0.012) 40px,rgba(255,255,255,0.012) 41px);opacity:0;transition:opacity 0.4s;" class="group-hover:opacity-100"></div>
-            <div style="display:flex;align-items:stretch;min-height:200px;">
-                <!-- Num -->
-                <div style="width:56px;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;">
-                    <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);writing-mode:vertical-rl;letter-spacing:0.2em;">01</span>
-                </div>
-                <!-- Main content -->
-                <div style="flex:1;padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;">
-                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
-                        <div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,0.12);padding:3px 9px;color:rgba(255,255,255,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Web Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,0.12);padding:3px 9px;color:rgba(255,255,255,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Development</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,0.12);padding:3px 9px;color:rgba(255,255,255,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Music Publishing</span>
-                            </div>
-                            <h3 style="font-size:clamp(2rem,5vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:0.88;color:white;margin:0;transition:color 0.25s;" class="group-hover:text-[#0033FF]">Westbury Music</h3>
-                        </div>
-                        <p style="font-size:13px;color:rgba(255,255,255,0.35);max-width:340px;line-height:1.7;flex-shrink:0;">A structured digital platform for the UK's leading independent music publisher — serving artists, labels and global sync supervisors simultaneously.</p>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.15em;">View Case Study</span>
-                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:rgba(255,255,255,0.25);" class="group-hover:translate-x-2 transition-transform duration-300"></i>
-                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.15);margin-left:auto;">westburymusic.net</span>
-                    </div>
-                </div>
-                <!-- Right — hover reveal blue -->
-                <div style="width:80px;flex-shrink:0;border-left:1px solid rgba(255,255,255,0.07);background:rgba(0,51,255,0);transition:background 0.4s;" class="group-hover:bg-[#0033FF]"></div>
-            </div>
-        </a>
+        <!-- TWO FEATURED PROJECTS — large format -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border-b border-black stagger-grid">
 
-        <!-- 02 — Purple Granite -->
-        <a href="project-purplegranite.html" class="group" style="display:block;border-bottom:1px solid rgba(255,255,255,0.08);background:#F5F4F0;position:relative;overflow:hidden;">
-            <div style="display:flex;align-items:stretch;min-height:200px;">
-                <div style="width:56px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;">
-                    <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,0.18);writing-mode:vertical-rl;letter-spacing:0.2em;">02</span>
+            <!-- Featured 01 — Bar Studios -->
+            <a href="project-barstudios.html" class="group block relative overflow-hidden" style="min-height:520px;">
+                <!-- Background image -->
+                <div class="absolute inset-0">
+                    <img src="barstudios-redbull.png" alt="Bar Studios" class="w-full h-full object-cover object-center" style="filter:grayscale(40%);transform:scale(1.04);transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.7s ease;">
+                    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,rgba(8,8,8,0.5) 50%,rgba(8,8,8,0.15) 100%);transition:background 0.5s;"></div>
                 </div>
-                <div style="flex:1;padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;">
-                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
-                        <div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,0.1);padding:3px 9px;color:rgba(0,0,0,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Web Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,0.1);padding:3px 9px;color:rgba(0,0,0,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">UX Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,51,255,0.3);padding:3px 9px;color:#0033FF;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Custom Visualiser</span>
-                            </div>
-                            <h3 style="font-size:clamp(2rem,5vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:0.88;color:#080808;margin:0;transition:color 0.25s;" class="group-hover:text-[#0033FF]">Purple Granite</h3>
-                        </div>
-                        <p style="font-size:13px;color:rgba(0,0,0,0.4);max-width:340px;line-height:1.7;flex-shrink:0;">Full digital transformation including a bespoke interactive worktop visualiser — customers preview granite, quartz and marble inside a real kitchen environment before buying.</p>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.07);">
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,0.25);text-transform:uppercase;letter-spacing:0.15em;">View Case Study</span>
-                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:rgba(0,0,0,0.25);" class="group-hover:translate-x-2 transition-transform duration-300"></i>
-                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,0.18);margin-left:auto;">purplegranite.co.uk</span>
-                    </div>
-                </div>
-                <div style="width:80px;flex-shrink:0;border-left:1px solid rgba(0,0,0,0.07);background:transparent;transition:background 0.4s;" class="group-hover:bg-[#0033FF]"></div>
-            </div>
-        </a>
+                <!-- Hover — image sharpens, less dark -->
+                <style>
 
-        <!-- 03 — Bar Studios -->
-        <a href="project-barstudios.html" class="group" style="display:block;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;">
-            <div style="position:absolute;inset:0;z-index:0;">
-                <img src="barstudios-redbull.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.12;filter:grayscale(80%);">
-                <div style="position:absolute;inset:0;background:linear-gradient(to right,#080808 40%,rgba(8,8,8,0.85) 100%);"></div>
-            </div>
-            <div style="display:flex;align-items:stretch;min-height:200px;position:relative;z-index:1;">
-                <div style="width:56px;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;">
-                    <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);writing-mode:vertical-rl;letter-spacing:0.2em;">03</span>
-                </div>
-                <div style="flex:1;padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;">
-                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
-                        <div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,0.12);padding:3px 9px;color:rgba(255,255,255,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Web Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,0.12);padding:3px 9px;color:rgba(255,255,255,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">UX Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,100,9,0.4);padding:3px 9px;color:#FF6309;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Content Production</span>
-                            </div>
-                            <h3 style="font-size:clamp(2rem,5vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:0.88;color:white;margin:0;transition:color 0.25s;" class="group-hover:text-[#FF6309]">Bar Studios</h3>
+        /* Index mobile fixes */
+        @media (max-width: 768px) {
+            /* Featured cards — reduce min height */
+            .feat-card { padding: 24px !important; }
+            section.bg-white > div[style*="min-height:520px"] { min-height: 380px !important; }
+            /* List rows — tighten padding */
+            .group.flex.items-center.justify-between { padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; }
+        }
+                    .feat-card:hover img { filter:grayscale(0%) !important; transform:scale(1.08) !important; }
+                </style>
+                <div class="feat-card absolute inset-0 flex flex-col justify-between p-6 md:p-10 z-10" style="position:absolute;">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="font-mono text-[9px] border border-white/20 px-2 py-1 text-white/50 uppercase tracking-wider rounded-sm">Web Design</span>
+                            <span class="font-mono text-[9px] border border-white/20 px-2 py-1 text-white/50 uppercase tracking-wider rounded-sm">UX</span>
                         </div>
-                        <p style="font-size:13px;color:rgba(255,255,255,0.35);max-width:340px;line-height:1.7;flex-shrink:0;">A content-first platform for a social production studio working with Red Bull and global brands — built to lead with the work and earn the conversation immediately.</p>
+                        <span class="font-mono text-[9px] text-white/30 uppercase tracking-wider">01 / 04</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.15em;">View Case Study</span>
-                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:rgba(255,255,255,0.25);" class="group-hover:translate-x-2 transition-transform duration-300"></i>
-                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.15);margin-left:auto;">barstudios.co.uk</span>
+                    <div>
+                        <span class="font-mono text-[10px] text-[#FF6309] uppercase tracking-widest block mb-3">Content Production</span>
+                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-white mb-4 group-hover:text-[#FF6309] transition-colors duration-300">Bar<br>Studios</h3>
+                        <p class="text-sm text-white/50 max-w-sm leading-relaxed mb-6">A content-first platform for a social production studio working with Red Bull and global brands — designed to lead with the work.</p>
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest">View Case Study</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-white/40 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
-                <div style="width:80px;flex-shrink:0;border-left:1px solid rgba(255,255,255,0.07);background:transparent;transition:background 0.4s;" class="group-hover:bg-[#FF6309]"></div>
-            </div>
-        </a>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-[#FF6309] opacity-0 group-hover:opacity-5 transition-opacity duration-500 z-0"></div>
+            </a>
 
-        <!-- 04 — The Hair Room -->
-        <a href="project-hairroom.html" class="group" style="display:block;background:#F5F2EE;position:relative;overflow:hidden;">
-            <div style="display:flex;align-items:stretch;min-height:200px;">
-                <div style="width:56px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:center;">
-                    <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,0.18);writing-mode:vertical-rl;letter-spacing:0.2em;">04</span>
+            <!-- Featured 02 — Purple Granite -->
+            <a href="project-purplegranite.html" class="group block relative overflow-hidden bg-[#EEEAE4]" style="min-height:520px;">
+                <div class="absolute inset-0 flex items-end justify-end overflow-hidden">
+                    <!-- Stone texture abstract — CSS only -->
+                    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 30px,rgba(0,0,0,0.02) 30px,rgba(0,0,0,0.02) 31px);"></div>
+                    <div style="position:absolute;bottom:-20px;right:-20px;width:320px;height:320px;border-radius:50%;background:rgba(0,51,255,0.06);transform:scale(1);transition:transform 0.7s ease;" class="group-hover:scale-125"></div>
                 </div>
-                <div style="flex:1;padding:32px 40px;display:flex;flex-direction:column;justify-content:space-between;">
-                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
-                        <div>
-                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,0.1);padding:3px 9px;color:rgba(0,0,0,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Web Design</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,0.1);padding:3px 9px;color:rgba(0,0,0,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Development</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,51,255,0.25);padding:3px 9px;color:#0033FF;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Local SEO</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,0.1);padding:3px 9px;color:rgba(0,0,0,0.35);border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;">Luxury Salon</span>
-                            </div>
-                            <h3 style="font-size:clamp(2rem,5vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;line-height:0.88;color:#080808;margin:0;transition:color 0.25s;" class="group-hover:text-[#0033FF]">The Hair Room</h3>
+                <div class="absolute inset-0 flex flex-col justify-between p-8 md:p-10 z-10">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="font-mono text-[9px] border border-black/15 px-2 py-1 text-black/40 uppercase tracking-wider rounded-sm">Web Design</span>
+                            <span class="font-mono text-[9px] border border-[#0033FF]/30 px-2 py-1 text-[#0033FF] uppercase tracking-wider rounded-sm">Custom Visualiser</span>
                         </div>
-                        <p style="font-size:13px;color:rgba(0,0,0,0.4);max-width:340px;line-height:1.7;flex-shrink:0;">A luxury digital presence for Coventry's premium hair salon — designed to reflect the quality of the experience before a client ever walks through the door.</p>
+                        <span class="font-mono text-[9px] text-black/20 uppercase tracking-wider">02 / 04</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.07);">
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,0.25);text-transform:uppercase;letter-spacing:0.15em;">View Case Study</span>
-                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:rgba(0,0,0,0.25);" class="group-hover:translate-x-2 transition-transform duration-300"></i>
-                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,0.18);margin-left:auto;">thehairroomcoventry.co.uk</span>
+                    <div>
+                        <span class="font-mono text-[10px] text-[#0033FF] uppercase tracking-widest block mb-3">Stone Worktops / E-Commerce</span>
+                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-[#080808] mb-4 group-hover:text-[#0033FF] transition-colors duration-300">Purple<br>Granite</h3>
+                        <p class="text-sm text-black/45 max-w-sm leading-relaxed mb-6">Full digital transformation including a bespoke interactive worktop visualiser — letting customers preview materials inside a real kitchen environment.</p>
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono text-[10px] text-black/30 uppercase tracking-widest">View Case Study</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:translate-x-2 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
-                <div style="width:80px;flex-shrink:0;border-left:1px solid rgba(0,0,0,0.06);background:transparent;transition:background 0.4s;" class="group-hover:bg-[#0033FF]"></div>
-            </div>
-        </a>
+            </a>
+
+        </div>
+
+        <!-- TWO REMAINING — compact list rows -->
+        <div>
+            <a href="project-westbury.html" class="group flex items-center justify-between px-6 md:px-12 py-7 border-b border-black hover:bg-[#0033FF] transition-colors duration-300">
+                <div class="flex items-center gap-6 md:gap-10">
+                    <span class="font-mono text-[10px] text-gray-300 group-hover:text-white/50 transition-colors w-6">03</span>
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-1 transition-colors">Music Publishing</span>
+                        <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter group-hover:text-white transition-colors">Westbury Music</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8">
+                    <div class="hidden md:flex gap-2">
+                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Web Design</span>
+                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Development</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
+                </div>
+            </a>
+
+            <a href="project-hairroom.html" class="group flex items-center justify-between px-6 md:px-12 py-7 hover:bg-[#080808] transition-colors duration-300">
+                <div class="flex items-center gap-6 md:gap-10">
+                    <span class="font-mono text-[10px] text-gray-300 group-hover:text-white/50 transition-colors w-6">04</span>
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-1 transition-colors">Luxury Hair Salon</span>
+                        <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter group-hover:text-white transition-colors">The Hair Room</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8">
+                    <div class="hidden md:flex gap-2">
+                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Web Design</span>
+                        <span class="font-mono text-[9px] border border-[#0033FF]/20 group-hover:border-[#0033FF]/40 px-2 py-1 text-[#0033FF]/60 group-hover:text-[#0033FF] uppercase tracking-wider rounded-sm transition-colors">Local SEO</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- View all CTA -->
+        <div class="px-6 md:px-12 py-8 border-t border-black flex justify-between items-center">
+            <span class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">4 Projects / 2024–25</span>
+            <a href="work.html" class="group flex items-center gap-3 font-black uppercase text-sm tracking-widest hover:text-[#0033FF] transition-colors">
+                View All Case Studies
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
 
     </section>
+
+
     <!-- LET'S MAKE THINGS HAPPEN -->
     <!-- On desktop: GSAP pins this section for scroll animation -->
     <!-- On mobile: static section, no pin -->
