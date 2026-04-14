@@ -222,22 +222,38 @@ function runPageAnimations() {
 }
 
 // ============================================================
-// CURSOR (desktop only)
+// CURSOR (desktop only) — tight lerp, gsap ticker for smoothness
 // ============================================================
 (function () {
     const cursor = document.getElementById('cursor');
     if (!cursor || !window.matchMedia('(pointer: fine)').matches) return;
 
-    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+    // Set cursor to exact mouse position immediately on first move (no snap-in lag)
+    let mouseX = 0, mouseY = 0;
+    let curX = 0, curY = 0;
+    let started = false;
 
-    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!started) {
+            // Snap to position on first move — no lerp delay on entry
+            curX = mouseX;
+            curY = mouseY;
+            cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+            cursor.style.opacity = '1';
+            started = true;
+        }
+    }, { passive: true });
 
-    (function tick() {
-        curX += (mouseX - curX) * 0.1;
-        curY += (mouseY - curY) * 0.1;
+    // Use gsap ticker — synced to RAF, never double-fires
+    gsap.ticker.add(() => {
+        if (!started) return;
+        // Lerp factor 0.2 — responsive but still smooth, no lag
+        curX += (mouseX - curX) * 0.2;
+        curY += (mouseY - curY) * 0.2;
         cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(tick);
-    })();
+    });
 
     document.querySelectorAll('a, button, [role="button"]').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('active'));
