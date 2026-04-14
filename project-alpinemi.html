@@ -51,17 +51,110 @@
         .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
         .credit-val{font-size:13px;font-weight:500}
 
-        /* Mobile */
+        /* ── MOBILE ────────────────────────────────────── */
         @media(max-width:768px){
-            [style*="display:grid;grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
-            [style*="display:grid;grid-template-columns:300px 1fr"]{grid-template-columns:1fr!important}
-            [style*="display:grid;grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
-            [style*="padding:80px 24px"]{padding:48px 20px!important}
-            [style*="padding:60px 40px"]{padding:40px 20px!important}
+            /* All two-col grids stack */
+            [style*="grid-template-columns:1fr 1fr"],
+            [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}
+            [style*="grid-template-columns:300px 1fr"],
+            [style*="grid-template-columns: 300px 1fr"]{grid-template-columns:1fr!important}
+            [style*="grid-template-columns:repeat(3,1fr)"],
+            [style*="grid-template-columns: repeat(3,1fr)"]{grid-template-columns:1fr 1fr!important}
+
+            /* Padding reductions */
+            [style*="padding:80px 24px"]{padding:44px 20px!important}
+            [style*="padding:80px 40px"]{padding:44px 20px!important}
+            [style*="padding:60px 40px"]{padding:36px 20px!important}
             [style*="padding:48px 40px"]{padding:28px 20px!important}
-            [style*="padding:80px 40px"]{padding:48px 20px!important}
-            .section-intro{font-size:clamp(1.8rem,8vw,3rem)!important}
-            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"]{display:flex!important;flex-direction:column!important}
+            [style*="padding:40px 40px"]{padding:24px 20px!important}
+            [style*="padding:32px 40px"]{padding:20px 20px!important}
+
+            /* Hero title */
+            h1[style*="font-size:clamp(3.5rem"]{font-size:clamp(2.8rem,14vw,6rem)!important}
+
+            /* Section intro */
+            .section-intro{font-size:clamp(1.8rem,8vw,3rem)!important;line-height:1!important}
+
+            /* Section splits — stack vertically */
+            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"]{
+                display:flex!important;flex-direction:column!important
+            }
+            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"] > div{
+                border-right:none!important;border-bottom:1px solid rgba(0,0,0,.1)
+            }
+
+            /* Approach rows */
+            .approach-row{grid-template-columns:32px 1fr!important;gap:12px!important;padding:18px 0!important}
+
+            /* PDF hero mockup — stack vertically, no rotation */
+            [style*="display:grid;grid-template-columns:1.1fr 1fr"]{
+                grid-template-columns:1fr!important;gap:16px!important
+            }
+            .pdf-page[style*="transform:rotate"]{transform:none!important}
+            [style*="transform:rotate(-1.2deg)"]{transform:none!important;margin-bottom:0!important}
+            [style*="transform:rotate(.8deg)"]{transform:none!important;margin-bottom:0!important}
+
+            /* Stat strip — wrap to 2-col */
+            [style*="background:#FF6309;padding:32px 40px"]{
+                padding:0!important;flex-wrap:wrap!important
+            }
+            [style*="background:#FF6309;padding:32px 40px"] > div{
+                min-width:50%!important;padding:20px 16px!important;
+                border-right:none!important;border-bottom:1px solid rgba(0,0,0,.1)!important;
+                box-sizing:border-box!important
+            }
+            [style*="background:#FF6309;padding:32px 40px"] > div:nth-child(odd){
+                border-right:1px solid rgba(0,0,0,.1)!important
+            }
+
+            /* Design system 3-col grid */
+            [style*="grid-template-columns:repeat(3,1fr);gap:1px"]{
+                grid-template-columns:1fr!important
+            }
+
+            /* PDF page grid rows */
+            [style*="grid-template-columns:1fr 1fr;gap:20px"]{
+                grid-template-columns:1fr!important;gap:12px!important
+            }
+            [style*="grid-template-columns:repeat(3,1fr);gap:20px"]{
+                grid-template-columns:1fr 1fr!important;gap:12px!important
+            }
+
+            /* Credits / quote grid */
+            [style*="grid-template-columns:1fr 1fr;gap:60px"]{
+                grid-template-columns:1fr!important;gap:32px!important
+            }
+
+            /* Blue header band */
+            [style*="background:#0033FF;padding:40px 40px"]{
+                padding:28px 20px!important
+            }
+
+            /* Next section */
+            [style*="background:#0033FF;padding:60px 40px"]{
+                padding:40px 20px!important
+            }
+            [style*="padding:60px 40px"]{padding:40px 20px!important}
+
+            /* bg ghost numbers — smaller */
+            .bg-num,.bg-num-light{font-size:clamp(6rem,35vw,12rem)!important}
+
+            /* ruled labels */
+            .ruled{margin-bottom:24px!important}
+
+            /* result rows */
+            .result-row{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+            .result-row .rtick{align-self:flex-end!important}
+
+            /* Credit rows */
+            .credit-role{width:120px!important}
+        }
+        @media(max-width:480px){
+            [style*="background:#FF6309;padding:32px 40px"] > div{min-width:100%!important;border-right:none!important}
+            [style*="background:#FF6309;padding:32px 40px"] > div:nth-child(odd){border-right:none!important}
+            [style*="grid-template-columns:repeat(3,1fr);gap:20px"]{grid-template-columns:1fr!important}
+            [style*="grid-template-columns:1fr 1fr;gap:20px"]{grid-template-columns:1fr!important}
+            h1[style*="font-size:clamp(3.5rem"]{font-size:clamp(2.5rem,14vw,5rem)!important}
         }
     </style>
 </head>
