@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — Alpine MI | Case Study</title>
+    <meta name="description" content="Case study — Alpine MI. Print design and case study document production by TG Media.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .case-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.3)}
+        .case-label-light{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+        .ru{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+        .ru.on{opacity:1;transform:translateY(0)}
+
+        /* Device frames */
+        .mac-lid{background:#1d1d1f;border-radius:12px 12px 0 0;padding:9px 9px 0;box-shadow:0 0 0 1px #3a3a3c,0 50px 100px rgba(0,0,0,.25);position:relative}
+        .mac-lid::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#2c2c2e;border-radius:50%}
+        .mac-screen{background:#000;border-radius:5px;overflow:hidden;aspect-ratio:16/10}
+        .mac-screen .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#111;flex-direction:column}
+        .mac-base{background:linear-gradient(180deg,#2c2c2e,#1d1d1f);height:18px;border-radius:0 0 3px 3px;box-shadow:0 0 0 1px #3a3a3c;position:relative}
+        .mac-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28%;height:4px;background:#111;border-radius:2px 2px 0 0}
+        .mac-stand{width:55%;height:9px;background:linear-gradient(180deg,#232325,#1d1d1f);margin:0 auto;border-radius:0 0 5px 5px;box-shadow:0 0 0 1px #3a3a3c}
+
+        /* PDF page mockup */
+        .pdf-page{
+            background:white;
+            box-shadow:0 4px 30px rgba(0,0,0,.12),0 1px 4px rgba(0,0,0,.08);
+            border-radius:3px;
+            overflow:hidden;
+            position:relative;
+        }
+        .pdf-page img{width:100%;display:block;}
+
+        /* Creative elements */
+        .bg-num{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .bg-num-light{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.025);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .section-intro{font-size:clamp(2rem,4.5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9}
+        .ruled{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+        .ruled::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
+        .ruled-light::after{background:rgba(255,255,255,.1)}
+        .approach-row{padding:24px 0;border-top:1px solid rgba(0,0,0,.07);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+        .approach-n{font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.1em;padding-top:2px}
+        .result-row{padding:18px 0;border-top:1px solid rgba(0,0,0,.07);display:flex;justify-content:space-between;align-items:center;gap:16px}
+        .rtick{width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .rtick::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
+        .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
+        .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
+        .credit-val{font-size:13px;font-weight:500}
+
+        /* Mobile */
+        @media(max-width:768px){
+            [style*="display:grid;grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+            [style*="display:grid;grid-template-columns:300px 1fr"]{grid-template-columns:1fr!important}
+            [style*="display:grid;grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+            [style*="padding:80px 24px"]{padding:48px 20px!important}
+            [style*="padding:60px 40px"]{padding:40px 20px!important}
+            [style*="padding:48px 40px"]{padding:28px 20px!important}
+            [style*="padding:80px 40px"]{padding:48px 20px!important}
+            .section-intro{font-size:clamp(1.8rem,8vw,3rem)!important}
+            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"]{display:flex!important;flex-direction:column!important}
+        }
+    </style>
+</head>
+<body class="antialiased" style="background:#F8F8F6;">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content" style="margin-bottom:0;box-shadow:none;">
+
+<!-- ① HERO — warm white, print/physical aesthetic -->
+<section style="background:#F8F8F6;padding-top:64px;border-bottom:1px solid black;overflow:hidden;position:relative;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(0,0,0,.015) 80px,rgba(0,0,0,.015) 81px);"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 0;position:relative;z-index:1;">
+        <div class="flex items-center gap-6 mb-10 ru">
+            <a href="work.html" style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);border-bottom:1px solid rgba(0,0,0,.15);padding-bottom:2px;">← Work</a>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.25);">Case Study — 05 / 05</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:flex-end;margin-bottom:60px;" class="ru">
+            <div>
+                <p style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;">Print Design / Document Production</p>
+                <h1 style="font-size:clamp(3.5rem,12vw,11rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;color:#080808;margin:0;">
+                    Alpine<br><span style="color:#0033FF;">MI</span>
+                </h1>
+            </div>
+            <div style="padding-bottom:8px;">
+                <p style="font-size:14px;color:rgba(0,0,0,.5);line-height:1.75;margin:0 0 24px;">A series of bespoke case study documents designed to help Alpine MI — a high-end commercial fit-out company — pitch for new business and showcase completed projects with the clarity and quality their work deserves.</p>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Client</span><span style="font-size:13px;color:#080808;font-weight:500;">Alpine MI</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Sector</span><span style="font-size:13px;color:#080808;font-weight:500;">Commercial Fit-Out / Construction</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Location</span><span style="font-size:13px;color:#080808;font-weight:500;">London, UK</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Services</span><span style="font-size:13px;color:#080808;font-weight:500;">Print Design, Document Production</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Year</span><span style="font-size:13px;color:#080808;font-weight:500;">2024</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF spread hero — page 1 + page 3 side by side at angle -->
+    <div style="max-width:1100px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:flex-end;" class="ru">
+        <!-- Cover page -->
+        <div class="pdf-page" style="transform:rotate(-1.2deg);">
+            <!-- REPLACE with: PNG export of PDF cover page -->
+            <div style="aspect-ratio:1.414/1;background:linear-gradient(135deg,#111 0%,#222 50%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+                <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200');background-size:cover;background-position:center;opacity:.45;"></div>
+                <div style="position:relative;z-index:1;text-align:center;">
+                    <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px;">Add PDF cover export</p>
+                    <p style="font-size:clamp(2rem,6vw,4rem);font-weight:900;text-transform:uppercase;color:white;letter-spacing:-.04em;line-height:.85;">Alpine<br>MI</p>
+                    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.15em;margin-top:12px;">Case Study</p>
+                </div>
+            </div>
+        </div>
+        <!-- Inside spread -->
+        <div class="pdf-page" style="transform:rotate(.8deg);margin-bottom:20px;">
+            <div style="aspect-ratio:1.414/1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
+                <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,.2);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:16px;">Add PDF interior page export<br>e.g. page 3 — Solo Sixty spread</span>
+            </div>
+        </div>
+    </div>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.22);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding-bottom:40px;">Fig 1.0 — Solo Sixty Case Study Document</p>
+</section>
+
+
+<!-- ② OVERVIEW + CHALLENGE split -->
+<section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid black;" class="ru">
+    <div style="background:white;padding:60px 40px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;">
+        <span class="bg-num">01</span>
+        <div class="ruled"><span class="case-label">Overview</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;">Project<br>Overview</h2>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">Alpine MI is a London-based commercial fit-out company specialising in high-end retail and commercial interiors. They transform empty spaces into immersive brand environments — delivering full fit-outs for clients who demand both precision and aesthetics.</p>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">The project required a series of professionally designed case study documents — pitch-ready PDF collateral that Alpine MI could use to present completed projects, demonstrate capability, and win new business in a competitive market.</p>
+    </div>
+    <div style="background:#080808;padding:60px 40px;position:relative;overflow:hidden;">
+        <span class="bg-num-light">02</span>
+        <div class="ruled ruled-light"><span class="case-label-light">Challenge</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;color:white;">The<br>Challenge</h2>
+        <div style="border-left:3px solid #0033FF;padding-left:28px;margin-bottom:24px;">
+            <p style="font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:600;line-height:1.35;color:rgba(255,255,255,.85);">"The quality of the work was exceptional. The problem was that nothing they were handing to clients reflected that."</p>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;">Alpine MI were operating at a high level — delivering complex, premium fit-outs for brands and businesses across London — but their client-facing materials didn't match. Generic documents and informal presentations were underselling the capability of the company to exactly the clients who could afford to care.</p>
+    </div>
+</section>
+
+
+<!-- ③ APPROACH -->
+<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
+        <div>
+            <div class="ruled"><span class="case-label">Approach</span></div>
+            <h2 class="section-intro">Print.<br>Done<br>Properly.</h2>
+        </div>
+        <div>
+            <div class="approach-row"><span class="approach-n">01</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Document Architecture</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Each case study was structured to tell the project story clearly and sequentially — from the client brief and context through to the completed environment. Structure before style. The reader always knows where they are and what they're looking at.</p></div></div>
+            <div class="approach-row"><span class="approach-n">02</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Photography-Led Design</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Alpine MI's completed spaces are visually striking — the document design was built to let the photography lead. Large-format images, full-bleed spreads and minimal chrome around them. The work does the talking.</p></div></div>
+            <div class="approach-row"><span class="approach-n">03</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Pitch-Ready Format</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Designed as both a printed leave-behind and a high-resolution digital PDF. Every element considered for how it reads in a boardroom, on screen and on paper — consistent quality across all delivery formats.</p></div></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ④ DOCUMENT SPREADS — visual showcase -->
+<section style="background:white;border-bottom:1px solid black;" class="ru">
+    <div style="background:#0033FF;padding:40px 40px;">
+        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+            <div>
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px;">Document Design</p>
+                <h2 class="section-intro" style="color:white;">Inside the<br>Documents</h2>
+            </div>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);max-width:340px;line-height:1.7;">Each spread designed to a print specification — 3mm bleed, CMYK colour, high-resolution imagery, and a typographic system that holds up at A4 and A3.</p>
+        </div>
+    </div>
+
+    <!-- PDF page grid -->
+    <div style="padding:48px 40px;max-width:1100px;margin:0 auto;">
+        <!-- Row 1: Two full spreads -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+            <div class="pdf-page">
+                <!-- REPLACE: PNG export of PDF page 2 — About Us -->
+                <div style="aspect-ratio:1.414/1;background:#f5f5f5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,.2);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:16px;">Add page 2 export<br>About Us spread</span>
+                </div>
+            </div>
+            <div class="pdf-page">
+                <!-- REPLACE: PNG export of PDF page 4 — Modern Concept spread -->
+                <div style="aspect-ratio:1.414/1;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:16px;">Add page 4 export<br>Modern Concept spread</span>
+                </div>
+            </div>
+        </div>
+        <!-- Row 2: Three narrower pages -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px;">
+            <div class="pdf-page">
+                <div style="aspect-ratio:1.414/1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,.2);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:12px;">Page 5<br>Inside spread</span>
+                </div>
+            </div>
+            <div class="pdf-page">
+                <div style="aspect-ratio:1.414/1;background:#1a1a1a;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:12px;">Page 7<br>The Classic</span>
+                </div>
+            </div>
+            <div class="pdf-page">
+                <div style="aspect-ratio:1.414/1;background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,.2);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:12px;">Page 9<br>Projects</span>
+                </div>
+            </div>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;">Fig 2.0 — Solo Sixty Case Study / Selected Spreads</p>
+        <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,.18);margin-top:6px;">To add screenshots: export each PDF page as PNG at 2x resolution and replace the placeholder divs above.</p>
+    </div>
+</section>
+
+
+<!-- ⑤ DESIGN SYSTEM — dark -->
+<section style="background:#080808;border-bottom:1px solid #1a1a1a;" class="ru">
+    <div style="background:#111;padding:40px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;border-bottom:1px solid #1a1a1a;">
+        <div><p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px;">Design System</p><h2 class="section-intro" style="color:white;">Type &<br>System</h2></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.35);max-width:360px;line-height:1.7;">A document design system that works across multiple case studies — consistent grid, type hierarchy and colour application — so new documents can be produced quickly to the same standard.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1a1a1a;padding:1px;">
+        <div style="background:#0d0d0d;padding:32px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Typography</p>
+            <p style="font-size:28px;font-weight:900;color:white;margin-bottom:4px;letter-spacing:-.02em;">Aa</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.35);line-height:1.65;">Two-weight system — bold black display type for headings and section titles, regular weight for body copy. Clean, authoritative, print-optimised. Holds at small sizes without losing legibility.</p>
+        </div>
+        <div style="background:#0d0d0d;padding:32px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Colour</p>
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <div style="width:28px;height:28px;background:#080808;border-radius:3px;border:1px solid rgba(255,255,255,.1);"></div>
+                <div style="width:28px;height:28px;background:white;border-radius:3px;border:1px solid rgba(255,255,255,.1);"></div>
+                <div style="width:28px;height:28px;background:#222;border-radius:3px;border:1px solid rgba(255,255,255,.1);"></div>
+            </div>
+            <p style="font-size:13px;color:rgba(255,255,255,.35);line-height:1.65;">Monochrome primary — black, white and mid-greys. The photography provides all the colour. Brand accent used sparingly for section labels and rule lines only.</p>
+        </div>
+        <div style="background:#0d0d0d;padding:32px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Layout</p>
+            <p style="font-size:13px;color:rgba(255,255,255,.35);line-height:1.65;">A5 landscape format across all documents — optimal for both printed presentation and digital viewing. Consistent margins, a structured column grid, and full-bleed photography sections that contrast with the white editorial pages.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ⑥ STAT STRIP + RESULTS -->
+<section style="background:#F8F8F6;border-bottom:1px solid black;" class="ru">
+    <div style="background:#FF6309;padding:32px 40px;display:flex;align-items:center;flex-wrap:wrap;gap:0;overflow-x:auto;">
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(0,0,0,.15);padding-right:36px;padding-top:4px;padding-bottom:4px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Format</p><p style="font-size:22px;font-weight:900;color:#080808;letter-spacing:-.02em;">Print + PDF</p></div>
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(0,0,0,.15);padding:4px 36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Pages</p><p style="font-size:22px;font-weight:900;color:#080808;letter-spacing:-.02em;">10 per doc</p></div>
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(0,0,0,.15);padding:4px 36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Output</p><p style="font-size:22px;font-weight:900;color:#080808;letter-spacing:-.02em;">CMYK Print</p></div>
+        <div style="flex:1;min-width:140px;padding:4px 0 4px 36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Resolution</p><p style="font-size:22px;font-weight:900;color:#080808;letter-spacing:-.02em;">300dpi</p></div>
+    </div>
+    <div style="padding:80px 40px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;position:relative;overflow:hidden;">
+        <span class="bg-num">06</span>
+        <div><div class="ruled"><span class="case-label">Results</span></div><h2 class="section-intro">What<br>Landed.</h2></div>
+        <div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Print-quality case study documents that match the standard of the fit-outs they represent</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">A reusable document system enabling Alpine MI to produce new case studies efficiently</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Pitch-ready collateral delivered in both print and digital format</p><div class="rtick"></div></div>
+            <div class="result-row" style="border-bottom:1px solid rgba(0,0,0,.07);"><p style="font-size:14px;font-weight:500;">A visual identity for client-facing materials that positions Alpine MI as a premium operator</p><div class="rtick"></div></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ⑦ CREDITS -->
+<section style="background:white;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+        <!-- Closing quote -->
+        <div>
+            <div class="ruled"><span class="case-label">The Work</span></div>
+            <div style="border-left:3px solid #FF6309;padding-left:28px;margin-bottom:32px;">
+                <p style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;line-height:1.4;color:#080808;">"Materials that finally reflect the quality of what Alpine MI actually builds."</p>
+            </div>
+            <p style="font-size:13px;color:rgba(0,0,0,.45);line-height:1.75;">The documents are used across client pitches, project completions and portfolio presentations — giving Alpine MI a professional, consistent front of house that matches the premium nature of their work.</p>
+        </div>
+        <!-- Credits -->
+        <div>
+            <div class="ruled"><span class="case-label">Credits</span></div>
+            <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Print Design</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Document Prod.</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Alpine MI</span></div>
+            <div class="credit-row"><span class="credit-role">Location</span><span class="credit-val">London, UK</span></div>
+            <div class="credit-row"><span class="credit-role">Year</span><span class="credit-val">2024</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- NEXT -->
+<section style="background:#0033FF;padding:60px 40px;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;">Next Case Study</p>
+            <a href="project-westbury.html" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;color:white;display:inline-flex;align-items:center;gap:16px;text-decoration:none;">
+                Westbury Music <i data-lucide="arrow-right" style="width:32px;height:32px;"></i>
+            </a>
+        </div>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,.4);padding:12px 24px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;">Start a project →</a>
+    </div>
+</section>
+
+</div>
+
+<footer class="bg-black text-white">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to become<br>the obvious choice?</h2>
+            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">Start a Project</a>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="about.html" class="hover:text-[#FF6309]">ABOUT</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="work.html" class="hover:text-[#FF6309]">WORK</a>
+                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
+document.querySelectorAll('.ru').forEach((el,i)=>{el.style.transitionDelay=(i*.05)+'s';io.observe(el);});
+</script>
+</body>
+</html>
