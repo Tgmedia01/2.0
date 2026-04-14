@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="styles.css">
     <style>
 
+
+        /* Works section — image hover */
+        .group:hover .works-img {
+            transform: scale(1.07) !important;
+            filter: grayscale(0%) !important;
+        }
+
         /* Index mobile fixes */
         @media (max-width: 768px) {
             /* Featured cards — reduce min height */
@@ -242,141 +249,89 @@
     </section>
 
     <!-- SELECTED WORKS -->
-    <section class="bg-white border-b border-black">
+    <section class="bg-[#F2F2F2] border-b border-black">
 
         <!-- Header -->
-        <div class="px-5 md:px-12 pt-12 pb-10 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-black">
-            <div>
-                <span class="font-mono text-[10px] uppercase tracking-widest text-gray-400 block mb-3">Selected Work — 2024/25</span>
-                <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">Selected<br>Works</h2>
-            </div>
-            <a href="work.html" class="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-gray-400 hover:text-[#0033FF] transition-colors pb-1 border-b border-transparent hover:border-[#0033FF] whitespace-nowrap">
-                View all case studies
-                <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
-            </a>
+        <div class="px-5 md:px-12 pt-10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter">Selected Works</h2>
+            <a href="work.html" class="font-mono text-[10px] uppercase tracking-widest text-gray-400 hover:text-black transition-colors border-b border-transparent hover:border-black pb-px">VIEW ARCHIVE</a>
         </div>
 
-        <!-- TWO FEATURED PROJECTS — large format -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border-b border-black stagger-grid">
+        <!-- TWO STAGGERED CARDS -->
+        <div class="px-5 md:px-12 pb-12 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 items-start stagger-grid">
 
-            <!-- Featured 01 — Bar Studios -->
-            <a href="project-barstudios.html" class="group block relative overflow-hidden" style="min-height:520px;">
-                <!-- Background image -->
-                <div class="absolute inset-0">
-                    <img src="barstudios-redbull.png" alt="Bar Studios" class="w-full h-full object-cover object-center" style="filter:grayscale(40%);transform:scale(1.04);transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.7s ease;">
-                    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,rgba(8,8,8,0.5) 50%,rgba(8,8,8,0.15) 100%);transition:background 0.5s;"></div>
+            <!-- CARD 01 — Bar Studios (top-aligned) -->
+            <a href="project-barstudios.html" class="group block">
+                <!-- Image -->
+                <div class="relative overflow-hidden w-full mb-4" style="aspect-ratio:4/3;">
+                    <img src="barstudios-redbull.png" alt="Bar Studios"
+                         class="works-img w-full h-full object-cover object-center grayscale transition-all duration-700"
+                         style="transform:scale(1.02);transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;">
+                    <!-- Colour overlay — Blue -->
+                    <div class="absolute inset-0 bg-[#0033FF] opacity-0 group-hover:opacity-40 transition-opacity duration-500 mix-blend-multiply"></div>
                 </div>
-                <!-- Hover — image sharpens, less dark -->
-                <style>
-
-        /* Index mobile fixes */
-        @media (max-width: 768px) {
-            /* Featured cards — reduce min height */
-            .feat-card { padding: 24px !important; }
-            section.bg-white > div[style*="min-height:520px"] { min-height: 380px !important; }
-            /* List rows — tighten padding */
-            .group.flex.items-center.justify-between { padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; }
-        }
-                    .feat-card:hover img { filter:grayscale(0%) !important; transform:scale(1.08) !important; }
-                </style>
-                <div class="feat-card absolute inset-0 flex flex-col justify-between p-6 md:p-10 z-10" style="position:absolute;">
-                    <div class="flex justify-between items-start">
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="font-mono text-[9px] border border-white/20 px-2 py-1 text-white/50 uppercase tracking-wider rounded-sm">Web Design</span>
-                            <span class="font-mono text-[9px] border border-white/20 px-2 py-1 text-white/50 uppercase tracking-wider rounded-sm">UX</span>
-                        </div>
-                        <span class="font-mono text-[9px] text-white/30 uppercase tracking-wider">01 / 04</span>
-                    </div>
-                    <div>
-                        <span class="font-mono text-[10px] text-[#FF6309] uppercase tracking-widest block mb-3">Content Production</span>
-                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-white mb-4 group-hover:text-[#FF6309] transition-colors duration-300">Bar<br>Studios</h3>
-                        <p class="text-sm text-white/50 max-w-sm leading-relaxed mb-6">A content-first platform for a social production studio working with Red Bull and global brands — designed to lead with the work.</p>
-                        <div class="flex items-center gap-3">
-                            <span class="font-mono text-[10px] text-white/40 uppercase tracking-widest">View Case Study</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-white/40 group-hover:translate-x-2 transition-transform duration-300"></i>
-                        </div>
-                    </div>
+                <!-- Title row -->
+                <div class="flex items-center justify-between gap-4">
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight group-hover:text-[#0033FF] transition-colors duration-300">Bar Studios</h3>
+                    <span class="font-mono text-[9px] uppercase tracking-widest bg-black text-white px-3 py-1 flex-shrink-0 group-hover:bg-[#0033FF] transition-colors duration-300">WEB</span>
                 </div>
-                <!-- Hover overlay -->
-                <div class="absolute inset-0 bg-[#FF6309] opacity-0 group-hover:opacity-5 transition-opacity duration-500 z-0"></div>
             </a>
 
-            <!-- Featured 02 — Purple Granite -->
-            <a href="project-purplegranite.html" class="group block relative overflow-hidden bg-[#EEEAE4]" style="min-height:520px;">
-                <div class="absolute inset-0 flex items-end justify-end overflow-hidden">
-                    <!-- Stone texture abstract — CSS only -->
-                    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 30px,rgba(0,0,0,0.02) 30px,rgba(0,0,0,0.02) 31px);"></div>
-                    <div style="position:absolute;bottom:-20px;right:-20px;width:320px;height:320px;border-radius:50%;background:rgba(0,51,255,0.06);transform:scale(1);transition:transform 0.7s ease;" class="group-hover:scale-125"></div>
+            <!-- CARD 02 — Purple Granite (offset down on desktop) -->
+            <a href="project-purplegranite.html" class="group block md:mt-20">
+                <!-- Image -->
+                <div class="relative overflow-hidden w-full mb-4" style="aspect-ratio:4/3;">
+                    <!-- Stone texture placeholder — CSS only until screenshot added -->
+                    <div class="w-full h-full bg-[#D8D4CC] flex items-center justify-center relative overflow-hidden">
+                        <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(0,0,0,.04) 20px,rgba(0,0,0,.04) 21px);"></div>
+                        <div style="position:absolute;bottom:-20px;right:-20px;width:60%;padding-bottom:60%;border-radius:50%;background:rgba(0,0,0,.06);"></div>
+                        <!-- REPLACE: <img src="purplegranite-hero.jpg" alt="Purple Granite" class="w-full h-full object-cover grayscale"> -->
+                        <span class="font-mono text-[9px] text-black/25 uppercase tracking-widest relative z-10 text-center px-4">Add screenshot<br>purplegranite.co.uk</span>
+                    </div>
+                    <!-- Colour overlay — Orange -->
+                    <div class="absolute inset-0 bg-[#FF6309] opacity-0 group-hover:opacity-40 transition-opacity duration-500 mix-blend-multiply"></div>
                 </div>
-                <div class="absolute inset-0 flex flex-col justify-between p-8 md:p-10 z-10">
-                    <div class="flex justify-between items-start">
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="font-mono text-[9px] border border-black/15 px-2 py-1 text-black/40 uppercase tracking-wider rounded-sm">Web Design</span>
-                            <span class="font-mono text-[9px] border border-[#0033FF]/30 px-2 py-1 text-[#0033FF] uppercase tracking-wider rounded-sm">Custom Visualiser</span>
-                        </div>
-                        <span class="font-mono text-[9px] text-black/20 uppercase tracking-wider">02 / 04</span>
-                    </div>
-                    <div>
-                        <span class="font-mono text-[10px] text-[#0033FF] uppercase tracking-widest block mb-3">Stone Worktops / E-Commerce</span>
-                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-[#080808] mb-4 group-hover:text-[#0033FF] transition-colors duration-300">Purple<br>Granite</h3>
-                        <p class="text-sm text-black/45 max-w-sm leading-relaxed mb-6">Full digital transformation including a bespoke interactive worktop visualiser — letting customers preview materials inside a real kitchen environment.</p>
-                        <div class="flex items-center gap-3">
-                            <span class="font-mono text-[10px] text-black/30 uppercase tracking-widest">View Case Study</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:translate-x-2 transition-transform duration-300"></i>
-                        </div>
-                    </div>
+                <!-- Title row -->
+                <div class="flex items-center justify-between gap-4">
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight group-hover:text-[#FF6309] transition-colors duration-300">Purple Granite</h3>
+                    <span class="font-mono text-[9px] uppercase tracking-widest bg-black text-white px-3 py-1 flex-shrink-0 group-hover:bg-[#FF6309] transition-colors duration-300">WEB</span>
                 </div>
             </a>
 
         </div>
 
-        <!-- TWO REMAINING — compact list rows -->
-        <div>
-            <a href="project-westbury.html" class="group flex items-center justify-between px-6 md:px-12 py-7 border-b border-black hover:bg-[#0033FF] transition-colors duration-300">
-                <div class="flex items-center gap-6 md:gap-10">
-                    <span class="font-mono text-[10px] text-gray-300 group-hover:text-white/50 transition-colors w-6">03</span>
+        <!-- REMAINING TWO — compact rows below -->
+        <div class="border-t border-black">
+            <a href="project-westbury.html" class="group flex items-center justify-between px-5 md:px-12 py-5 border-b border-black hover:bg-[#0033FF] transition-colors duration-300">
+                <div class="flex items-center gap-5">
+                    <span class="font-mono text-[10px] text-black/20 group-hover:text-white/40 transition-colors w-5">03</span>
                     <div>
-                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-1 transition-colors">Music Publishing</span>
-                        <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter group-hover:text-white transition-colors">Westbury Music</h3>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-0.5 transition-colors">Music Publishing</span>
+                        <h3 class="text-lg md:text-2xl font-black uppercase tracking-tight group-hover:text-white transition-colors">Westbury Music</h3>
                     </div>
                 </div>
-                <div class="flex items-center gap-4 md:gap-8">
-                    <div class="hidden md:flex gap-2">
-                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Web Design</span>
-                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Development</span>
-                    </div>
-                    <i data-lucide="arrow-right" class="w-5 h-5 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
+                <div class="flex items-center gap-3 md:gap-6">
+                    <span class="hidden md:block font-mono text-[9px] border border-black/10 group-hover:border-white/25 px-2 py-1 text-black/30 group-hover:text-white/50 uppercase tracking-wider transition-colors">Web Design</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
                 </div>
             </a>
-
-            <a href="project-hairroom.html" class="group flex items-center justify-between px-6 md:px-12 py-7 hover:bg-[#080808] transition-colors duration-300">
-                <div class="flex items-center gap-6 md:gap-10">
-                    <span class="font-mono text-[10px] text-gray-300 group-hover:text-white/50 transition-colors w-6">04</span>
+            <a href="project-hairroom.html" class="group flex items-center justify-between px-5 md:px-12 py-5 hover:bg-[#FF6309] transition-colors duration-300">
+                <div class="flex items-center gap-5">
+                    <span class="font-mono text-[10px] text-black/20 group-hover:text-black/40 transition-colors w-5">04</span>
                     <div>
-                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-1 transition-colors">Luxury Hair Salon</span>
-                        <h3 class="text-2xl md:text-4xl font-black uppercase tracking-tighter group-hover:text-white transition-colors">The Hair Room</h3>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-black/50 uppercase tracking-widest block mb-0.5 transition-colors">Luxury Hair Salon</span>
+                        <h3 class="text-lg md:text-2xl font-black uppercase tracking-tight group-hover:text-black transition-colors">The Hair Room</h3>
                     </div>
                 </div>
-                <div class="flex items-center gap-4 md:gap-8">
-                    <div class="hidden md:flex gap-2">
-                        <span class="font-mono text-[9px] border border-black/10 group-hover:border-white/20 px-2 py-1 text-black/30 group-hover:text-white/40 uppercase tracking-wider rounded-sm transition-colors">Web Design</span>
-                        <span class="font-mono text-[9px] border border-[#0033FF]/20 group-hover:border-[#0033FF]/40 px-2 py-1 text-[#0033FF]/60 group-hover:text-[#0033FF] uppercase tracking-wider rounded-sm transition-colors">Local SEO</span>
-                    </div>
-                    <i data-lucide="arrow-right" class="w-5 h-5 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
+                <div class="flex items-center gap-3 md:gap-6">
+                    <span class="hidden md:block font-mono text-[9px] border border-black/10 group-hover:border-black/25 px-2 py-1 text-black/30 group-hover:text-black/60 uppercase tracking-wider transition-colors">Web + SEO</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:text-black group-hover:translate-x-1 transition-all duration-300"></i>
                 </div>
-            </a>
-        </div>
-
-        <!-- View all CTA -->
-        <div class="px-6 md:px-12 py-8 border-t border-black flex justify-between items-center">
-            <span class="font-mono text-[10px] text-gray-400 uppercase tracking-widest">4 Projects / 2024–25</span>
-            <a href="work.html" class="group flex items-center gap-3 font-black uppercase text-sm tracking-widest hover:text-[#0033FF] transition-colors">
-                View All Case Studies
-                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
 
     </section>
+
 
 
     <!-- LET'S MAKE THINGS HAPPEN -->
