@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — The Hair Room Coventry | Case Study</title>
+    <meta name="description" content="Case study — The Hair Room Coventry. Web design, development and SEO by TG Media.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .case-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.3)}
+        .case-label-light{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+        .ru{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+        .ru.on{opacity:1;transform:translateY(0)}
+        .mac-lid{background:#1d1d1f;border-radius:12px 12px 0 0;padding:9px 9px 0;box-shadow:0 0 0 1px #3a3a3c,0 50px 100px rgba(0,0,0,.2);position:relative}
+        .mac-lid::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#2c2c2e;border-radius:50%}
+        .mac-screen{background:#000;border-radius:5px;overflow:hidden;aspect-ratio:16/10}
+        .mac-screen .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#120e0b;flex-direction:column}
+        .mac-base{background:linear-gradient(180deg,#2c2c2e,#1d1d1f);height:18px;border-radius:0 0 3px 3px;box-shadow:0 0 0 1px #3a3a3c;position:relative}
+        .mac-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28%;height:4px;background:#111;border-radius:2px 2px 0 0}
+        .mac-stand{width:55%;height:9px;background:linear-gradient(180deg,#232325,#1d1d1f);margin:0 auto;border-radius:0 0 5px 5px;box-shadow:0 0 0 1px #3a3a3c}
+        .iphone-b{background:#1d1d1f;border-radius:36px;padding:12px 7px;box-shadow:0 0 0 1px #3a3a3c,0 30px 60px rgba(0,0,0,.35);position:relative}
+        .iphone-b::before{content:'';position:absolute;top:9px;left:50%;transform:translateX(-50%);width:50px;height:5px;background:#2c2c2e;border-radius:3px}
+        .iphone-s{background:#000;border-radius:25px;overflow:hidden;aspect-ratio:9/19.5}
+        .iphone-s .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#120e0b}
+        .bg-num{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .bg-num-light{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.025);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .section-intro{font-size:clamp(2rem,4.5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9}
+        .ruled{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+        .ruled::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
+        .ruled-light::after{background:rgba(255,255,255,.1)}
+        .approach-row{padding:24px 0;border-top:1px solid rgba(0,0,0,.07);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+        .approach-n{font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.1em;padding-top:2px}
+        .result-row{padding:18px 0;border-top:1px solid rgba(0,0,0,.07);display:flex;justify-content:space-between;align-items:center;gap:16px}
+        .rtick{width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .rtick::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
+        .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
+        .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
+        .credit-val{font-size:13px;font-weight:500}
+        .seo-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid rgba(0,0,0,.07)}
+    </style>
+</head>
+<body class="antialiased" style="background:#F5F2EE;">
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+<div class="grain"></div><div id="cursor"></div>
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0"><span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span></a>
+        <div class="hidden md:flex h-full"><nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase"><a href="index.html" class="hover:text-[#0033FF]">Home</a><a href="about.html" class="hover:text-[#0033FF]">About</a><a href="services.html" class="hover:text-[#0033FF]">Services</a><a href="contact.html" class="hover:text-[#0033FF]">Contact</a></nav></div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+<div id="mobile-menu"><button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button><nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter"><a href="index.html" class="hover:translate-x-4 transition-transform">Home</a><a href="about.html" class="hover:translate-x-4 transition-transform">About</a><a href="services.html" class="hover:translate-x-4 transition-transform">Services</a><a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a></nav></div>
+
+<div id="main-content" style="margin-bottom:0;box-shadow:none;">
+
+<!-- HERO — warm off-white, refined -->
+<section style="background:#F5F2EE;padding-top:64px;border-bottom:1px solid black;overflow:hidden;position:relative;">
+    <div style="position:absolute;top:0;left:0;bottom:0;width:50%;background:linear-gradient(to right,rgba(0,0,0,.03),transparent);"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 0;position:relative;z-index:1;">
+        <div class="flex items-center gap-6 mb-10 ru">
+            <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);border-bottom:1px solid rgba(0,0,0,.15);padding-bottom:2px;">← Back</a>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.25);">Case Study — 04 / 04</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:flex-end;margin-bottom:60px;" class="ru">
+            <div>
+                <p style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;">Luxury Hair Salon / Earlsdon, Coventry</p>
+                <h1 style="font-size:clamp(3rem,12vw,11rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;color:#080808;margin:0;">
+                    The<br>Hair<br><span style="color:#0033FF;">Room</span>
+                </h1>
+            </div>
+            <div style="padding-bottom:8px;">
+                <p style="font-size:14px;color:rgba(0,0,0,.5);line-height:1.7;margin:0 0 24px;">A luxury digital presence for Coventry's premium hair salon — designed to reflect the quality of the experience before a client ever walks through the door. Built with a full local SEO strategy embedded from the ground up.</p>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Client</span><span style="font-size:13px;color:#080808;font-weight:500;">The Hair Room Coventry</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Location</span><span style="font-size:13px;color:#080808;font-weight:500;">Earlsdon, Coventry</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Services</span><span style="font-size:13px;color:#080808;font-weight:500;">Web Design, Dev, SEO</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Platform</span><span style="font-size:13px;color:#080808;font-weight:500;">WordPress / Divi</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:100px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Live</span><a href="https://thehairroomcoventry.co.uk" target="_blank" style="font-size:13px;color:#0033FF;font-weight:500;">thehairroomcoventry.co.uk ↗</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- MacBook -->
+    <div style="max-width:1000px;margin:0 auto;padding:0 24px;" class="ru">
+        <div class="mac-lid"><div class="mac-screen"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Add screenshot — thehairroomcoventry.co.uk</span></div></div></div>
+        <div class="mac-base"></div><div class="mac-stand"></div>
+    </div>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding:20px 0 40px;">Fig 1.0 — Desktop Interface</p>
+</section>
+
+<!-- OVERVIEW + CHALLENGE split -->
+<section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid black;" class="ru">
+    <div style="background:white;padding:60px 40px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;">
+        <span class="bg-num">01</span>
+        <div class="ruled"><span class="case-label">Overview</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;">Project<br>Overview</h2>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">The Hair Room is a luxury hair salon based in Earlsdon — one of Coventry's most established residential areas. A full-service salon offering premium hair services in a space built around calm, quality and a personalised client experience.</p>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">The project required a website that could stand alongside premium salons competing for the same clientele — plus a comprehensive local SEO strategy to establish visibility across Coventry and the surrounding area.</p>
+    </div>
+    <div style="background:#080808;padding:60px 40px;position:relative;overflow:hidden;">
+        <span class="bg-num-light">02</span>
+        <div class="ruled ruled-light"><span class="case-label-light">Challenge</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;color:white;">The<br>Challenge</h2>
+        <div style="border-left:3px solid #0033FF;padding-left:28px;margin-bottom:24px;">
+            <p style="font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:600;line-height:1.35;color:rgba(255,255,255,.85);">"A premium salon deserves a premium first impression. The website was the first place that impression was being lost."</p>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;">Hair and beauty is one of the most competitive local search markets in any UK city. Without structured SEO, a salon of genuine quality can be effectively invisible to the clients who would most value it — and converting those clients to a booking becomes someone else's advantage.</p>
+    </div>
+</section>
+
+<!-- APPROACH -->
+<section style="background:#F5F2EE;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
+        <div>
+            <div class="ruled"><span class="case-label">Approach</span></div>
+            <h2 class="section-intro">Booking<br>First.</h2>
+        </div>
+        <div>
+            <div class="approach-row"><span class="approach-n">01</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Premium Before Anything</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">The design was built to communicate the quality of the physical space before a prospective client visits. Warm, editorial, calm — the digital environment mirrors the atmosphere the salon delivers in person.</p></div></div>
+            <div class="approach-row"><span class="approach-n">02</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Conversion Architecture</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Every page structured to move the visitor from discovery to confidence to action. The booking CTA is persistent — always one step away without being intrusive. No dead ends, no ambiguity about what to do next.</p></div></div>
+            <div class="approach-row"><span class="approach-n">03</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Local SEO From the Ground Up</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Rather than treating SEO as an afterthought, we built the page architecture and content structure around local search intent from day one. Schema markup, keyword-targeted service pages and Open Graph across every page type.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- DESIGN SYSTEM — warm dark -->
+<section style="background:#120e0b;border-bottom:1px solid #2a2016;" class="ru">
+    <div style="background:#1e160e;padding:40px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;border-bottom:1px solid #2a2016;">
+        <div><p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px;">Design System</p><h2 class="section-intro" style="color:white;">Calm.<br>Considered.</h2></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.35);max-width:360px;line-height:1.7;">The visual language built around the two things a premium salon client is looking for before they commit — calm and quality. Nothing included that didn't serve that goal.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2016;padding:1px;">
+        <div style="background:#1a1208;padding:28px;"><p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;">Typography</p><p style="font-size:24px;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.05em;margin-bottom:8px;font-style:italic;">Aa</p><p style="font-size:13px;color:rgba(255,255,255,.3);line-height:1.65;">Refined serif for brand headings. Clean sans for service listings and body copy. Type communicates luxury without formality — nothing shouts in a premium environment.</p></div>
+        <div style="background:#1a1208;padding:28px;"><p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;">Colour</p><div style="display:flex;gap:6px;margin-bottom:10px;"><div style="width:24px;height:24px;background:#F5F2EE;border-radius:3px;border:1px solid rgba(255,255,255,.08);"></div><div style="width:24px;height:24px;background:#E8E0D4;border-radius:3px;border:1px solid rgba(255,255,255,.08);"></div><div style="width:24px;height:24px;background:#C4B8A8;border-radius:3px;border:1px solid rgba(255,255,255,.08);"></div><div style="width:24px;height:24px;background:#080808;border-radius:3px;border:1px solid rgba(255,255,255,.08);"></div></div><p style="font-size:13px;color:rgba(255,255,255,.3);line-height:1.65;">Warm neutrals and near-whites — referencing the interior of a well-designed salon space. Deep contrast accents for CTAs and navigation only.</p></div>
+        <div style="background:#1a1208;padding:28px;"><p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;">Photography</p><p style="font-size:13px;color:rgba(255,255,255,.3);line-height:1.65;">Salon interior photography at full width — letting the physical space speak for itself. Team photography with consistent styling. Before/after presented with clinical precision, not social media informality.</p></div>
+        <div style="background:#1a1208;padding:28px;"><p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;">Layout</p><p style="font-size:13px;color:rgba(255,255,255,.3);line-height:1.65;">Generous white space throughout — a luxury signal in itself. Service sections structured and scannable. The layout guides from introduction to services to booking without effort or confusion.</p></div>
+    </div>
+    <!-- UI detail placeholder -->
+    <div style="margin:1px;background:#1a1208;aspect-ratio:16/5;display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.12);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:16px;">Suggested: Services section or booking CTA close-up</span>
+    </div>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding:20px;">Fig 2.0 — Interface Detail</p>
+</section>
+
+<!-- SEO FEATURE — blue treatment -->
+<section style="background:white;border-bottom:1px solid black;" class="ru">
+    <div style="background:#0033FF;padding:40px;">
+        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+            <div><p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px;">Key Feature</p><h2 class="section-intro" style="color:white;">Local SEO<br>Architecture</h2></div>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);max-width:360px;line-height:1.7;">For an independent salon in a competitive local market, structured search visibility is a commercial asset. We built it in from day one rather than retrofitting it afterwards.</p>
+        </div>
+    </div>
+    <div style="padding:48px 40px;max-width:1100px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+            <div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">Local Business schema — name, address, phone, opening hours</p></div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">Open Graph and Twitter Card meta tags across all pages</p></div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">Yoast SEO — meta titles, descriptions, canonical tags</p></div>
+            </div>
+            <div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">Service-specific page architecture targeting Coventry search terms</p></div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">Image optimisation and structured alt text for search indexing</p></div>
+                <div class="seo-row"><div style="width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:5px;height:5px;border-radius:50%;background:white;"></div></div><p style="font-size:13px;font-weight:500;">WordPress / Divi CMS — full team control post-launch</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEV STAT STRIP + RESULTS -->
+<section style="background:#F5F2EE;border-bottom:1px solid black;" class="ru">
+    <div style="background:#080808;padding:32px 40px;display:flex;align-items:center;overflow-x:auto;">
+        <div style="flex:1;min-width:130px;border-right:1px solid rgba(255,255,255,.08);padding-right:36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Platform</p><p style="font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;">WP/Divi</p></div>
+        <div style="flex:1;min-width:130px;border-right:1px solid rgba(255,255,255,.08);padding:0 36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Schema</p><p style="font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;">Full</p></div>
+        <div style="flex:1;min-width:130px;border-right:1px solid rgba(255,255,255,.08);padding:0 36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">SEO</p><p style="font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;">Local</p></div>
+        <div style="flex:1;min-width:130px;padding-left:36px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Responsive</p><p style="font-size:22px;font-weight:900;color:white;letter-spacing:-.02em;">100%</p></div>
+    </div>
+    <div style="padding:80px 40px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;position:relative;overflow:hidden;">
+        <span class="bg-num">06</span>
+        <div><div class="ruled"><span class="case-label">Results</span></div><h2 class="section-intro">What<br>Landed.</h2></div>
+        <div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">A luxury digital presence that matches the salon's positioning</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Structured local SEO improving visibility in Coventry search</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Conversion-focused journey from discovery to booking enquiry</p><div class="rtick"></div></div>
+            <div class="result-row" style="border-bottom:1px solid rgba(0,0,0,.07);"><p style="font-size:14px;font-weight:500;">CMS giving the team full editorial control post-launch</p><div class="rtick"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- MOBILE + CREDITS -->
+<section style="background:white;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+        <div>
+            <div class="ruled"><span class="case-label">Mobile Experience</span></div>
+            <div style="display:flex;gap:20px;align-items:flex-end;">
+                <div style="width:148px;flex-shrink:0;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Homepage</span></div></div></div></div>
+                <div style="width:148px;flex-shrink:0;margin-bottom:18px;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Services</span></div></div></div></div>
+            </div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-top:16px;">Fig 3.0 — Mobile Interface</p>
+        </div>
+        <div>
+            <div class="ruled"><span class="case-label">Credits</span></div>
+            <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">SEO Strategy</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Platform</span><span class="credit-val">WordPress / Divi</span></div>
+            <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">The Hair Room Coventry</span></div>
+            <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://thehairroomcoventry.co.uk" target="_blank" style="font-size:13px;font-weight:500;color:#0033FF;">thehairroomcoventry.co.uk</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- NEXT — back to start -->
+<section style="background:#0033FF;padding:60px 40px;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;">Back to Start</p>
+            <a href="project-westbury.html" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;color:white;display:inline-flex;align-items:center;gap:16px;text-decoration:none;">Westbury Music <i data-lucide="arrow-right" style="width:32px;height:32px;"></i></a>
+        </div>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,.4);padding:12px 24px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;">Start a project →</a>
+    </div>
+</section>
+
+</div>
+<footer class="bg-black text-white">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to be<br>the obvious choice?</h2>
+            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">Start a Project</a>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50"><a href="index.html" class="hover:text-[#FF6309]">HOME</a><a href="about.html" class="hover:text-[#FF6309]">ABOUT</a><a href="services.html" class="hover:text-[#FF6309]">SERVICES</a><a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a><a href="terms.html" class="hover:text-[#FF6309]">TERMS</a><a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a></div>
+        </div>
+    </div>
+</footer>
+<script src="shared.js"></script>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
+document.querySelectorAll('.ru').forEach((el,i)=>{el.style.transitionDelay=(i*.05)+'s';io.observe(el);});
+</script>
+</body>
+</html>

@@ -11,37 +11,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
-        .cs-body { font-family: 'Inter', sans-serif; }
-        .case-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(8,8,8,0.3); }
-        .case-label-light { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-        .section-num { font-family: 'Space Mono', monospace; font-size: 10px; color: rgba(8,8,8,0.2); }
-        .meta-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 16px 0; }
-        .meta-key { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 120px; flex-shrink: 0; }
-        .meta-val { font-size: 13px; color: #080808; font-weight: 500; }
-        .mockup-device { background: #1d1d1f; border-radius: 14px 14px 0 0; padding: 10px 10px 0; box-shadow: 0 0 0 1px #3a3a3c, 0 60px 120px rgba(0,0,0,0.3); position: relative; }
-        .mockup-device::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: #2c2c2e; border-radius: 50%; }
-        .mockup-screen { background: #000; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; }
-        .mockup-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .mockup-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0c1a1a; flex-direction: column; gap: 8px; }
-        .mockup-base { background: linear-gradient(180deg, #2c2c2e, #1d1d1f); height: 20px; border-radius: 0 0 4px 4px; box-shadow: 0 0 0 1px #3a3a3c; position: relative; }
-        .mockup-base::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 28%; height: 4px; background: #111; border-radius: 2px 2px 0 0; }
-        .mockup-stand { width: 56%; height: 10px; background: linear-gradient(180deg, #232325, #1d1d1f); margin: 0 auto; border-radius: 0 0 6px 6px; box-shadow: 0 0 0 1px #3a3a3c; }
-        .iphone-body { background: #1d1d1f; border-radius: 38px; padding: 13px 8px; box-shadow: 0 0 0 1px #3a3a3c, 0 40px 80px rgba(0,0,0,0.45); position: relative; }
-        .iphone-body::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 54px; height: 5px; background: #2c2c2e; border-radius: 3px; }
-        .iphone-screen { background: #000; border-radius: 27px; overflow: hidden; aspect-ratio: 9/19.5; }
-        .iphone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .iphone-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0c1a1a; }
-        .ru { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .ru.on { opacity: 1; transform: translateY(0); }
-        .tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; border-radius: 2px; color: rgba(0,0,0,0.4); }
-        .grid-line { border-top: 1px solid rgba(0,0,0,0.08); }
-        .credit-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 14px 0; align-items: baseline; gap: 12px; }
-        .credit-role { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 160px; flex-shrink: 0; }
-        .credit-val { font-size: 13px; font-weight: 500; }
+        .case-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.3)}
+        .case-label-light{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+        .meta-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:14px 0}
+        .meta-key{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:110px;flex-shrink:0}
+        .meta-val{font-size:13px;color:#080808;font-weight:500}
+        .tag{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,0,0,.12);padding:4px 10px;border-radius:2px;color:rgba(0,0,0,.4)}
+        .ru{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+        .ru.on{opacity:1;transform:translateY(0)}
+
+        /* DEVICE FRAMES */
+        .mac-lid{background:#1d1d1f;border-radius:12px 12px 0 0;padding:9px 9px 0;box-shadow:0 0 0 1px #3a3a3c,0 50px 100px rgba(0,0,0,.3);position:relative}
+        .mac-lid::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#2c2c2e;border-radius:50%}
+        .mac-screen{background:#000;border-radius:5px;overflow:hidden;aspect-ratio:16/10}
+        .mac-screen img,.mac-screen .ph{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+        .mac-screen .ph{display:flex;align-items:center;justify-content:center;background:#0c1520;flex-direction:column;gap:8px}
+        .mac-base{background:linear-gradient(180deg,#2c2c2e,#1d1d1f);height:18px;border-radius:0 0 3px 3px;box-shadow:0 0 0 1px #3a3a3c;position:relative}
+        .mac-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28%;height:4px;background:#111;border-radius:2px 2px 0 0}
+        .mac-stand{width:55%;height:9px;background:linear-gradient(180deg,#232325,#1d1d1f);margin:0 auto;border-radius:0 0 5px 5px;box-shadow:0 0 0 1px #3a3a3c}
+        .iphone-b{background:#1d1d1f;border-radius:36px;padding:12px 7px;box-shadow:0 0 0 1px #3a3a3c,0 30px 60px rgba(0,0,0,.45);position:relative}
+        .iphone-b::before{content:'';position:absolute;top:9px;left:50%;transform:translateX(-50%);width:50px;height:5px;background:#2c2c2e;border-radius:3px}
+        .iphone-s{background:#000;border-radius:25px;overflow:hidden;aspect-ratio:9/19.5}
+        .iphone-s .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0c1520}
+
+        /* CREATIVE ELEMENTS */
+        .bg-num{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.035);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .bg-num-light{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .section-intro{font-size:clamp(2rem,4.5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9}
+        .ruled{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+        .ruled::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
+        .ruled-light::after{background:rgba(255,255,255,.1)}
+        .editorial-quote{border-left:3px solid #0033FF;padding-left:28px}
+        .editorial-quote p{font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:600;line-height:1.35;color:#080808}
+        .approach-row{padding:24px 0;border-top:1px solid rgba(0,0,0,.07);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+        .approach-n{font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.1em;padding-top:2px}
+        .result-row{padding:18px 0;border-top:1px solid rgba(0,0,0,.07);display:flex;justify-content:space-between;align-items:center;gap:16px}
+        .rtick{width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .rtick::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
+        .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
+        .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
+        .credit-val{font-size:13px;font-weight:500}
     </style>
 </head>
-<body class="cs-body antialiased bg-[#F8F8F6]">
+<body class="antialiased" style="background:#F8F8F6;">
 
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
@@ -82,314 +94,235 @@
 
 <div id="main-content" style="margin-bottom:0;box-shadow:none;">
 
-<!-- ① HERO -->
-<section class="bg-[#F8F8F6] pt-28 pb-20 px-6 md:px-16 border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-6 mb-12 ru">
-            <a href="index.html" class="font-mono text-xs border-b border-black/20 pb-0.5 hover:text-[#0033FF] transition-colors">← Back</a>
-            <span class="case-label">Case Study — 01</span>
+<!-- ① HERO — full bleed, oversized type -->
+<section style="background:#080808;padding-top:64px;border-bottom:1px solid #1a1a1a;overflow:hidden;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,.012) 40px,rgba(255,255,255,.012) 41px);"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 0;">
+        <div class="flex items-center gap-6 mb-10 ru">
+            <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;">← Back</a>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);">Case Study — 01 / 04</span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-20 ru">
+
+        <!-- Oversized title -->
+        <div class="ru" style="margin-bottom:40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;">Music Publishing</p>
+            <h1 style="font-size:clamp(4rem,14vw,13rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;color:white;margin:0;">
+                West<span style="color:#0033FF;">bury</span><br>Music
+            </h1>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;max-width:900px;" class="ru">
             <div>
-                <div class="flex gap-2 mb-6">
-                    <span class="tag">Web Design</span>
-                    <span class="tag">Development</span>
-                    <span class="tag">2024</span>
-                </div>
-                <h1 class="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.82] mb-0">
-                    Westbury<br><span class="text-[#0033FF]">Music</span>
-                </h1>
-            </div>
-            <div class="pb-2">
-                <p class="text-base md:text-lg text-gray-500 leading-relaxed mb-8">
-                    A structured digital platform for one of the UK's leading independent music publishers — built to reflect the weight of their catalogue and the breadth of their global reach.
+                <p style="font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;margin:0 0 20px;">
+                    A structured digital platform for the UK's leading independent music publisher — built to serve artists, labels and global sync supervisors simultaneously.
                 </p>
-                <div>
-                    <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val">Westbury Music Ltd</span></div>
-                    <div class="meta-row"><span class="meta-key">Sector</span><span class="meta-val">Music Publishing / Sync Licensing</span></div>
-                    <div class="meta-row"><span class="meta-key">Services</span><span class="meta-val">Website Design, Development</span></div>
-                    <div class="meta-row"><span class="meta-key">Live</span><a href="https://westburymusic.net" target="_blank" class="meta-val text-[#0033FF] hover:underline">westburymusic.net ↗</a></div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,.15);padding:4px 10px;color:rgba(255,255,255,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Web Design</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,.15);padding:4px 10px;color:rgba(255,255,255,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Development</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(255,255,255,.15);padding:4px 10px;color:rgba(255,255,255,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">2024</span>
                 </div>
             </div>
-        </div>
-
-        <!-- Hero visual — MacBook mockup suggestion -->
-        <div class="ru" style="max-width:900px;margin:0 auto;">
-            <div class="mockup-device">
-                <div class="mockup-screen">
-                    <div class="screen-ph">
-                        <!-- REPLACE WITH: Full homepage screenshot of westburymusic.net -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em;text-align:center;padding:20px;">Suggested mockup:<br>westburymusic.net homepage screenshot</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mockup-base"></div>
-            <div class="mockup-stand"></div>
-            <p class="case-label text-center mt-6">Fig 1.0 — Homepage, Desktop Interface</p>
-        </div>
-    </div>
-</section>
-
-<!-- ② OVERVIEW -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">01</span>
-                <p class="section-num">Overview</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Project Overview</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-4">
-                    Westbury Music is an independent music publisher operating at the intersection of creative talent and global commerce. Their catalogue spans decades of recorded music, and their sync licensing operation places tracks in film, television, advertising and gaming for some of the world's most recognised brands — from Nike and PlayStation to Netflix and the UEFA Champions League.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl">
-                    The project required a website that could simultaneously serve two distinct audiences: artists and labels looking for a trusted publishing partner, and music supervisors seeking licensable content fast. One platform needed to speak credibly to both without compromise.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ③ CHALLENGE -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">02</span>
-                <p class="section-num">The Challenge</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Challenge</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <p class="text-base text-gray-600 leading-relaxed">
-                        The previous digital presence did not reflect the calibre of the company's catalogue or the sophistication of their client base. For a business whose currency is credibility — in both the creative and commercial music worlds — the disconnect between the quality of the work and the quality of the website was a tangible problem.
-                    </p>
-                    <p class="text-base text-gray-600 leading-relaxed">
-                        The challenge was to build something that felt authoritative without being cold, and creative without sacrificing structure. Music publishing is a niche industry where first impressions carry significant weight. A music supervisor browsing for sync opportunities makes judgements within seconds. The platform needed to earn trust immediately.
-                    </p>
-                </div>
-                <div class="border-l-4 border-[#0033FF] pl-6">
-                    <p class="text-lg font-medium text-gray-800 leading-relaxed">
-                        "A publishing company of this standing needed a platform that matched the weight of its catalogue — structured, direct, and built to be taken seriously."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ④ APPROACH -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">03</span>
-                <p class="section-num">The Approach</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Approach</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    We began by mapping the two user journeys in parallel — the artist seeking representation and the music supervisor seeking content. Rather than designing two separate experiences, we identified the shared language between them: quality, credibility, clarity.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    The information architecture was rebuilt from the ground up. The Roster section was structured to present each artist with context — not just a name and headshot but a positioning statement and catalogue reference that speaks to their value as a publishing asset. The Sync section was designed as a functional tool rather than a showcase, allowing supervisors to move quickly from interest to contact.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black">
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Dual Audience</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Architecture designed to serve both artist relations and sync licensing without compromise.</p>
-                    </div>
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Content First</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Catalogue and featured sync placements surface early — the work leads, the company follows.</p>
-                    </div>
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Trust Signals</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Brand placement logos positioned to communicate the scale of the operation immediately.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑤ DESIGN SYSTEM -->
-<section class="py-20 px-6 md:px-16 bg-[#080808] text-white border-b border-[#1a1a1a]">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label-light block mb-2">04</span>
-                <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);">Design System</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6 text-white">Design System</h2>
-                <p class="text-base text-white/50 leading-relaxed max-w-2xl mb-8">
-                    The visual direction was derived from the brand's existing identity — a teal and dark palette that carries both the warmth of a creative organisation and the authority of a commercial one. We extended this into a structured digital language built around restraint and precision.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Typography</p>
-                        <p class="text-white/60 text-sm leading-relaxed">A clean sans-serif hierarchy — large, confident headings paired with structured body copy. Type sizes are deliberately calibrated so content reads at pace, not at leisure. The roster and sync sections use tabular-style layouts where typographic discipline does the structural work.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Colour</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Dark background primary — deep navy and near-black — with the brand's teal used as a precise accent for interaction states and featured content. The palette communicates seriousness without severity. White space is used generously to give the catalogue room to breathe.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Layout</p>
-                        <p class="text-white/60 text-sm leading-relaxed">A rigid grid system maintains consistency across every content type — artist profiles, sync listings, featured placements and brand partner logos all occupy defined structural positions. The grid is the discipline that holds the variety of content together.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Motion</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Subtle. Purposeful. Animation is present only where it adds clarity — content transitions, hover states, featured project carousels. Nothing is decorative. Motion is earned by function.</p>
-                    </div>
-                </div>
-                <!-- UI detail suggestion -->
-                <div style="border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
-                    <div style="aspect-ratio:16/6;background:#0c1a1a;display:flex;align-items:center;justify-content:center;">
-                        <!-- REPLACE WITH: Close-up UI screenshot of the roster or sync grid -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:16px;">Suggested: Roster grid UI close-up</span>
-                    </div>
-                </div>
-                <p class="case-label-light text-center mt-4">Fig 2.0 — Interface Detail</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑥ DEVELOPMENT -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">05</span>
-                <p class="section-num">Development</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Development</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    Built on WordPress with a custom theme — selected for its flexibility in handling varied content types and the Westbury team's ability to update catalogue listings, add new sync placements and manage the roster independently after handover.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Performance was a primary consideration. Large music catalogues with imagery and embedded media can be slow. We implemented lazy loading, optimised asset delivery and structured the database queries to keep load times fast regardless of catalogue size. The site is fully responsive — designed and tested across all viewports with the mobile experience treated as a primary context, not an afterthought.
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black">
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">CMS</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">WordPress</p>
-                    </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">Fast</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Core Vitals</p>
-                    </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">100%</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Responsive</p>
-                    </div>
-                    <div class="bg-[#F8F8F6] p-6 text-center">
-                        <p class="font-black text-2xl mb-1">Custom</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Theme Build</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑦ RESULTS -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">06</span>
-                <p class="section-num">Results</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Results</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Westbury Music launched with a platform that matches the standing of the business. The website now serves as a credible, functional front door to a catalogue that reaches the world's most recognised entertainment and advertising brands.
-                </p>
-                <div class="space-y-0">
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">A digital presence that reflects the calibre of the catalogue</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Dual-audience architecture serving both artist relations and sync</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">CMS framework enabling the team to manage content independently</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);border-bottom:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Scalable platform built to grow alongside the company's roster</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑧ MOBILE + CREDITS -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 ru">
-            <!-- Mobile mockup -->
             <div>
-                <span class="case-label block mb-8">Mobile Experience</span>
-                <div class="flex gap-6 items-end">
-                    <div style="width:160px;flex-shrink:0;">
-                        <div class="iphone-body">
-                            <div class="iphone-screen">
-                                <div class="screen-ph">
-                                    <!-- REPLACE WITH: Mobile homepage screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Mobile<br>homepage</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width:160px;flex-shrink:0;margin-bottom:20px;">
-                        <div class="iphone-body">
-                            <div class="iphone-screen">
-                                <div class="screen-ph">
-                                    <!-- REPLACE WITH: Mobile roster/sync screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Roster<br>mobile</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="case-label mt-6">Fig 3.0 — Mobile Interface</p>
-            </div>
-            <!-- Credits -->
-            <div>
-                <span class="case-label block mb-8">Credits</span>
-                <div>
-                    <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Westbury Music Ltd</span></div>
-                    <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://westburymusic.net" target="_blank" class="credit-val text-[#0033FF] hover:underline">westburymusic.net</a></div>
-                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.08);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.25);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Client</span><span style="font-size:13px;color:rgba(255,255,255,.7);font-weight:500;">Westbury Music Ltd</span></div>
+                <div style="border-top:1px solid rgba(255,255,255,.08);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.25);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Sector</span><span style="font-size:13px;color:rgba(255,255,255,.7);font-weight:500;">Music Publishing / Sync</span></div>
+                <div style="border-top:1px solid rgba(255,255,255,.08);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.25);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Live</span><a href="https://westburymusic.net" target="_blank" style="font-size:13px;color:#0033FF;font-weight:500;">westburymusic.net ↗</a></div>
             </div>
         </div>
     </div>
+
+    <!-- MacBook hero -->
+    <div style="max-width:1000px;margin:0 auto;padding:0 24px 0;" class="ru">
+        <div class="mac-lid">
+            <div class="mac-screen">
+                <div class="ph">
+                    <!-- REPLACE WITH: westburymusic.net homepage screenshot -->
+                    <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Add screenshot — westburymusic.net</span>
+                </div>
+            </div>
+        </div>
+        <div class="mac-base"></div>
+        <div class="mac-stand"></div>
+    </div>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding:20px 0 40px;">Fig 1.0 — Desktop Interface</p>
 </section>
 
-<!-- NEXT / CTA -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black ru">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+<!-- ② OVERVIEW + CHALLENGE — two-tone split -->
+<section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid black;" class="ru">
+    <div style="background:white;padding:60px 40px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;">
+        <span class="bg-num">01</span>
+        <div class="ruled"><span class="case-label">Overview</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;">Project<br>Overview</h2>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:16px;">Westbury Music is an independent music publisher operating at the intersection of creative talent and global commerce. Their sync licensing operation places tracks in film, television, advertising and gaming for brands from Nike and PlayStation to Netflix and the UEFA Champions League.</p>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">The project required a website serving two distinct audiences: artists seeking a publishing partner, and music supervisors seeking licensable content fast. One platform, no compromise.</p>
+    </div>
+    <div style="background:#080808;padding:60px 40px;position:relative;overflow:hidden;">
+        <span class="bg-num-light">02</span>
+        <div class="ruled ruled-light"><span class="case-label-light">Challenge</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;color:white;">The<br>Challenge</h2>
+        <div class="editorial-quote" style="margin-bottom:24px;">
+            <p style="color:rgba(255,255,255,.85);">"A publishing company of this standing needed a platform that matched the weight of its catalogue — structured, direct, built to be taken seriously."</p>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;">The previous presence did not reflect the calibre of the catalogue. For a business whose currency is credibility, the disconnect between quality of work and quality of website was a tangible commercial problem. A music supervisor browsing for sync makes judgements in seconds.</p>
+    </div>
+</section>
+
+<!-- ③ APPROACH — numbered list -->
+<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
         <div>
-            <span class="case-label block mb-3">Next Case Study</span>
-            <a href="project-purplegranite.html" class="text-4xl md:text-6xl font-black uppercase tracking-tight hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
+            <div class="ruled"><span class="case-label">Approach</span></div>
+            <h2 class="section-intro">The<br>Approach</h2>
+        </div>
+        <div>
+            <div class="approach-row">
+                <span class="approach-n">01</span>
+                <div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Dual Audience Architecture</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">We began by mapping two user journeys in parallel — the artist and the music supervisor. Rather than two separate experiences, we identified their shared language: quality, credibility, clarity.</p></div>
+            </div>
+            <div class="approach-row">
+                <span class="approach-n">02</span>
+                <div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Content-First Structure</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">The Roster section presents each artist with context — not just a name but a catalogue reference that speaks to their value. The Sync section is a functional tool, not a showcase, built for speed.</p></div>
+            </div>
+            <div class="approach-row">
+                <span class="approach-n">03</span>
+                <div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Trust Signals</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Brand placement logos — Nike, PlayStation, Netflix, UEFA — positioned to communicate the scale of the operation within the first scroll. The work earns the authority before the copy has to.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ④ DESIGN SYSTEM — dark with accent grid -->
+<section style="background:#080808;padding:80px 24px;border-bottom:1px solid #1a1a1a;overflow:hidden;position:relative;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:60px;">
+            <div>
+                <div class="ruled ruled-light"><span class="case-label-light">Design System</span></div>
+                <h2 class="section-intro" style="color:white;">Design<br>System</h2>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+                <p style="font-size:13px;color:rgba(255,255,255,.35);line-height:1.7;max-width:400px;">The visual direction derived from the brand's existing identity — a teal and dark palette carrying both the warmth of a creative organisation and the authority of a commercial one.</p>
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.08);">
+            <div style="background:#0d0d0d;padding:32px;">
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Typography</p>
+                <p style="font-size:22px;font-weight:900;color:white;margin-bottom:8px;">Aa Bb Cc</p>
+                <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;">Clean sans-serif hierarchy. Large, confident headings paired with structured body copy. Type calibrated to read at pace — designed for music supervisors who don't have time to browse.</p>
+            </div>
+            <div style="background:#0d0d0d;padding:32px;">
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Colour</p>
+                <div style="display:flex;gap:8px;margin-bottom:12px;">
+                    <div style="width:32px;height:32px;background:#0d1a1a;border-radius:4px;border:1px solid rgba(255,255,255,.1);"></div>
+                    <div style="width:32px;height:32px;background:#0a2a2a;border-radius:4px;border:1px solid rgba(255,255,255,.1);"></div>
+                    <div style="width:32px;height:32px;background:#0d5c5c;border-radius:4px;border:1px solid rgba(255,255,255,.1);"></div>
+                    <div style="width:32px;height:32px;background:#12a0a0;border-radius:4px;border:1px solid rgba(255,255,255,.1);"></div>
+                    <div style="width:32px;height:32px;background:white;border-radius:4px;"></div>
+                </div>
+                <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;">Dark navy and near-black primary — communicates seriousness without severity. Teal as precise accent for interaction states. White space used generously to give the catalogue room to breathe.</p>
+            </div>
+            <div style="background:#0d0d0d;padding:32px;">
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Layout</p>
+                <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;">A rigid grid system maintains consistency across every content type — artist profiles, sync listings, featured placements and brand logos all occupy defined structural positions. Grid is the discipline that holds the variety together.</p>
+            </div>
+            <div style="background:#0d0d0d;padding:32px;">
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:#0033FF;text-transform:uppercase;letter-spacing:.15em;margin-bottom:12px;">Motion</p>
+                <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;">Subtle. Purposeful. Animation is present only where it adds clarity — content transitions, hover states, featured project carousels. Nothing decorative. Motion is earned by function.</p>
+            </div>
+        </div>
+        <!-- Mockup placeholder -->
+        <div style="margin-top:40px;border:1px solid rgba(255,255,255,.08);border-radius:6px;aspect-ratio:16/5;background:#0a1010;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:16px;">Suggested: Roster grid or sync page UI close-up</span>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.15em;text-align:center;margin-top:16px;">Fig 2.0 — Interface Detail</p>
+    </div>
+</section>
+
+<!-- ⑤ DEVELOPMENT — stat strip + copy -->
+<section style="background:white;border-bottom:1px solid black;" class="ru">
+    <!-- Orange stat strip -->
+    <div style="background:#FF6309;padding:32px 40px;display:flex;align-items:center;gap:0;overflow:hidden;">
+        <div style="flex:1;border-right:1px solid rgba(0,0,0,.15);padding-right:40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Platform</p>
+            <p style="font-size:28px;font-weight:900;color:#080808;letter-spacing:-.02em;">WordPress</p>
+        </div>
+        <div style="flex:1;border-right:1px solid rgba(0,0,0,.15);padding:0 40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Performance</p>
+            <p style="font-size:28px;font-weight:900;color:#080808;letter-spacing:-.02em;">Fast</p>
+        </div>
+        <div style="flex:1;border-right:1px solid rgba(0,0,0,.15);padding:0 40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Build</p>
+            <p style="font-size:28px;font-weight:900;color:#080808;letter-spacing:-.02em;">Custom</p>
+        </div>
+        <div style="flex:1;padding-left:40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(0,0,0,.5);margin-bottom:4px;">Responsive</p>
+            <p style="font-size:28px;font-weight:900;color:#080808;letter-spacing:-.02em;">100%</p>
+        </div>
+    </div>
+    <div style="padding:60px 40px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+        <div>
+            <div class="ruled"><span class="case-label">Development</span></div>
+            <h2 class="section-intro">Built to<br>Scale.</h2>
+        </div>
+        <div>
+            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:16px;">Built on WordPress with a custom theme — selected for its flexibility in handling varied content types and the team's ability to update catalogue listings, add sync placements and manage the roster independently after handover.</p>
+            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">Performance was primary. Large catalogues with imagery and embedded media can be slow. We implemented lazy loading, optimised asset delivery and structured the database queries to keep load times fast regardless of catalogue size.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ⑥ RESULTS -->
+<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;position:relative;overflow:hidden;" class="ru">
+    <span class="bg-num">06</span>
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
+        <div>
+            <div class="ruled"><span class="case-label">Results</span></div>
+            <h2 class="section-intro">What<br>Landed.</h2>
+        </div>
+        <div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">A digital presence that reflects the calibre of the catalogue</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Dual-audience architecture serving artist relations and sync supervisors</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">CMS framework enabling the team to manage content independently</p><div class="rtick"></div></div>
+            <div class="result-row" style="border-bottom:1px solid rgba(0,0,0,.07);"><p style="font-size:14px;font-weight:500;">Scalable platform built to grow alongside the company's roster</p><div class="rtick"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ⑦ MOBILE + CREDITS -->
+<section style="background:white;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+        <div>
+            <div class="ruled"><span class="case-label">Mobile Experience</span></div>
+            <div style="display:flex;gap:20px;align-items:flex-end;">
+                <div style="width:150px;flex-shrink:0;">
+                    <div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Homepage<br>mobile</span></div></div></div>
+                </div>
+                <div style="width:150px;flex-shrink:0;margin-bottom:18px;">
+                    <div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Roster<br>mobile</span></div></div></div>
+                </div>
+            </div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-top:16px;">Fig 3.0 — Mobile Interface</p>
+        </div>
+        <div>
+            <div class="ruled"><span class="case-label">Credits</span></div>
+            <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Westbury Music Ltd</span></div>
+            <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://westburymusic.net" target="_blank" style="font-size:13px;font-weight:500;color:#0033FF;">westburymusic.net</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- NEXT -->
+<section style="background:#0033FF;padding:60px 40px;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;">Next Case Study</p>
+            <a href="project-purplegranite.html" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;color:white;display:inline-flex;align-items:center;gap:16px;text-decoration:none;">
                 Purple Granite
-                <i data-lucide="arrow-right" class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+                <i data-lucide="arrow-right" style="width:32px;height:32px;"></i>
             </a>
         </div>
-        <a href="contact.html" class="font-mono text-xs border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors whitespace-nowrap">Start a project →</a>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,.4);padding:12px 24px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;">Start a project →</a>
     </div>
 </section>
 
@@ -419,8 +352,8 @@
 
 <script src="shared.js"></script>
 <script>
-const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('on'); io.unobserve(x.target); }}), {threshold:0.08});
-document.querySelectorAll('.ru').forEach((el,i) => { el.style.transitionDelay=(i*0.04)+'s'; io.observe(el); });
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
+document.querySelectorAll('.ru').forEach((el,i)=>{el.style.transitionDelay=(i*.05)+'s';io.observe(el);});
 </script>
 </body>
 </html>

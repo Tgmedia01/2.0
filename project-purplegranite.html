@@ -4,460 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TG MEDIA — Purple Granite | Case Study</title>
-    <meta name="description" content="Case study — Purple Granite website and worktop visualiser. Design and development by TG Media.">
+    <meta name="description" content="Case study — Purple Granite website and worktop visualiser. TG Media.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .cs-body { font-family: 'Inter', sans-serif; }
-        .case-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(8,8,8,0.3); }
-        .case-label-light { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-        .section-num { font-family: 'Space Mono', monospace; font-size: 10px; color: rgba(8,8,8,0.2); }
-        .meta-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 16px 0; }
-        .meta-key { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 120px; flex-shrink: 0; }
-        .meta-val { font-size: 13px; color: #080808; font-weight: 500; }
-        .mockup-device { background: #1d1d1f; border-radius: 14px 14px 0 0; padding: 10px 10px 0; box-shadow: 0 0 0 1px #3a3a3c, 0 60px 120px rgba(0,0,0,0.25); position: relative; }
-        .mockup-device::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: #2c2c2e; border-radius: 50%; }
-        .mockup-screen { background: #000; border-radius: 6px; overflow: hidden; aspect-ratio: 16/10; }
-        .mockup-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-        .mockup-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1008; flex-direction: column; gap: 8px; }
-        .mockup-base { background: linear-gradient(180deg, #2c2c2e, #1d1d1f); height: 20px; border-radius: 0 0 4px 4px; box-shadow: 0 0 0 1px #3a3a3c; position: relative; }
-        .mockup-base::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 28%; height: 4px; background: #111; border-radius: 2px 2px 0 0; }
-        .mockup-stand { width: 56%; height: 10px; background: linear-gradient(180deg, #232325, #1d1d1f); margin: 0 auto; border-radius: 0 0 6px 6px; box-shadow: 0 0 0 1px #3a3a3c; }
-        .iphone-body { background: #1d1d1f; border-radius: 38px; padding: 13px 8px; box-shadow: 0 0 0 1px #3a3a3c, 0 40px 80px rgba(0,0,0,0.4); position: relative; }
-        .iphone-body::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 54px; height: 5px; background: #2c2c2e; border-radius: 3px; }
-        .iphone-screen { background: #000; border-radius: 27px; overflow: hidden; aspect-ratio: 9/19.5; }
-        .iphone-screen .screen-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a1008; }
-        .ru { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .ru.on { opacity: 1; transform: translateY(0); }
-        .tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; border-radius: 2px; color: rgba(0,0,0,0.4); }
-        .credit-row { display: flex; border-top: 1px solid rgba(0,0,0,0.07); padding: 14px 0; align-items: baseline; gap: 12px; }
-        .credit-role { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,0,0,0.3); width: 160px; flex-shrink: 0; }
-        .credit-val { font-size: 13px; font-weight: 500; }
-        /* Visualiser feature highlight */
-        .vis-feature { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 24px; background: white; }
-        .vis-feature-icon { width: 36px; height: 36px; border-radius: 6px; background: #0033FF; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .case-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.3)}
+        .case-label-light{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+        .ru{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+        .ru.on{opacity:1;transform:translateY(0)}
+        .mac-lid{background:#1d1d1f;border-radius:12px 12px 0 0;padding:9px 9px 0;box-shadow:0 0 0 1px #3a3a3c,0 50px 100px rgba(0,0,0,.25);position:relative}
+        .mac-lid::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#2c2c2e;border-radius:50%}
+        .mac-screen{background:#000;border-radius:5px;overflow:hidden;aspect-ratio:16/10}
+        .mac-screen .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0f0e0c;flex-direction:column;gap:8px}
+        .mac-base{background:linear-gradient(180deg,#2c2c2e,#1d1d1f);height:18px;border-radius:0 0 3px 3px;box-shadow:0 0 0 1px #3a3a3c;position:relative}
+        .mac-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28%;height:4px;background:#111;border-radius:2px 2px 0 0}
+        .mac-stand{width:55%;height:9px;background:linear-gradient(180deg,#232325,#1d1d1f);margin:0 auto;border-radius:0 0 5px 5px;box-shadow:0 0 0 1px #3a3a3c}
+        .iphone-b{background:#1d1d1f;border-radius:36px;padding:12px 7px;box-shadow:0 0 0 1px #3a3a3c,0 30px 60px rgba(0,0,0,.4);position:relative}
+        .iphone-b::before{content:'';position:absolute;top:9px;left:50%;transform:translateX(-50%);width:50px;height:5px;background:#2c2c2e;border-radius:3px}
+        .iphone-s{background:#000;border-radius:25px;overflow:hidden;aspect-ratio:9/19.5}
+        .iphone-s .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0f0e0c}
+        .bg-num{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .bg-num-light{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
+        .section-intro{font-size:clamp(2rem,4.5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9}
+        .ruled{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+        .ruled::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
+        .ruled-light::after{background:rgba(255,255,255,.1)}
+        .editorial-quote{border-left:3px solid #0033FF;padding-left:28px}
+        .editorial-quote p{font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:600;line-height:1.35;color:#080808}
+        .approach-row{padding:24px 0;border-top:1px solid rgba(0,0,0,.07);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+        .approach-n{font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.1em;padding-top:2px}
+        .result-row{padding:18px 0;border-top:1px solid rgba(0,0,0,.07);display:flex;justify-content:space-between;align-items:center;gap:16px}
+        .rtick{width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .rtick::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
+        .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
+        .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
+        .credit-val{font-size:13px;font-weight:500}
+        /* Visualiser swatch */
+        .swatch{width:28px;height:28px;border-radius:4px;border:1px solid rgba(0,0,0,.1);}
+        .vis-feat{padding:24px;background:#F8F8F6;border:1px solid rgba(0,0,0,.07);border-radius:6px}
     </style>
 </head>
-<body class="cs-body antialiased bg-[#F8F8F6]">
-
+<body class="antialiased" style="background:#F8F8F6;">
 <div id="preloader">
     <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
     <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
     <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
 </div>
-<div class="grain"></div>
-<div id="cursor"></div>
-
+<div class="grain"></div><div id="cursor"></div>
 <header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
     <div class="flex h-full overflow-hidden">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
-        </a>
-        <div class="hidden md:flex h-full">
-            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
-                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
-                <a href="about.html" class="hover:text-[#0033FF]">About</a>
-                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
-                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
-            </nav>
-        </div>
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0"><span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span></a>
+        <div class="hidden md:flex h-full"><nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase"><a href="index.html" class="hover:text-[#0033FF]">Home</a><a href="about.html" class="hover:text-[#0033FF]">About</a><a href="services.html" class="hover:text-[#0033FF]">Services</a><a href="contact.html" class="hover:text-[#0033FF]">Contact</a></nav></div>
     </div>
     <div class="flex h-full flex-shrink-0">
         <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
         <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
     </div>
 </header>
-<div id="mobile-menu">
-    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
-    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
-        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
-        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
-        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
-    </nav>
-</div>
+<div id="mobile-menu"><button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button><nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter"><a href="index.html" class="hover:translate-x-4 transition-transform">Home</a><a href="about.html" class="hover:translate-x-4 transition-transform">About</a><a href="services.html" class="hover:translate-x-4 transition-transform">Services</a><a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a></nav></div>
 
 <div id="main-content" style="margin-bottom:0;box-shadow:none;">
 
-<!-- ① HERO -->
-<section class="bg-[#F8F8F6] pt-28 pb-20 px-6 md:px-16 border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-6 mb-12 ru">
-            <a href="index.html" class="font-mono text-xs border-b border-black/20 pb-0.5 hover:text-[#0033FF] transition-colors">← Back</a>
-            <span class="case-label">Case Study — 02</span>
+<!-- HERO — off-white with bold type -->
+<section style="background:#EEEAE4;padding-top:64px;border-bottom:1px solid black;overflow:hidden;position:relative;">
+    <div style="position:absolute;top:0;right:0;bottom:0;width:40%;background:linear-gradient(135deg,#0033FF 0%,#001a80 100%);opacity:.08;"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 0;position:relative;z-index:1;">
+        <div class="flex items-center gap-6 mb-10 ru">
+            <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);border-bottom:1px solid rgba(0,0,0,.15);padding-bottom:2px;">← Back</a>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.25);">Case Study — 02 / 04</span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end mb-20 ru">
+        <div class="ru" style="margin-bottom:40px;">
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;">Stone Worktops / E-Commerce</p>
+            <h1 style="font-size:clamp(4rem,14vw,13rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;color:#080808;margin:0;">
+                Purple<br><span style="color:#0033FF;">Granite</span>
+            </h1>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;max-width:900px;" class="ru">
             <div>
-                <div class="flex gap-2 flex-wrap mb-6">
-                    <span class="tag">Web Design</span>
-                    <span class="tag">UX Design</span>
-                    <span class="tag">Development</span>
-                    <span class="tag">Visualiser</span>
-                    <span class="tag">2025</span>
+                <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.7;margin:0 0 20px;">Full digital transformation for the UK's leading stone worktop specialists — including a bespoke interactive visualiser that puts the buying decision in the customer's hands.</p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,.15);padding:4px 10px;color:rgba(0,0,0,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Web Design</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,.15);padding:4px 10px;color:rgba(0,0,0,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">UX</span>
+                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,51,255,.3);padding:4px 10px;color:#0033FF;border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Custom Visualiser</span>
                 </div>
-                <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.82]">
-                    Purple<br><span class="text-[#0033FF]">Granite</span>
-                </h1>
-            </div>
-            <div class="pb-2">
-                <p class="text-base md:text-lg text-gray-500 leading-relaxed mb-8">
-                    A full digital transformation for the UK's leading stone worktop specialists — including a bespoke interactive visualiser that puts the buying decision in the customer's hands.
-                </p>
-                <div>
-                    <div class="meta-row"><span class="meta-key">Client</span><span class="meta-val">Purple Granite Ltd</span></div>
-                    <div class="meta-row"><span class="meta-key">Sector</span><span class="meta-val">Home Improvement / Stone Worktops</span></div>
-                    <div class="meta-row"><span class="meta-key">Services</span><span class="meta-val">Web Design, UX, Development, Custom Visualiser</span></div>
-                    <div class="meta-row"><span class="meta-key">Live</span><a href="https://purplegranite.co.uk" target="_blank" class="meta-val text-[#0033FF] hover:underline">purplegranite.co.uk ↗</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="ru" style="max-width:900px;margin:0 auto;">
-            <div class="mockup-device">
-                <div class="mockup-screen">
-                    <div class="screen-ph">
-                        <!-- REPLACE WITH: purplegranite.co.uk homepage screenshot -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:20px;">Suggested: purplegranite.co.uk homepage screenshot</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mockup-base"></div>
-            <div class="mockup-stand"></div>
-            <p class="case-label text-center mt-6">Fig 1.0 — Homepage, Desktop Interface</p>
-        </div>
-    </div>
-</section>
-
-<!-- ② OVERVIEW -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">01</span>
-                <p class="section-num">Overview</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Project Overview</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-4">
-                    Purple Granite is one of the UK's most established stone worktop specialists, operating showrooms in Kidderminster and Worcester and supplying granite, quartz, porcelain and marble worktops nationally. The company fabricates and installs entirely in-house — a direct operation that gives them a significant quality and speed advantage over the majority of the market.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl">
-                    The project required a complete digital overhaul — from brand expression through to e-commerce experience — to match the premium positioning of the product range and better serve the modern home buyer who expects to research and shortlist entirely online before committing to a showroom visit or purchase.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ③ CHALLENGE -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">02</span>
-                <p class="section-num">The Challenge</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Challenge</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    Stone worktops are a considered purchase. The decision-making process is inherently visual — customers are trying to imagine how a material will look in their specific kitchen, with their specific cabinetry, under their specific light conditions. This creates a fundamental tension in the buying journey: the thing the customer most needs to see is the one thing a conventional product catalogue cannot show them.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    For Purple Granite, this meant that despite offering an exceptional product range and a best-in-class installation service, a significant proportion of potential customers were dropping off before reaching the enquiry stage — unable to bridge the gap between a flat product photograph and the finished result in their home.
-                </p>
-                <div class="border-l-4 border-[#0033FF] pl-6">
-                    <p class="text-lg font-medium text-gray-800 leading-relaxed">
-                        "The gap between product catalogue and customer confidence was costing enquiries. We needed to close that gap with technology."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ④ APPROACH -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">03</span>
-                <p class="section-num">The Approach</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">The Approach</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    We approached this as a UX problem before a design problem. The primary friction point in the buying journey was the inability to visualise the product in context. That meant the solution had to be functional first — a tool that genuinely removes doubt — with the broader design system built around supporting it.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    The website architecture was restructured around three core user intentions: browse the range, visualise the product, and make an enquiry. Every design decision — navigation structure, product page layout, CTA placement — was made in service of moving the user efficiently through those three stages.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black">
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">UX First</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Architecture mapped around the customer decision journey — browse, visualise, enquire.</p>
-                    </div>
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Product Led</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Stone photography at maximum scale — material texture and character visible at every stage.</p>
-                    </div>
-                    <div class="bg-white p-6">
-                        <p class="font-black uppercase text-sm mb-2">Conversion Focus</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Every page has a single, unambiguous next step. No dead ends in the buying journey.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑤ DESIGN SYSTEM -->
-<section class="py-20 px-6 md:px-16 bg-[#080808] text-white border-b border-[#1a1a1a]">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label-light block mb-2">04</span>
-                <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);">Design System</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6 text-white">Design System</h2>
-                <p class="text-base text-white/50 leading-relaxed max-w-2xl mb-8">
-                    The visual language was built to reflect the premium nature of the product — natural stone is inherently tactile, weighty and luxurious. The digital environment needed to carry that sense of material quality without resorting to visual excess.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Typography</p>
-                        <p class="text-white/60 text-sm leading-relaxed">A refined serif for product headings — referencing the craft and permanence of natural stone — paired with a clean sans-serif for UI and body copy. The typographic contrast creates a clear premium signal without feeling dated or decorative.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Colour</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Near-white and warm stone tones as the primary palette — allowing the product photography to carry the colour story rather than competing with it. Purple as a precise brand accent, used sparingly for CTAs, active states and key interaction points.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Layout</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Large-format product imagery at every opportunity. Stone textures deserve space. Product grids are generous — fewer products per row, each given room to communicate material quality. White space is as much a design element as the photography.</p>
-                    </div>
-                    <div>
-                        <p class="font-mono text-[10px] uppercase tracking-widest text-white/30 mb-3">Photography Direction</p>
-                        <p class="text-white/60 text-sm leading-relaxed">Slab photography at close crop to show veining and texture. Kitchen lifestyle imagery selected for accuracy rather than aspiration — real environments, real light conditions, real installation quality.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑥ KEY FEATURE — VISUALISER -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">05</span>
-                <p class="section-num">Key Feature</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-2">The Worktop<br>Visualiser</h2>
-                <p class="font-mono text-[10px] text-[#0033FF] uppercase tracking-widest mb-6">Custom Interactive Tool</p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    The centrepiece of the Purple Granite build is a bespoke interactive worktop visualiser — a custom-built tool that allows customers to preview different stone materials and finishes applied directly within a photorealistic kitchen environment.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Rather than asking customers to imagine how a product will look in their kitchen, the visualiser removes that cognitive burden entirely. Customers can switch between granite, quartz, marble and porcelain options — comparing materials, colours and vein patterns in real time — within a rendered kitchen scene that reflects realistic light and shadow conditions.
-                </p>
-
-                <!-- Visualiser mockup -->
-                <div style="background:#f5f5f5;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;margin-bottom:24px;">
-                    <div style="aspect-ratio:16/8;background:#1a1a1a;display:flex;align-items:center;justify-content:center;position:relative;">
-                        <!-- REPLACE WITH: Screenshot of the actual visualiser tool -->
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:20px;">Suggested: Full-width screenshot of the worktop visualiser<br>showing stone material applied to kitchen environment</span>
-                    </div>
-                    <div style="padding:16px 20px;display:flex;gap:12px;align-items:center;border-top:1px solid rgba(0,0,0,0.06);">
-                        <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(0,0,0,0.3);text-transform:uppercase;letter-spacing:0.1em;">Material selector</span>
-                        <div style="display:flex;gap:8px;">
-                            <div style="width:28px;height:28px;border-radius:4px;background:#8B7355;border:2px solid rgba(0,0,0,0.1);"></div>
-                            <div style="width:28px;height:28px;border-radius:4px;background:#C8C8C8;border:2px solid rgba(0,0,0,0.1);"></div>
-                            <div style="width:28px;height:28px;border-radius:4px;background:#2C2C2C;border:2px solid rgba(0,0,0,0.1);"></div>
-                            <div style="width:28px;height:28px;border-radius:4px;background:#E8E0D0;border:2px solid #0033FF;"></div>
-                            <div style="width:28px;height:28px;border-radius:4px;background:#6B5E4E;border:2px solid rgba(0,0,0,0.1);"></div>
-                        </div>
-                    </div>
-                </div>
-                <p class="case-label mb-8">Fig 2.0 — Interactive Worktop Visualiser</p>
-
-                <!-- Feature grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="vis-feature">
-                        <div class="vis-feature-icon">
-                            <i data-lucide="layers" style="width:18px;height:18px;color:white;"></i>
-                        </div>
-                        <p class="font-black uppercase text-sm mb-2">Material Library</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Full product range accessible in the visualiser — granite, quartz, marble and porcelain. Materials render with accurate colour and vein mapping.</p>
-                    </div>
-                    <div class="vis-feature">
-                        <div class="vis-feature-icon">
-                            <i data-lucide="eye" style="width:18px;height:18px;color:white;"></i>
-                        </div>
-                        <p class="font-black uppercase text-sm mb-2">Kitchen Environment</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Multiple kitchen scene options covering different cabinet colours, styles and layouts — so customers can match to their specific context.</p>
-                    </div>
-                    <div class="vis-feature">
-                        <div class="vis-feature-icon">
-                            <i data-lucide="zap" style="width:18px;height:18px;color:white;"></i>
-                        </div>
-                        <p class="font-black uppercase text-sm mb-2">Real-time Switching</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">Instant material application — no reload, no delay. Customers can compare options side by side in a single session without friction.</p>
-                    </div>
-                    <div class="vis-feature">
-                        <div class="vis-feature-icon">
-                            <i data-lucide="arrow-right" style="width:18px;height:18px;color:white;"></i>
-                        </div>
-                        <p class="font-black uppercase text-sm mb-2">Direct to Enquiry</p>
-                        <p class="text-xs text-gray-500 leading-relaxed">From the visualiser, customers can move directly to request a sample, book a showroom visit or request a quote — all within one continuous journey.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑦ DEVELOPMENT -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">06</span>
-                <p class="section-num">Development</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Development</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-                    The website is built on Shopify — selected for its robust product management capabilities, its native e-commerce infrastructure and its ability to handle the breadth of the Purple Granite range across multiple material categories. The custom theme was built entirely from scratch to the design specification, with no reliance on templated frameworks.
-                </p>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    The visualiser is a bespoke JavaScript application integrated into the product pages — built to handle high-resolution material textures without performance compromise. Canvas-based rendering applies material maps to the kitchen environment in real time, with optimised asset loading to maintain speed across all devices including mobile. The tool was tested extensively across viewport sizes, connection speeds and device types before launch.
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-black border border-black">
-                    <div class="bg-white p-6 text-center">
-                        <p class="font-black text-lg mb-1">Shopify</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Platform</p>
-                    </div>
-                    <div class="bg-white p-6 text-center">
-                        <p class="font-black text-lg mb-1">Custom</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Theme Build</p>
-                    </div>
-                    <div class="bg-white p-6 text-center">
-                        <p class="font-black text-lg mb-1">Canvas</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Visualiser Engine</p>
-                    </div>
-                    <div class="bg-white p-6 text-center">
-                        <p class="font-black text-lg mb-1">100%</p>
-                        <p class="font-mono text-[9px] uppercase tracking-wider text-gray-400">Responsive</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑧ RESULTS -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 ru">
-            <div class="md:col-span-3">
-                <span class="case-label block mb-2">07</span>
-                <p class="section-num">Results</p>
-            </div>
-            <div class="md:col-span-9">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight leading-tight mb-6">Results</h2>
-                <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-8">
-                    Purple Granite launched with a digital platform that genuinely reflects the premium quality of the product — and a visualiser tool that addresses the core friction point in the buying journey. The combination of a structured e-commerce experience and the interactive visualiser positions Purple Granite ahead of competitors who rely on static catalogues and showroom-only comparison.
-                </p>
-                <div class="space-y-0">
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">A digital experience that matches the quality of the product range</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Custom visualiser reducing pre-purchase uncertainty and drop-off</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Structured buying journey from browse to enquiry in three clear stages</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                    <div style="border-top:1px solid rgba(0,0,0,0.08);border-bottom:1px solid rgba(0,0,0,0.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
-                        <p class="text-sm font-medium">Scalable Shopify platform supporting the full product range and future growth</p>
-                        <span style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;">✓</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ⑨ MOBILE + CREDITS -->
-<section class="py-20 px-6 md:px-16 bg-[#F8F8F6] border-b border-black">
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 ru">
-            <div>
-                <span class="case-label block mb-8">Mobile Experience</span>
-                <div class="flex gap-6 items-end">
-                    <div style="width:160px;flex-shrink:0;">
-                        <div class="iphone-body">
-                            <div class="iphone-screen">
-                                <div class="screen-ph">
-                                    <!-- REPLACE WITH: Mobile homepage screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Homepage<br>mobile</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width:160px;flex-shrink:0;margin-bottom:20px;">
-                        <div class="iphone-body">
-                            <div class="iphone-screen">
-                                <div class="screen-ph">
-                                    <!-- REPLACE WITH: Mobile visualiser screenshot -->
-                                    <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:0.08em;">Visualiser<br>mobile</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="case-label mt-6">Fig 3.0 — Mobile Interface</p>
             </div>
             <div>
-                <span class="case-label block mb-8">Credits</span>
-                <div>
-                    <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">UX Design</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
-                    <div class="credit-row"><span class="credit-role">Visualiser</span><span class="credit-val">TG Media (Custom Build)</span></div>
-                    <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Purple Granite Ltd</span></div>
-                    <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://purplegranite.co.uk" target="_blank" class="credit-val text-[#0033FF] hover:underline">purplegranite.co.uk</a></div>
-                </div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Client</span><span style="font-size:13px;color:#080808;font-weight:500;">Purple Granite Ltd</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Sector</span><span style="font-size:13px;color:#080808;font-weight:500;">Home Improvement</span></div>
+                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Live</span><a href="https://purplegranite.co.uk" target="_blank" style="font-size:13px;color:#0033FF;font-weight:500;">purplegranite.co.uk ↗</a></div>
             </div>
         </div>
     </div>
+    <div style="max-width:1000px;margin:0 auto;padding:0 24px;" class="ru">
+        <div class="mac-lid"><div class="mac-screen"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Add screenshot — purplegranite.co.uk</span></div></div></div>
+        <div class="mac-base"></div><div class="mac-stand"></div>
+    </div>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding:20px 0 40px;">Fig 1.0 — Desktop Interface</p>
 </section>
 
-<!-- NEXT / CTA -->
-<section class="py-20 px-6 md:px-16 bg-white border-b border-black ru">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+<!-- OVERVIEW + CHALLENGE split -->
+<section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid black;" class="ru">
+    <div style="background:white;padding:60px 40px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;">
+        <span class="bg-num">01</span>
+        <div class="ruled"><span class="case-label">Overview</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;">Project<br>Overview</h2>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">Purple Granite is one of the UK's most established stone worktop specialists — operating showrooms in Kidderminster and Worcester, fabricating and installing entirely in-house. A direct operation that gives them a significant quality and speed advantage over the market.</p>
+        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">The project required a complete digital overhaul to match the premium positioning of the product range and better serve the modern home buyer who researches entirely online before committing.</p>
+    </div>
+    <div style="background:#080808;padding:60px 40px;position:relative;overflow:hidden;">
+        <span class="bg-num-light">02</span>
+        <div class="ruled ruled-light"><span class="case-label-light">Challenge</span></div>
+        <h2 class="section-intro" style="margin-bottom:24px;color:white;">The<br>Challenge</h2>
+        <div class="editorial-quote" style="margin-bottom:24px;">
+            <p style="color:rgba(255,255,255,.85);">"The gap between product catalogue and customer confidence was costing enquiries. We needed to close that gap with technology."</p>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;">Stone worktops are a considered purchase. Customers can't visualise how a material will look in their kitchen from a flat product photo. A significant proportion were dropping off before enquiry — unable to bridge that gap.</p>
+    </div>
+</section>
+
+<!-- APPROACH -->
+<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
         <div>
-            <span class="case-label block mb-3">Next Case Study</span>
-            <a href="project-barstudios.html" class="text-4xl md:text-6xl font-black uppercase tracking-tight hover:text-[#0033FF] transition-colors flex items-center gap-4 group">
-                Bar Studios
-                <i data-lucide="arrow-right" class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
-            </a>
+            <div class="ruled"><span class="case-label">Approach</span></div>
+            <h2 class="section-intro">UX<br>First.</h2>
         </div>
-        <a href="contact.html" class="font-mono text-xs border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors whitespace-nowrap">Start a project →</a>
+        <div>
+            <div class="approach-row"><span class="approach-n">01</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Browse, Visualise, Enquire</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">The architecture was restructured around three core user intentions. Every design decision was made in service of moving the user efficiently through those three stages without friction or doubt.</p></div></div>
+            <div class="approach-row"><span class="approach-n">02</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Product Led</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Stone photography at maximum scale. Stone textures deserve space. Product grids are generous — fewer products per row, each given room to communicate material quality. White space is as much a design element as the photography.</p></div></div>
+            <div class="approach-row"><span class="approach-n">03</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Conversion Architecture</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Every page has a single, unambiguous next step. Sample request, showroom booking or quote enquiry — always one step away, never buried. No dead ends in the buying journey.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- VISUALISER FEATURE — full creative treatment -->
+<section style="background:white;border-bottom:1px solid black;" class="ru">
+    <!-- Blue header band -->
+    <div style="background:#0033FF;padding:48px 40px;">
+        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+            <div>
+                <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px;">Key Feature — Custom Build</p>
+                <h2 class="section-intro" style="color:white;">The Worktop<br>Visualiser</h2>
+            </div>
+            <p style="font-size:13px;color:rgba(255,255,255,.5);max-width:360px;line-height:1.7;">A bespoke interactive tool that removes the core friction in the buying journey — letting customers see exactly how a material looks in their kitchen before committing.</p>
+        </div>
+    </div>
+    <!-- Visualiser mockup -->
+    <div style="padding:40px;max-width:1100px;margin:0 auto;">
+        <div style="background:#1a1a1a;border-radius:10px;overflow:hidden;margin-bottom:24px;">
+            <div style="aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;position:relative;">
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Suggested: Screenshot of the worktop visualiser — material applied to kitchen scene</span>
+            </div>
+            <div style="background:#111;padding:14px 20px;display:flex;align-items:center;gap:16px;border-top:1px solid rgba(255,255,255,.06);">
+                <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.1em;">Material</span>
+                <div style="display:flex;gap:8px;">
+                    <div class="swatch" style="background:#8B7355;"></div>
+                    <div class="swatch" style="background:#C8C8C8;"></div>
+                    <div class="swatch" style="background:#2C2C2C;"></div>
+                    <div class="swatch" style="background:#E8E0D0;border:2px solid #0033FF;"></div>
+                    <div class="swatch" style="background:#6B5E4E;"></div>
+                    <div class="swatch" style="background:#1a1a1a;"></div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);margin-left:auto;">Porcelain White — Selected</span>
+            </div>
+        </div>
+        <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-bottom:32px;">Fig 2.0 — Interactive Worktop Visualiser</p>
+        <!-- Feature 2x2 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="layers" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Material Library</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Full product range — granite, quartz, marble and porcelain — rendered with accurate colour and vein mapping inside a real kitchen environment.</p></div>
+            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="zap" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Real-time Switching</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Instant material application — no reload, no delay. Customers compare options side by side in a single session without friction or waiting.</p></div>
+            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="eye" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Kitchen Environments</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Multiple scene options covering different cabinet colours and styles — customers can match to their specific kitchen context, not just a generic render.</p></div>
+            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="arrow-right" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Direct to Enquiry</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">From the visualiser, customers move directly to sample request, showroom booking or quote — all within one continuous, uninterrupted journey.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- DEVELOPMENT stat strip -->
+<section style="background:#F8F8F6;border-bottom:1px solid black;" class="ru">
+    <div style="background:#080808;padding:32px 40px;display:flex;align-items:center;gap:0;overflow-x:auto;">
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding-right:40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Platform</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Shopify</p></div>
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding:0 40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Theme</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Custom</p></div>
+        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding:0 40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Visualiser</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Canvas JS</p></div>
+        <div style="flex:1;min-width:140px;padding-left:40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Responsive</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">100%</p></div>
+    </div>
+    <div style="padding:60px 40px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+        <div><div class="ruled"><span class="case-label">Development</span></div><h2 class="section-intro">Built for<br>Performance.</h2></div>
+        <div>
+            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">Built on Shopify with a fully custom theme. The visualiser is a bespoke JavaScript application integrated into product pages — canvas-based rendering applies material maps to the kitchen environment in real time.</p>
+            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">High-resolution material textures with optimised asset loading maintain speed across all devices including mobile. Tested extensively across viewport sizes, connection speeds and device types before launch.</p>
+        </div>
+    </div>
+</section>
+
+<!-- RESULTS -->
+<section style="background:white;padding:80px 24px;border-bottom:1px solid black;position:relative;overflow:hidden;" class="ru">
+    <span class="bg-num">07</span>
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
+        <div><div class="ruled"><span class="case-label">Results</span></div><h2 class="section-intro">What<br>Landed.</h2></div>
+        <div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">A digital experience that matches the quality of the product range</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Custom visualiser reducing pre-purchase uncertainty and drop-off</p><div class="rtick"></div></div>
+            <div class="result-row"><p style="font-size:14px;font-weight:500;">Structured buying journey from browse to enquiry in three clear stages</p><div class="rtick"></div></div>
+            <div class="result-row" style="border-bottom:1px solid rgba(0,0,0,.07);"><p style="font-size:14px;font-weight:500;">Scalable Shopify platform supporting the full product range and future growth</p><div class="rtick"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- MOBILE + CREDITS -->
+<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+        <div>
+            <div class="ruled"><span class="case-label">Mobile Experience</span></div>
+            <div style="display:flex;gap:20px;align-items:flex-end;">
+                <div style="width:148px;flex-shrink:0;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Homepage</span></div></div></div></div>
+                <div style="width:148px;flex-shrink:0;margin-bottom:18px;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Visualiser</span></div></div></div></div>
+            </div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-top:16px;">Fig 3.0 — Mobile Interface</p>
+        </div>
+        <div>
+            <div class="ruled"><span class="case-label">Credits</span></div>
+            <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">UX Design</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
+            <div class="credit-row"><span class="credit-role">Visualiser</span><span class="credit-val">TG Media (Custom)</span></div>
+            <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Purple Granite Ltd</span></div>
+            <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://purplegranite.co.uk" target="_blank" style="font-size:13px;font-weight:500;color:#0033FF;">purplegranite.co.uk</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- NEXT -->
+<section style="background:#0033FF;padding:60px 40px;" class="ru">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;">Next Case Study</p>
+            <a href="project-barstudios.html" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;color:white;display:inline-flex;align-items:center;gap:16px;text-decoration:none;">Bar Studios <i data-lucide="arrow-right" style="width:32px;height:32px;"></i></a>
+        </div>
+        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,.4);padding:12px 24px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;">Start a project →</a>
     </div>
 </section>
 
 </div>
-
 <footer class="bg-black text-white">
     <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
         <div class="grid-bg opacity-20"></div>
@@ -468,22 +259,14 @@
         </div>
         <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
             <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-            <div class="flex flex-wrap gap-4 text-white/50">
-                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
-                <a href="about.html" class="hover:text-[#FF6309]">ABOUT</a>
-                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
-                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
-                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
-            </div>
+            <div class="flex flex-wrap gap-4 text-white/50"><a href="index.html" class="hover:text-[#FF6309]">HOME</a><a href="about.html" class="hover:text-[#FF6309]">ABOUT</a><a href="services.html" class="hover:text-[#FF6309]">SERVICES</a><a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a><a href="terms.html" class="hover:text-[#FF6309]">TERMS</a><a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a></div>
         </div>
     </div>
 </footer>
-
 <script src="shared.js"></script>
 <script>
-const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('on'); io.unobserve(x.target); }}), {threshold:0.08});
-document.querySelectorAll('.ru').forEach((el,i) => { el.style.transitionDelay=(i*0.04)+'s'; io.observe(el); });
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
+document.querySelectorAll('.ru').forEach((el,i)=>{el.style.transitionDelay=(i*.05)+'s';io.observe(el);});
 </script>
 </body>
 </html>
