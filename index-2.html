@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG MEDIA — Design, Branding & Web Development Studio | Warwick</title>
+    <meta name="description" content="TG Media is a design, branding and web development studio based in Warwick. We build high-performance websites, brand identities and digital platforms for ambitious businesses across the UK.">
+    <meta name="keywords" content="web design Warwick, branding studio Warwick, web development UK, brand identity design, digital studio, TG Media">
+    <meta name="author" content="TG Media">
+    <meta property="og:title" content="TG MEDIA — Design, Branding & Web Development Studio">
+    <meta property="og:description" content="A design, branding and web development studio based in Warwick. We engineer high-performance digital platforms and brand identities for businesses that mean business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tgmedia.uk">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tgmedia.uk">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+
+        /* Works section — image hover */
+        .group:hover .works-img {
+            transform: scale(1.07) !important;
+            filter: grayscale(0%) !important;
+        }
+
+        /* Index mobile fixes */
+        @media (max-width: 768px) {
+            /* Featured cards — reduce min height */
+            .feat-card { padding: 24px !important; }
+            section.bg-white > div[style*="min-height:520px"] { min-height: 380px !important; }
+            /* List rows — tighten padding */
+            .group.flex.items-center.justify-between { padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; }
+        }
+        .happen-image {
+            position: absolute;
+            opacity: 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            z-index: 30;
+            border: 1px solid rgba(255,255,255,0.1);
+            pointer-events: none;
+        }
+        .happen-image img {
+            width: 100%; display: block;
+            filter: grayscale(100%) contrast(1.1);
+            mix-blend-mode: luminosity;
+        }
+        .img-1 { top: 12%; left: 6%;  width: 180px; }
+        .img-2 { top: 50%; right: 8%; width: 240px; }
+        .img-3 { bottom: 12%; left: 32%; width: 260px; z-index: 35; }
+        .img-4 { top: 18%; right: 16%; width: 160px; }
+        .img-5 { top: 62%; left: 12%; width: 190px; }
+        .img-6 { bottom: 22%; right: 24%; width: 200px; }
+
+        .project-card { transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .project-card:hover { transform: translateY(-8px); }
+
+        @keyframes bounce-down {
+            0%,100% { transform: translateY(0) translateX(-50%); }
+            50%      { transform: translateY(8px) translateX(-50%); }
+        }
+        .scroll-indicator { animation: bounce-down 1.8s ease-in-out infinite; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TG Media",
+        "url": "https://tgmedia.uk",
+        "logo": "https://tgmedia.uk/logo.png",
+        "description": "TG Media is a design, branding and web development studio based in Warwick, UK. We build brand identities and high-performance websites for ambitious businesses.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Warwick",
+            "addressRegion": "Warwickshire",
+            "addressCountry": "GB"
+        },
+        "areaServed": "United Kingdom",
+        "serviceType": ["Web Design", "Brand Identity", "Web Development", "Digital Production"],
+        "priceRange": "££",
+        "email": "hello@tgmedia.uk",
+        "sameAs": []
+    }
+    </script>
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+</head>
+<body class="antialiased">
+
+<div id="preloader">
+    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
+    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+</div>
+
+<div class="grain"></div>
+<div id="cursor"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
+    <div class="flex h-full overflow-hidden">
+        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
+            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
+        </a>
+        <div class="hidden md:flex h-full">
+            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
+                <a href="index.html" class="text-[#0033FF]">Home</a>
+                <a href="about.html" class="hover:text-[#0033FF]">About</a>
+                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
+                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
+                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="flex h-full flex-shrink-0">
+        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
+        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
+    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
+        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
+        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
+        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
+        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
+        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
+    </nav>
+</div>
+
+<div id="main-content">
+
+    <!-- HERO -->
+    <section class="min-h-[90vh] flex flex-col justify-between p-5 md:p-12 relative overflow-hidden bg-[#EAEAEA] text-black pt-20 md:pt-16">
+        <div class="grid-bg"></div>
+        <div class="relative z-10 pt-6 md:pt-8">
+            <div class="flex gap-3 mb-6 flex-wrap">
+                <span class="text-[10px] border border-black/30 px-2 py-1 font-mono bg-white/50">EST. 2019</span>
+                <span class="text-[10px] border border-black/30 px-2 py-1 font-mono text-[#0033FF] bg-white/50 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-[#0033FF] rounded-full animate-pulse inline-block"></span> AVAILABLE
+                </span>
+            </div>
+            <h1 class="hero-title-responsive font-black tracking-tighter uppercase mt-2">
+                <div class="overflow-hidden"><span class="block hero-word">NOT</span></div>
+                <div class="overflow-hidden"><span class="block hero-word text-[#0033FF]">JUST</span></div>
+                <div class="overflow-hidden"><span class="block hero-word">DESIGN</span></div>
+            </h1>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mt-10 relative z-10 gap-6">
+            <div class="max-w-md bg-white border border-black p-4 md:p-6">
+                <div class="flex justify-between items-start mb-3 border-b border-gray-200 pb-2">
+                    <span class="text-xs font-mono text-gray-400">STATUS</span>
+                    <span class="text-xs font-mono text-[#FF6309] bg-black px-1">ACTIVE</span>
+                </div>
+                <p class="text-base md:text-lg font-bold uppercase mb-2">Web design. Branding. Done properly.</p>
+                <p class="text-sm leading-relaxed text-gray-700 font-mono">TG Media is a web design and branding studio based in Warwick. We build websites and brand identities that make businesses look like they mean it.</p>
+            </div>
+            <a href="contact.html" class="magnetic-btn flex-shrink-0">
+                <div class="w-32 h-32 md:w-44 md:h-44 rounded-full bg-[#0033FF] border-2 border-black flex items-center justify-center relative hover:bg-[#FF6309] transition-colors duration-300 group">
+                    <div class="absolute inset-0 animate-[spin_12s_linear_infinite]">
+                        <svg viewBox="0 0 100 100" width="100%" height="100%">
+                            <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent"/>
+                            <text font-size="11" font-weight="bold" fill="white" letter-spacing="2">
+                                <textPath href="#circlePath">GET IN TOUCH — GET IN TOUCH — </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <i data-lucide="arrow-down-right" class="w-7 h-7 text-white group-hover:rotate-45 transition-transform duration-300"></i>
+                </div>
+            </a>
+        </div>
+        <div class="scroll-indicator absolute bottom-6 left-1/2 hidden md:flex flex-col items-center gap-2 z-10">
+            <span class="font-mono text-[9px] text-black/40 tracking-widest">SCROLL</span>
+            <div class="w-px h-8 bg-black/20"></div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="py-20 md:py-32 px-5 md:px-16 bg-white border-b border-black">
+        <span class="font-mono text-xs uppercase mb-8 block text-gray-400 tracking-widest">What We Do</span>
+        <h2 class="section-headline text-black mb-6 max-w-4xl">Web design that makes your business look like it means business.</h2>
+        <p class="text-gray-600 leading-relaxed text-base md:text-lg max-w-2xl mb-16">TG Media is a web design studio based in Warwick. We build websites that are fast, sharp and structured to convert — and when you need it, we go further into brand identity and creative production too.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 border-t border-black pt-12">
+            <div>
+                <p class="font-mono text-xs text-[#FF6309] mb-3 uppercase tracking-widest">01 — Core</p>
+                <p class="text-2xl font-black uppercase mb-4 leading-tight">Web Design<br>& Development</p>
+                <p class="text-gray-600 leading-relaxed text-sm md:text-base">Custom websites built to perform — designed around your brand, structured for SEO, and fast enough to hold attention. Whether it's a portfolio, a service site or an e-commerce store, it'll look like you're operating at the top of your market.</p>
+            </div>
+            <div>
+                <p class="font-mono text-xs text-[#FF6309] mb-3 uppercase tracking-widest">02 — Extended</p>
+                <p class="text-2xl font-black uppercase mb-4 leading-tight">Brand<br>Identity</p>
+                <p class="text-gray-600 leading-relaxed text-sm md:text-base">If your brand needs work before the website can do its job, we handle that too. Logo, visual language, typography, colour — built as a system that holds up everywhere, not just on screen.</p>
+            </div>
+            <div>
+                <p class="font-mono text-xs text-[#FF6309] mb-3 uppercase tracking-widest">03 — Extended</p>
+                <p class="text-2xl font-black uppercase mb-4 leading-tight">Design &<br>Production</p>
+                <p class="text-gray-600 leading-relaxed text-sm md:text-base">For clients who need the full picture — art direction, motion design, social content and campaign assets. The creative work that sits between your brand and your audience and makes it land.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="border-y border-black bg-black text-white py-4 overflow-hidden">
+        <div class="marquee-container font-black text-3xl md:text-4xl uppercase tracking-widest italic">
+            <div class="marquee-content">
+                <span class="mx-8">VISUAL ENGINEERING</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span><span class="text-[#FF6309] mx-8">●</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span class="mx-8">VISUAL ENGINEERING</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">TG MEDIA</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">SYSTEMS ARCHITECTURE</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">WARWICK UK</span><span class="text-[#FF6309] mx-8">●</span>
+                <span class="mx-8">GLOBAL REACH</span><span class="text-[#FF6309] mx-8">●</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAPABILITIES -->
+    <section class="p-5 md:p-12 bg-[#F2F2F2] border-b border-black">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+            <h2 class="text-3xl md:text-4xl font-black uppercase mb-2 md:mb-0">Capabilities</h2>
+            <span class="font-mono text-xs opacity-40">CORE DISCIPLINES</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black stagger-grid">
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300 block">
+                <div class="flex justify-between mb-10"><span class="font-mono text-xs">01</span><i data-lucide="monitor" class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"></i></div>
+                <h3 class="text-3xl font-black uppercase">Digital</h3>
+                <p class="font-mono text-xs mt-3 opacity-40 group-hover:text-white group-hover:opacity-80 transition-all">WEB / COMMERCE</p>
+            </a>
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300 block">
+                <div class="flex justify-between mb-10"><span class="font-mono text-xs">02</span><i data-lucide="fingerprint" class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"></i></div>
+                <h3 class="text-3xl font-black uppercase">Identity</h3>
+                <p class="font-mono text-xs mt-3 opacity-40 group-hover:text-white group-hover:opacity-80 transition-all">STRATEGY / LOGOS</p>
+            </a>
+            <a href="services.html" class="bg-white p-8 group hover:bg-black hover:text-[#FF6309] transition-colors duration-300 block">
+                <div class="flex justify-between mb-10"><span class="font-mono text-xs">03</span><i data-lucide="box" class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"></i></div>
+                <h3 class="text-3xl font-black uppercase">Physical</h3>
+                <p class="font-mono text-xs mt-3 opacity-40 group-hover:text-white group-hover:opacity-80 transition-all">PRINT / SPACE</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- SELECTED WORKS -->
+    <section class="bg-[#F2F2F2] border-b border-black">
+
+        <!-- Header -->
+        <div class="px-5 md:px-12 pt-10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter">Selected Works</h2>
+            <a href="work.html" class="font-mono text-[10px] uppercase tracking-widest text-gray-400 hover:text-black transition-colors border-b border-transparent hover:border-black pb-px">VIEW ARCHIVE</a>
+        </div>
+
+        <!-- TWO STAGGERED CARDS -->
+        <div class="px-5 md:px-12 pb-12 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 items-start stagger-grid">
+
+            <!-- CARD 01 — Bar Studios (top-aligned) -->
+            <a href="project-barstudios.html" class="group block">
+                <!-- Image -->
+                <div class="relative overflow-hidden w-full mb-4" style="aspect-ratio:4/3;">
+                    <img src="barstudios-redbull.png" alt="Bar Studios"
+                         class="works-img w-full h-full object-cover object-center grayscale transition-all duration-700"
+                         style="transform:scale(1.02);transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;">
+                    <!-- Colour overlay — Blue -->
+                    <div class="absolute inset-0 bg-[#0033FF] opacity-0 group-hover:opacity-40 transition-opacity duration-500 mix-blend-multiply"></div>
+                </div>
+                <!-- Title row -->
+                <div class="flex items-center justify-between gap-4">
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight group-hover:text-[#0033FF] transition-colors duration-300">Bar Studios</h3>
+                    <span class="font-mono text-[9px] uppercase tracking-widest bg-black text-white px-3 py-1 flex-shrink-0 group-hover:bg-[#0033FF] transition-colors duration-300">WEB</span>
+                </div>
+            </a>
+
+            <!-- CARD 02 — Purple Granite (offset down on desktop) -->
+            <a href="project-purplegranite.html" class="group block md:mt-20">
+                <!-- Image -->
+                <div class="relative overflow-hidden w-full mb-4" style="aspect-ratio:4/3;">
+                    <!-- Stone texture placeholder — CSS only until screenshot added -->
+                    <div class="w-full h-full bg-[#D8D4CC] flex items-center justify-center relative overflow-hidden">
+                        <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(0,0,0,.04) 20px,rgba(0,0,0,.04) 21px);"></div>
+                        <div style="position:absolute;bottom:-20px;right:-20px;width:60%;padding-bottom:60%;border-radius:50%;background:rgba(0,0,0,.06);"></div>
+                        <!-- REPLACE: <img src="purplegranite-hero.jpg" alt="Purple Granite" class="w-full h-full object-cover grayscale"> -->
+                        <span class="font-mono text-[9px] text-black/25 uppercase tracking-widest relative z-10 text-center px-4">Add screenshot<br>purplegranite.co.uk</span>
+                    </div>
+                    <!-- Colour overlay — Orange -->
+                    <div class="absolute inset-0 bg-[#FF6309] opacity-0 group-hover:opacity-40 transition-opacity duration-500 mix-blend-multiply"></div>
+                </div>
+                <!-- Title row -->
+                <div class="flex items-center justify-between gap-4">
+                    <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight group-hover:text-[#FF6309] transition-colors duration-300">Purple Granite</h3>
+                    <span class="font-mono text-[9px] uppercase tracking-widest bg-black text-white px-3 py-1 flex-shrink-0 group-hover:bg-[#FF6309] transition-colors duration-300">WEB</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- REMAINING TWO — compact rows below -->
+        <div class="border-t border-black">
+            <a href="project-westbury.html" class="group flex items-center justify-between px-5 md:px-12 py-5 border-b border-black hover:bg-[#0033FF] transition-colors duration-300">
+                <div class="flex items-center gap-5">
+                    <span class="font-mono text-[10px] text-black/20 group-hover:text-white/40 transition-colors w-5">03</span>
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-white/50 uppercase tracking-widest block mb-0.5 transition-colors">Music Publishing</span>
+                        <h3 class="text-lg md:text-2xl font-black uppercase tracking-tight group-hover:text-white transition-colors">Westbury Music</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 md:gap-6">
+                    <span class="hidden md:block font-mono text-[9px] border border-black/10 group-hover:border-white/25 px-2 py-1 text-black/30 group-hover:text-white/50 uppercase tracking-wider transition-colors">Web Design</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300"></i>
+                </div>
+            </a>
+            <a href="project-hairroom.html" class="group flex items-center justify-between px-5 md:px-12 py-5 hover:bg-[#FF6309] transition-colors duration-300">
+                <div class="flex items-center gap-5">
+                    <span class="font-mono text-[10px] text-black/20 group-hover:text-black/40 transition-colors w-5">04</span>
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-400 group-hover:text-black/50 uppercase tracking-widest block mb-0.5 transition-colors">Luxury Hair Salon</span>
+                        <h3 class="text-lg md:text-2xl font-black uppercase tracking-tight group-hover:text-black transition-colors">The Hair Room</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 md:gap-6">
+                    <span class="hidden md:block font-mono text-[9px] border border-black/10 group-hover:border-black/25 px-2 py-1 text-black/30 group-hover:text-black/60 uppercase tracking-wider transition-colors">Web + SEO</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-black/30 group-hover:text-black group-hover:translate-x-1 transition-all duration-300"></i>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+
+
+    <!-- LET'S MAKE THINGS HAPPEN -->
+    <!-- On desktop: GSAP pins this section for scroll animation -->
+    <!-- On mobile: static section, no pin -->
+    <section id="happen-section" class="relative border-t border-black">
+        <div id="happen-inner" class="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-[#0033FF]">
+            <div class="grid-bg mix-blend-overlay opacity-10"></div>
+            <div class="relative z-40 text-center px-5">
+                <h2 class="hero-title-responsive font-black uppercase leading-none text-white happen-title">Let's Make<br>Things Happen.</h2>
+            </div>
+            <!-- Floating images — desktop only via JS -->
+            <div class="happen-image img-1"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600" alt=""></div>
+            <div class="happen-image img-2"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=600" alt=""></div>
+            <div class="happen-image img-3"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600" alt=""></div>
+            <div class="happen-image img-4"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600" alt=""></div>
+            <div class="happen-image img-5"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" alt=""></div>
+            <div class="happen-image img-6"><img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600" alt=""></div>
+        </div>
+    </section>
+
+</div><!-- end #main-content -->
+
+<!-- FOOTER -->
+<footer id="sticky-footer" class="bg-black text-white">
+    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:60vh;">
+        <div class="grid-bg opacity-20"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
+            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
+            <h2 class="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-10">Ready to become<br>the obvious choice?</h2>
+            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">
+                Start a Project
+            </a>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
+            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
+            <div class="flex flex-wrap gap-4 text-white/50">
+                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
+                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
+                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
+                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
+                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
+                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
+                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function initScrollAnimations() {
+
+    // --- HERO WORDS ---
+    gsap.from(".hero-word", {
+        y: 100, opacity: 0, stagger: 0.12, duration: 1.1, ease: "power4.out"
+    });
+
+    // --- REVEAL ON SCROLL --- only animates, never hides
+    gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+        gsap.fromTo(el,
+            { y: 30 },
+            {
+                scrollTrigger: { trigger: el, start: "top 92%", toggleActions: "play none none none" },
+                y: 0, duration: 0.7, delay: i * 0.06, ease: "power3.out"
+            }
+        );
+    });
+
+    // --- SECTION HEADLINES ---
+    gsap.utils.toArray('.section-headline').forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: "top 88%" },
+            y: 40, opacity: 0, duration: 1, ease: "power3.out"
+        });
+    });
+
+    // --- HAPPEN SECTION ---
+    // Desktop: full scroll-pinned animation with floating images
+    // Mobile: simple colour fade animation, no pin
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+        // Extend the section height for the pin scroll distance
+        document.getElementById('happen-section').style.height = '250vh';
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top top",
+                end: "+=150%",
+                scrub: 0.8,
+                pin: "#happen-inner",
+                anticipatePin: 1,
+            }
+        });
+
+        // Background shifts orange
+        tl.to("#happen-inner", { backgroundColor: "#FF6309", duration: 2, ease: "none" }, 0);
+
+        // Images fly in with rotation, then exit
+        tl.fromTo(".img-1", { y: 180, opacity: 0, rotation: -8 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.1)
+          .to(".img-1", { y: -150, opacity: 0, duration: 0.4 }, 0.9);
+        tl.fromTo(".img-4", { y: 180, opacity: 0, rotation: 6 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.2)
+          .to(".img-4", { y: -150, opacity: 0, duration: 0.4 }, 1.0);
+        tl.fromTo(".img-5", { y: 180, opacity: 0, rotation: -5 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.4)
+          .to(".img-5", { y: -150, opacity: 0, duration: 0.4 }, 1.1);
+        tl.fromTo(".img-2", { y: 180, opacity: 0, rotation: 7 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.5)
+          .to(".img-2", { y: -150, opacity: 0, duration: 0.4 }, 1.2);
+        tl.fromTo(".img-6", { y: 180, opacity: 0, rotation: -4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.5 }, 0.65)
+          .to(".img-6", { y: -150, opacity: 0, duration: 0.4 }, 1.35);
+        tl.fromTo(".img-3", { y: 220, opacity: 0, rotation: 3 }, { y: 0, opacity: 1, rotation: 0, duration: 0.6 }, 0.75)
+          .to(".img-3", { y: -180, opacity: 0, duration: 0.5 }, 1.5);
+
+    } else {
+        // Mobile: simple scroll-triggered colour fade, no pin, no images
+        gsap.to("#happen-inner", {
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top 80%",
+                end: "bottom 20%",
+                scrub: 1,
+            },
+            backgroundColor: "#FF6309",
+            ease: "none"
+        });
+
+        // Title slides up on mobile
+        gsap.from(".happen-title", {
+            scrollTrigger: {
+                trigger: "#happen-section",
+                start: "top 85%",
+            },
+            y: 60, opacity: 0, duration: 1, ease: "power3.out"
+        });
+    }
+}
+</script>
+</body>
+</html>
