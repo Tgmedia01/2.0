@@ -1,215 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TG MEDIA — Start a Project | Design Studio Warwick</title>
-    <meta name="description" content="Start a project with TG Media — a design, branding and web development studio based in Warwick. Get in touch to discuss your brand identity, website or digital platform.">
-    <meta property="og:title" content="Start a Project with TG Media">
-    <meta property="og:description" content="Ready to build? Contact TG Media — Warwick design, branding and web development studio.">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://tgmedia.uk/contact.html">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        #main-content { margin-bottom: 0 !important; box-shadow: none !important; }
-        #sticky-footer { position: relative !important; height: auto !important; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a project — TG Media</title>
+<meta name="description" content="Tell Tom about the business and what is not working. Response normally within two working days.">
+<meta name="author" content="Tom McTigue">
+<link rel="canonical" href="https://tgmedia.uk/contact.html">
+<meta property="og:title" content="Start a project — TG Media">
+<meta property="og:description" content="Tell Tom about the business and what is not working. Response normally within two working days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tgmedia.uk/contact.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased">
+<body>
 
-<div id="preloader">
-    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
-    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-</div>
+<a href="#top" class="skip-link">Skip to content</a>
 
-<div class="grain"></div>
-<div id="cursor"></div>
-
-<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full overflow-hidden">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
-        </a>
-        <div class="hidden md:flex h-full">
-            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
-                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
-                <a href="about.html" class="hover:text-[#0033FF]">About</a>
-                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
-                <a href="contact.html" class="text-[#0033FF]">Contact</a>
-            </nav>
-        </div>
-    </div>
-    <div class="flex h-full flex-shrink-0">
-        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
-    </div>
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">TG Media</a>
+  <nav aria-label="Primary" class="primary-nav">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">Studio</a>
+  </nav>
+  <a href="contact.html" class="site-header__cta" aria-current="page" style="border-bottom:1px solid var(--cobalt);padding-bottom:2px">Start a project</a>
 </header>
 
-<div id="mobile-menu">
-    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
-    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
-        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
-        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
-        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
-        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
-    </nav>
-</div>
+<main id="top">
 
-<div id="main-content">
-    <section class="flex flex-col md:flex-row pt-16 bg-white">
+<section class="section pt-1">
+  <h1 class="h-e" data-drift="9">Start a project</h1>
+  <div class="row row--end row--between row--gap-m" style="margin-top:clamp(28px,4vh,48px)">
+    <p class="body-l" style="flex:1 1 460px;max-width:56ch">Tell me a bit about the business and what is not working. Early-stage thinking is welcome &mdash; you do not need a brief, a budget or a decision to start a conversation.</p>
+    <dl class="meta-list" style="flex:0 1 300px;min-width:min(100%,240px)">
+      <div class="meta-row" style="border-bottom:0"><dt>Response time</dt><dd style="margin:6px 0 0">Two working days, usually sooner</dd></div>
+      <div class="meta-row" style="border-bottom:0"><dt>Prefer email</dt><dd style="margin:6px 0 0"><a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a></dd></div>
+    </dl>
+  </div>
+</section>
 
-        <!-- LEFT: Info panel -->
-        <div class="w-full md:w-1/2 p-6 md:p-12 bg-black text-white flex flex-col justify-between relative overflow-hidden">
-            <div class="grid-bg opacity-10"></div>
-            <div class="relative z-10 pt-8">
-                <h1 class="hero-title-responsive font-black uppercase text-[#FF6309]">
-                    <div class="overflow-hidden"><span class="block hero-word">Let's</span></div>
-                    <div class="overflow-hidden"><span class="block hero-word">talk.</span></div>
-                </h1>
-                <p class="mt-8 text-lg max-w-sm font-light leading-relaxed text-white/70">
-                    We work with a small number of clients at a time so every project gets the attention it deserves. If the fit is right, we move fast.
-                </p>
-            </div>
-            <div class="relative z-10 font-mono text-sm text-gray-400 mt-12 md:mt-0 space-y-4">
-                <div>
-                    <p class="text-white/30 text-xs mb-1">HEADQUARTERS</p>
-                    <p class="text-white">WARWICK, UNITED KINGDOM</p>
-                </div>
-                <div>
-                    <p class="text-white/30 text-xs mb-1">DIRECT LINE</p>
-                    <!-- EDIT: Replace with your actual email -->
-                    <a href="/cdn-cgi/l/email-protection#d8b0bdb4b4b798acbfb5bdbcb1b9f6adb3" class="text-[#FF6309] hover:underline"><span class="__cf_email__" data-cfemail="327a777e7e7d7266757f77767b731c6779">[email&#160;protected]</span></a>
-                </div>
-                <div>
-                    <p class="text-white/30 text-xs mb-1">RESPONSE TIME</p>
-                    <p class="text-white">WITHIN 24 HOURS</p>
-                </div>
-            </div>
+<section class="section pt-2 pb-4" data-enquiry>
+
+  <div data-enquiry-sent hidden style="max-width:56ch" tabindex="-1">
+    <p class="eyebrow">Enquiry sent</p>
+    <h2 class="h-b" style="font-size:clamp(1.875rem,5.2vw,4.6875rem);line-height:1;margin-top:20px">Thanks &mdash; that has reached me.</h2>
+    <p class="body-l muted" style="margin-top:24px">I will read it properly and come back to you within two working days. If it is urgent, email <a href="mailto:tom@tgmedia.uk" class="link--quiet" style="color:var(--ink)">tom@tgmedia.uk</a> directly.</p>
+    <p style="margin-top:28px;font-size:16px"><a href="work.html" class="link--quiet" style="border-color:var(--ink);color:var(--ink)">Have a look at the work</a></p>
+  </div>
+
+  <div data-enquiry-form>
+    <form action="https://formspree.io/f/myklyzqv" method="POST" novalidate style="max-width:760px;display:flex;flex-direction:column;gap:clamp(24px,3.4vh,34px)">
+
+      <input type="hidden" name="_subject" value="New enquiry — TG Media website">
+
+      <div class="visually-hidden" aria-hidden="true">
+        <label for="_gotcha">Leave this field empty</label>
+        <input id="_gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p role="alert" class="form-alert" data-enquiry-alert hidden></p>
+
+      <div class="row row--gap-s">
+        <div class="field" style="flex:1 1 300px">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name">
+          <p class="field-error" data-error-for="name" hidden></p>
         </div>
-
-        <!-- RIGHT: Form panel -->
-        <div class="w-full md:w-1/2 p-6 md:p-16 bg-[#F2F2F2] flex flex-col justify-center">
-
-            <div class="mb-10">
-                <p class="font-mono text-xs text-gray-400 uppercase mb-2">Start a project</p>
-                <h2 class="text-2xl md:text-3xl font-black uppercase">Tell us about<br>what you need.</h2>
-            </div>
-
-            <form
-                action="https://formspree.io/f/myklyzqv"
-                method="POST"
-                id="contact-form"
-                class="space-y-8"
-            >
-                <input type="hidden" name="_replyto" value="tom@tgmedia.uk">
-                <input type="hidden" name="_subject" value="New enquiry from TG Media website">
-                <div class="group">
-                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Your Name / Organisation</label>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="e.g. Acme Studio"
-                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors"
-                        required
-                    >
-                </div>
-
-                <div class="group">
-                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Email Address</label>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="hello@yourbusiness.com"
-                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors"
-                        required
-                    >
-                </div>
-
-                <div class="group">
-                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">What do you need?</label>
-                    <select
-                        name="project_type"
-                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-xl outline-none focus:border-[#0033FF] text-black appearance-none rounded-none cursor-pointer"
-                    >
-                        <option value="">Select a service...</option>
-                        <option>Web Design & Development</option>
-                        <option>Brand Identity</option>
-                        <option>Both — Brand & Web</option>
-                        <option>Design & Content Production</option>
-                        <option>Not sure yet — let's talk</option>
-                    </select>
-                </div>
-
-                <div class="group">
-                    <label class="font-mono text-[10px] uppercase text-gray-400 mb-2 block tracking-widest">Tell us about your project</label>
-                    <textarea
-                        name="message"
-                        placeholder="What are you building, what's the problem you're trying to solve, and when do you need it?"
-                        rows="4"
-                        class="w-full bg-transparent border-b-2 border-black py-3 font-bold text-base outline-none focus:border-[#0033FF] placeholder:text-black/20 transition-colors resize-none leading-relaxed"
-                    ></textarea>
-                </div>
-
-                <!-- Success message (hidden by default) -->
-                <div id="form-success" class="hidden bg-black text-white p-4 font-mono text-sm">
-                    <span class="text-[#FF6309]">✓</span> Message received. We'll be in touch within 24 hours.
-                </div>
-
-                <button
-                    type="submit"
-                    class="w-full bg-[#0033FF] text-white py-5 font-black uppercase hover:bg-black hover:text-[#FF6309] transition-all duration-300 tracking-widest text-base flex justify-between px-8 items-center group"
-                >
-                    <span>Send Message</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
-                </button>
-
-                <p class="font-mono text-[10px] text-gray-400 leading-relaxed">
-                    Your details are used solely to respond to your enquiry. See our <a href="privacy.html" class="underline hover:text-black">Privacy Policy</a>.
-                </p>
-            </form>
+        <div class="field" style="flex:1 1 300px">
+          <label for="organisation">Organisation <span class="muted">(if there is one)</span></label>
+          <input id="organisation" name="organisation" type="text" autocomplete="organization">
         </div>
+      </div>
 
-    </section>
-</div>
+      <div class="row row--gap-s">
+        <div class="field" style="flex:1 1 300px">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+          <p class="field-error" data-error-for="email" hidden></p>
+        </div>
+        <div class="field" style="flex:1 1 300px">
+          <label for="website">Current website or social profile</label>
+          <input id="website" name="website" type="text" inputmode="url">
+        </div>
+      </div>
 
-<footer class="bg-black text-white">
-    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
-        <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-12">
-            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to become<br>the obvious choice?</h2>
+      <div class="field" style="max-width:420px">
+        <label for="project-type">What sort of project</label>
+        <select id="project-type" name="project-type">
+          <option value="">Choose one</option>
+          <option>A new website</option>
+          <option>Redesign of an existing site</option>
+          <option>Brand and website together</option>
+          <option>Ongoing support for a site I already have</option>
+          <option>Design or production work, not a website</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">What are you trying to sort out</label>
+        <p class="field-hint">A few sentences is plenty. Detail is welcome if you have it.</p>
+        <textarea id="message" name="message" rows="7"></textarea>
+        <p class="field-error" data-error-for="message" hidden></p>
+      </div>
+
+      <div class="row row--gap-s">
+        <div class="field" style="flex:1 1 260px">
+          <label for="timing">Timing</label>
+          <select id="timing" name="timing">
+            <option value="">Choose one</option>
+            <option>As soon as possible</option>
+            <option>Next one to three months</option>
+            <option>Three to six months</option>
+            <option>Later this year</option>
+            <option>No fixed date</option>
+          </select>
         </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
-            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-            <div class="flex flex-wrap gap-4 text-white/50">
-                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
-                <a href="about.html" class="hover:text-[#FF6309]">ABOUT</a>
-                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
-                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
-                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
-                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
-                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
-            </div>
+        <div class="field" style="flex:1 1 260px">
+          <label for="budget">Budget range</label>
+          <select id="budget" name="budget">
+            <option value="">Choose one</option>
+            <option>Under &pound;5,000</option>
+            <option>&pound;5,000 &ndash; &pound;10,000</option>
+            <option>&pound;10,000 &ndash; &pound;20,000</option>
+            <option>&pound;20,000 or more</option>
+            <option>Not sure yet</option>
+          </select>
         </div>
+        <div class="field" style="flex:1 1 260px">
+          <label for="source">How did you come across TG Media</label>
+          <select id="source" name="source">
+            <option value="">Choose one</option>
+            <option>Someone recommended me</option>
+            <option>A site I built</option>
+            <option>Search</option>
+            <option>Instagram or LinkedIn</option>
+            <option>We have spoken before</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" style="max-width:60ch">
+        <div class="consent-row">
+          <input id="consent" name="consent" type="checkbox" value="yes">
+          <label for="consent" class="body-l">I am happy for Tom to use these details to reply to my enquiry. Nothing is added to a mailing list. See the <a href="privacy.html">privacy policy</a>.</label>
+        </div>
+        <p class="field-error" data-error-for="consent" hidden></p>
+      </div>
+
+      <div class="row" style="align-items:center;gap:24px;padding-top:8px;border-top:1px solid var(--rule)">
+        <button type="submit" class="btn-submit">Send enquiry</button>
+        <p class="eyebrow">I read it properly and reply with questions or a suggested call. Nothing automated.</p>
+      </div>
+    </form>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__about">
+      <p>TG Media</p>
+      <p>Independent design studio. Websites and visual identities for businesses that have outgrown how they currently present themselves. Warwick, UK.</p>
     </div>
+    <div class="site-footer__navs">
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">Studio</a>
+        <a href="contact.html">Start a project</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </div>
+  <p class="site-footer__bottom">&copy; <span data-year>2026</span> TG Media &nbsp;/&nbsp; Warwick, UK &nbsp;/&nbsp; Design and development by Tom McTigue</p>
 </footer>
 
 <script src="shared.js"></script>
-<script>
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', function() {
-            const btn = form.querySelector('button[type="submit"]');
-            if (btn) { btn.innerText = 'Sending...'; btn.disabled = true; }
-        });
-    }
-</script>
 </body>
 </html>

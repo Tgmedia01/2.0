@@ -1,279 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TG MEDIA — Services | Web Design, Branding & Digital Production</title>
-    <meta name="description" content="TG Media offers web design, brand identity, e-commerce development and digital content production. Based in Warwick, serving clients across the UK.">
-    <meta property="og:title" content="TG Media Services — Web Design, Branding & Digital Production">
-    <meta property="og:description" content="From brand identity to Shopify development and motion design — TG Media builds the full digital picture.">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://tgmedia.uk/services.html">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — website design, redesign and development — TG Media</title>
+<meta name="description" content="Bespoke websites, website redesigns, brand and website systems, WordPress and CMS builds, ongoing support. Every quote written for the project.">
+<meta name="author" content="Tom McTigue">
+<link rel="canonical" href="https://tgmedia.uk/services.html">
+<meta property="og:title" content="Services — website design, redesign and development — TG Media">
+<meta property="og:description" content="Bespoke websites, website redesigns, brand and website systems, WordPress and CMS builds, ongoing support. Every quote written for the project.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tgmedia.uk/services.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased">
+<body>
 
-<div id="preloader">
-    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
-    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-</div>
+<a href="#top" class="skip-link">Skip to content</a>
 
-<div class="grain"></div>
-<div id="cursor"></div>
-
-<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl">TG — MEDIA™</span>
-        </a>
-        <div class="hidden md:flex h-full">
-            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
-                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
-                <a href="about.html" class="hover:text-[#0033FF]">About</a>
-                <a href="services.html" class="text-[#0033FF]">Services</a>
-                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
-            </nav>
-        </div>
-    </div>
-    <div class="flex h-full">
-        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-6 md:px-8 h-full flex items-center bg-[#0033FF] text-white border-l border-black cursor-pointer font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309] group">
-            <span class="group-hover:mr-2 transition-all">Menu</span>
-            <span class="w-2 h-2 bg-[#FF6309] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-        </button>
-    </div>
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">TG Media</a>
+  <nav aria-label="Primary" class="primary-nav">
+    <a href="work.html">Work</a>
+    <a href="services.html" aria-current="page">Services</a>
+    <a href="about.html">Studio</a>
+  </nav>
+  <a href="contact.html" class="site-header__cta">Start a project</a>
 </header>
 
-<div id="mobile-menu">
-    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
-    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
-        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
-        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
-        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
-        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
-    </nav>
-</div>
+<main id="top">
 
-<div id="main-content">
-    <div class="min-h-screen bg-[#F0F0F0] pt-24">
+<section class="section" style="padding-top:clamp(32px,6vh,80px)">
+  <p class="eyebrow">What I do</p>
+  <h1 class="h-d" style="margin-top:clamp(20px,4vh,44px);max-width:19ch">I make brands clearer, websites harder to ignore, and digital experiences easier to use.</h1>
+  <div class="row row--flush-right" style="margin-top:clamp(28px,4vh,56px)">
+    <p class="body-l muted" style="flex:0 1 min(100%,52ch)">Strategy, identity, design and development &mdash; joined up from the first idea to launch and beyond.</p>
+  </div>
+</section>
 
-        <!-- PAGE HEADER -->
-        <div class="p-6 md:p-12 border-b border-black">
-            <h1 class="hero-title-responsive font-black uppercase mb-8 text-[#0033FF]">
-                <div class="overflow-hidden"><span class="block">Services</span></div>
-            </h1>
-            <div class="flex flex-col md:flex-row justify-between md:items-end gap-6">
-                <p class="max-w-xl text-lg leading-relaxed text-gray-700">
-                    Three disciplines. One standard. Whether you come to us for brand, web or both — the goal is the same. You leave looking like the obvious choice in your market.
-                </p>
-                <a href="contact.html" class="flex-shrink-0 font-mono text-xs border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors self-start md:self-auto">
-                    START A PROJECT →
-                </a>
-            </div>
-        </div>
-
-        <!-- SERVICE 01: WEB & DIGITAL -->
-        <div class="border-b border-black bg-white p-6 md:p-12 hover:bg-[#0033FF] hover:text-white transition-colors duration-300 group">
-            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8 gap-4">
-                <div>
-                    <span class="font-mono text-xs text-[#FF6309] block mb-3">01</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase">Web & Digital</h2>
-                </div>
-                <p class="max-w-sm text-sm leading-relaxed opacity-60 group-hover:opacity-90 md:text-right">
-                    A website that looks good but doesn't convert is an expensive brochure. We build platforms that do both.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 group-hover:border-white/20 pt-8">
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Website Design & Build</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Custom-designed websites built for speed, SEO and conversion. From single-page platforms to full multi-page sites — designed to your brand, built to perform.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ WordPress / Webflow / Custom HTML</li>
-                        <li>→ Mobile-first responsive build</li>
-                        <li>→ SEO architecture included</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">E-Commerce</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Shopify stores built around your product, your customer and your margin. Custom themes, clean UX and a checkout flow that doesn't lose people at the finish line.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Shopify Custom Themes</li>
-                        <li>→ Product & collection architecture</li>
-                        <li>→ App integration & migration</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Ongoing Support</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Most agencies disappear after launch. We offer ongoing maintenance, updates and development retainers — so your site keeps pace with your business.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Monthly retainer packages</li>
-                        <li>→ Performance monitoring</li>
-                        <li>→ Content & feature updates</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- SERVICE 02: BRAND IDENTITY -->
-        <div class="border-b border-black bg-white p-6 md:p-12 hover:bg-[#FF6309] hover:text-black transition-colors duration-300 group">
-            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8 gap-4">
-                <div>
-                    <span class="font-mono text-xs text-[#FF6309] group-hover:text-black/50 block mb-3">02</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase">Brand Identity</h2>
-                </div>
-                <p class="max-w-sm text-sm leading-relaxed opacity-60 group-hover:opacity-90 md:text-right">
-                    Your brand is the first thing people judge and the last thing they forget. It needs to be right.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 group-hover:border-black/20 pt-8">
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Identity System</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Logo, wordmark, colour palette, typography and visual language — developed as a complete system, not a collection of isolated assets. Built to work at every scale and in every context.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Logo & wordmark design</li>
-                        <li>→ Colour & typography system</li>
-                        <li>→ Brand strategy & positioning</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Brand Guidelines</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">A brand without rules is a brand that drifts. We produce clear, practical guidelines that keep your identity consistent whether you're briefing a printer or a developer.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Brand book & usage rules</li>
-                        <li>→ Tone of voice guidelines</li>
-                        <li>→ Asset library & templates</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Brand Collateral</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">The physical and digital touchpoints that carry your brand into the world. Business cards, pitch decks, social templates and signage — designed to the same standard as everything else.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Print & stationery design</li>
-                        <li>→ Social media templates</li>
-                        <li>→ Pitch decks & presentations</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- SERVICE 03: DESIGN & PRODUCTION -->
-        <div class="border-b border-black bg-white p-6 md:p-12 hover:bg-black hover:text-white transition-colors duration-300 group">
-            <div class="flex flex-col md:flex-row justify-between md:items-start mb-8 gap-4">
-                <div>
-                    <span class="font-mono text-xs text-[#FF6309] block mb-3">03</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase">Design & Production</h2>
-                </div>
-                <p class="max-w-sm text-sm leading-relaxed opacity-60 group-hover:opacity-90 md:text-right">
-                    The creative layer that sits between your brand and your audience. The work that makes people stop scrolling.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 group-hover:border-white/20 pt-8">
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Art Direction</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Creative direction for campaigns, shoots and visual content. We develop the concept, oversee the execution and deliver assets that are consistent with your brand and built for the channels they'll live in.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Campaign concept & direction</li>
-                        <li>→ Photography art direction</li>
-                        <li>→ Content strategy</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Motion & Animation</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Static brands move now. Logo animations, UI micro-interactions, social content and short-form video — motion that reinforces your identity rather than distracting from it.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Logo & brand animation</li>
-                        <li>→ UI motion design</li>
-                        <li>→ Social & campaign video</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold uppercase mb-3 text-base">Digital Design</h3>
-                    <p class="text-sm opacity-60 group-hover:opacity-90 leading-relaxed mb-3">Ongoing design support for businesses that need a consistent creative output — social graphics, email templates, digital ads and everything in between. Designed on-brand, delivered on time.</p>
-                    <ul class="text-xs font-mono opacity-40 group-hover:opacity-70 space-y-1">
-                        <li>→ Social media graphics</li>
-                        <li>→ Email & newsletter design</li>
-                        <li>→ Digital advertising assets</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROCESS STRIP -->
-        <div class="bg-black text-white p-6 md:p-12">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
-                <h2 class="text-3xl md:text-5xl font-black uppercase">How We Work</h2>
-                <p class="max-w-sm text-sm text-white/50 leading-relaxed">Every project follows the same four stages. You always know where things are, what's next, and why.</p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 stagger-grid">
-                <div class="bg-black p-6 md:p-8">
-                    <span class="font-mono text-xs text-[#FF6309] block mb-4">01</span>
-                    <h3 class="font-black uppercase text-lg mb-2">Discovery</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">We learn your business, your audience and your goals. Then we define exactly what needs to be built and why.</p>
-                </div>
-                <div class="bg-black p-6 md:p-8">
-                    <span class="font-mono text-xs text-[#FF6309] block mb-4">02</span>
-                    <h3 class="font-black uppercase text-lg mb-2">Strategy</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">Structure before aesthetics. We map the architecture, content and user journey before a single pixel is designed.</p>
-                </div>
-                <div class="bg-black p-6 md:p-8">
-                    <span class="font-mono text-xs text-[#FF6309] block mb-4">03</span>
-                    <h3 class="font-black uppercase text-lg mb-2">Design & Build</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">The execution phase. Design, development and content production — delivered in clear stages with your input throughout.</p>
-                </div>
-                <div class="bg-black p-6 md:p-8">
-                    <span class="font-mono text-xs text-[#FF6309] block mb-4">04</span>
-                    <h3 class="font-black uppercase text-lg mb-2">Launch & Beyond</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">We don't disappear at go-live. Testing, deployment, handover and ongoing support — the work doesn't stop when the site goes live.</p>
-                </div>
-            </div>
-        </div>
-
+<section class="section" data-modes style="padding-top:clamp(72px,12vh,170px)">
+  <div class="row row--gap-l">
+    <div class="modes-sticky" style="flex:1 1 360px;min-width:min(100%,300px)">
+      <p class="eyebrow">Four disciplines, one process</p>
+      <div class="modes-word-stack" style="height:clamp(72px,12vw,150px);margin-top:clamp(14px,2vh,24px)">
+        <span class="modes-word" data-mode-word="strategy" style="font-size:clamp(2.5rem,8vw,8.125rem)">Strategy</span>
+        <span class="modes-word" data-mode-word="branding" style="font-size:clamp(2.5rem,8vw,8.125rem)">Branding</span>
+        <span class="modes-word" data-mode-word="design" style="font-size:clamp(2.5rem,8vw,8.125rem)">Design</span>
+        <span class="modes-word" data-mode-word="development" style="font-size:clamp(2.5rem,8vw,8.125rem)">Development</span>
+      </div>
+      <p class="body-l muted" style="margin-top:clamp(18px,2.6vh,32px);max-width:36ch">Each discipline can be the whole job or one movement of a larger one. Most projects use all four, in this order.</p>
     </div>
-</div>
 
-<footer id="sticky-footer" class="bg-black text-white">
-    <div class="w-full h-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
-        <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-6xl mx-auto text-center mt-12 md:mt-24">
-            <span class="font-mono text-xs text-[#FF6309] mb-4 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-4xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 mt-8">Let's Build<br>The Future.</h2>
-            <div class="flex justify-center">
-                <a href="contact.html" class="magnetic-btn px-12 py-6 bg-[#0033FF] text-white font-black text-xl md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
-                    Start a Project
-                </a>
+    <div style="flex:1 1 440px;min-width:min(100%,300px);display:flex;gap:clamp(16px,2.4vw,32px)">
+      <div class="modes-rail"><div class="modes-bar" data-mode-bar></div></div>
+      <div style="flex:1 1 auto">
+        <section class="mode-section" data-mode="strategy">
+          <div class="mode-section__inner">
+            <p class="modes-index" data-mode-index style="color:var(--cobalt)">01</p>
+            <div style="flex:1 1 auto">
+              <h2><a href="contact.html">Working out what the site is actually for</a></h2>
+              <ul>
+                <li>Discovery</li>
+                <li>Audience and competitor research</li>
+                <li>Positioning</li>
+                <li>Content strategy</li>
+                <li>Website planning</li>
+                <li>User journeys</li>
+              </ul>
             </div>
-        </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-end font-mono text-[10px] md:text-xs text-gray-500 mt-12 border-t border-white/20 pt-6">
-            <div class="mb-4 md:mb-0"><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2024</div>
-            <div class="flex gap-6 text-white/50">
-                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
-                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
-                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
-                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
-                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
-                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
+          </div>
+        </section>
+        <section class="mode-section" data-mode="branding">
+          <div class="mode-section__inner">
+            <p class="modes-index" data-mode-index>02</p>
+            <div style="flex:1 1 auto">
+              <h2><a href="contact.html">Giving the business a look that belongs to it</a></h2>
+              <ul>
+                <li>Brand direction</li>
+                <li>Visual identity</li>
+                <li>Typography</li>
+                <li>Art direction</li>
+                <li>Tone of voice</li>
+                <li>Motion direction</li>
+                <li>Usable brand systems</li>
+              </ul>
             </div>
-        </div>
+          </div>
+        </section>
+        <section class="mode-section" data-mode="design">
+          <div class="mode-section__inner">
+            <p class="modes-index" data-mode-index>03</p>
+            <div style="flex:1 1 auto">
+              <h2><a href="contact.html">Designing something people can actually use</a></h2>
+              <ul>
+                <li>UX</li>
+                <li>Prototyping</li>
+                <li>Responsive interface design</li>
+                <li>Interaction design</li>
+                <li>Design systems</li>
+                <li>Accessibility</li>
+                <li>User testing</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="mode-section" data-mode="development">
+          <div class="mode-section__inner">
+            <p class="modes-index" data-mode-index>04</p>
+            <div style="flex:1 1 auto">
+              <h2><a href="contact.html">Building it properly, then keeping it moving</a></h2>
+              <ul>
+                <li>Creative front-end development</li>
+                <li>CMS integration</li>
+                <li>Animation</li>
+                <li>Technical SEO</li>
+                <li>Performance</li>
+                <li>Analytics</li>
+                <li>Launch and ongoing improvement</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section pt-4">
+  <p class="eyebrow">What you actually get</p>
+
+  <div style="margin-top:clamp(28px,4vh,56px)">
+    <h2 class="h-b" style="font-size:clamp(2rem,7vw,6.875rem);max-width:16ch">Distinctive brands</h2>
+    <div class="row row--gap-l" style="margin-top:clamp(20px,3vh,36px)">
+      <p class="lede" style="flex:1 1 380px;max-width:34ch">Make the business impossible to confuse with anyone else.</p>
+      <p class="body-l muted" style="flex:1 1 380px;max-width:52ch">I uncover what makes a company worth choosing, then turn it into a clear position, visual language and flexible identity that can move confidently across every touchpoint.</p>
+    </div>
+  </div>
+
+  <div class="row row--flush-right" style="margin-top:clamp(56px,9vh,130px)">
+    <div style="flex:0 1 min(100%,1000px)">
+      <h2 class="h-b" style="font-size:clamp(2rem,7vw,6.875rem);max-width:16ch">Websites with a job to do</h2>
+      <div class="row row--gap-l" style="margin-top:clamp(20px,3vh,36px)">
+        <p class="lede" style="flex:1 1 340px;max-width:34ch">Earn attention. Explain the value. Turn interest into action.</p>
+        <p class="body-l muted" style="flex:1 1 340px;max-width:52ch">I design and build responsive websites that balance character with usability &mdash; bringing together strong storytelling, thoughtful interaction, accessible UX and dependable technology.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:clamp(56px,9vh,130px);margin-left:clamp(0px,8vw,180px)">
+    <h2 class="h-b" style="font-size:clamp(2rem,7vw,6.875rem);max-width:16ch">Digital momentum</h2>
+    <div class="row row--gap-l" style="margin-top:clamp(20px,3vh,36px)">
+      <p class="lede" style="flex:1 1 340px;max-width:34ch">Launch is the beginning, not the finish line.</p>
+      <p class="body-l muted" style="flex:1 1 340px;max-width:52ch">I help brands keep moving through new landing pages, campaigns, content systems, testing, optimisation and ongoing creative support.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section--dark section pt-4" style="padding-bottom:clamp(64px,10vh,140px)">
+  <p class="lede" style="font-size:clamp(1.75rem,5.4vw,4.6875rem);line-height:1.04;max-width:24ch">No hand-offs between disconnected specialists. One joined-up creative process from thinking to making.</p>
+  <p class="body-l muted-on-dark" style="margin-top:clamp(24px,4vh,48px);max-width:52ch">Photography, copywriting, motion and 3D specialists come in when a project genuinely needs them &mdash; and the thinking stays in one pair of hands throughout.</p>
+</section>
+
+<section class="section pt-3">
+  <p class="eyebrow">Platforms</p>
+  <div class="row row--gap-l" style="margin-top:clamp(24px,4vh,44px)">
+    <h2 class="h-c" style="flex:1 1 380px;max-width:26ch;font-size:clamp(1.75rem,4.2vw,3.75rem);line-height:1.02">Chosen for the project, not defended out of habit</h2>
+    <dl class="meta-list" style="flex:1 1 420px;max-width:56ch">
+      <div class="meta-row"><dt style="flex:0 0 120px;color:var(--ink)">WordPress</dt><dd class="muted" style="flex:1 1 240px">When a team already knows it, or the site needs plugins and integrations that live there.</dd></div>
+      <div class="meta-row"><dt style="flex:0 0 120px;color:var(--ink)">Next.js</dt><dd class="muted" style="flex:1 1 240px">Where speed, motion and precise art direction matter, or content comes from elsewhere.</dd></div>
+      <div class="meta-row"><dt style="flex:0 0 120px;color:var(--ink)">Payload</dt><dd class="muted" style="flex:1 1 240px">When a Next.js site needs a proper editing back end with structured content.</dd></div>
+      <div class="meta-row"><dt style="flex:0 0 120px;color:var(--ink)">Something else</dt><dd class="muted" style="flex:1 1 240px">Shopify for stock-led retail, or whatever your existing systems already work with.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section pt-3">
+  <p class="eyebrow">Cost</p>
+  <h2 class="h-b" style="font-size:clamp(1.875rem,5.6vw,5rem);line-height:1;margin-top:clamp(18px,3vh,36px);max-width:20ch">Every quote is written for the project in front of me.</h2>
+  <div class="row row--gap-l" style="margin-top:clamp(28px,4vh,48px)">
+    <p class="body-l muted" style="flex:1 1 420px;max-width:52ch">There is no package price, because two businesses asking for &ldquo;a website&rdquo; can be a month of work apart. After a proper conversation you get a written proposal: what is included, what it costs, how long it takes, and what would change the number. If something in it is not worth the money, I will say so before you ask.</p>
+    <div style="flex:1 1 340px;max-width:44ch">
+      <p class="eyebrow">What moves the price</p>
+      <ul style="margin-top:14px;display:flex;flex-direction:column;font-size:16px;line-height:1.5">
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Scope and number of unique templates</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Condition of existing content</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Whether brand work is needed</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">CMS, and who needs to edit what</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Integrations and third-party systems</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Amount of motion and custom interaction</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Migration from an existing site</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong)">Copywriting and photography support</li>
+        <li style="padding:10px 0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong)">Timescale, and how fixed it is</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section--dark section" style="margin-top:clamp(88px,14vh,180px);padding-top:clamp(72px,12vh,160px);padding-bottom:clamp(64px,10vh,120px);overflow:hidden">
+  <a data-magnetic="0.16" href="contact.html" class="h-f display-link" style="font-size:clamp(2.25rem,9.6vw,8.75rem);line-height:0.94;color:var(--paper);max-width:16ch">Have something worth building?</a>
+  <div class="row row--end row--between row--gap-m" style="margin-top:clamp(36px,6vh,80px);padding-top:22px;border-top:1px solid var(--rule-on-dark-soft)">
+    <p class="body-l muted-on-dark" style="flex:1 1 400px;max-width:52ch">Not sure which of these you need? That is usually the first thing we work out together.</p>
+    <div class="row--gap-s" style="flex:0 0 auto;display:flex;flex-wrap:wrap;font-size:16px">
+      <a href="contact.html" class="link--on-dark">Start a project</a>
+      <a href="work.html" class="link--on-dark-quiet">See the work</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__about">
+      <p>TG Media</p>
+      <p>Independent design studio. Websites and visual identities for businesses that have outgrown how they currently present themselves. Warwick, UK.</p>
+    </div>
+    <div class="site-footer__navs">
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">Studio</a>
+        <a href="contact.html">Start a project</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </div>
+  <p class="site-footer__bottom">&copy; <span data-year>2026</span> TG Media &nbsp;/&nbsp; Warwick, UK &nbsp;/&nbsp; Design and development by Tom McTigue</p>
 </footer>
 
 <script src="shared.js"></script>
-<script>
-function initScrollAnimations() {
-    gsap.utils.toArray(".fade-up, .section-headline, h1, h2").forEach(function(el) {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-            y: 40, opacity: 0, duration: 0.9, ease: "power3.out"
-        });
-    });
-}
-</script>
 </body>
 </html>
