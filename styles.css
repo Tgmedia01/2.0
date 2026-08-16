@@ -15,6 +15,9 @@
   --stone: #a2a2a9;
   --graphite: #797979;
   --cobalt: #2445ff;
+  /* Functional intervention colour — used exactly once on the site,
+     as a status/locator mark. Never a section background. */
+  --signal: #ff3d1a;
 
   --rule: rgba(7, 7, 7, 0.12);
   --rule-strong: rgba(7, 7, 7, 0.14);
@@ -178,6 +181,48 @@ h3.h-27 { font-family: var(--font-display); font-weight: 400; font-size: 27px; l
 .site-header--overlay .site-header__cta:hover { opacity: 0.6; color: inherit; }
 .site-header--overlay .site-header__cta[aria-current="page"] { border-bottom: 1px solid var(--cobalt); padding-bottom: 2px; }
 
+/* --------------------------------------------------------------- mobile nav
+   Native <details>/<summary> disclosure — the toggle works with no JS at
+   all. Hidden above the breakpoint, where the plain inline nav is used. */
+.mobile-nav { display: none; }
+@media (max-width: 700px) {
+  .site-header { flex-wrap: nowrap; justify-content: space-between; }
+  .primary-nav, .site-header__cta { display: none; }
+  .mobile-nav { display: block; flex: 0 0 auto; position: relative; z-index: 95; }
+  .mobile-nav__toggle {
+    position: relative; z-index: 91;
+    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border: 1px solid var(--rule-strong); border-radius: var(--radius);
+    background: var(--paper);
+  }
+  .mobile-nav__toggle::-webkit-details-marker { display: none; }
+  .mobile-nav__toggle:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+  .mobile-nav__icon { position: relative; display: block; width: 16px; height: 1.5px; background: var(--ink); transition: background 120ms ease 80ms; }
+  .mobile-nav__icon::before, .mobile-nav__icon::after {
+    content: ''; position: absolute; left: 0; width: 16px; height: 1.5px; background: var(--ink);
+    transition: transform 220ms cubic-bezier(.2,.8,.25,1), top 220ms cubic-bezier(.2,.8,.25,1);
+  }
+  .mobile-nav__icon::before { top: -5px; }
+  .mobile-nav__icon::after { top: 5px; }
+  .mobile-nav[open] .mobile-nav__toggle { border-color: var(--ink); }
+  .mobile-nav[open] .mobile-nav__icon { background: transparent; }
+  .mobile-nav[open] .mobile-nav__icon::before { top: 0; transform: rotate(45deg); }
+  .mobile-nav[open] .mobile-nav__icon::after { top: 0; transform: rotate(-45deg); }
+  .mobile-nav__panel {
+    position: fixed; inset: 0; z-index: 90; background: var(--paper);
+    padding: 96px var(--gutter-tight) 40px; display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .mobile-nav__panel nav { display: flex; flex-direction: column; gap: clamp(20px, 4vh, 32px); }
+  .mobile-nav__panel nav a {
+    font-family: var(--font-display); font-size: clamp(1.75rem, 8vw, 2.5rem); letter-spacing: -0.02em;
+  }
+  .mobile-nav__panel nav a[aria-current="page"] { color: var(--cobalt); }
+  .mobile-nav__panel nav a:last-child { margin-top: 12px; font-family: var(--font-body); font-size: 18px; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .mobile-nav__icon, .mobile-nav__icon::before, .mobile-nav__icon::after { transition: none; }
+}
+
 /* --------------------------------------------------------------- footer */
 .site-footer {
   background: var(--ink);
@@ -302,9 +347,16 @@ a.archive-row:hover { color: var(--cobalt); }
 figure { margin: 0; }
 .reveal-frame { background: var(--ink); overflow: hidden; }
 .reveal-frame img { width: 100%; will-change: transform; }
+@media (max-width: 640px) {
+  /* Full-bleed reveal frames are tuned for a wide desktop crop; on a narrow
+     viewport the same height leaves only a sliver of a landscape image
+     visible. Capping the height keeps more of the frame in view. */
+  .reveal-frame { max-height: 38vh; }
+}
 .figcaption { font-size: 12px; color: var(--graphite); letter-spacing: 0.06em; text-transform: uppercase; }
-[data-reveal] { clip-path: inset(0 0 100% 0); }
-[data-reveal="side"] { clip-path: inset(0 100% 0 0); }
+/* The collapse-then-reveal crop is an enhancement applied by JS itself via
+   inline style (cropReveal() in shared.js) — with JS off, images are simply
+   visible; nothing here may hide them unconditionally. */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { clip-path: none !important; }
 }
@@ -325,7 +377,8 @@ figure { margin: 0; }
 .mode-section { min-height: 36svh; display: flex; align-items: center; padding: clamp(24px, 4vh, 44px) 0; border-top: 1px solid var(--rule-strong); }
 .mode-section:last-child { border-bottom: 1px solid var(--rule-strong); }
 .mode-section__inner { flex: 1 1 auto; display: flex; gap: clamp(14px, 2vw, 28px); }
-.mode-section h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2.0625rem); line-height: 1.12; letter-spacing: -0.04em; }
+.mode-section__verb { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cobalt); }
+.mode-section h2 { margin-top: 8px; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.375rem, 2.4vw, 1.875rem); line-height: 1.2; letter-spacing: -0.01em; }
 .mode-section h2 a:hover { color: var(--cobalt); }
 .mode-section ul { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 16px; line-height: 1.5; color: var(--graphite); }
 
@@ -396,37 +449,233 @@ figure { margin: 0; }
 }
 .ident__word--cobalt { color: var(--cobalt); }
 
-/* --------------------------------------------------------------- homepage hero */
-.hero-stage { position: relative; height: 300svh; }
-.hero-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--paper); }
-.hero-frag { position: absolute; overflow: hidden; background: var(--ink); will-change: left, top, width, height; }
-.hero-frag img { position: absolute; object-fit: cover; max-width: none; }
-.hero-copy {
-  position: absolute; inset: 0; margin: 0; z-index: 2; pointer-events: none;
-  font-family: var(--font-display); font-weight: 400; letter-spacing: -0.045em; line-height: 0.86;
-}
-.hero-line { position: absolute; display: block; }
-.hero-strap {
-  position: absolute; left: var(--gutter-tight); bottom: clamp(24px, 5svh, 56px); z-index: 4;
-  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px clamp(24px, 4vw, 64px);
-  width: calc(100% - clamp(24px, 6vw, 88px));
-}
-.hero-strap__location { flex: 0 1 auto; font-size: 12px; line-height: 1.35; color: var(--graphite); letter-spacing: 0.06em; text-transform: uppercase; background: var(--paper); padding: 6px 10px 6px 0; }
-.hero-strap__status { flex: 1 1 auto; font-size: 12px; line-height: 1.35; color: var(--stone); letter-spacing: 0.06em; text-transform: uppercase; }
-.hero-strap__links { flex: 0 0 auto; display: flex; flex-wrap: wrap; gap: clamp(16px, 2.2vw, 32px); font-size: 16px; }
-.hero-end {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 5;
-  padding: clamp(20px, 4svh, 48px) var(--gutter-tight);
-  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px;
-  opacity: 0; background: linear-gradient(to top, rgba(7, 7, 7, 0.55), rgba(7, 7, 7, 0));
-}
-.hero-end__eyebrow { font-size: 12px; line-height: 1.2; color: var(--paper); letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
-.hero-end__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 6.4vw, 5.625rem); line-height: 0.98; letter-spacing: -0.04em; color: var(--paper); margin-top: 8px; }
-.hero-end__meta { display: flex; flex-wrap: wrap; gap: 12px clamp(20px, 2.4vw, 36px); font-size: 16px; color: var(--paper); padding-bottom: 6px; }
+/* --------------------------------------------------------------- sans display scale
+   Services, labels, process steps and navigation stay in the grotesk — serif is
+   reserved for major statements, not every heading on the page. */
+.h-sans-a { font-family: var(--font-body); font-weight: 500; font-size: clamp(1.75rem, 4.4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.015em; }
+.h-sans-b { font-family: var(--font-body); font-weight: 500; font-size: clamp(1.375rem, 2.6vw, 2rem); line-height: 1.15; letter-spacing: -0.01em; }
+.h-sans-c { font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: 0.01em; }
+em, .accent-italic { font-family: var(--font-display); font-style: italic; }
+.caps { text-transform: uppercase; }
 
-@media (max-width: 759px) {
-  .hero-stage { height: 220svh; }
+/* --------------------------------------------------------------- signal dot (single functional intervention) */
+.signal-dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--signal); flex: 0 0 auto; margin-right: 8px; position: relative; top: -1px;
 }
+
+/* --------------------------------------------------------------- homepage hero (noise → clarity) */
+.hero { padding: clamp(24px, 5vh, 64px) 0 clamp(56px, 8vh, 96px); background: var(--paper); }
+.hero__inner { padding: 0 var(--gutter-tight); }
+.hero__kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);
+}
+.hero__kicker .signal-dot + span { color: var(--ink); }
+
+.hero__headline { position: relative; margin-top: clamp(28px, 5vh, 56px); }
+.hero__headline-text {
+  display: block; font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.75rem, 8.6vw, 7.75rem); line-height: 0.96; letter-spacing: -0.03em;
+  max-width: 20ch; position: relative; z-index: 2;
+}
+.noise-layer {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+  font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.75rem, 8.6vw, 7.75rem); line-height: 0.96; letter-spacing: -0.03em;
+  max-width: 20ch;
+}
+.noise-layer span { display: block; color: var(--stone); opacity: 0; }
+
+/* The noise-in entrance is an enhancement added by JS (hero--enhanced) right
+   before it builds the effect — with JS off, or before it runs, the real
+   headline is simply visible. Nothing here may ever hide content permanently. */
+.hero--enhanced.is-settled .noise-layer span { transition: opacity 60ms linear; }
+.hero--enhanced:not(.is-settled) .hero__headline-text { opacity: 0; }
+.hero--enhanced.is-settled .hero__headline-text {
+  opacity: 1; transition: opacity 360ms ease 40ms;
+}
+@keyframes noise-flicker {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.55; }
+}
+.hero--enhanced:not(.is-settled) .noise-layer span[data-noise-active] {
+  opacity: 0.5; animation: noise-flicker 160ms steps(2) infinite;
+  transform: translate3d(var(--nx, 0), var(--ny, 0), 0) skewX(var(--nsk, 0deg));
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__headline-text { opacity: 1 !important; }
+  .noise-layer { display: none; }
+}
+
+.hero__sub { margin-top: clamp(20px, 3vh, 32px); max-width: 44ch; font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.4; color: var(--graphite); }
+
+.hero__rail { margin-top: clamp(36px, 6vh, 64px); max-width: 460px; }
+.hero__rail-label { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--graphite); margin-bottom: 10px; }
+.hero__rail-label b { font-weight: 500; color: var(--ink); }
+.noise-range {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--stone), var(--cobalt));
+  border-radius: 2px; cursor: pointer;
+}
+.noise-range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--cobalt); border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--cobalt);
+  cursor: pointer;
+}
+.noise-range::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt);
+  border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--cobalt); cursor: pointer;
+}
+.noise-range:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; }
+.noise-demo { margin-top: 16px; display: flex; gap: 6px; height: 20px; align-items: center; }
+.noise-demo__mark { width: 3px; height: 14px; border-radius: 2px; background: var(--stone); transition: transform 120ms linear, opacity 120ms linear, background 300ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .noise-demo__mark { transition: none; }
+}
+
+.hero__actions { margin-top: clamp(36px, 6vh, 64px); display: flex; flex-wrap: wrap; align-items: center; gap: 16px clamp(24px, 3vw, 40px); }
+.hero__cta {
+  font-size: 16px; padding: 14px 24px; border: 1px solid var(--ink); border-radius: var(--radius);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.hero__cta:hover { background: var(--ink); color: var(--paper); }
+
+/* --------------------------------------------------------------- business problem */
+.problem { padding: clamp(88px, 14vh, 170px) var(--gutter-tight) 0; }
+.problem__head { max-width: 22ch; }
+.problem__body { margin-top: clamp(28px, 4vh, 48px); max-width: 58ch; font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.4; color: var(--graphite); }
+
+/* --------------------------------------------------------------- transformation */
+.transform { padding: clamp(88px, 13vh, 160px) var(--gutter-tight) 0; }
+.transform__list { margin-top: clamp(32px, 5vh, 56px); display: flex; flex-direction: column; }
+.transform__row {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px clamp(16px, 3vw, 40px);
+  padding: clamp(18px, 3vh, 30px) 0; border-top: 1px solid var(--rule-strong);
+}
+.transform__row:last-child { border-bottom: 1px solid var(--rule-strong); }
+.transform__before, .transform__after {
+  font-family: var(--font-body); font-weight: 500; text-transform: uppercase;
+  font-size: clamp(1.375rem, 3.6vw, 2.75rem); letter-spacing: -0.005em; line-height: 1;
+}
+.transform__before { color: var(--graphite); }
+.transform__arrow { color: var(--cobalt); font-size: clamp(1.125rem, 2vw, 1.5rem); flex: 0 0 auto; }
+.transform__after { color: var(--ink); }
+
+/* Disordered → resolved motion is an enhancement, added only once JS is driving
+   it (transform--enhanced) — with JS off the words render already resolved. */
+.transform--enhanced .transform__before {
+  color: var(--stone); letter-spacing: 0.03em; filter: blur(0.3px);
+  transform: skewX(-5deg) rotate(-1.2deg) translate3d(0,0,0);
+  transition: transform 620ms cubic-bezier(.16,.84,.44,1), color 500ms ease, filter 500ms ease, letter-spacing 500ms ease;
+}
+.transform--enhanced .transform__after {
+  opacity: 0.35; transform: translate3d(0, 6px, 0);
+  transition: opacity 560ms ease 80ms, transform 560ms cubic-bezier(.2,.8,.25,1) 80ms;
+}
+.transform--enhanced .transform__row.is-resolved .transform__before { color: var(--graphite); letter-spacing: 0.005em; filter: blur(0); transform: none; }
+.transform--enhanced .transform__row.is-resolved .transform__after { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .transform--enhanced .transform__before { filter: none; transform: none; color: var(--graphite); }
+  .transform--enhanced .transform__after { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------- services (cobalt) */
+.services-cobalt { margin-top: clamp(88px, 14vh, 180px); background: var(--cobalt); color: var(--paper); padding: clamp(64px, 10vh, 120px) var(--gutter-tight) clamp(32px, 6vh, 64px); }
+.services-cobalt__head { max-width: 26ch; }
+.services-cobalt__head .eyebrow { color: rgba(255,255,255,0.7); }
+.svc-list { margin-top: clamp(36px, 6vh, 72px); }
+.svc-row {
+  border-top: 1px solid rgba(255,255,255,0.28);
+  padding: clamp(20px, 3vh, 32px) 0;
+}
+.svc-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.28); }
+.svc-row__head {
+  display: flex; align-items: baseline; gap: clamp(14px, 2.4vw, 32px); width: 100%;
+  text-align: left; background: none; border: 0; padding: 0; color: inherit; cursor: pointer;
+  font: inherit;
+}
+.svc-row__verb { flex: 0 0 auto; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); width: 5.5ch; }
+.svc-row[data-open] .svc-row__verb { color: var(--paper); }
+.svc-row__index { flex: 0 0 auto; font-size: 12px; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); }
+.svc-row__title { flex: 1 1 auto; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.5rem, 4vw, 2.75rem); letter-spacing: -0.01em; }
+.svc-row__mark { flex: 0 0 auto; font-size: 20px; transition: transform 300ms cubic-bezier(.2,.8,.25,1); }
+.svc-row[data-open] .svc-row__mark { transform: rotate(45deg); }
+.svc-row__body { overflow: hidden; }
+/* Collapsed-by-default is an enhancement (svc--enhanced, added by JS once it
+   can toggle rows back open) — with JS off every row's detail stays visible. */
+.svc-list.svc--enhanced .svc-row__body { max-height: 0; transition: max-height 380ms cubic-bezier(.2,.8,.25,1); }
+.svc-list.svc--enhanced .svc-row[data-open] .svc-row__body { max-height: 260px; }
+.svc-row__list { margin-top: clamp(16px, 2.4vh, 24px); padding-left: calc(5.5ch + clamp(14px, 2.4vw, 32px)); display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 3vw, 40px); font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.82); max-width: 64ch; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-row__mark, .svc-list.svc--enhanced .svc-row__body { transition: none; }
+}
+@media (max-width: 640px) {
+  .svc-row__list { padding-left: 0; margin-top: 12px; }
+}
+
+/* --------------------------------------------------------------- outcomes */
+.outcomes { padding: clamp(88px, 14vh, 180px) var(--gutter-tight) 0; }
+.outcomes__head { max-width: 48ch; }
+.outcomes__list { margin-top: clamp(40px, 6vh, 80px); display: flex; flex-wrap: wrap; gap: clamp(32px, 4vw, 56px); }
+.outcome { flex: 1 1 240px; min-width: 220px; }
+.outcome__mark { width: 34px; height: 34px; }
+.outcome__mark svg { width: 100%; height: 100%; display: block; }
+.outcome__title { margin-top: clamp(16px, 2.4vh, 24px); font-size: clamp(1.25rem, 2.4vw, 1.625rem); }
+.outcome__body { margin-top: 10px; font-size: 16px; line-height: 1.5; color: var(--graphite); max-width: 32ch; }
+
+/* --------------------------------------------------------------- direct collaboration */
+.collab { padding: clamp(88px, 14vh, 180px) var(--gutter-tight) 0; }
+.collab__head { max-width: 22ch; }
+.collab__body { margin-top: clamp(20px, 3vh, 32px); max-width: 52ch; font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.4; color: var(--graphite); }
+.collab__points { margin-top: clamp(32px, 5vh, 56px); display: flex; flex-wrap: wrap; gap: 12px clamp(28px, 4vw, 56px); font-size: 16px; }
+.collab__points li { display: flex; align-items: center; gap: 10px; color: var(--ink); }
+.collab__points li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cobalt); flex: 0 0 auto; }
+
+/* --------------------------------------------------------------- process line */
+.process { padding: clamp(88px, 14vh, 180px) var(--gutter-tight) 0; }
+.process__head { max-width: 24ch; }
+.process__track { position: relative; margin-top: clamp(48px, 8vh, 96px); display: flex; gap: clamp(20px, 4vw, 56px); }
+.process__svg { flex: 0 0 auto; width: 40px; height: auto; align-self: stretch; }
+.process__svg path { stroke: var(--cobalt); stroke-width: 3; fill: none; stroke-linecap: round; }
+.process__steps { flex: 1 1 auto; display: flex; flex-direction: column; gap: clamp(48px, 9vh, 120px); padding-bottom: clamp(24px, 4vh, 48px); }
+.process__step { opacity: 1; max-width: 46ch; }
+.process--enhanced .process__step { opacity: 0.35; transition: opacity 420ms ease; }
+.process--enhanced .process__step.is-active { opacity: 1; }
+.process__step-index { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cobalt); }
+.process__step-title { margin-top: 8px; font-family: var(--font-body); font-weight: 500; font-size: clamp(1.5rem, 3.4vw, 2.25rem); letter-spacing: -0.01em; }
+.process__step-body { margin-top: 8px; font-size: 16px; line-height: 1.5; color: var(--graphite); }
+@media (prefers-reduced-motion: reduce) {
+  .process--enhanced .process__step { opacity: 1; transition: none; }
+}
+@media (max-width: 640px) {
+  .process__svg { width: 24px; }
+}
+
+/* --------------------------------------------------------------- selected work strip */
+.work-strip { padding: clamp(64px, 10vh, 120px) var(--gutter-tight) 0; }
+.work-strip__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px; }
+.work-strip__rail {
+  margin-top: clamp(24px, 4vh, 40px); display: flex; gap: clamp(16px, 2vw, 24px);
+  overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.work-card {
+  scroll-snap-align: start; flex: 0 0 auto; width: clamp(220px, 32vw, 300px);
+  border-top: 1px solid var(--rule-strong); padding-top: 14px;
+}
+.work-card__thumb { display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius); background: var(--fog); margin-bottom: 14px; }
+.work-card__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.work-card__name { display: block; font-family: var(--font-body); font-weight: 500; font-size: 18px; letter-spacing: -0.005em; }
+.work-card__meta { display: block; margin-top: 4px; font-size: 13px; color: var(--graphite); }
+.work-card:hover .work-card__name, .work-card:focus-within .work-card__name { color: var(--cobalt); }
+
+/* --------------------------------------------------------------- final CTA */
+.final-cta { margin-top: clamp(88px, 14vh, 180px); background: var(--cobalt); color: var(--paper); padding: clamp(80px, 13vh, 170px) var(--gutter-tight); text-align: center; }
+.final-cta__title { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(3rem, 11vw, 8.75rem); line-height: 0.94; letter-spacing: -0.03em; }
+.final-cta__actions { margin-top: clamp(32px, 5vh, 56px); }
+.final-cta__cta { font-size: 18px; padding: 16px 32px; border: 1px solid var(--paper); border-radius: var(--radius); display: inline-flex; align-items: center; gap: 10px; }
+.final-cta__cta:hover { background: var(--paper); color: var(--ink); }
 
 /* --------------------------------------------------------------- route wipe */
 .route-veil { position: fixed; inset: 0; background: var(--ink); z-index: 80; transform: scaleY(0); transform-origin: bottom; pointer-events: none; }

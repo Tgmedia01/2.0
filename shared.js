@@ -32,10 +32,10 @@
       var it = items[i];
       var host = it.host || it.el;
       var r = host.getBoundingClientRect();
-      if (it.kind === 'frag' || it.kind === 'heroline' || it.kind === 'heroend') {
-        var travel = it.stage.offsetHeight - (it.pin ? it.pin.clientHeight : vh);
-        var p = clamp((-it.stage.getBoundingClientRect().top) / (travel || 1), 0, 1);
-        applyHero(it, p);
+      if (it.kind === 'process') {
+        if (r.bottom < -300 || r.top > vh + 300) continue;
+        var pr = clamp((vh - r.top) / (r.height + vh), 0, 1);
+        it.draw(ease(pr));
       } else if (it.kind === 'modes') {
         var mid = vh * 0.5, best = null, bestD = Infinity;
         for (var j = 0; j < it.panels.length; j++) {
@@ -58,102 +58,163 @@
     }
   }
 
-  function setupFrag(it) {
-    var el = it.el, f = it.f;
-    el.style.left = f[0] + '%';
-    el.style.top = f[1] + '%';
-    el.style.width = f[2] + '%';
-    el.style.height = f[3] + '%';
-    el.style.transformOrigin = '0 0';
-    el.style.willChange = 'transform';
-    var img = el.firstElementChild;
-    if (img) { img.style.transformOrigin = '0 0'; img.style.willChange = 'transform'; }
-    layoutFrag(it);
-  }
-
-  function layoutFrag(it) {
-    var img = it.el.firstElementChild;
-    if (!img || !it.pin) return;
-    var pw = it.pin.clientWidth, ph = it.pin.clientHeight;
-    img.style.width = pw + 'px';
-    img.style.height = ph + 'px';
-    img.style.left = '-' + (it.f[0] / 100 * pw).toFixed(1) + 'px';
-    img.style.top = '-' + (it.f[1] / 100 * ph).toFixed(1) + 'px';
-  }
-
-  function applyHero(it, p) {
-    if (it.kind === 'frag') {
-      var e = ease(clamp((p - it.delay) / (1 - it.delay), 0, 1));
-      var s = it.s, f = it.f;
-      var cx = lerp(s[0], f[0], e), cy = lerp(s[1], f[1], e);
-      var sx = lerp(s[2], f[2], e) / f[2], sy = lerp(s[3], f[3], e) / f[3];
-      var tx = (cx - f[0]) / f[2] * 100, ty = (cy - f[1]) / f[3] * 100;
-      it.el.style.transform = 'translate(' + tx.toFixed(3) + '%,' + ty.toFixed(3) + '%) scale(' + sx.toFixed(4) + ',' + sy.toFixed(4) + ')';
-      var img = it.el.firstElementChild;
-      if (img) img.style.transform = 'scale(' + (1 / sx).toFixed(4) + ',' + (1 / sy).toFixed(4) + ')';
-      it.p = e;
-    } else if (it.kind === 'heroline') {
-      var out = ease(clamp((p - 0.18) / 0.42, 0, 1));
-      it.el.style.transform = 'translate3d(' + (it.tx * out).toFixed(2) + 'vw,' + (it.ty * out).toFixed(2) + 'vh,0)';
-      it.el.style.opacity = String(1 - clamp((p - 0.3) / 0.3, 0, 1));
-    } else if (it.kind === 'heroend') {
-      var inn = clamp((p - 0.72) / 0.24, 0, 1);
-      it.el.style.opacity = String(inn);
-      it.el.style.transform = 'translate3d(0,' + ((1 - inn) * 2.4).toFixed(2) + 'vh,0)';
-      var live = inn > 0.6;
-      it.el.style.pointerEvents = live ? 'auto' : 'none';
-      if (it.live !== live) {
-        it.live = live;
-        it.el.setAttribute('aria-hidden', live ? 'false' : 'true');
-        Array.prototype.slice.call(it.el.querySelectorAll('a')).forEach(function (a) { a.tabIndex = live ? 0 : -1; });
+  /* ------------------------------------------------------------------ hero: noise → clarity */
+  function heroNoise() {
+    var hero = document.querySelector('[data-hero]');
+    if (!hero) return;
+    if (reduced()) { hero.classList.add('is-settled'); return; }
+    hero.classList.add('hero--enhanced');
+    var layer = hero.querySelector('[data-noise-layer]');
+    if (layer) {
+      var glyphs = ['SIGNAL', '////', 'NOISE', '—//—', 'CLARITY', '??', 'SIGNAL', '###'];
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < glyphs.length; i++) {
+        var s = document.createElement('span');
+        s.textContent = glyphs[i];
+        s.setAttribute('data-noise-active', '');
+        s.style.setProperty('--nx', (Math.random() * 34 - 17).toFixed(1) + 'px');
+        s.style.setProperty('--ny', (Math.random() * 22 - 11).toFixed(1) + 'px');
+        s.style.setProperty('--nsk', (Math.random() * 8 - 4).toFixed(1) + 'deg');
+        frag.appendChild(s);
       }
+      layer.appendChild(frag);
     }
+    setTimeout(function () { hero.classList.add('is-settled'); }, 640);
   }
 
-  /* ------------------------------------------------------------------ hero */
-  function hero() {
-    var stage = document.querySelector('[data-hero-stage]');
-    if (!stage) return;
-    var pin = stage.querySelector('[data-hero-pin]');
-    var frags = Array.prototype.slice.call(stage.querySelectorAll('[data-frag]'));
-    var lines = Array.prototype.slice.call(stage.querySelectorAll('[data-heroline]'));
-    var end = stage.querySelector('[data-heroend]');
-    var mobile = window.innerWidth < 760;
-
-    frags.forEach(function (el, i) {
-      var spec = el.getAttribute('data-frag').split('|');
-      var key = mobile && el.hasAttribute('data-frag-m') ? el.getAttribute('data-frag-m').split('|') : spec;
-      var s = key[0].split(',').map(Number);
-      var f = key[1].split(',').map(Number);
-      if (mobile && el.hasAttribute('data-frag-hide')) { el.style.display = 'none'; return; }
-      var it = { kind: 'frag', el: el, stage: stage, pin: pin, s: s, f: f, delay: i * 0.04 };
-      setupFrag(it);
-      items.push(it);
-      applyHero(it, reduced() ? 1 : 0);
+  /* ---------------------------------------------------- hero: noise/clarity rail */
+  function noiseRail() {
+    Array.prototype.slice.call(document.querySelectorAll('[data-noise-rail]')).forEach(function (rail) {
+      var range = rail.querySelector('[data-noise-range]');
+      var demo = rail.querySelector('[data-noise-demo]');
+      if (!range || !demo) return;
+      var marks = Array.prototype.slice.call(demo.querySelectorAll('.noise-demo__mark'));
+      var jitter = marks.map(function () { return { y: Math.random() * 16 - 8, r: Math.random() * 24 - 12 }; });
+      var update = function () {
+        var t = clamp(parseFloat(range.value) / 100, 0, 1);
+        marks.forEach(function (m, i) {
+          var j = jitter[i];
+          m.style.transform = 'translate3d(0,' + lerp(j.y, 0, t).toFixed(1) + 'px,0) rotate(' + lerp(j.r, 0, t).toFixed(1) + 'deg)';
+          m.style.opacity = String(lerp(0.4, 1, t));
+          m.style.background = t > 0.7 ? 'var(--cobalt)' : 'var(--stone)';
+        });
+        range.setAttribute('aria-valuetext', t < 0.34 ? 'Noise' : t < 0.7 ? 'Resolving' : 'Clarity');
+      };
+      range.addEventListener('input', update);
+      update();
     });
+  }
 
-    lines.forEach(function (el) {
-      var t = el.getAttribute('data-heroline').split(',').map(Number);
-      var it = { kind: 'heroline', el: el, stage: stage, pin: pin, tx: mobile ? t[0] * 0.4 : t[0], ty: t[1] };
-      items.push(it);
-      applyHero(it, 0);
-    });
-
-    if (end) {
-      var it2 = { kind: 'heroend', el: end, stage: stage, pin: pin };
-      items.push(it2);
-      applyHero(it2, reduced() ? 1 : 0);
-    }
-
-    if (reduced()) {
-      stage.style.height = 'auto';
-      var pinEl = stage.querySelector('[data-hero-pin]');
-      if (pinEl) pinEl.style.position = 'static';
-      lines.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
-      if (end) { end.style.opacity = '1'; end.style.transform = 'none'; end.style.pointerEvents = 'auto'; }
+  /* ------------------------------------------------------ transformation reveal */
+  function transformReveal() {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('[data-transform-row]'));
+    if (!rows.length) return;
+    if (reduced() || !('IntersectionObserver' in window)) {
+      rows.forEach(function (r) { r.classList.add('is-resolved'); });
       return;
     }
+    var list = document.querySelector('.transform__list');
+    if (list) list.classList.add('transform--enhanced');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-resolved'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.2 });
+    rows.forEach(function (r) { io.observe(r); });
+  }
+
+  /* ------------------------------------------------------------- services (cobalt) */
+  function servicesCobalt() {
+    var root = document.querySelector('[data-svc]');
+    if (!root) return;
+    var rows = Array.prototype.slice.call(root.querySelectorAll('[data-svc-row]'));
+    if (!rows.length) return;
+    var list = root.querySelector('.svc-list');
+    if (list) list.classList.add('svc--enhanced');
+    var pinned = null;
+
+    var apply = function (openRow) {
+      rows.forEach(function (row) {
+        var open = row === openRow;
+        var btn = row.querySelector('.svc-row__head');
+        var body = row.querySelector('.svc-row__body');
+        if (open) row.setAttribute('data-open', ''); else row.removeAttribute('data-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        body.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+    };
+
+    rows.forEach(function (row) {
+      var btn = row.querySelector('.svc-row__head');
+      btn.addEventListener('click', function () {
+        pinned = pinned === row ? null : row;
+        apply(pinned);
+      });
+      if (!coarse()) {
+        row.addEventListener('pointerenter', function () { if (!pinned) apply(row); });
+        btn.addEventListener('focus', function () { apply(pinned || row); });
+      }
+    });
+    root.addEventListener('pointerleave', function () { if (!pinned) apply(null); });
+    apply(pinned);
+
+    if (!reduced() && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !pinned) { apply(rows[0]); io.disconnect(); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(root);
+    }
+  }
+
+  /* --------------------------------------------------------------- process line */
+  function processLine() {
+    var track = document.querySelector('[data-process-track]');
+    if (!track) return;
+    var svg = track.querySelector('[data-process-svg]');
+    var path = track.querySelector('[data-process-path]');
+    var steps = Array.prototype.slice.call(track.querySelectorAll('[data-process-step]'));
+    if (!svg || !path || !steps.length) return;
+    track.classList.add('process--enhanced');
+
+    var n = 22;
+    var pts = [];
+    for (var i = 0; i < n; i++) pts.push(20 + (Math.random() * 32 - 16));
+    var lastH = 0;
+
+    function draw(p) {
+      var h = track.clientHeight || 1;
+      if (h !== lastH) { lastH = h; svg.setAttribute('viewBox', '0 0 40 ' + h); }
+      var d = '';
+      for (var j = 0; j < n; j++) {
+        var y = (h * j) / (n - 1);
+        var x = lerp(pts[j], 20, p);
+        d += (j === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+      }
+      path.setAttribute('d', d);
+      steps.forEach(function (stEl, si) {
+        stEl.classList.toggle('is-active', p >= si / steps.length);
+      });
+    }
+
+    if (reduced()) { draw(1); return; }
+    draw(0);
+    items.push({ kind: 'process', el: track, host: track, draw: draw });
     schedule();
+  }
+
+  /* --------------------------------------------------------------- mobile nav
+     The <details>/<summary> toggle already works with no JS at all; this
+     only adds the Escape-to-close convenience. */
+  function mobileNav() {
+    var det = document.querySelector('.mobile-nav');
+    if (!det) return;
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && det.hasAttribute('open')) {
+        det.removeAttribute('open');
+        var toggle = det.querySelector('summary');
+        if (toggle) toggle.focus();
+      }
+    });
   }
 
   /* --------------------------------------------------------- pointer drift */
@@ -404,7 +465,12 @@
     if (booted) return;
     booted = true;
     ident();
-    hero();
+    heroNoise();
+    noiseRail();
+    transformReveal();
+    servicesCobalt();
+    processLine();
+    mobileNav();
     cropReveal();
     modes();
     pointerDrift();
@@ -414,10 +480,7 @@
     var rt;
     window.addEventListener('resize', function () {
       clearTimeout(rt);
-      rt = setTimeout(function () {
-        items.forEach(function (it) { if (it.kind === 'frag') layoutFrag(it); });
-        schedule();
-      }, 120);
+      rt = setTimeout(schedule, 120);
       schedule();
     }, { passive: true });
     schedule();
