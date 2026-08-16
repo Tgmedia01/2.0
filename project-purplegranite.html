@@ -1,410 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TG MEDIA — Purple Granite | Case Study</title>
-    <meta name="description" content="Case study — Purple Granite website and worktop visualiser. TG Media.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .case-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.3)}
-        .case-label-light{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-        .ru{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
-        .ru.on{opacity:1;transform:translateY(0)}
-        .mac-lid{background:#1d1d1f;border-radius:12px 12px 0 0;padding:9px 9px 0;box-shadow:0 0 0 1px #3a3a3c,0 50px 100px rgba(0,0,0,.25);position:relative}
-        .mac-lid::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#2c2c2e;border-radius:50%}
-        .mac-screen{background:#000;border-radius:5px;overflow:hidden;aspect-ratio:16/10}
-        .mac-screen .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0f0e0c;flex-direction:column;gap:8px}
-        .mac-base{background:linear-gradient(180deg,#2c2c2e,#1d1d1f);height:18px;border-radius:0 0 3px 3px;box-shadow:0 0 0 1px #3a3a3c;position:relative}
-        .mac-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28%;height:4px;background:#111;border-radius:2px 2px 0 0}
-        .mac-stand{width:55%;height:9px;background:linear-gradient(180deg,#232325,#1d1d1f);margin:0 auto;border-radius:0 0 5px 5px;box-shadow:0 0 0 1px #3a3a3c}
-        .iphone-b{background:#1d1d1f;border-radius:36px;padding:12px 7px;box-shadow:0 0 0 1px #3a3a3c,0 30px 60px rgba(0,0,0,.4);position:relative}
-        .iphone-b::before{content:'';position:absolute;top:9px;left:50%;transform:translateX(-50%);width:50px;height:5px;background:#2c2c2e;border-radius:3px}
-        .iphone-s{background:#000;border-radius:25px;overflow:hidden;aspect-ratio:9/19.5}
-        .iphone-s .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0f0e0c}
-        .bg-num{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(0,0,0,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
-        .bg-num-light{position:absolute;font-size:clamp(10rem,25vw,22rem);font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;line-height:1;top:-10px;right:-10px}
-        .section-intro{font-size:clamp(2rem,4.5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9}
-        .ruled{display:flex;align-items:center;gap:14px;margin-bottom:36px}
-        .ruled::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.1)}
-        .ruled-light::after{background:rgba(255,255,255,.1)}
-        .editorial-quote{border-left:3px solid #0033FF;padding-left:28px}
-        .editorial-quote p{font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:600;line-height:1.35;color:#080808}
-        .approach-row{padding:24px 0;border-top:1px solid rgba(0,0,0,.07);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
-        .approach-n{font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.1em;padding-top:2px}
-        .result-row{padding:18px 0;border-top:1px solid rgba(0,0,0,.07);display:flex;justify-content:space-between;align-items:center;gap:16px}
-        .rtick{width:18px;height:18px;border-radius:50%;background:#0033FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .rtick::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
-        .credit-row{display:flex;border-top:1px solid rgba(0,0,0,.07);padding:13px 0;align-items:baseline;gap:12px}
-        .credit-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.3);width:150px;flex-shrink:0}
-        .credit-val{font-size:13px;font-weight:500}
-        /* Visualiser swatch */
-        .swatch{width:28px;height:28px;border-radius:4px;border:1px solid rgba(0,0,0,.1);}
-        .vis-feat{padding:24px;background:#F8F8F6;border:1px solid rgba(0,0,0,.07);border-radius:6px}
-
-        /* ── MOBILE RESPONSIVE ─────────────────────────── */
-        @media (max-width: 768px) {
-            /* All inline grids collapse to single column */
-            [style*="grid-template-columns:1fr 1fr"],
-            [style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
-            [style*="grid-template-columns:300px 1fr"],
-            [style*="grid-template-columns: 300px 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
-            [style*="grid-template-columns:repeat(2,1fr)"],
-            [style*="grid-template-columns: repeat(2,1fr)"] {
-                grid-template-columns: 1fr !important;
-            }
-            [style*="grid-template-columns:repeat(4,1fr)"],
-            [style*="grid-template-columns: repeat(4,1fr)"] {
-                grid-template-columns: 1fr 1fr !important;
-            }
-            /* Reduce large padding */
-            [style*="padding:80px 40px"] { padding: 48px 20px !important; }
-            [style*="padding:80px 24px"] { padding: 48px 20px !important; }
-            [style*="padding:60px 40px"] { padding: 40px 20px !important; }
-            [style*="padding:60px 24px"] { padding: 40px 20px !important; }
-            [style*="padding:48px 40px"] { padding: 32px 20px !important; }
-            [style*="padding:40px 40px"] { padding: 28px 20px !important; }
-            [style*="padding:32px 40px"] { padding: 24px 20px !important; }
-            /* Stat strips — allow wrap */
-            .stat-strip { flex-wrap: wrap !important; }
-            .stat-strip > div { min-width: 50% !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,.08); padding: 20px !important; }
-            /* Section intro text */
-            .section-intro { font-size: clamp(1.8rem, 8vw, 3rem) !important; }
-            /* Approach rows */
-            .approach-row { grid-template-columns: 32px 1fr !important; gap: 12px !important; }
-            /* iphone frames — smaller on mobile */
-            .iphone-b { border-radius: 28px !important; }
-            /* Hero title */
-            [style*="font-size:clamp(4rem,14vw,13rem)"] { font-size: clamp(3rem, 14vw, 9rem) !important; }
-            [style*="font-size:clamp(3rem,12vw,11rem)"] { font-size: clamp(2.5rem, 12vw, 7rem) !important; }
-            /* Ghost numbers — smaller on mobile */
-            .bg-num, .bg-num-light { font-size: clamp(6rem, 35vw, 14rem) !important; }
-            /* Next section */
-            [style*="padding:60px 40px;"] { padding: 40px 20px !important; }
-            /* Visualiser swatch bar */
-            [style*="padding:14px 20px;display:flex"] { flex-wrap: wrap; gap: 8px; }
-            /* Two-col split sections — stack vertically */
-            section[style*="display:grid;grid-template-columns:1fr 1fr"] {
-                display: block !important;
-            }
-            section[style*="display:grid;grid-template-columns:1fr 1fr"] > div {
-                border-right: none !important;
-                border-bottom: 1px solid rgba(0,0,0,0.1);
-            }
-            section[style*="display:grid;grid-template-columns:1fr 1fr"] > div:last-child {
-                border-bottom: none !important;
-            }
-        }
-        @media (max-width: 480px) {
-            [style*="padding:80px 40px"] { padding: 36px 16px !important; }
-            [style*="padding:60px 40px"] { padding: 32px 16px !important; }
-            [style*="padding:48px 40px"] { padding: 28px 16px !important; }
-            [style*="padding:32px 40px"] { padding: 20px 16px !important; }
-            [style*="padding:80px 24px"] { padding: 36px 16px !important; }
-            [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
-            .mac-lid { border-radius: 8px 8px 0 0 !important; }
-        }
-
-        /* hero meta grid + stat strip mobile overrides */
-        @media (max-width: 768px) {
-            .hero-meta-grid {
-                grid-template-columns: 1fr !important;
-                gap: 24px !important;
-            }
-            .stat-strip {
-                flex-wrap: wrap !important;
-                padding: 0 !important;
-            }
-            .stat-strip > div {
-                min-width: calc(50% - 1px) !important;
-                padding: 20px 16px !important;
-                border-right: none !important;
-                border-bottom: 1px solid rgba(255,255,255,.08) !important;
-                box-sizing: border-box;
-            }
-            .stat-strip > div:nth-child(odd) {
-                border-right: 1px solid rgba(255,255,255,.08) !important;
-            }
-            /* MacBook mockup — reduce padding on mobile */
-            .mac-lid { border-radius: 8px 8px 0 0 !important; }
-            /* Identity grid 2-col on mobile */
-            [style*="grid-template-columns:1fr 1fr;gap:1px"] {
-                grid-template-columns: 1fr !important;
-            }
-            /* Development 2-col description grid */
-            [style*="grid-template-columns:1fr 1fr;gap:48px"] {
-                grid-template-columns: 1fr !important;
-                gap: 24px !important;
-            }
-            /* Mobile + credits grid */
-            [style*="grid-template-columns:1fr 1fr;gap:60px"] {
-                grid-template-columns: 1fr !important;
-                gap: 32px !important;
-            }
-            /* Approach section sidebar */
-            [style*="grid-template-columns:300px 1fr;gap:60px"] {
-                grid-template-columns: 1fr !important;
-                gap: 24px !important;
-            }
-            /* Next section padding */
-            [style*="background:#0033FF;padding:60px 40px"] {
-                padding: 40px 20px !important;
-            }
-            [style*="background:#FF6309;padding:60px 40px"] {
-                padding: 40px 20px !important;
-            }
-            /* Visualiser swatch row */
-            [style*="background:#111;padding:14px 20px"] {
-                flex-wrap: wrap !important;
-                gap: 8px !important;
-            }
-            /* iPhones — reduce size on small screens */
-            .iphone-b {
-                border-radius: 26px !important;
-            }
-            /* Section split — overview/challenge */
-            section[style*="display:grid;grid-template-columns:1fr 1fr;border-bottom"] {
-                display: flex !important;
-                flex-direction: column !important;
-            }
-            /* Work page card min-heights */
-            .proj-card[style*="min-height:480px"] { min-height: 380px !important; }
-            .proj-card[style*="min-height:400px"] { min-height: 320px !important; }
-        }
-        @media (max-width: 480px) {
-            .stat-strip > div { min-width: 100% !important; border-right: none !important; }
-            .stat-strip > div:nth-child(odd) { border-right: none !important; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purple Granite — project notes — TG Media</title>
+<meta name="description" content="Website and e-commerce design for a stone worktop specialist.">
+<meta name="author" content="Tom McTigue">
+<link rel="canonical" href="https://tgmedia.uk/project-purplegranite.html">
+<meta property="og:title" content="Purple Granite — project notes — TG Media">
+<meta property="og:description" content="Website and e-commerce design for a stone worktop specialist.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tgmedia.uk/project-purplegranite.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased" style="background:#F8F8F6;">
-<div id="preloader">
-    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span><span id="loader-percent">0%</span></div>
-    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-</div>
-<div class="grain"></div><div id="cursor"></div>
-<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full overflow-hidden">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0"><span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span></a>
-        <div class="hidden md:flex h-full"><nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase"><a href="index.html" class="hover:text-[#0033FF]">Home</a><a href="about.html" class="hover:text-[#0033FF]">About</a><a href="services.html" class="hover:text-[#0033FF]">Services</a><a href="contact.html" class="hover:text-[#0033FF]">Contact</a></nav></div>
-    </div>
-    <div class="flex h-full flex-shrink-0">
-        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">MENU</button>
-    </div>
+<body>
+
+<a href="#top" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">TG Media</a>
+  <nav aria-label="Primary" class="primary-nav">
+    <a href="work.html" aria-current="page">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">Studio</a>
+  </nav>
+  <a href="contact.html" class="site-header__cta">Start a project</a>
 </header>
-<div id="mobile-menu"><button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button><nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter"><a href="index.html" class="hover:translate-x-4 transition-transform">Home</a><a href="about.html" class="hover:translate-x-4 transition-transform">About</a><a href="services.html" class="hover:translate-x-4 transition-transform">Services</a><a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a></nav></div>
 
-<div id="main-content" style="margin-bottom:0;box-shadow:none;">
+<main id="top">
 
-<!-- HERO — off-white with bold type -->
-<section style="background:#EEEAE4;padding-top:64px;border-bottom:1px solid black;overflow:hidden;position:relative;">
-    <div style="position:absolute;top:0;right:0;bottom:0;width:40%;background:linear-gradient(135deg,#0033FF 0%,#001a80 100%);opacity:.08;"></div>
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 0;position:relative;z-index:1;">
-        <div class="flex items-center gap-6 mb-10 ru">
-            <a href="index.html" style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.4);border-bottom:1px solid rgba(0,0,0,.15);padding-bottom:2px;">← Back</a>
-            <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.25);">Case Study — 02 / 04</span>
-        </div>
-        <div class="ru" style="margin-bottom:40px;">
-            <p style="font-family:'Space Mono',monospace;font-size:10px;color:#0033FF;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;">Stone Worktops / E-Commerce</p>
-            <h1 style="font-size:clamp(4rem,14vw,13rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;color:#080808;margin:0;">
-                Purple<br><span style="color:#0033FF;">Granite</span>
-            </h1>
-        </div>
-        <div class="hero-meta-grid" class="hero-meta-grid ru" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;max-width:900px;">
-            <div>
-                <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.7;margin:0 0 20px;">Full digital transformation for the UK's leading stone worktop specialists — including a bespoke interactive visualiser that puts the buying decision in the customer's hands.</p>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,.15);padding:4px 10px;color:rgba(0,0,0,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Web Design</span>
-                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,0,0,.15);padding:4px 10px;color:rgba(0,0,0,.4);border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">UX</span>
-                    <span style="font-family:'Space Mono',monospace;font-size:9px;border:1px solid rgba(0,51,255,.3);padding:4px 10px;color:#0033FF;border-radius:2px;text-transform:uppercase;letter-spacing:.08em;">Custom Visualiser</span>
-                </div>
-            </div>
-            <div>
-                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Client</span><span style="font-size:13px;color:#080808;font-weight:500;">Purple Granite Ltd</span></div>
-                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Sector</span><span style="font-size:13px;color:#080808;font-weight:500;">Home Improvement</span></div>
-                <div style="border-top:1px solid rgba(0,0,0,.1);padding:12px 0;display:flex;gap:12px;"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.3);width:90px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em;">Live</span><a href="https://purplegranite.co.uk" target="_blank" style="font-size:13px;color:#0033FF;font-weight:500;">purplegranite.co.uk ↗</a></div>
-            </div>
-        </div>
-    </div>
-    <div style="max-width:1000px;margin:0 auto;padding:0 24px;" class="ru">
-        <div class="mac-lid"><div class="mac-screen"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Add screenshot — purplegranite.co.uk</span></div></div></div>
-        <div class="mac-base"></div><div class="mac-stand"></div>
-    </div>
-    <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;text-align:center;padding:20px 0 40px;">Fig 1.0 — Desktop Interface</p>
+<section class="section" style="padding-top:clamp(32px,5vh,64px)">
+  <p class="eyebrow"><a href="work.html" style="color:var(--graphite)">Work</a> &nbsp;/&nbsp; Purple Granite &nbsp;/&nbsp; project notes</p>
+  <h1 class="h-e" data-drift="9" style="margin-top:clamp(24px,4vh,48px)">Purple Granite</h1>
+  <p class="body-m" style="margin-top:clamp(24px,4vh,40px);max-width:52ch">Stone worktops, sold from a showroom and online. The material is the product, so the website has to show it honestly and then get out of the way of the enquiry.</p>
+  <dl class="meta-list meta-list--inline" style="margin-top:clamp(28px,4vh,48px);padding-top:18px;border-top:1px solid var(--rule)">
+    <div class="meta-row"><dt>Sector</dt><dd>Stone worktops</dd></div>
+    <div class="meta-row"><dt>Type</dt><dd>E-commerce</dd></div>
+    <div class="meta-row"><dt>Scope</dt><dd>Design, build</dd></div>
+    <div class="meta-row"><dt>Live</dt><dd><a href="https://purplegranite.co.uk" class="link--quiet">purplegranite.co.uk</a></dd></div>
+  </dl>
 </section>
 
-<!-- OVERVIEW + CHALLENGE split -->
-<section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid black;" class="ru">
-    <div style="background:white;padding:60px 40px;border-right:1px solid rgba(0,0,0,.08);position:relative;overflow:hidden;">
-        <span class="bg-num">01</span>
-        <div class="ruled"><span class="case-label">Overview</span></div>
-        <h2 class="section-intro" style="margin-bottom:24px;">Project<br>Overview</h2>
-        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">Purple Granite is one of the UK's most established stone worktop specialists — operating showrooms in Kidderminster and Worcester, fabricating and installing entirely in-house. A direct operation that gives them a significant quality and speed advantage over the market.</p>
-        <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">The project required a complete digital overhaul to match the premium positioning of the product range and better serve the modern home buyer who researches entirely online before committing.</p>
+<section class="section pt-2">
+  <div class="row row--flush-right">
+    <div style="flex:1 1 640px;max-width:min(100%,900px)">
+      <p class="eyebrow">What the site has to do</p>
+      <h2 class="h-b" style="margin-top:clamp(20px,3vh,36px);max-width:18ch">Nobody buys a worktop from a thumbnail.</h2>
+      <p class="body-m muted" style="margin-top:clamp(24px,4vh,40px);max-width:58ch">Stone is chosen on colour, pattern and edge, and photographed badly it all looks the same. The site&rsquo;s job is to let someone compare materials properly, understand what a slab will look like in a kitchen, and then either buy or ask a question without hunting for the form. Product photography does the persuading; the interface stays quiet enough to let it.</p>
     </div>
-    <div style="background:#080808;padding:60px 40px;position:relative;overflow:hidden;">
-        <span class="bg-num-light">02</span>
-        <div class="ruled ruled-light"><span class="case-label-light">Challenge</span></div>
-        <h2 class="section-intro" style="margin-bottom:24px;color:white;">The<br>Challenge</h2>
-        <div class="editorial-quote" style="margin-bottom:24px;">
-            <p style="color:rgba(255,255,255,.85);">"The gap between product catalogue and customer confidence was costing enquiries. We needed to close that gap with technology."</p>
-        </div>
-        <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;">Stone worktops are a considered purchase. Customers can't visualise how a material will look in their kitchen from a flat product photo. A significant proportion were dropping off before enquiry — unable to bridge that gap.</p>
-    </div>
+  </div>
 </section>
 
-<!-- APPROACH -->
-<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
-        <div>
-            <div class="ruled"><span class="case-label">Approach</span></div>
-            <h2 class="section-intro">UX<br>First.</h2>
-        </div>
-        <div>
-            <div class="approach-row"><span class="approach-n">01</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Browse, Visualise, Enquire</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">The architecture was restructured around three core user intentions. Every design decision was made in service of moving the user efficiently through those three stages without friction or doubt.</p></div></div>
-            <div class="approach-row"><span class="approach-n">02</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Product Led</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Stone photography at maximum scale. Stone textures deserve space. Product grids are generous — fewer products per row, each given room to communicate material quality. White space is as much a design element as the photography.</p></div></div>
-            <div class="approach-row"><span class="approach-n">03</span><div><p style="font-size:15px;font-weight:700;text-transform:uppercase;margin-bottom:6px;letter-spacing:.02em;">Conversion Architecture</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.7;">Every page has a single, unambiguous next step. Sample request, showroom booking or quote enquiry — always one step away, never buried. No dead ends in the buying journey.</p></div></div>
-        </div>
+<section class="section pt-2">
+  <div style="max-width:900px;padding-top:20px;border-top:1px solid var(--rule)">
+    <p class="body-m" style="max-width:58ch">Full notes for this project are being written up with the client before they are published here. The live site is the best look at it in the meantime.</p>
+    <p class="eyebrow" style="margin-top:20px;color:var(--stone)">Material and product photography to be supplied by the client</p>
+    <div class="row row--gap-s" style="margin-top:clamp(28px,4vh,44px)">
+      <a href="https://purplegranite.co.uk" class="link">Visit purplegranite.co.uk</a>
     </div>
+  </div>
 </section>
 
-<!-- VISUALISER FEATURE — full creative treatment -->
-<section style="background:white;border-bottom:1px solid black;" class="ru">
-    <!-- Blue header band -->
-    <div style="background:#0033FF;padding:48px 40px;">
-        <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
-            <div>
-                <p style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px;">Key Feature — Custom Build</p>
-                <h2 class="section-intro" style="color:white;">The Worktop<br>Visualiser</h2>
-            </div>
-            <p style="font-size:13px;color:rgba(255,255,255,.5);max-width:360px;line-height:1.7;">A bespoke interactive tool that removes the core friction in the buying journey — letting customers see exactly how a material looks in their kitchen before committing.</p>
-        </div>
-    </div>
-    <!-- Visualiser mockup -->
-    <div style="padding:40px;max-width:1100px;margin:0 auto;">
-        <div style="background:#1a1a1a;border-radius:10px;overflow:hidden;margin-bottom:24px;">
-            <div style="aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;position:relative;">
-                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:20px;">Suggested: Screenshot of the worktop visualiser — material applied to kitchen scene</span>
-            </div>
-            <div style="background:#111;padding:14px 20px;display:flex;align-items:center;gap:16px;border-top:1px solid rgba(255,255,255,.06);">
-                <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.1em;">Material</span>
-                <div style="display:flex;gap:8px;">
-                    <div class="swatch" style="background:#8B7355;"></div>
-                    <div class="swatch" style="background:#C8C8C8;"></div>
-                    <div class="swatch" style="background:#2C2C2C;"></div>
-                    <div class="swatch" style="background:#E8E0D0;border:2px solid #0033FF;"></div>
-                    <div class="swatch" style="background:#6B5E4E;"></div>
-                    <div class="swatch" style="background:#1a1a1a;"></div>
-                </div>
-                <span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);margin-left:auto;">Porcelain White — Selected</span>
-            </div>
-        </div>
-        <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-bottom:32px;">Fig 2.0 — Interactive Worktop Visualiser</p>
-        <!-- Feature 2x2 -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="layers" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Material Library</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Full product range — granite, quartz, marble and porcelain — rendered with accurate colour and vein mapping inside a real kitchen environment.</p></div>
-            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="zap" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Real-time Switching</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Instant material application — no reload, no delay. Customers compare options side by side in a single session without friction or waiting.</p></div>
-            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="eye" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Kitchen Environments</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">Multiple scene options covering different cabinet colours and styles — customers can match to their specific kitchen context, not just a generic render.</p></div>
-            <div class="vis-feat"><div style="width:32px;height:32px;background:#0033FF;border-radius:5px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;"><i data-lucide="arrow-right" style="width:16px;height:16px;color:white;"></i></div><p style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:6px;">Direct to Enquiry</p><p style="font-size:13px;color:rgba(0,0,0,.5);line-height:1.6;">From the visualiser, customers move directly to sample request, showroom booking or quote — all within one continuous, uninterrupted journey.</p></div>
-        </div>
-    </div>
+<nav aria-label="Projects" class="case-nav">
+  <a href="project-westbury.html">
+    <span class="case-nav__label">Previous</span>
+    <span class="case-nav__title">Westbury Music</span>
+  </a>
+  <a href="project-barstudios.html">
+    <span class="case-nav__label">Next</span>
+    <span class="case-nav__title">Bar Studios</span>
+  </a>
+</nav>
+
+<section class="section pt-3 pb-3">
+  <h2 class="h-a" style="font-size:clamp(2rem,6.4vw,6.25rem);max-width:18ch">Selling something physical online and finding the site does not do it justice?</h2>
+  <div class="row row--gap-s" style="margin-top:clamp(28px,4vh,48px)">
+    <a href="contact.html" class="link">Start a project</a>
+    <a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a>
+  </div>
 </section>
 
-<!-- DEVELOPMENT stat strip -->
-<section style="background:#F8F8F6;border-bottom:1px solid black;" class="ru">
-    <div class="stat-strip" style="background:#080808;padding:32px 40px;display:flex;align-items:center;gap:0;overflow-x:auto;">
-        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding-right:40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Platform</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Shopify</p></div>
-        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding:0 40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Theme</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Custom</p></div>
-        <div style="flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,.08);padding:0 40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Visualiser</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">Canvas JS</p></div>
-        <div style="flex:1;min-width:140px;padding-left:40px;"><p style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:4px;">Responsive</p><p style="font-size:24px;font-weight:900;color:white;letter-spacing:-.02em;">100%</p></div>
-    </div>
-    <div style="padding:60px 40px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
-        <div><div class="ruled"><span class="case-label">Development</span></div><h2 class="section-intro">Built for<br>Performance.</h2></div>
-        <div>
-            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;margin-bottom:14px;">Built on Shopify with a fully custom theme. The visualiser is a bespoke JavaScript application integrated into product pages — canvas-based rendering applies material maps to the kitchen environment in real time.</p>
-            <p style="font-size:14px;color:rgba(0,0,0,.55);line-height:1.75;">High-resolution material textures with optimised asset loading maintain speed across all devices including mobile. Tested extensively across viewport sizes, connection speeds and device types before launch.</p>
-        </div>
-    </div>
-</section>
+</main>
 
-<!-- RESULTS -->
-<section style="background:white;padding:80px 24px;border-bottom:1px solid black;position:relative;overflow:hidden;" class="ru">
-    <span class="bg-num">07</span>
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:start;">
-        <div><div class="ruled"><span class="case-label">Results</span></div><h2 class="section-intro">What<br>Landed.</h2></div>
-        <div>
-            <div class="result-row"><p style="font-size:14px;font-weight:500;">A digital experience that matches the quality of the product range</p><div class="rtick"></div></div>
-            <div class="result-row"><p style="font-size:14px;font-weight:500;">Custom visualiser reducing pre-purchase uncertainty and drop-off</p><div class="rtick"></div></div>
-            <div class="result-row"><p style="font-size:14px;font-weight:500;">Structured buying journey from browse to enquiry in three clear stages</p><div class="rtick"></div></div>
-            <div class="result-row" style="border-bottom:1px solid rgba(0,0,0,.07);"><p style="font-size:14px;font-weight:500;">Scalable Shopify platform supporting the full product range and future growth</p><div class="rtick"></div></div>
-        </div>
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__about">
+      <p>TG Media</p>
+      <p>Independent design studio. Websites and visual identities for businesses that have outgrown how they currently present themselves. Warwick, UK.</p>
     </div>
-</section>
-
-<!-- MOBILE + CREDITS -->
-<section style="background:#F8F8F6;padding:80px 24px;border-bottom:1px solid black;" class="ru">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
-        <div>
-            <div class="ruled"><span class="case-label">Mobile Experience</span></div>
-            <div style="display:flex;gap:20px;align-items:flex-end;">
-                <div style="width:148px;flex-shrink:0;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Homepage</span></div></div></div></div>
-                <div style="width:148px;flex-shrink:0;margin-bottom:18px;"><div class="iphone-b"><div class="iphone-s"><div class="ph"><span style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.12);text-align:center;padding:12px;text-transform:uppercase;letter-spacing:.08em;">Visualiser</span></div></div></div></div>
-            </div>
-            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(0,0,0,.25);text-transform:uppercase;letter-spacing:.15em;margin-top:16px;">Fig 3.0 — Mobile Interface</p>
-        </div>
-        <div>
-            <div class="ruled"><span class="case-label">Credits</span></div>
-            <div class="credit-row"><span class="credit-role">Studio</span><span class="credit-val">TG Media</span></div>
-            <div class="credit-row"><span class="credit-role">Web Design</span><span class="credit-val">TG Media</span></div>
-            <div class="credit-row"><span class="credit-role">UX Design</span><span class="credit-val">TG Media</span></div>
-            <div class="credit-row"><span class="credit-role">Development</span><span class="credit-val">TG Media</span></div>
-            <div class="credit-row"><span class="credit-role">Visualiser</span><span class="credit-val">TG Media (Custom)</span></div>
-            <div class="credit-row"><span class="credit-role">Client</span><span class="credit-val">Purple Granite Ltd</span></div>
-            <div class="credit-row"><span class="credit-role">Live URL</span><a href="https://purplegranite.co.uk" target="_blank" style="font-size:13px;font-weight:500;color:#0033FF;">purplegranite.co.uk</a></div>
-        </div>
+    <div class="site-footer__navs">
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">Studio</a>
+        <a href="contact.html">Start a project</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terms.html">Terms</a>
+      </nav>
     </div>
-</section>
-
-<!-- NEXT -->
-<section style="background:#0033FF;padding:60px 40px;" class="ru">
-    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
-        <div>
-            <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;">Next Case Study</p>
-            <a href="project-barstudios.html" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;color:white;display:inline-flex;align-items:center;gap:16px;text-decoration:none;">Bar Studios <i data-lucide="arrow-right" style="width:32px;height:32px;"></i></a>
-        </div>
-        <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:11px;border:1px solid rgba(255,255,255,.4);padding:12px 24px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;">Start a project →</a>
-    </div>
-</section>
-
-</div>
-<footer class="bg-black text-white">
-    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden" style="min-height:50vh;">
-        <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-5xl mx-auto text-center flex flex-col items-center justify-center py-16">
-            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Ready to become<br>the obvious choice?</h2>
-            <a href="contact.html" class="magnetic-btn inline-block px-10 md:px-14 py-5 bg-[#0033FF] text-white font-black text-lg md:text-2xl uppercase hover:bg-[#FF6309] hover:text-black transition-colors duration-300 rounded-full">Start a Project</a>
-        </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
-            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-            <div class="flex flex-wrap gap-4 text-white/50"><a href="index.html" class="hover:text-[#FF6309]">HOME</a><a href="about.html" class="hover:text-[#FF6309]">ABOUT</a><a href="services.html" class="hover:text-[#FF6309]">SERVICES</a><a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a><a href="terms.html" class="hover:text-[#FF6309]">TERMS</a><a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a></div>
-        </div>
-    </div>
+  </div>
+  <p class="site-footer__bottom">&copy; <span data-year>2026</span> TG Media &nbsp;/&nbsp; Warwick, UK &nbsp;/&nbsp; Design and development by Tom McTigue</p>
 </footer>
+
 <script src="shared.js"></script>
-<script>
-const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}}),{threshold:.07});
-document.querySelectorAll('.ru').forEach((el,i)=>{el.style.transitionDelay=(i*.05)+'s';io.observe(el);});
-</script>
 </body>
 </html>

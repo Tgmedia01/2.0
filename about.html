@@ -1,181 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TG MEDIA — About | Design & Branding Studio, Warwick</title>
-    <meta name="description" content="TG Media is a Warwick-based design, branding and web development studio. We partner with ambitious businesses to build brand identities and high-performance digital platforms.">
-    <meta property="og:title" content="About TG Media — Design & Branding Studio">
-    <meta property="og:description" content="Warwick-based design studio specialising in brand identity, web development and digital production.">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://tgmedia.uk/about.html">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .page-title {
-            font-size: clamp(2.8rem, 8vw, 9rem);
-            line-height: 0.88;
-            letter-spacing: -0.03em;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .about-h2 {
-            font-size: clamp(1.6rem, 4vw, 3.2rem);
-            line-height: 1.1;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Tom McTigue — TG Media</title>
+<meta name="description" content="TG Media is run by Tom McTigue in Warwick. Clients work directly with the person designing and building the site.">
+<meta name="author" content="Tom McTigue">
+<link rel="canonical" href="https://tgmedia.uk/about.html">
+<meta property="og:title" content="About Tom McTigue — TG Media">
+<meta property="og:description" content="TG Media is run by Tom McTigue in Warwick. Clients work directly with the person designing and building the site.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tgmedia.uk/about.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased bg-white">
+<body>
 
-<div id="preloader">
-    <div class="text-4xl md:text-6xl font-black mb-4 tracking-tighter logo-anim">TG — MEDIA™</div>
-    <div class="font-mono text-xs flex gap-4"><span>EST. 2019</span> <span id="loader-percent">0%</span></div>
-    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
-</div>
+<a href="#top" class="skip-link">Skip to content</a>
 
-<div class="grain"></div>
-<div id="cursor"></div>
-
-<header class="fixed top-0 w-full z-50 bg-[#F2F2F2]/90 backdrop-blur-md border-b border-black flex justify-between items-center h-16">
-    <div class="flex h-full overflow-hidden">
-        <a href="index.html" class="px-4 md:px-6 h-full flex items-center border-r border-black bg-black flex-shrink-0">
-            <span class="font-black tracking-tighter logo-anim text-lg md:text-xl whitespace-nowrap">TG — MEDIA™</span>
-        </a>
-        <div class="hidden md:flex h-full">
-            <nav class="flex h-full items-center px-4 gap-8 font-mono text-xs font-bold uppercase">
-                <a href="index.html" class="hover:text-[#0033FF]">Home</a>
-                <a href="about.html" class="text-[#0033FF]">About</a>
-                <a href="services.html" class="hover:text-[#0033FF]">Services</a>
-                <a href="work.html" class="hover:text-[#0033FF]">Work</a>
-                <a href="contact.html" class="hover:text-[#0033FF]">Contact</a>
-            </nav>
-        </div>
-    </div>
-    <div class="flex h-full flex-shrink-0">
-        <div class="px-6 h-full flex items-center border-l border-black hidden md:flex text-gray-400 font-mono text-[10px]">WARWICK — UK</div>
-        <button onclick="toggleMenu()" class="menu-toggle px-5 h-full flex items-center bg-[#0033FF] text-white border-l border-black font-bold text-xs tracking-widest uppercase hover:bg-black hover:text-[#FF6309]">
-            MENU
-        </button>
-    </div>
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">TG Media</a>
+  <nav aria-label="Primary" class="primary-nav">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" aria-current="page">Studio</a>
+  </nav>
+  <a href="contact.html" class="site-header__cta">Start a project</a>
 </header>
 
-<div id="mobile-menu">
-    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white font-mono border border-white px-3 py-1">CLOSE</button>
-    <nav class="flex flex-col gap-6 text-white text-5xl font-black uppercase tracking-tighter">
-        <a href="index.html" class="hover:translate-x-4 transition-transform">Home</a>
-        <a href="about.html" class="hover:translate-x-4 transition-transform">About</a>
-        <a href="services.html" class="hover:translate-x-4 transition-transform">Services</a>
-        <a href="work.html" class="hover:translate-x-4 transition-transform">Work</a>
-        <a href="contact.html" class="hover:translate-x-4 transition-transform">Contact</a>
-    </nav>
-</div>
+<main id="top">
 
-<div id="main-content">
-    <section class="bg-white pt-24 pb-24 px-5 md:px-12">
+<section class="section pt-1">
+  <p class="eyebrow">TG Media is Tom McTigue &nbsp;/&nbsp; Warwick, UK</p>
+  <h1 class="h-e" data-drift="10" style="margin-top:clamp(24px,4vh,48px);max-width:13ch">One person, the whole way through.</h1>
+  <p class="body-m" style="margin-top:clamp(28px,4vh,48px);max-width:56ch">I design and build websites for a living, on my own, under the name TG Media. If you work with me you deal with me &mdash; the first conversation, the design, the code, and whatever comes up two years later.</p>
+</section>
 
-        <!-- PAGE TITLE -->
-        <div class="border-b-2 border-black pb-10 mb-10">
-            <span class="font-mono text-xs text-[#FF6309] mb-4 block">COMPANY PROFILE // EST. 2019</span>
-            <h1 class="page-title text-black">Built<br>Different.</h1>
-        </div>
-
-        <!-- METADATA -->
-        <div class="font-mono text-xs leading-relaxed border-t border-black pt-4 mb-10 grid grid-cols-2 gap-y-4 gap-x-6 md:flex md:gap-12">
-            <!-- EDIT: Update these details -->
-            <div><strong class="block mb-1">LOCATION:</strong>WARWICK, UK</div>
-            <div><strong class="block mb-1">EST:</strong>2019</div>
-            <div><strong class="block mb-1">TYPE:</strong>DESIGN & DEV STUDIO</div>
-            <div><strong class="block mb-1">FOCUS:</strong>DIGITAL & BRANDING</div>
-        </div>
-
-        <!-- HEADLINE + BODY -->
-        <div class="mb-16">
-            <!-- EDIT: Your about headline -->
-            <h2 class="about-h2 mb-8">
-                We make businesses look like<br>
-                <span class="text-[#FF6309]">the best in their field.</span>
-            </h2>
-            <!-- EDIT: Your about body text -->
-            <div class="text-sm md:text-base leading-relaxed text-gray-700 max-w-3xl space-y-5">
-                <p>TG Media is a Warwick-based design practice specialising in building distinct brand identities and scalable digital platforms. We partner with ambitious businesses to translate complex requirements into clear, functional user experiences.</p>
-                <p>We approach every project with "Visual Engineering." This means we don't just prioritise aesthetics; we build systems based on solid logic and clean code. Our work is designed to look exceptional while performing reliably across all devices.</p>
-                <p>Operating outside the traditional agency model, we maintain a focused, multidisciplinary team. This allows us to work directly with our clients, removing administrative layers and ensuring that every decision serves a tangible business goal.</p>
-                <p>We bridge the gap between creative vision and technical reality. Whether launching a new e-commerce store or refreshing a corporate identity, we deliver assets that are built to perform and engineered to grow.</p>
-            </div>
-        </div>
-
-        <!-- WORKSPACE IMAGE -->
-        <!-- EDIT: Replace src with your own image URL -->
-        <div class="w-full h-56 md:h-[50vh] bg-[#F2F2F2] mb-16 relative overflow-hidden group border border-black">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="The Workspace" class="w-full h-full object-cover parallax-img grayscale group-hover:grayscale-0 transition-all duration-700">
-            <div class="absolute bottom-0 left-0 bg-black text-white px-4 py-2 font-mono text-xs">
-                FIG 1.0 — THE WORKSPACE
-            </div>
-        </div>
-
-        <!-- 3 VALUES -->
-        <!-- EDIT: Your 3 core values -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-grid">
-            <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-3">01</span>
-                <h3 class="font-bold uppercase mb-2 text-sm">No Filler</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">Every decision — visual or structural — has to earn its place. We don't add things because they look interesting. We add them because they work.</p>
-            </div>
-            <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-3">02</span>
-                <h3 class="font-bold uppercase mb-2 text-sm">High Standards</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">We take on fewer projects so we can do each one properly. If the brief isn't right or the fit isn't there, we'll say so. The work matters more than the invoice.</p>
-            </div>
-            <div class="border-t border-black pt-6">
-                <span class="text-4xl font-black text-[#FF6309] block mb-3">03</span>
-                <h3 class="font-bold uppercase mb-2 text-sm">Built to Last</h3>
-                <p class="text-sm text-gray-600 leading-relaxed">We build for where you're going, not just where you are. Brand systems and platforms that grow with your business without needing to be rebuilt from scratch.</p>
-            </div>
-        </div>
-
-    </section>
-</div>
-
-<footer id="sticky-footer" class="bg-black text-white">
-    <div class="w-full flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
-        <div class="grid-bg opacity-20"></div>
-        <div class="relative z-10 w-full max-w-4xl mx-auto text-center py-16 md:py-24">
-            <span class="font-mono text-xs text-[#FF6309] mb-6 inline-block border border-[#FF6309] px-3 py-1 rounded-full animate-pulse">● ACCEPTING PROJECTS Q2 2026</span>
-            <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10 mt-6">Let's Build<br>The Future.</h2>
-            <a href="contact.html" class="inline-block px-10 py-5 bg-[#0033FF] text-white font-black text-lg uppercase hover:bg-[#FF6309] hover:text-black transition-colors rounded-full">
-                Start a Project
-            </a>
-        </div>
-        <div class="relative z-10 flex flex-col md:flex-row justify-between w-full items-start md:items-end font-mono text-[10px] text-gray-500 border-t border-white/20 pt-6 gap-4">
-            <div><span class="text-[#0033FF]">TG MEDIA™</span><br>WARWICK, UK © 2026</div>
-            <div class="flex flex-wrap gap-4 text-white/50">
-                <a href="index.html" class="hover:text-[#FF6309]">HOME</a>
-                <a href="services.html" class="hover:text-[#FF6309]">SERVICES</a>
-                <a href="#" class="hover:text-[#FF6309]">INSTAGRAM</a>
-                <a href="#" class="hover:text-[#FF6309]">LINKEDIN</a>
-                <a href="privacy.html" class="hover:text-[#FF6309]">PRIVACY</a>
-                <a href="terms.html" class="hover:text-[#FF6309]">TERMS</a>
-                <a href="cookies.html" class="hover:text-[#FF6309]">COOKIES</a>
-            </div>
-        </div>
+<section class="section pt-3">
+  <div class="row row--gap-l">
+    <div style="flex:1 1 400px;max-width:44ch">
+      <h2 class="h-c" style="font-size:clamp(1.75rem,4.2vw,3.75rem);line-height:1.02">Design and code have not been two separate jobs here since the beginning.</h2>
     </div>
+    <ol style="flex:1 1 320px;max-width:46ch;display:flex;flex-direction:column;font-size:16px;line-height:1.4;margin:0;padding:0">
+      <li style="padding:14px 0;border-top:1px solid var(--rule)">Creative direction</li>
+      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,3vw,44px)">UX and content structure</li>
+      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,6vw,88px)">Visual design</li>
+      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,9vw,132px)">Front-end build</li>
+      <li style="padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-left:clamp(0px,12vw,176px)">CMS implementation</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section pt-3">
+  <p class="eyebrow">How I work</p>
+  <div class="row row--gap-l" style="margin-top:clamp(24px,4vh,44px)">
+    <div style="flex:1 1 420px;max-width:56ch">
+      <p class="body-l">I like a straightforward brief and a straight conversation. Early on I will ask more questions than you expect, because most website problems turn out to be structure or content problems wearing a visual disguise. Once we agree what the site is for, I would rather show you real pages than mood boards.</p>
+      <p class="body-l muted" style="margin-top:18px">I do not have a house style I apply to everyone. A music publisher and a stone worktop business should not end up with the same website wearing different colours, and the fastest way to make a design feel generic is to reuse the last one. What stays consistent is the standard of the work, not the look of it.</p>
+    </div>
+    <div style="flex:1 1 420px;max-width:56ch">
+      <p class="body-l muted">Technical decisions get made on what the project actually needs. Sometimes that is a fast custom build; often it is WordPress because your team needs to publish on a Friday afternoon without me. I will tell you which and why, in language that does not require a developer to translate.</p>
+      <p class="body-l muted" style="margin-top:18px">When something genuinely needs another pair of hands &mdash; photography, film, a specialist integration &mdash; I bring in people I have worked with before and stay responsible for the result. What I do not do is quietly hand your project to someone else.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section--dark section pt-3" style="margin-top:clamp(88px,13vh,160px);padding-top:clamp(72px,11vh,140px);padding-bottom:clamp(72px,11vh,140px)">
+  <p class="eyebrow" style="color:var(--stone)">Who the work suits</p>
+  <h2 class="h-b" style="font-size:clamp(1.875rem,5.6vw,5rem);line-height:1;margin-top:clamp(20px,3vh,36px);max-width:20ch">Businesses with real character and a website that no longer shows it.</h2>
+  <div class="row row--gap-l" style="margin-top:clamp(28px,4vh,48px)">
+    <p class="body-l muted-on-dark" style="flex:1 1 420px;max-width:52ch">Publishers, production studios and creative companies, and equally a salon, a stone specialist or a company that simply makes things properly. The common factor is not the sector. It is that the business has substance and the presentation has fallen behind it.</p>
+    <p class="body-l muted-on-dark" style="flex:1 1 420px;max-width:52ch">The work goes best with people who care about what they are building, prefer a direct conversation, and want a creative partner rather than another supplier. You do not need to know what the site should look like &mdash; that is my job &mdash; but you should know what your business is trying to do. If what you need is the cheapest possible template by Friday, I am the wrong person, and I will say so rather than take the work.</p>
+  </div>
+</section>
+
+<section class="section pt-3">
+  <dl class="row" style="gap:0 clamp(28px,4vw,72px);font-size:16px">
+    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Based</dt><dd style="margin:6px 0 0">Warwick, UK</dd></div>
+    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Working as</dt><dd style="margin:6px 0 0">TG Media since 2019</dd></div>
+    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Clients</dt><dd style="margin:6px 0 0">UK, remote or in person</dd></div>
+    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">At once</dt><dd style="margin:6px 0 0">A small number of projects</dd></div>
+  </dl>
+</section>
+
+<section class="section pt-3 pb-3">
+  <a data-magnetic="0.14" href="contact.html" class="h-a display-link" style="font-size:clamp(2rem,6.4vw,6.25rem);max-width:18ch">Send a few lines about the business and we will take it from there.</a>
+  <div class="row row--end row--between row--gap-m" style="margin-top:clamp(28px,4vh,48px)">
+    <div class="row row--gap-s">
+      <a href="contact.html" class="link">Start a project</a>
+      <a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a>
+    </div>
+    <p class="eyebrow">Tom normally responds within two working days</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__about">
+      <p>TG Media</p>
+      <p>Independent design studio. Websites and visual identities for businesses that have outgrown how they currently present themselves. Warwick, UK.</p>
+    </div>
+    <div class="site-footer__navs">
+      <nav aria-label="Footer">
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">Studio</a>
+        <a href="contact.html">Start a project</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </div>
+  <p class="site-footer__bottom">&copy; <span data-year>2026</span> TG Media &nbsp;/&nbsp; Warwick, UK &nbsp;/&nbsp; Design and development by Tom McTigue</p>
 </footer>
 
 <script src="shared.js"></script>
-<script>
-function initScrollAnimations() {
-    gsap.utils.toArray(".fade-up, .section-headline, h1, h2").forEach(function(el) {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-            y: 40, opacity: 0, duration: 0.9, ease: "power3.out"
-        });
-    });
-}
-</script>
 </body>
 </html>
