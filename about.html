@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Tom McTigue — TG Media</title>
-<meta name="description" content="TG Media is run by Tom McTigue in Warwick. Clients work directly with the person designing and building the site.">
+<title>Studio | TG Media</title>
+<meta name="description" content="TG Media is an independent design studio run by Tom McTigue in Warwick. You work directly with the person designing and building the site.">
 <meta name="author" content="Tom McTigue">
 <link rel="canonical" href="https://tgmedia.uk/about.html">
-<meta property="og:title" content="About Tom McTigue — TG Media">
-<meta property="og:description" content="TG Media is run by Tom McTigue in Warwick. Clients work directly with the person designing and building the site.">
+<meta property="og:title" content="Studio | TG Media">
+<meta property="og:description" content="TG Media is an independent design studio run by Tom McTigue in Warwick. You work directly with the person designing and building the site.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tgmedia.uk/about.html">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#070707">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
@@ -27,7 +28,7 @@
     <a href="services.html">Services</a>
     <a href="about.html" aria-current="page">Studio</a>
   </nav>
-  <a href="contact.html" class="site-header__cta">Start a project</a>
+  <a href="contact.html" class="site-header__cta">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
   <details class="mobile-nav">
     <summary class="mobile-nav__toggle" aria-label="Menu"><span class="mobile-nav__icon" aria-hidden="true"></span></summary>
     <div class="mobile-nav__panel">
@@ -37,73 +38,101 @@
         <a href="about.html" aria-current="page">Studio</a>
         <a href="contact.html">Start a project</a>
       </nav>
+      <p class="mobile-nav__meta">Warwick &nbsp;/&nbsp; working across the UK</p>
     </div>
   </details>
 </header>
 
 <main id="top">
 
-<section class="section pt-1">
-  <p class="eyebrow">TG Media is Tom McTigue &nbsp;/&nbsp; Warwick, UK</p>
-  <h1 class="h-e" data-drift="10" style="margin-top:clamp(24px,4vh,48px);max-width:13ch">One person, the whole way through.</h1>
-  <p class="body-m" style="margin-top:clamp(28px,4vh,48px);max-width:56ch">I design and build websites for a living, on my own, under the name TG Media. If you work with me you deal with me &mdash; the first conversation, the design, the code, and whatever comes up two years later.</p>
-</section>
-
-<section class="section pt-3">
-  <div class="row row--gap-l">
-    <div style="flex:1 1 400px;max-width:44ch">
-      <h2 class="h-c" style="font-size:clamp(1.75rem,4.2vw,3.75rem);line-height:1.02">Design and code have not been two separate jobs here since the beginning.</h2>
+<!-- Opening: statement plus hard facts immediately, so the page never floats. -->
+<section class="studio-hero field-paper tex tex--grain">
+  <div class="edge edge--left" aria-hidden="true"><span>TG Media is Tom McTigue</span></div>
+  <div class="wrap">
+    <p class="scene-tag" data-rise>The studio</p>
+    <div class="studio-split" style="margin-top:clamp(20px,3vh,36px)">
+      <h1 class="mega--serif" data-rise style="font-size:clamp(2.25rem,7vw,6.5rem);line-height:.94;letter-spacing:-.035em;max-width:14ch">One person, the whole way through.</h1>
+      <p class="body-l muted" data-rise style="--d:120ms;max-width:42ch">I design and build websites for a living, on my own, under the name TG Media. If you work with me you deal with me: the first conversation, the design, the code, and whatever comes up two years later.</p>
     </div>
-    <ol style="flex:1 1 320px;max-width:46ch;display:flex;flex-direction:column;font-size:16px;line-height:1.4;margin:0;padding:0">
-      <li style="padding:14px 0;border-top:1px solid var(--rule)">Creative direction</li>
-      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,3vw,44px)">UX and content structure</li>
-      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,6vw,88px)">Visual design</li>
-      <li style="padding:14px 0;border-top:1px solid var(--rule);margin-left:clamp(0px,9vw,132px)">Front-end build</li>
-      <li style="padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-left:clamp(0px,12vw,176px)">CMS implementation</li>
-    </ol>
+    <dl class="studio-facts" data-rise style="--d:200ms;margin-top:clamp(36px,5.5vh,72px)">
+      <div><dt>Based</dt><dd>Warwick, UK</dd></div>
+      <div><dt>Working as</dt><dd>TG Media since 2019</dd></div>
+      <div><dt>Clients</dt><dd>UK, remote or in person</dd></div>
+      <div><dt>At once</dt><dd>A small number of projects</dd></div>
+      <div><dt>Reply</dt><dd>Within two working days</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="section pt-3">
-  <p class="eyebrow">How I work</p>
-  <div class="row row--gap-l" style="margin-top:clamp(24px,4vh,44px)">
-    <div style="flex:1 1 420px;max-width:56ch">
-      <p class="body-l">I like a straightforward brief and a straight conversation. Early on I will ask more questions than you expect, because most website problems turn out to be structure or content problems wearing a visual disguise. Once we agree what the site is for, I would rather show you real pages than mood boards.</p>
-      <p class="body-l muted" style="margin-top:18px">I do not have a house style I apply to everyone. A music publisher and a stone worktop business should not end up with the same website wearing different colours, and the fastest way to make a design feel generic is to reuse the last one. What stays consistent is the standard of the work, not the look of it.</p>
-    </div>
-    <div style="flex:1 1 420px;max-width:56ch">
-      <p class="body-l muted">Technical decisions get made on what the project actually needs. Sometimes that is a fast custom build; often it is WordPress because your team needs to publish on a Friday afternoon without me. I will tell you which and why, in language that does not require a developer to translate.</p>
-      <p class="body-l muted" style="margin-top:18px">When something genuinely needs another pair of hands &mdash; photography, film, a specialist integration &mdash; I bring in people I have worked with before and stay responsible for the result. What I do not do is quietly hand your project to someone else.</p>
+<!-- The ladder: every stage, one pair of hands. Dense, no empty middle. -->
+<section class="scene field-fog" style="padding-top:clamp(64px,10vh,130px);padding-bottom:clamp(64px,10vh,130px)">
+  <div class="wrap">
+    <div class="row row--gap-l" style="align-items:flex-start">
+      <div style="flex:1 1 380px;max-width:520px">
+        <p class="scene-tag" data-rise>How it runs</p>
+        <h2 class="mega--serif" data-rise style="font-size:clamp(1.75rem,3.8vw,3.25rem);line-height:1.04;margin-top:16px">Design and code have not been two separate jobs here since the beginning.</h2>
+        <p class="body-l muted" data-rise style="--d:120ms;margin-top:clamp(18px,2.6vh,28px)">Which is why nothing gets lost in translation between them. The person who decided how it should work is the person who makes it work.</p>
+      </div>
+      <ul class="studio-ladder" data-rise style="--d:180ms;flex:1 1 420px">
+        <li><span>01</span> Creative direction</li>
+        <li><span>02</span> UX and content structure</li>
+        <li><span>03</span> Visual design</li>
+        <li><span>04</span> Front end build</li>
+        <li><span>05</span> CMS implementation</li>
+        <li><span>06</span> Launch and ongoing support</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="section--dark section pt-3" style="margin-top:clamp(88px,13vh,160px);padding-top:clamp(72px,11vh,140px);padding-bottom:clamp(72px,11vh,140px)">
-  <p class="eyebrow" style="color:var(--stone)">Who the work suits</p>
-  <h2 class="h-b" style="font-size:clamp(1.875rem,5.6vw,5rem);line-height:1;margin-top:clamp(20px,3vh,36px);max-width:20ch">Businesses with real character and a website that no longer shows it.</h2>
-  <div class="row row--gap-l" style="margin-top:clamp(28px,4vh,48px)">
-    <p class="body-l muted-on-dark" style="flex:1 1 420px;max-width:52ch">Publishers, production studios and creative companies, and equally a salon, a stone specialist or a company that simply makes things properly. The common factor is not the sector. It is that the business has substance and the presentation has fallen behind it.</p>
-    <p class="body-l muted-on-dark" style="flex:1 1 420px;max-width:52ch">The work goes best with people who care about what they are building, prefer a direct conversation, and want a creative partner rather than another supplier. You do not need to know what the site should look like &mdash; that is my job &mdash; but you should know what your business is trying to do. If what you need is the cheapest possible template by Friday, I am the wrong person, and I will say so rather than take the work.</p>
+<!-- How I work : two columns of real detail, black field. -->
+<section class="scene field-ink tex tex--marks">
+  <div class="wrap">
+    <p class="scene-tag" data-rise>How I work</p>
+    <div class="row row--gap-l" style="margin-top:clamp(28px,4vh,48px);align-items:flex-start">
+      <div style="flex:1 1 400px;max-width:52ch">
+        <p class="body-l" data-rise>I like a straightforward brief and a straight conversation. Early on I will ask more questions than you expect. Once we agree what the site is for, I would rather show you real pages than mood boards.</p>
+        <p class="body-l muted" data-rise style="--d:100ms;margin-top:18px">Technical decisions get made on what the project actually needs. Sometimes that is a fast custom build; often it is WordPress because your team needs to publish on a Friday afternoon without me. I will tell you which and why, in language that does not need a developer to translate.</p>
+      </div>
+      <div style="flex:1 1 400px;max-width:52ch">
+        <p class="body-l muted" data-rise style="--d:150ms">When something genuinely needs another pair of hands, such as photography, film or a specialist integration, I bring in people I have worked with before and stay responsible for the result. What I do not do is quietly hand your project to someone else.</p>
+        <p class="body-l muted" data-rise style="--d:200ms;margin-top:18px">You do not need to know what the site should look like. That is my job. You should know what the business is trying to do.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section pt-3">
-  <dl class="row" style="gap:0 clamp(28px,4vw,72px);font-size:16px">
-    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Based</dt><dd style="margin:6px 0 0">Warwick, UK</dd></div>
-    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Working as</dt><dd style="margin:6px 0 0">TG Media since 2019</dd></div>
-    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">Clients</dt><dd style="margin:6px 0 0">UK, remote or in person</dd></div>
-    <div style="flex:1 1 200px;padding:16px 0;border-top:1px solid var(--rule)"><dt class="muted">At once</dt><dd style="margin:6px 0 0">A small number of projects</dd></div>
-  </dl>
+<!-- One loud principle, orange, short. -->
+<section class="scene field-signal tex tex--halftone" style="padding-top:clamp(72px,11vh,150px);padding-bottom:clamp(72px,11vh,150px)">
+  <div class="wrap">
+    <blockquote class="studio-quote" data-rise>If what you need is the cheapest possible template by Friday, I am the wrong person, and I will say so rather than take the work.</blockquote>
+  </div>
 </section>
 
-<section class="section pt-3 pb-3">
-  <a data-magnetic="0.14" href="contact.html" class="h-a display-link" style="font-size:clamp(2rem,6.4vw,6.25rem);max-width:18ch">Send a few lines about the business and we will take it from there.</a>
-  <div class="row row--end row--between row--gap-m" style="margin-top:clamp(28px,4vh,48px)">
-    <div class="row row--gap-s">
-      <a href="contact.html" class="link">Start a project</a>
-      <a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a>
+<!-- Who it suits + the workspace slot. -->
+<section class="scene field-paper">
+  <div class="wrap">
+    <div class="row row--gap-l" style="align-items:flex-start">
+      <div style="flex:1 1 420px;max-width:46ch">
+        <p class="scene-tag" data-rise>Who the work suits</p>
+        <h2 class="mega--serif" data-rise style="font-size:clamp(1.75rem,3.8vw,3.25rem);line-height:1.04;margin-top:16px">Businesses with real character and a website that no longer shows it.</h2>
+        <p class="body-l muted" data-rise style="--d:120ms;margin-top:clamp(18px,2.6vh,28px)">Publishers, production studios and creative companies, and equally a salon, a stone specialist or a company that simply makes things properly. The common factor is not the sector. It is that the business has substance and the presentation has fallen behind it.</p>
+        <p data-rise style="--d:180ms;margin-top:clamp(28px,4vh,44px)"><a href="contact.html" class="btn">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a></p>
+      </div>
+      <div style="flex:1 1 340px" data-rise>
+        <!-- Abstract composition. A genuine studio photograph can replace this
+             whole block when one is available; brief in IMAGE_SOURCES.md. -->
+        <div class="signal-panel signal-panel--ink" data-rise aria-hidden="true">
+          <span class="signal-panel__bar" style="--w:88%;--x:-34%;--s:.58;--bd:0ms"></span>
+          <span class="signal-panel__bar" style="--w:62%;--x:46%;--s:.72;--bd:70ms"></span>
+          <span class="signal-panel__bar signal-panel__bar--signal" style="--w:96%;--x:-52%;--s:.4;--bd:140ms"></span>
+          <span class="signal-panel__bar" style="--w:74%;--x:38%;--s:.66;--bd:210ms"></span>
+          <span class="signal-panel__bar" style="--w:52%;--x:-28%;--s:.8;--bd:280ms"></span>
+          <span class="signal-panel__bar" style="--w:82%;--x:30%;--s:.55;--bd:350ms"></span>
+          <span class="signal-panel__bar" style="--w:44%;--x:-40%;--s:.7;--bd:420ms"></span>
+        </div>
+      </div>
     </div>
-    <p class="eyebrow">Tom normally responds within two working days</p>
   </div>
 </section>
 

@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Start a project — TG Media</title>
-<meta name="description" content="Tell Tom about the business and what is not working. Response normally within two working days.">
+<title>Start a project | TG Media</title>
+<meta name="description" content="Tell Tom what is not working. Response normally within two working days.">
 <meta name="author" content="Tom McTigue">
 <link rel="canonical" href="https://tgmedia.uk/contact.html">
-<meta property="og:title" content="Start a project — TG Media">
-<meta property="og:description" content="Tell Tom about the business and what is not working. Response normally within two working days.">
+<meta property="og:title" content="Start a project | TG Media">
+<meta property="og:description" content="Tell Tom what is not working. Response normally within two working days.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tgmedia.uk/contact.html">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#070707">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
@@ -27,7 +28,7 @@
     <a href="services.html">Services</a>
     <a href="about.html">Studio</a>
   </nav>
-  <a href="contact.html" class="site-header__cta" aria-current="page" style="border-bottom:1px solid var(--cobalt);padding-bottom:2px">Start a project</a>
+  <a href="contact.html" class="site-header__cta" aria-current="page">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
   <details class="mobile-nav">
     <summary class="mobile-nav__toggle" aria-label="Menu"><span class="mobile-nav__icon" aria-hidden="true"></span></summary>
     <div class="mobile-nav__panel">
@@ -37,142 +38,143 @@
         <a href="about.html">Studio</a>
         <a href="contact.html" aria-current="page">Start a project</a>
       </nav>
+      <p class="mobile-nav__meta">Warwick &nbsp;/&nbsp; working across the UK</p>
     </div>
   </details>
 </header>
 
-<main id="top">
+<main id="top" class="contact-split">
 
-<section class="section pt-1">
-  <h1 class="h-e" data-drift="9">Start a project</h1>
-  <div class="row row--end row--between row--gap-m" style="margin-top:clamp(28px,4vh,48px)">
-    <p class="body-l" style="flex:1 1 460px;max-width:56ch">Tell me a bit about the business and what is not working. Early-stage thinking is welcome &mdash; you do not need a brief, a budget or a decision to start a conversation.</p>
-    <dl class="meta-list" style="flex:0 1 300px;min-width:min(100%,240px)">
-      <div class="meta-row" style="border-bottom:0"><dt>Response time</dt><dd style="margin:6px 0 0">Two working days, usually sooner</dd></div>
-      <div class="meta-row" style="border-bottom:0"><dt>Prefer email</dt><dd style="margin:6px 0 0"><a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a></dd></div>
+  <!-- Colour field carries the message; the form panel stays plain and easy. -->
+  <aside class="contact-aside field-ink tex tex--marks">
+    <p class="scene-tag" data-rise>Start a project</p>
+    <h1 class="contact-aside__title" data-rise style="margin-top:clamp(18px,3vh,32px)">Tell me what<br>is not working.</h1>
+    <p class="contact-aside__body" data-rise style="--d:120ms">Thinking at an early stage is welcome. You do not need a brief, a budget or a decision to start a conversation. A few sentences about the business and what is getting in the way is plenty.</p>
+    <dl class="contact-aside__meta" data-rise style="--d:200ms">
+      <div><dt>Response</dt><dd>Two working days, usually sooner</dd></div>
+      <div><dt>Prefer email</dt><dd><a href="mailto:tom@tgmedia.uk" class="link--on-dark-quiet">tom@tgmedia.uk</a></dd></div>
+      <div><dt>Based</dt><dd>Warwick, UK</dd></div>
     </dl>
-  </div>
-</section>
+  </aside>
 
-<section class="section pt-2 pb-4" data-enquiry>
+  <div class="contact-form-panel field-paper" data-enquiry>
 
-  <div data-enquiry-sent hidden style="max-width:56ch" tabindex="-1">
-    <p class="eyebrow">Enquiry sent</p>
-    <h2 class="h-b" style="font-size:clamp(1.875rem,5.2vw,4.6875rem);line-height:1;margin-top:20px">Thanks &mdash; that has reached me.</h2>
-    <p class="body-l muted" style="margin-top:24px">I will read it properly and come back to you within two working days. If it is urgent, email <a href="mailto:tom@tgmedia.uk" class="link--quiet" style="color:var(--ink)">tom@tgmedia.uk</a> directly.</p>
-    <p style="margin-top:28px;font-size:16px"><a href="work.html" class="link--quiet" style="border-color:var(--ink);color:var(--ink)">Have a look at the work</a></p>
-  </div>
+    <div data-enquiry-sent hidden style="max-width:56ch" tabindex="-1">
+      <p class="scene-tag">Enquiry sent</p>
+      <h2 class="mega--serif" style="font-size:clamp(1.875rem,4.4vw,3.25rem);line-height:1.04;margin-top:18px">Thanks. That has reached me.</h2>
+      <p class="body-l muted" style="margin-top:20px">I will read it properly and come back to you within two working days. If it is urgent, email <a href="mailto:tom@tgmedia.uk" class="link--quiet">tom@tgmedia.uk</a> directly.</p>
+      <p style="margin-top:28px"><a href="work.html" class="link">Have a look at the work</a></p>
+    </div>
 
-  <div data-enquiry-form>
-    <form action="https://formspree.io/f/myklyzqv" method="POST" novalidate style="max-width:760px;display:flex;flex-direction:column;gap:clamp(24px,3.4vh,34px)">
+    <div data-enquiry-form>
+      <form action="https://formspree.io/f/myklyzqv" method="POST" novalidate style="max-width:740px;display:flex;flex-direction:column;gap:clamp(22px,3vh,32px)">
 
-      <input type="hidden" name="_subject" value="New enquiry — TG Media website">
+        <input type="hidden" name="_subject" value="New enquiry from the TG Media website">
 
-      <div class="visually-hidden" aria-hidden="true">
-        <label for="_gotcha">Leave this field empty</label>
-        <input id="_gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
-      </div>
-
-      <p role="alert" class="form-alert" data-enquiry-alert hidden></p>
-
-      <div class="row row--gap-s">
-        <div class="field" style="flex:1 1 300px">
-          <label for="name">Your name</label>
-          <input id="name" name="name" type="text" autocomplete="name">
-          <p class="field-error" data-error-for="name" hidden></p>
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input id="_gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
         </div>
-        <div class="field" style="flex:1 1 300px">
-          <label for="organisation">Organisation <span class="muted">(if there is one)</span></label>
-          <input id="organisation" name="organisation" type="text" autocomplete="organization">
+
+        <p role="alert" class="form-alert" data-enquiry-alert hidden></p>
+
+        <div class="row row--gap-s">
+          <div class="field" style="flex:1 1 280px">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+            <p class="field-error" data-error-for="name" hidden></p>
+          </div>
+          <div class="field" style="flex:1 1 280px">
+            <label for="organisation">Organisation <span class="muted">(if there is one)</span></label>
+            <input id="organisation" name="organisation" type="text" autocomplete="organization">
+          </div>
         </div>
-      </div>
 
-      <div class="row row--gap-s">
-        <div class="field" style="flex:1 1 300px">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email">
-          <p class="field-error" data-error-for="email" hidden></p>
+        <div class="row row--gap-s">
+          <div class="field" style="flex:1 1 280px">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+            <p class="field-error" data-error-for="email" hidden></p>
+          </div>
+          <div class="field" style="flex:1 1 280px">
+            <label for="website">Current website or social profile</label>
+            <input id="website" name="website" type="text" inputmode="url">
+          </div>
         </div>
-        <div class="field" style="flex:1 1 300px">
-          <label for="website">Current website or social profile</label>
-          <input id="website" name="website" type="text" inputmode="url">
-        </div>
-      </div>
 
-      <div class="field" style="max-width:420px">
-        <label for="project-type">What sort of project</label>
-        <select id="project-type" name="project-type">
-          <option value="">Choose one</option>
-          <option>A new website</option>
-          <option>Redesign of an existing site</option>
-          <option>Brand and website together</option>
-          <option>Ongoing support for a site I already have</option>
-          <option>Design or production work, not a website</option>
-          <option>Not sure yet</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="message">What are you trying to sort out</label>
-        <p class="field-hint">A few sentences is plenty. Detail is welcome if you have it.</p>
-        <textarea id="message" name="message" rows="7"></textarea>
-        <p class="field-error" data-error-for="message" hidden></p>
-      </div>
-
-      <div class="row row--gap-s">
-        <div class="field" style="flex:1 1 260px">
-          <label for="timing">Timing</label>
-          <select id="timing" name="timing">
+        <div class="field" style="max-width:420px">
+          <label for="project-type">What sort of project</label>
+          <select id="project-type" name="project-type">
             <option value="">Choose one</option>
-            <option>As soon as possible</option>
-            <option>Next one to three months</option>
-            <option>Three to six months</option>
-            <option>Later this year</option>
-            <option>No fixed date</option>
-          </select>
-        </div>
-        <div class="field" style="flex:1 1 260px">
-          <label for="budget">Budget range</label>
-          <select id="budget" name="budget">
-            <option value="">Choose one</option>
-            <option>Under &pound;5,000</option>
-            <option>&pound;5,000 &ndash; &pound;10,000</option>
-            <option>&pound;10,000 &ndash; &pound;20,000</option>
-            <option>&pound;20,000 or more</option>
+            <option>A new website</option>
+            <option>Redesign of an existing site</option>
+            <option>Brand and website together</option>
+            <option>Ongoing support for a site I already have</option>
+            <option>Design or production work, not a website</option>
             <option>Not sure yet</option>
           </select>
         </div>
-        <div class="field" style="flex:1 1 260px">
-          <label for="source">How did you come across TG Media</label>
-          <select id="source" name="source">
-            <option value="">Choose one</option>
-            <option>Someone recommended me</option>
-            <option>A site I built</option>
-            <option>Search</option>
-            <option>Instagram or LinkedIn</option>
-            <option>We have spoken before</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="field" style="max-width:60ch">
-        <div class="consent-row">
-          <input id="consent" name="consent" type="checkbox" value="yes">
-          <label for="consent" class="body-l">I am happy for Tom to use these details to reply to my enquiry. Nothing is added to a mailing list. See the <a href="privacy.html">privacy policy</a>.</label>
+        <div class="field">
+          <label for="message">What are you trying to sort out</label>
+          <p class="field-hint">A few sentences is plenty. Detail is welcome if you have it.</p>
+          <textarea id="message" name="message" rows="7"></textarea>
+          <p class="field-error" data-error-for="message" hidden></p>
         </div>
-        <p class="field-error" data-error-for="consent" hidden></p>
-      </div>
 
-      <div class="row" style="align-items:center;gap:24px;padding-top:8px;border-top:1px solid var(--rule)">
-        <button type="submit" class="btn-submit">Send enquiry</button>
-        <p class="eyebrow">I read it properly and reply with questions or a suggested call. Nothing automated.</p>
-      </div>
-    </form>
+        <div class="row row--gap-s">
+          <div class="field" style="flex:1 1 240px">
+            <label for="timing">Timing</label>
+            <select id="timing" name="timing">
+              <option value="">Choose one</option>
+              <option>As soon as possible</option>
+              <option>Next one to three months</option>
+              <option>Three to six months</option>
+              <option>Later this year</option>
+              <option>No fixed date</option>
+            </select>
+          </div>
+          <div class="field" style="flex:1 1 240px">
+            <label for="budget">Budget range</label>
+            <select id="budget" name="budget">
+              <option value="">Choose one</option>
+              <option>Under &pound;5,000</option>
+              <option>&pound;5,000 to &pound;10,000</option>
+              <option>&pound;10,000 to &pound;20,000</option>
+              <option>&pound;20,000 or more</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field" style="flex:1 1 240px">
+            <label for="source">How did you come across TG Media</label>
+            <select id="source" name="source">
+              <option value="">Choose one</option>
+              <option>Someone recommended me</option>
+              <option>A site I built</option>
+              <option>Search</option>
+              <option>Instagram or LinkedIn</option>
+              <option>We have spoken before</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="max-width:60ch">
+          <div class="consent-row">
+            <input id="consent" name="consent" type="checkbox" value="yes">
+            <label for="consent" class="body-l">I am happy for Tom to use these details to reply to my enquiry. Nothing is added to a mailing list. See the <a href="privacy.html">privacy policy</a>.</label>
+          </div>
+          <p class="field-error" data-error-for="consent" hidden></p>
+        </div>
+
+        <div class="row" style="align-items:center;gap:24px;padding-top:10px;border-top:1px solid var(--rule)">
+          <button type="submit" class="btn-submit">Send enquiry <span class="arrow" aria-hidden="true">&#8599;</span></button>
+          <p class="eyebrow">I read it properly and reply myself. Nothing automated.</p>
+        </div>
+      </form>
+    </div>
+
   </div>
-
-</section>
-
 </main>
 
 <footer class="site-footer">
