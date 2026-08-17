@@ -24,48 +24,80 @@ privacy.html, cookies.html, terms.html    Legal pages
 styles.css                   All shared styles — colours, type, layout, components
 shared.js                    All shared behaviour — motion, nav, enquiry form
 barstudios-*.png             Real client assets shipped on the site
+media/tex-*.webp             Original generated textures (see IMAGE_SOURCES.md)
+IMAGE_SOURCES.md             Every image: origin, licence, where it is used
 robots.txt, sitemap.xml
 ```
 
 ## Design system — Signal from Noise
 
-The homepage's organising idea is a business turning confusion into clarity.
-Elements start fragmented, disordered or unresolved and settle into a clear,
-aligned structure as you read or scroll — the hero headline resolves out of
-typographic noise, transformation pairs untangle into clean type, and the
-process section's line straightens as you move through it. The balance is
-deliberately weighted toward clarity: roughly 70% confident/resolved, 30%
-controlled disruption. Services, work and other interior pages stay in the
-resolved, service-led register throughout — the disorder motif belongs to the
-homepage's narrative, not the whole site.
+The site is built from full-bleed **scenes** rather than one white section
+repeated. Each scene commits to a colour field, a density and a type voice, and
+the page is composed so those alternate: paper into ink into fog into cobalt
+into orange, dense reading areas against wide typographic moments.
+
+The organising idea is a business turning confusion into clarity. Elements
+start fragmented, blurred, tangled or misaligned and resolve as you read — the
+hero headline settles out of typographic noise, the transformation pairs
+un-blur into alignment, and the process line untangles as it travels between
+the four stages. Roughly 70% confident/resolved to 30% controlled disruption.
 
 - **Colour** — ink `#070707`, paper `#ffffff`, fog `#f2f2f2`, stone `#a2a2a9`,
-  graphite `#797979`, cobalt `#2445ff` (functional accent — focus rings,
-  current-page marker, service/CTA sections), plus `--signal` (`#ff3d1a`), a
-  single functional orange-red intervention used exactly once site-wide (the
-  availability status dot in the hero). Tokens live at the top of `styles.css`.
-- **Type** — Newsreader (serif, weight 400) reserved for major statements
-  (hero, section headlines, big display CTAs); Archivo (grotesk sans) for
-  navigation, body copy, services and labels. Italics are a rare accent, not
-  a running style. Heading scale: `.h-27`, `.h-a`…`.h-g` (serif) and
-  `.h-sans-a`…`.h-sans-c` (sans, for services/process/labels). One-off
-  `max-width`/`margin` values for a specific headline stay as inline style —
-  that is content art direction, not a system value.
-- **Layout** — full-bleed canvas, gutters `clamp(20px, 3vw, 44px)`, a small
-  section-spacing scale (`--sp-1`…`--sp-4`), max 4px corner radius, no
-  gradients/shadows/glassmorphism/pill buttons.
-- **Motion** — `shared.js`: an opening ident (homepage, once per session), the
-  hero's noise-to-clarity entrance and its interactive noise/clarity rail
-  (a native range input, fully keyboard-operable), the transformation
-  section's scroll-triggered resolve, the cobalt services accordion
-  (hover/focus/click/keyboard), the process section's scroll-driven SVG line
-  that untangles as you scroll, crop reveals on images, magnetic CTAs,
-  subtle pointer drift and a short route wipe between pages (with a timeout
-  fallback so it can never get stuck). Everything respects
-  `prefers-reduced-motion`, and every "starts hidden/collapsed" effect is
-  gated behind a `*--enhanced` class added by JavaScript at the moment it
-  takes over — with JavaScript off, all content renders in its fully
-  readable, already-resolved state instead of staying hidden.
+  graphite `#797979`, cobalt `#2445ff`, signal orange `#ff3d1a`. Applied as
+  whole-scene fields via `.field-paper` / `.field-fog` / `.field-ink` /
+  `.field-cobalt` / `.field-signal`. Each field re-points `--fg`, `--fg-soft`,
+  `--fg-faint`, `--line` and `--accent`, so type, rules and links invert as a
+  set instead of being overridden one at a time.
+- **Type** — Archivo (to 800) carries structure, navigation and every oversized
+  display word; Newsreader carries statements and reading moments. Scales:
+  `.mega` / `.mega-fit` / `.mega--serif` for display, `.h-a`…`.h-g` (serif) and
+  `.h-sans-a`…`.h-sans-c` (grotesk) beneath.
+- **Texture** — four original generated assets in `media/` applied through
+  `.tex--grain` / `.tex--halftone` / `.tex--interference` / `.tex--marks`. They
+  are inverted automatically on dark fields. See `IMAGE_SOURCES.md`.
+- **Layout** — `.wrap` for contained content, scenes for full-bleed colour,
+  `.scene--overlap` to interlock two fields, `.edge` for the vertical
+  marginalia. Max 4px radius; no gradients, shadows, glassmorphism or pills.
+
+### Page art direction
+
+Each main page has its own composition rather than one reusable template:
+
+| Page | Direction |
+|---|---|
+| Home | Nine scenes: hero, ink problem, full-viewport transformation, sticky services takeover, orange interlude, black Tom, travelling process line, compact work strip, cobalt ending |
+| Services | Boldest type on the site. Four blocks alternating ink / paper / cobalt / fog, each with a different internal layout; orange ending |
+| Studio | Personal and dense — facts immediately, a numbered ladder, a black working section, one loud orange principle |
+| Work | Image-led opening, then an editorial index with oversized names and hover previews. Not an equal card grid |
+| Projects | Each opens in its own colour: Bar Studios monochrome, Westbury cobalt, Purple Granite stone |
+| Contact | Split — black colour field carrying the message, plain paper panel carrying the form |
+| Legal / 404 | Deliberately calm and readable, brand details kept small |
+
+## Motion
+
+`shared.js`, no libraries. One rAF loop, IntersectionObserver for entrances,
+SVG path animation for the process line.
+
+- Hero resolves in ~1.2s: lines rise into place, noise fragments flicker out.
+- Scenes rise in on entry; the transformation rows un-blur and align.
+- Services becomes a pinned sequence where each discipline takes the viewport,
+  driven by scroll and operable by pointer, keyboard (rail + arrow keys) and
+  touch. Below 760px, or under reduced motion, it degrades to four stacked
+  colour bands.
+- The process line is a single SVG path that untangles as it travels between
+  stages; the marquee only animates while on screen.
+- Route changes use a fast cobalt/orange wipe with a timeout fallback.
+
+**Two rules hold everywhere:**
+
+1. **Nothing is hidden by CSS alone.** Every "starts hidden" state is gated
+   behind a class JavaScript adds (`.js-motion`, `.svc--enhanced`,
+   `.transform--enhanced`, `.process--enhanced`). With JavaScript off, every
+   page renders complete — this is tested, not assumed.
+2. **Every hide-to-animate carries a timeout sweep**, so a missed observer or a
+   throttled frame can never leave content invisible.
+
+All of it respects `prefers-reduced-motion`.
 
 ## Editing content
 
