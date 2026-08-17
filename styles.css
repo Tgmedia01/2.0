@@ -7,14 +7,12 @@
    navigation and the oversized display words.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap');
-
 :root {
   --ink: #070707;
   --paper: #ffffff;
   --fog: #f2f2f2;
   --stone: #a2a2a9;
-  --graphite: #797979;
+  --graphite: #767676;
   --cobalt: #2445ff;
   --signal: #ff3d1a;
 
@@ -22,6 +20,12 @@
   --rule-strong: rgba(7, 7, 7, 0.16);
   --rule-on-dark: rgba(255, 255, 255, 0.18);
   --rule-on-dark-soft: rgba(255, 255, 255, 0.14);
+
+  /* Text-only contrast overrides — narrow, scoped uses only. Never redefine
+     --ink/--paper/--fog/--stone/--graphite/--cobalt/--signal themselves. */
+  --error-text: #c72c10;       /* .field-error on paper: --signal itself is 3.54:1, this is 5.53:1 */
+  --fg-faint-on-light: #8a8a8a; /* --fg-faint resolved on .field-paper/.field-fog only */
+  --cobalt-on-ink: #4d68ff;    /* small cobalt text hover on ink/dark fields: --cobalt itself is 3.23:1, this is 4.55:1 */
 
   --font-display: 'Newsreader', Georgia, serif;
   --font-body: 'Archivo', Helvetica, Arial, sans-serif;
@@ -146,8 +150,8 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
    butting together with a dead gap between them. */
 .scene--overlap { margin-top: clamp(-72px, -4vw, -32px); z-index: 2; }
 
-.field-paper { background: var(--paper); }
-.field-fog   { background: var(--fog); }
+.field-paper { background: var(--paper); --fg-faint: var(--fg-faint-on-light); }
+.field-fog   { background: var(--fog); --fg-faint: var(--fg-faint-on-light); }
 .field-ink   { background: var(--ink);    --fg: var(--paper); --fg-soft: var(--stone); --fg-faint: var(--graphite); --line: var(--rule-on-dark); color: var(--paper); }
 .field-cobalt{ background: var(--cobalt); --fg: var(--paper); --fg-soft: rgba(255,255,255,.78); --fg-faint: rgba(255,255,255,.55); --line: rgba(255,255,255,.3); --accent: var(--paper); color: var(--paper); }
 .field-signal{ background: var(--signal); --fg: var(--ink); --fg-soft: rgba(7,7,7,.72); --fg-faint: rgba(7,7,7,.5); --line: rgba(7,7,7,.28); --accent: var(--ink); color: var(--ink); }
@@ -307,7 +311,7 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 .link--quiet { color: var(--fg-soft); border-bottom: 1px solid var(--fg-faint); padding-bottom: 3px; }
 .link--quiet:hover { color: var(--fg); border-color: var(--fg); }
 .link--on-dark { color: var(--paper); border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 3px; }
-.link--on-dark:hover { color: var(--cobalt); border-color: var(--cobalt); }
+.link--on-dark:hover { color: var(--cobalt-on-ink); border-color: var(--cobalt-on-ink); }
 .link--on-dark-quiet { color: var(--stone); border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 3px; }
 .link--on-dark-quiet:hover { color: var(--paper); border-color: var(--paper); }
 
@@ -760,7 +764,7 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 }
 .field textarea { min-height: 0; line-height: 1.5; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--cobalt); outline-offset: 2px; border-color: var(--ink); }
-.field-error { font-size: 12px; line-height: 1.4; color: var(--signal); font-weight: 500; }
+.field-error { font-size: 12px; line-height: 1.4; color: var(--error-text); font-weight: 500; }
 .field-hint { font-size: 12px; color: var(--fg-faint); }
 .visually-hidden { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-alert { font-size: 15px; line-height: 1.5; padding: 16px 18px; border: 1px solid currentColor; border-radius: var(--radius); }
