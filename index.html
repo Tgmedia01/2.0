@@ -1,452 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TG Media | Independent design studio in Warwick</title>
-<meta name="description" content="TG Media is an independent design and web development studio run by Tom in Warwick. Strategy, identity and websites for businesses ready to look as good as they are.">
-<meta name="author" content="Tom McTigue">
-<link rel="canonical" href="https://tgmedia.uk/">
-<meta property="og:title" content="TG Media | Independent design studio in Warwick">
-<meta property="og:description" content="TG Media is an independent design and web development studio run by Tom in Warwick. Strategy, identity and websites for businesses ready to look as good as they are.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tgmedia.uk/">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#070707">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css">
-<link rel="sitemap" type="application/xml" href="sitemap.xml">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "TG Media",
-  "description": "Independent design and web development studio run by Tom in Warwick, working with businesses that have outgrown how they currently present themselves.",
-  "url": "https://tgmedia.uk",
-  "email": "tom@tgmedia.uk",
-  "founder": { "@type": "Person", "name": "Tom McTigue" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Warwick", "addressRegion": "Warwickshire", "addressCountry": "GB" },
-  "areaServed": "United Kingdom",
-  "knowsAbout": ["Website design", "Website redesign", "Brand identity", "Next.js development", "WordPress development", "Digital strategy"]
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bar Studios - A modern creative agency specializing in digital design and development.">
+    <title>Bar Studios | Creative Digital Agency</title>
+    
+    <!-- Google Fonts for typography polish -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES (Design System) --- */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --transition: 0.3s ease-in-out;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background var(--transition), transform var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- NAVIGATION (Sticky Header) --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 30px;
+            /* Placeholder for barstudios-wordmark.png */
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* --- PORTFOLIO GRID --- */
+        .portfolio {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            background: var(--bg-card);
+            padding: 6rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS & RESPONSIVE --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* In a real build, add a hamburger menu here */
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="ident" data-ident aria-hidden="true">
-  <div class="ident__stage">
-    <span class="ident__word" data-ident-word>Noise</span>
-    <span class="ident__word" data-ident-word>Signal</span>
-    <span class="ident__word ident__word--cobalt" data-ident-word>Clear</span>
-  </div>
-</div>
-
-<a href="#top" class="skip-link">Skip to content</a>
-
-<header class="site-header">
-  <a href="index.html" class="site-header__logo">TG Media</a>
-  <nav aria-label="Primary" class="primary-nav">
-    <a href="work.html">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">Studio</a>
-  </nav>
-  <a href="contact.html" class="site-header__cta">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
-  <details class="mobile-nav">
-    <summary class="mobile-nav__toggle" aria-label="Menu"><span class="mobile-nav__icon" aria-hidden="true"></span></summary>
-    <div class="mobile-nav__panel">
-      <nav aria-label="Primary (mobile)">
-        <a href="work.html">Work</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">Studio</a>
-        <a href="contact.html">Start a project</a>
-      </nav>
-      <p class="mobile-nav__meta">Warwick &nbsp;/&nbsp; working across the UK</p>
-    </div>
-  </details>
-</header>
-
-<main id="top">
-
-<!-- ============================================================ SCENE 1 : HERO -->
-<section class="hero field-paper tex tex--grain" data-hero data-scene="paper">
-  <div class="edge edge--left" aria-hidden="true"><span>Independent design studio</span></div>
-  <div class="edge edge--right" aria-hidden="true"><span>Warwick / across the UK</span></div>
-
-  <div class="hero__inner">
-    <p class="hero__kicker" data-hero-el>
-      <span class="signal-dot" aria-hidden="true"></span>
-      <span>Available for new projects</span>
-      <span aria-hidden="true">&nbsp;/&nbsp;</span>
-      <span>Strategy &nbsp;/&nbsp; Brand &nbsp;/&nbsp; Digital</span>
-    </p>
-
-    <h1 class="hero__headline">
-      <span class="noise-layer" aria-hidden="true" data-noise-layer></span>
-      <span class="hero__headline-text">
-        <span class="ln"><span data-hero-line>You&rsquo;ve outgrown</span></span>
-        <span class="ln"><span data-hero-line>how you <span class="tint">show up</span>.</span></span>
-      </span>
-    </h1>
-
-    <p class="hero__sub" data-hero-el>Strategy, identity and websites for businesses ready to look as good as they are.</p>
-
-    <div class="hero__foot">
-      <div class="hero__rail" data-noise-rail data-hero-el>
-        <p class="hero__rail-label">
-          <span>Move from noise</span>
-          <span aria-hidden="true">&rarr;</span>
-          <span><b>clarity</b></span>
-        </p>
-        <input type="range" class="noise-range" min="0" max="100" value="0" step="1" data-noise-range aria-label="Move from noise to clarity">
-        <div class="noise-demo" data-noise-demo aria-hidden="true">
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <!-- Replace with: <img src="barstudios-wordmark.png" alt="Bar Studios Logo"> -->
+                <div class="logo-text">Bar Studios.</div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      <div data-hero-el>
-        <a href="contact.html" class="btn">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<!-- ============================================================ SCENE 2 : THE PROBLEM -->
-<section class="scene problem field-ink tex tex--interference scene--overlap" data-scene="ink">
-  <div class="wrap">
-    <p class="scene-tag" data-rise>The situation</p>
-    <div class="problem__grid" style="margin-top:clamp(28px,4.5vh,56px)">
-      <div>
-        <h2 class="problem__head mega--serif" data-rise>The work is good. The website no longer shows it.</h2>
-        <p class="problem__body" data-rise style="--d:120ms">A vague position, an inherited visual identity and a site that has been patched together one request at a time. None of it is a disaster on its own. Together they put noise around a business that is ready for more, and the people you want to reach have to work to find the signal.</p>
-      </div>
-      <dl class="problem__aside" data-rise style="--d:200ms">
-        <div class="problem__stat">
-          <dt>Usually the real problem</dt>
-          <dd>Structure and content wearing a visual disguise.</dd>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>Crafting digital experiences that matter.</h1>
+            <p class="text-muted">We are Bar Studios. A boutique digital agency dedicated to building high-performance, visually stunning products for forward-thinking brands.</p>
+            <a href="#work" class="btn">View Our Work</a>
         </div>
-        <div class="problem__stat">
-          <dt>What it costs</dt>
-          <dd>Being judged on the weakest thing you own.</dd>
-        </div>
-        <div class="problem__stat">
-          <dt>The fix</dt>
-          <dd>Not decoration. Clarity, made tangible.</dd>
-        </div>
-      </dl>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ============================================================ SCENE 3 : TRANSFORMATION -->
-<section class="scene transform field-fog scene--tall" data-scene="fog">
-  <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <p class="scene-tag" data-rise>Where you are &nbsp;/&nbsp; where this takes you</p>
-      <p class="eyebrow eyebrow--quiet" data-rise>Four shifts</p>
-    </div>
-    <ul class="transform__list" data-transform-list>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Unclear</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Distinctive</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Dated</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Relevant</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Patched together</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Properly built</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Dependent</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">In control</span>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================================================ SCENE 4 : SERVICES TAKEOVER -->
-<section class="svc" data-svc aria-label="Services">
-  <div class="svc__intro field-paper">
-    <div class="wrap">
-      <p class="scene-tag" data-rise>What we do</p>
-      <h2 class="mega-fit svc__word" data-rise style="margin-top:14px">Services</h2>
-      <p class="body-l muted" data-rise style="max-width:52ch;margin-top:clamp(16px,2.4vh,28px)">Four disciplines. Most projects use all of them, in this order, but any one of them can be the whole job.</p>
-    </div>
-  </div>
-
-  <div class="svc__stage" data-svc-stage>
-    <div class="svc__viewport" data-svc-viewport>
-
-      <article class="svc__panel field-cobalt tex tex--grain is-active" data-svc-panel data-svc-label="Strategy &amp; Direction">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">01 &nbsp;/&nbsp; Clarify</p>
-            <h3 class="svc__title">Strategy &amp;<br>Direction</h3>
-            <p class="svc__blurb">Working out what the site is actually for, before anything gets designed. Most website problems turn out to be structure and content problems.</p>
-            <ul class="svc__caps">
-              <li>Discovery and website strategy</li>
-              <li>Competitor review</li>
-              <li>Digital positioning</li>
-              <li>Content and information architecture</li>
-              <li>Creative direction</li>
-            </ul>
-          </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-interference.webp')">
-              <p class="svc__figure-cap">Finding a route through the noise</p>
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="work">
+        <h2>Selected Works</h2>
+        <div class="grid">
+            <!-- Project 1 -->
+            <div class="card">
+                <div class="card-img-placeholder">
+                    <!-- Replace with: <img src="barstudios-homepage.png" alt="Homepage Design"> -->
+                    [barstudios-homepage.png]
+                </div>
+                <div class="card-content">
+                    <h3>Web Platform Redesign</h3>
+                    <p>Complete UX/UI overhaul focusing on conversion and accessibility.</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </article>
 
-      <article class="svc__panel field-ink tex tex--marks" data-svc-panel data-svc-label="Brand &amp; Creative">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">02 &nbsp;/&nbsp; Position</p>
-            <h3 class="svc__title">Brand &amp;<br>Creative</h3>
-            <p class="svc__blurb">Giving the business a look that belongs to it, and a system that still holds together everywhere it has to appear.</p>
-            <ul class="svc__caps">
-              <li>Brand strategy</li>
-              <li>Visual identity</li>
-              <li>Art direction</li>
-              <li>Brand guidelines</li>
-              <li>Photography and motion direction</li>
-            </ul>
-          </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-marks.webp')">
-              <p class="svc__figure-cap">Everything lining up</p>
+            <!-- Project 2 -->
+            <div class="card">
+                <div class="card-img-placeholder">
+                    <!-- Replace with: <img src="barstudios-redbull.png" alt="Red Bull Campaign"> -->
+                    [barstudios-redbull.png]
+                </div>
+                <div class="card-content">
+                    <h3>Red Bull Campaign</h3>
+                    <p>High-energy digital asset creation and campaign landing pages.</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </article>
 
-      <article class="svc__panel field-signal tex tex--halftone" data-svc-panel data-svc-label="Digital Design">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">03 &nbsp;/&nbsp; Design</p>
-            <h3 class="svc__title">Digital<br>Design</h3>
-            <p class="svc__blurb">Designing something people can actually use, on the device they actually have, without losing any of the character.</p>
-            <ul class="svc__caps">
-              <li>User experience</li>
-              <li>Interface design</li>
-              <li>Prototyping</li>
-              <li>Design systems</li>
-              <li>Accessibility</li>
-              <li>User testing where appropriate</li>
-            </ul>
-          </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-halftone.webp')">
-              <p class="svc__figure-cap">Dots resolving into an image</p>
+            <!-- Project 3 -->
+            <div class="card">
+                <div class="card-img-placeholder">
+                    <!-- Replace with: <img src="barstudios-mobile.png" alt="Mobile App UI"> -->
+                    [barstudios-mobile.png]
+                </div>
+                <div class="card-content">
+                    <h3>iOS Application</h3>
+                    <p>Fluid mobile application design with dark mode support.</p>
+                </div>
             </div>
-          </div>
         </div>
-      </article>
+    </section>
 
-      <article class="svc__panel field-fog tex tex--grain" data-svc-panel data-svc-label="Development &amp; Support">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">04 &nbsp;/&nbsp; Build</p>
-            <h3 class="svc__title">Development<br>&amp; Support</h3>
-            <p class="svc__blurb">Building it properly, then keeping it moving. Launch is the start of the job, not the end of it.</p>
-            <ul class="svc__caps">
-              <li>Front end development</li>
-              <li>Next.js websites</li>
-              <li>WordPress development</li>
-              <li>CMS and Payload integration</li>
-              <li>Performance</li>
-              <li>Technical SEO</li>
-              <li>Ongoing support</li>
-            </ul>
-          </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-grain.webp')">
-              <p class="svc__figure-cap">The material it is made from</p>
-            </div>
-          </div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Let's build something.</h2>
+            <p class="text-muted" style="text-align: center;">Ready to start your next project? Drop us a line and we'll get back to you within 24 hours.</p>
+            <form action="#" method="POST">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Tell us about your project..." required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
-      </article>
+    </section>
 
-      <nav class="svc__rail" data-svc-rail aria-label="Service sections"></nav>
-    </div>
-  </div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bar Studios. All rights reserved.</p>
+    </footer>
 
-<!-- ============================================================ SCENE 5 : INTERLUDE -->
-<section class="interlude field-signal tex tex--halftone" data-scene="signal" aria-label="Thinking, design and development in one place">
-  <div class="marquee" data-marquee aria-hidden="true">
-    <div class="marquee__group">
-      <span>Think</span><i>&#9679;</i><span class="hollow">Make</span><i>&#9679;</i><span>Ship</span><i>&#9679;</i><span class="hollow">Support</span><i>&#9679;</i>
-    </div>
-    <div class="marquee__group">
-      <span>Think</span><i>&#9679;</i><span class="hollow">Make</span><i>&#9679;</i><span>Ship</span><i>&#9679;</i><span class="hollow">Support</span><i>&#9679;</i>
-    </div>
-  </div>
-  <p class="visually-hidden">Thinking, design, development and ongoing support, all handled in one place.</p>
-</section>
-
-<!-- ============================================================ SCENE 6 : TOM -->
-<section class="scene tom field-ink tex tex--marks" data-scene="ink">
-  <div class="wrap">
-    <p class="scene-tag" data-rise>Direct with Tom</p>
-    <div class="tom__grid" style="margin-top:clamp(28px,4.5vh,56px)">
-      <div>
-        <h2 class="tom__head mega--serif" data-rise>You deal with me from the first conversation to launch.</h2>
-        <p class="tom__body" data-rise style="--d:120ms">TG Media is one person. Strategy, design and development stay connected because they never leave the same pair of hands. When a project genuinely needs a photographer, a writer or a specialist, I bring them in and stay responsible for the result.</p>
-        <ul class="tom__points" data-rise style="--d:200ms">
-          <li>You work with me throughout</li>
-          <li>I remain responsible for the work</li>
-          <li>Nothing is passed to someone else</li>
-        </ul>
-      </div>
-      <div data-rise style="--d:260ms">
-        <!-- Abstract composition. A genuine workspace photograph can replace this
-             whole block when one is available; brief in IMAGE_SOURCES.md. -->
-        <div class="signal-panel" data-rise aria-hidden="true">
-          <span class="signal-panel__bar" style="--w:88%;--x:-34%;--s:.58;--bd:0ms"></span>
-          <span class="signal-panel__bar" style="--w:62%;--x:46%;--s:.72;--bd:70ms"></span>
-          <span class="signal-panel__bar signal-panel__bar--signal" style="--w:96%;--x:-52%;--s:.4;--bd:140ms"></span>
-          <span class="signal-panel__bar" style="--w:74%;--x:38%;--s:.66;--bd:210ms"></span>
-          <span class="signal-panel__bar" style="--w:52%;--x:-28%;--s:.8;--bd:280ms"></span>
-          <span class="signal-panel__bar" style="--w:82%;--x:30%;--s:.55;--bd:350ms"></span>
-          <span class="signal-panel__bar" style="--w:44%;--x:-40%;--s:.7;--bd:420ms"></span>
-        </div>
-        <dl class="tom__meta" style="margin-top:clamp(24px,3.5vh,36px)">
-          <div><dt>Based</dt><dd>Warwick, UK</dd></div>
-          <div><dt>Working as</dt><dd>TG Media since 2019</dd></div>
-          <div><dt>At once</dt><dd>A small number of projects</dd></div>
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ SCENE 7 : PROCESS -->
-<section class="scene process field-paper" data-scene="paper">
-  <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <p class="scene-tag" data-rise>The process</p>
-      <p class="eyebrow eyebrow--quiet" data-rise>One continuous line</p>
-    </div>
-    <h2 class="mega--serif" data-rise style="font-size:clamp(2rem,5.6vw,5rem);line-height:1;letter-spacing:-.035em;max-width:16ch;margin-top:clamp(18px,3vh,32px)">A clear route through the mess.</h2>
-
-    <div class="process__track" data-process-track>
-      <svg class="process__svg" data-process-svg aria-hidden="true" preserveAspectRatio="none">
-        <path data-process-path d=""></path>
-      </svg>
-      <div class="process__steps">
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">01 Understand</p>
-          <p class="process__step-title">Ask the right questions</p>
-          <p class="process__step-body">Discovery, and a clear read on what the business actually needs. More questions than you expect, early, while they are still cheap to ask.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">02 Define</p>
-          <p class="process__step-title">Agree the structure</p>
-          <p class="process__step-body">Position, content strategy and information architecture agreed before a single screen is drawn.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">03 Design and build</p>
-          <p class="process__step-title">Design and development, together</p>
-          <p class="process__step-body">Interface design and front end build move as one job, not handed between separate people with separate priorities.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">04 Launch and support</p>
-          <p class="process__step-title">Live, and kept moving</p>
-          <p class="process__step-body">The site launches, gets measured, and stays supported rather than left to quietly go stale.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ SCENE 8 : WORK -->
-<section class="scene field-fog" data-scene="fog" style="padding-top:clamp(64px,10vh,120px);padding-bottom:clamp(64px,10vh,120px)">
-  <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <div>
-        <p class="scene-tag" data-rise>Selected work</p>
-        <h2 class="h-sans-a caps" data-rise style="margin-top:12px">Proof, not the pitch.</h2>
-      </div>
-      <p style="font-size:15px" data-rise><a href="work.html" class="link">All work</a></p>
-    </div>
-
-    <div class="work-strip__rail">
-      <a href="project-barstudios.html" class="work-card">
-        <span class="work-card__thumb"><img src="barstudios-homepage.png" alt="Bar Studios homepage, designed and built by TG Media" loading="lazy" decoding="async"></span>
-        <span class="work-card__name">Bar Studios</span>
-        <span class="work-card__meta">Social content production</span>
-      </a>
-      <a href="project-westbury.html" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Westbury</span></span>
-        <span class="work-card__name">Westbury Music</span>
-        <span class="work-card__meta">Music publishing</span>
-      </a>
-      <a href="project-purplegranite.html" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Purple<br>Granite</span></span>
-        <span class="work-card__name">Purple Granite</span>
-        <span class="work-card__meta">Stone worktops, online retail</span>
-      </a>
-      <a href="work.html#alpine-mi" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Alpine MI</span></span>
-        <span class="work-card__name">Alpine MI</span>
-        <span class="work-card__meta">Print and document design</span>
-      </a>
-      <a href="work.html#hair-room" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>The Hair<br>Room</span></span>
-        <span class="work-card__name">The Hair Room</span>
-        <span class="work-card__meta">Salon, Earlsdon</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ SCENE 9 : FINAL CTA -->
-<section class="final-cta field-cobalt tex tex--grain" data-scene="cobalt">
-  <div class="wrap">
-    <h2 class="final-cta__title" data-rise>Let&rsquo;s make<br>it clear.</h2>
-    <p class="final-cta__sub" data-rise style="--d:120ms">Tell me what is not working. That is usually enough to start.</p>
-    <div class="final-cta__actions" data-rise style="--d:200ms">
-      <a href="contact.html" class="btn btn--xl">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
-      <a href="mailto:tom@tgmedia.uk" class="link">tom@tgmedia.uk</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="site-footer__top">
-    <div class="site-footer__about">
-      <p>TG Media</p>
-      <p>Independent design studio. Websites and visual identities for businesses that have outgrown how they currently present themselves. Warwick, UK.</p>
-    </div>
-    <div class="site-footer__navs">
-      <nav aria-label="Footer">
-        <a href="work.html">Work</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">Studio</a>
-        <a href="contact.html">Start a project</a>
-      </nav>
-      <nav aria-label="Legal">
-        <a href="privacy.html">Privacy</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-    </div>
-  </div>
-  <p class="site-footer__bottom">&copy; <span data-year>2026</span> TG Media &nbsp;/&nbsp; Warwick, UK &nbsp;/&nbsp; Design and development by Tom McTigue</p>
-</footer>
-
-<script src="shared.js"></script>
 </body>
 </html>
