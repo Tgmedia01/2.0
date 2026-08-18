@@ -39,7 +39,7 @@
 }
 </script>
 </head>
-<body>
+<body class="home-broadcast">
 
 <div class="ident" data-ident aria-hidden="true">
   <div class="ident__stage">
@@ -51,7 +51,7 @@
 
 <a href="#top" class="skip-link">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header site-header--on-dark">
   <a href="index.html" class="site-header__logo">TG Media</a>
   <nav aria-label="Primary" class="primary-nav">
     <a href="work.html">Work</a>
@@ -75,70 +75,53 @@
 
 <main id="top">
 
-<!-- ============================================================ SCENE 1 : HERO -->
-<section class="hero field-paper tex tex--grain" data-hero data-scene="paper">
+<!-- ============================================================ SCENE 1 : TITLE CARD -->
+<section class="cine-hero field-ink tex tex--interference" data-cine-hero>
   <div class="edge edge--left" aria-hidden="true"><span>Independent design studio</span></div>
   <div class="edge edge--right" aria-hidden="true"><span>Warwick / across the UK</span></div>
 
-  <div class="hero__inner">
-    <p class="hero__kicker" data-hero-el>
+  <div class="cine-hero__inner">
+    <p class="cine-hero__kicker" data-cine-el>
       <span class="signal-dot" aria-hidden="true"></span>
-      <span>Available for new projects</span>
-      <span aria-hidden="true">&nbsp;/&nbsp;</span>
-      <span>Strategy &nbsp;/&nbsp; Brand &nbsp;/&nbsp; Digital</span>
+      <span class="cine-hero__kicker-strong">Available for new projects</span>
+      <span aria-hidden="true">/</span>
+      <span>Warwick, UK</span>
     </p>
 
-    <h1 class="hero__headline">
-      <span class="noise-layer" aria-hidden="true" data-noise-layer></span>
-      <span class="hero__headline-text">
-        <span class="ln"><span data-hero-line>You&rsquo;ve outgrown</span></span>
-        <span class="ln"><span data-hero-line>how you <span class="tint">show up</span>.</span></span>
-      </span>
+    <h1 class="cine-hero__title">
+      <span class="cine-hero__row cine-hero__row--serif"><span class="cine-hero__ln" data-cine-line>I turn</span></span>
+      <span class="cine-hero__row"><span class="cine-hero__ln" data-cine-line><span class="cine-hero__word cine-hero__word--hollow" data-scramble>Noise</span></span></span>
+      <span class="cine-hero__row"><span class="cine-hero__ln" data-cine-line><em class="cine-hero__joint">into</em> <span class="cine-hero__word cine-hero__word--cobalt" data-scramble>Signal.</span></span></span>
     </h1>
 
-    <p class="hero__sub" data-hero-el>Strategy, identity and websites for businesses ready to look as good as they are.</p>
+    <div class="cine-hero__carrier" aria-hidden="true" data-cine-carrier></div>
 
-    <div class="hero__foot">
-      <div class="hero__rail" data-noise-rail data-hero-el>
-        <p class="hero__rail-label">
-          <span>Move from noise</span>
-          <span aria-hidden="true">&rarr;</span>
-          <span><b>clarity</b></span>
-        </p>
-        <input type="range" class="noise-range" min="0" max="100" value="0" step="1" data-noise-range aria-label="Move from noise to clarity">
-        <div class="noise-demo" data-noise-demo aria-hidden="true">
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-          <span class="noise-demo__mark"></span><span class="noise-demo__mark"></span><span class="noise-demo__mark"></span>
-        </div>
-      </div>
-      <div data-hero-el>
+    <div class="cine-hero__foot">
+      <p class="cine-hero__sub" data-cine-el>Strategy, identity and websites for businesses ready to look as good as they are.</p>
+      <div data-cine-el>
         <a href="contact.html" class="btn">Start a project <span class="arrow" aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ SCENE 2 : THE PROBLEM -->
-<section class="scene problem field-ink tex tex--interference scene--overlap" data-scene="ink">
+<!-- ============================================================ SCENE 2 : MANIFESTO -->
+<section class="scene manifesto field-paper tex tex--grain">
   <div class="wrap">
     <p class="scene-tag" data-rise>The situation</p>
-    <div class="problem__grid" style="margin-top:clamp(28px,4.5vh,56px)">
-      <div>
-        <h2 class="problem__head mega--serif" data-rise>The work is good. The website no longer shows it.</h2>
-        <p class="problem__body" data-rise style="--d:120ms">A vague position, an inherited visual identity and a site that has been patched together one request at a time. None of it is a disaster on its own. Together they put noise around a business that is ready for more, and the people you want to reach have to work to find the signal.</p>
-      </div>
-      <dl class="problem__aside" data-rise style="--d:200ms">
-        <div class="problem__stat">
+    <h2 class="manifesto__head" data-rise>The work is good. <span class="manifesto__turn">The website no longer shows it.</span></h2>
+    <div class="manifesto__grid">
+      <p class="manifesto__body" data-rise style="--d:120ms">A vague position, an inherited visual identity and a site that has been patched together one request at a time. None of it is a disaster on its own. Together they put noise around a business that is ready for more, and the people you want to reach have to work to find the signal.</p>
+      <dl class="manifesto__facts" data-rise style="--d:200ms">
+        <div>
           <dt>Usually the real problem</dt>
           <dd>Structure and content wearing a visual disguise.</dd>
         </div>
-        <div class="problem__stat">
+        <div>
           <dt>What it costs</dt>
           <dd>Being judged on the weakest thing you own.</dd>
         </div>
-        <div class="problem__stat">
+        <div>
           <dt>The fix</dt>
           <dd>Not decoration. Clarity, made tangible.</dd>
         </div>
@@ -147,58 +130,90 @@
   </div>
 </section>
 
-<!-- ============================================================ SCENE 3 : TRANSFORMATION -->
-<section class="scene transform field-fog scene--tall" data-scene="fog">
-  <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <p class="scene-tag" data-rise>Where you are &nbsp;/&nbsp; where this takes you</p>
-      <p class="eyebrow eyebrow--quiet" data-rise>Four shifts</p>
+<!-- ============================================================ SCENE 3 : THE REEL -->
+<section class="reel" aria-label="Selected work">
+  <header class="reel__head field-paper">
+    <div class="wrap">
+      <h2 class="reel__title" data-rise>Proof, <em>not the pitch.</em></h2>
     </div>
-    <ul class="transform__list" data-transform-list>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Unclear</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Distinctive</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Dated</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Relevant</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Patched together</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">Properly built</span>
-      </li>
-      <li class="transform__row" data-transform-row>
-        <span class="transform__before">Dependent</span>
-        <span class="transform__arrow" aria-hidden="true">&rarr;</span>
-        <span class="transform__after">In control</span>
-      </li>
-    </ul>
+  </header>
+
+  <div class="reel__stack">
+
+    <article class="reel-frame field-ink tex tex--marks">
+      <div class="wrap reel-frame__inner">
+        <div class="reel-frame__copy">
+          <p class="reel-frame__meta">Design / UX / Build / Custom CMS</p>
+          <h3 class="reel-frame__name"><a href="project-barstudios.html" class="display-link">Bar<br>Studios</a></h3>
+          <p class="reel-frame__note">A website that puts the content first for a social production studio: editorial archive, custom CMS and video that performs on a phone.</p>
+          <p class="reel-frame__go"><a href="project-barstudios.html" class="link--on-dark">Read the case study</a></p>
+        </div>
+        <div class="reel-frame__media" aria-hidden="false">
+          <img class="reel-frame__shot reel-frame__shot--main" src="barstudios-homepage.png" alt="Bar Studios homepage, designed and built by TG Media" loading="lazy" decoding="async">
+          <img class="reel-frame__shot reel-frame__shot--float" src="barstudios-mobile.png" alt="Bar Studios site on a phone" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <p class="reel-frame__index" aria-hidden="true">Bar Studios</p>
+    </article>
+
+    <article class="reel-frame field-cobalt tex tex--grain">
+      <div class="wrap reel-frame__inner reel-frame__inner--type">
+        <div class="reel-frame__copy">
+          <p class="reel-frame__meta">Music publishing / Design, build</p>
+          <h3 class="reel-frame__name"><a href="project-westbury.html" class="display-link">Westbury<br>Music</a></h3>
+          <p class="reel-frame__note">A publisher&rsquo;s website is read by three different people who all arrive at the same front door. This one gives each of them a route.</p>
+          <p class="reel-frame__go"><a href="project-westbury.html" class="link--on-dark">Read the project notes</a></p>
+        </div>
+        <p class="reel-frame__ghost" aria-hidden="true">WM</p>
+      </div>
+      <p class="reel-frame__index" aria-hidden="true">Westbury Music</p>
+    </article>
+
+    <article class="reel-frame reel-frame--fog field-fog tex tex--halftone">
+      <div class="wrap reel-frame__inner reel-frame__inner--type">
+        <div class="reel-frame__copy">
+          <p class="reel-frame__meta">Stone worktops / Online retail</p>
+          <h3 class="reel-frame__name"><a href="project-purplegranite.html" class="display-link">Purple<br>Granite</a></h3>
+          <p class="reel-frame__note">Nobody buys a worktop from a thumbnail. Retail for a material that has to be seen at scale before anyone commits.</p>
+          <p class="reel-frame__go"><a href="project-purplegranite.html" class="link">Read the project notes</a></p>
+        </div>
+        <p class="reel-frame__ghost" aria-hidden="true">PG</p>
+      </div>
+      <p class="reel-frame__index" aria-hidden="true">Purple Granite</p>
+    </article>
+
+  </div>
+
+  <div class="reel__archive field-ink">
+    <div class="wrap reel__archive-row">
+      <p class="reel__archive-note">Also in the archive: The Hair Room, a salon in Earlsdon, and Alpine&nbsp;MI, print and document design.</p>
+      <p><a href="work.html" class="link--on-dark">All work</a></p>
+    </div>
   </div>
 </section>
 
-<!-- ============================================================ SCENE 4 : SERVICES TAKEOVER -->
-<section class="svc" data-svc aria-label="Services">
-  <div class="svc__intro field-paper">
-    <div class="wrap">
-      <p class="scene-tag" data-rise>What we do</p>
-      <h2 class="mega-fit svc__word" data-rise style="margin-top:14px">Services</h2>
-      <p class="body-l muted" data-rise style="max-width:52ch;margin-top:clamp(16px,2.4vh,28px)">Four disciplines. Most projects use all of them, in this order, but any one of them can be the whole job.</p>
-    </div>
+<!-- ============================================================ SCENE 4 : CHANNELS -->
+<section class="chan-sec field-paper" data-chan-sec>
+  <div class="wrap chan-sec__head">
+    <p class="scene-tag" data-rise>What I do</p>
+    <h2 class="chan-sec__title" data-rise>Four disciplines. <em>One pair of hands.</em></h2>
   </div>
 
-  <div class="svc__stage" data-svc-stage>
-    <div class="svc__viewport" data-svc-viewport>
+  <div class="chan-list">
 
-      <article class="svc__panel field-cobalt tex tex--grain is-active" data-svc-panel data-svc-label="Strategy &amp; Direction">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">01 &nbsp;/&nbsp; Clarify</p>
-            <h3 class="svc__title">Strategy &amp;<br>Direction</h3>
-            <p class="svc__blurb">Working out what the site is actually for, before anything gets designed. Most website problems turn out to be structure and content problems.</p>
-            <ul class="svc__caps">
+    <section class="chan chan--cobalt is-open" data-chan>
+      <h3 class="chan__h">
+        <button type="button" class="chan__head" data-chan-toggle aria-expanded="true">
+          <span class="chan__num" aria-hidden="true">01</span>
+          <span class="chan__name">Strategy &amp;&nbsp;Direction</span>
+          <span class="chan__sign" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="chan__body" data-chan-body>
+        <div class="chan__body-clip">
+          <div class="wrap chan__body-inner">
+            <p class="chan__blurb">Working out what the site is actually for, before anything gets designed. Most website problems turn out to be structure and content problems.</p>
+            <ul class="chan__caps">
               <li>Discovery and website strategy</li>
               <li>Competitor review</li>
               <li>Digital positioning</li>
@@ -206,21 +221,23 @@
               <li>Creative direction</li>
             </ul>
           </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-interference.webp')">
-              <p class="svc__figure-cap">Finding a route through the noise</p>
-            </div>
-          </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="svc__panel field-ink tex tex--marks" data-svc-panel data-svc-label="Brand &amp; Creative">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">02 &nbsp;/&nbsp; Position</p>
-            <h3 class="svc__title">Brand &amp;<br>Creative</h3>
-            <p class="svc__blurb">Giving the business a look that belongs to it, and a system that still holds together everywhere it has to appear.</p>
-            <ul class="svc__caps">
+    <section class="chan chan--ink" data-chan>
+      <h3 class="chan__h">
+        <button type="button" class="chan__head" data-chan-toggle aria-expanded="true">
+          <span class="chan__num" aria-hidden="true">02</span>
+          <span class="chan__name">Brand &amp;&nbsp;Creative</span>
+          <span class="chan__sign" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="chan__body" data-chan-body>
+        <div class="chan__body-clip">
+          <div class="wrap chan__body-inner">
+            <p class="chan__blurb">Giving the business a look that belongs to it, and a system that still holds together everywhere it has to appear.</p>
+            <ul class="chan__caps">
               <li>Brand strategy</li>
               <li>Visual identity</li>
               <li>Art direction</li>
@@ -228,21 +245,23 @@
               <li>Photography and motion direction</li>
             </ul>
           </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-marks.webp')">
-              <p class="svc__figure-cap">Everything lining up</p>
-            </div>
-          </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="svc__panel field-signal tex tex--halftone" data-svc-panel data-svc-label="Digital Design">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">03 &nbsp;/&nbsp; Design</p>
-            <h3 class="svc__title">Digital<br>Design</h3>
-            <p class="svc__blurb">Designing something people can actually use, on the device they actually have, without losing any of the character.</p>
-            <ul class="svc__caps">
+    <section class="chan chan--signal" data-chan>
+      <h3 class="chan__h">
+        <button type="button" class="chan__head" data-chan-toggle aria-expanded="true">
+          <span class="chan__num" aria-hidden="true">03</span>
+          <span class="chan__name">Digital Design</span>
+          <span class="chan__sign" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="chan__body" data-chan-body>
+        <div class="chan__body-clip">
+          <div class="wrap chan__body-inner">
+            <p class="chan__blurb">Designing something people can actually use, on the device they actually have, without losing any of the character.</p>
+            <ul class="chan__caps">
               <li>User experience</li>
               <li>Interface design</li>
               <li>Prototyping</li>
@@ -251,21 +270,23 @@
               <li>User testing where appropriate</li>
             </ul>
           </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-halftone.webp')">
-              <p class="svc__figure-cap">Dots resolving into an image</p>
-            </div>
-          </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="svc__panel field-fog tex tex--grain" data-svc-panel data-svc-label="Development &amp; Support">
-        <div class="wrap svc__panel-inner">
-          <div>
-            <p class="svc__num">04 &nbsp;/&nbsp; Build</p>
-            <h3 class="svc__title">Development<br>&amp; Support</h3>
-            <p class="svc__blurb">Building it properly, then keeping it moving. Launch is the start of the job, not the end of it.</p>
-            <ul class="svc__caps">
+    <section class="chan chan--fog" data-chan>
+      <h3 class="chan__h">
+        <button type="button" class="chan__head" data-chan-toggle aria-expanded="true">
+          <span class="chan__num" aria-hidden="true">04</span>
+          <span class="chan__name">Development &amp;&nbsp;Support</span>
+          <span class="chan__sign" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="chan__body" data-chan-body>
+        <div class="chan__body-clip">
+          <div class="wrap chan__body-inner">
+            <p class="chan__blurb">Building it properly, then keeping it moving. Launch is the start of the job, not the end of it.</p>
+            <ul class="chan__caps">
               <li>Front end development</li>
               <li>Next.js websites</li>
               <li>WordPress development</li>
@@ -275,21 +296,19 @@
               <li>Ongoing support</li>
             </ul>
           </div>
-          <div class="svc__figure">
-            <div class="svc__figure-frame" style="--svc-tex:url('media/tex-grain.webp')">
-              <p class="svc__figure-cap">The material it is made from</p>
-            </div>
-          </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <nav class="svc__rail" data-svc-rail aria-label="Service sections"></nav>
-    </div>
+  </div>
+
+  <div class="wrap chan-sec__foot">
+    <p><a href="services.html" class="link--quiet">How each one works, and how it is quoted</a></p>
   </div>
 </section>
 
-<!-- ============================================================ SCENE 5 : INTERLUDE -->
-<section class="interlude field-signal tex tex--halftone" data-scene="signal" aria-label="Thinking, design and development in one place">
+<!-- ============================================================ SCENE 5 : TRANSMISSION -->
+<section class="interlude field-signal tex tex--halftone" aria-label="Thinking, design and development in one place">
   <div class="marquee" data-marquee aria-hidden="true">
     <div class="marquee__group">
       <span>Think</span><i>&#9679;</i><span class="hollow">Make</span><i>&#9679;</i><span>Ship</span><i>&#9679;</i><span class="hollow">Support</span><i>&#9679;</i>
@@ -302,14 +321,14 @@
 </section>
 
 <!-- ============================================================ SCENE 6 : TOM -->
-<section class="scene tom field-ink tex tex--marks" data-scene="ink">
+<section class="scene tomx field-ink tex tex--marks">
   <div class="wrap">
-    <p class="scene-tag" data-rise>Direct with Tom</p>
-    <div class="tom__grid" style="margin-top:clamp(28px,4.5vh,56px)">
+    <p class="scene-tag" data-rise>The person behind it</p>
+    <h2 class="tomx__hello" data-rise>Hello. <em>I&rsquo;m Tom.</em></h2>
+    <div class="tomx__grid">
       <div>
-        <h2 class="tom__head mega--serif" data-rise>You deal with me from the first conversation to launch.</h2>
-        <p class="tom__body" data-rise style="--d:120ms">TG Media is one person. Strategy, design and development stay connected because they never leave the same pair of hands. When a project genuinely needs a photographer, a writer or a specialist, I bring them in and stay responsible for the result.</p>
-        <ul class="tom__points" data-rise style="--d:200ms">
+        <p class="tomx__body" data-rise style="--d:120ms">TG Media is one person. You deal with me from the first conversation to launch, and strategy, design and development stay connected because they never leave the same pair of hands. When a project genuinely needs a photographer, a writer or a specialist, I bring them in and stay responsible for the result.</p>
+        <ul class="tomx__points" data-rise style="--d:200ms">
           <li>You work with me throughout</li>
           <li>I remain responsible for the work</li>
           <li>Nothing is passed to someone else</li>
@@ -327,7 +346,7 @@
           <span class="signal-panel__bar" style="--w:82%;--x:30%;--s:.55;--bd:350ms"></span>
           <span class="signal-panel__bar" style="--w:44%;--x:-40%;--s:.7;--bd:420ms"></span>
         </div>
-        <dl class="tom__meta" style="margin-top:clamp(24px,3.5vh,36px)">
+        <dl class="tomx__meta">
           <div><dt>Based</dt><dd>Warwick, UK</dd></div>
           <div><dt>Working as</dt><dd>TG Media since 2019</dd></div>
           <div><dt>At once</dt><dd>A small number of projects</dd></div>
@@ -337,88 +356,37 @@
   </div>
 </section>
 
-<!-- ============================================================ SCENE 7 : PROCESS -->
-<section class="scene process field-paper" data-scene="paper">
+<!-- ============================================================ SCENE 7 : THE ROUTE -->
+<section class="scene routeband field-fog">
   <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <p class="scene-tag" data-rise>The process</p>
-      <p class="eyebrow eyebrow--quiet" data-rise>One continuous line</p>
-    </div>
-    <h2 class="mega--serif" data-rise style="font-size:clamp(2rem,5.6vw,5rem);line-height:1;letter-spacing:-.035em;max-width:16ch;margin-top:clamp(18px,3vh,32px)">A clear route through the mess.</h2>
-
-    <div class="process__track" data-process-track>
-      <svg class="process__svg" data-process-svg aria-hidden="true" preserveAspectRatio="none">
-        <path data-process-path d=""></path>
-      </svg>
-      <div class="process__steps">
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">01 Understand</p>
-          <p class="process__step-title">Ask the right questions</p>
-          <p class="process__step-body">Discovery, and a clear read on what the business actually needs. More questions than you expect, early, while they are still cheap to ask.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">02 Define</p>
-          <p class="process__step-title">Agree the structure</p>
-          <p class="process__step-body">Position, content strategy and information architecture agreed before a single screen is drawn.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">03 Design and build</p>
-          <p class="process__step-title">Design and development, together</p>
-          <p class="process__step-body">Interface design and front end build move as one job, not handed between separate people with separate priorities.</p>
-        </div>
-        <div class="process__step" data-process-step>
-          <p class="process__step-index">04 Launch and support</p>
-          <p class="process__step-title">Live, and kept moving</p>
-          <p class="process__step-body">The site launches, gets measured, and stays supported rather than left to quietly go stale.</p>
-        </div>
-      </div>
-    </div>
+    <h2 class="routeband__title" data-rise>A clear route <em>through the mess.</em></h2>
+    <ol class="routeband__grid">
+      <li class="routeband__step" data-rise>
+        <p class="routeband__index">01 Understand</p>
+        <p class="routeband__name">Ask the right questions</p>
+        <p class="routeband__body">Discovery, and a clear read on what the business actually needs. More questions than you expect, early, while they are still cheap to ask.</p>
+      </li>
+      <li class="routeband__step" data-rise style="--d:90ms">
+        <p class="routeband__index">02 Define</p>
+        <p class="routeband__name">Agree the structure</p>
+        <p class="routeband__body">Position, content strategy and information architecture agreed before a single screen is drawn.</p>
+      </li>
+      <li class="routeband__step" data-rise style="--d:180ms">
+        <p class="routeband__index">03 Design and build</p>
+        <p class="routeband__name">Design and development, together</p>
+        <p class="routeband__body">Interface design and front end build move as one job, not handed between separate people with separate priorities.</p>
+      </li>
+      <li class="routeband__step" data-rise style="--d:270ms">
+        <p class="routeband__index">04 Launch and support</p>
+        <p class="routeband__name">Live, and kept moving</p>
+        <p class="routeband__body">The site launches, gets measured, and stays supported rather than left to quietly go stale.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- ============================================================ SCENE 8 : WORK -->
-<section class="scene field-fog" data-scene="fog" style="padding-top:clamp(64px,10vh,120px);padding-bottom:clamp(64px,10vh,120px)">
-  <div class="wrap">
-    <div class="row row--between row--baseline" style="gap:12px 32px">
-      <div>
-        <p class="scene-tag" data-rise>Selected work</p>
-        <h2 class="h-sans-a caps" data-rise style="margin-top:12px">Proof, not the pitch.</h2>
-      </div>
-      <p style="font-size:15px" data-rise><a href="work.html" class="link">All work</a></p>
-    </div>
-
-    <div class="work-strip__rail">
-      <a href="project-barstudios.html" class="work-card">
-        <span class="work-card__thumb"><img src="barstudios-homepage.png" alt="Bar Studios homepage, designed and built by TG Media" loading="lazy" decoding="async"></span>
-        <span class="work-card__name">Bar Studios</span>
-        <span class="work-card__meta">Social content production</span>
-      </a>
-      <a href="project-westbury.html" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Westbury</span></span>
-        <span class="work-card__name">Westbury Music</span>
-        <span class="work-card__meta">Music publishing</span>
-      </a>
-      <a href="project-purplegranite.html" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Purple<br>Granite</span></span>
-        <span class="work-card__name">Purple Granite</span>
-        <span class="work-card__meta">Stone worktops, online retail</span>
-      </a>
-      <a href="work.html#alpine-mi" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>Alpine MI</span></span>
-        <span class="work-card__name">Alpine MI</span>
-        <span class="work-card__meta">Print and document design</span>
-      </a>
-      <a href="work.html#hair-room" class="work-card">
-        <span class="work-card__thumb work-card__thumb--type"><span>The Hair<br>Room</span></span>
-        <span class="work-card__name">The Hair Room</span>
-        <span class="work-card__meta">Salon, Earlsdon</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ SCENE 9 : FINAL CTA -->
-<section class="final-cta field-cobalt tex tex--grain" data-scene="cobalt">
+<!-- ============================================================ SCENE 8 : FINAL CTA -->
+<section class="final-cta field-cobalt tex tex--grain">
   <div class="wrap">
     <h2 class="final-cta__title" data-rise>Let&rsquo;s make<br>it clear.</h2>
     <p class="final-cta__sub" data-rise style="--d:120ms">Tell me what is not working. That is usually enough to start.</p>

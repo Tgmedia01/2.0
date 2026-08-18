@@ -136,248 +136,123 @@
     setTimeout(done, words.length * step + 1200);
   }
 
-  /* ------------------------------------------------------- hero: noise → clarity */
-  function heroIntro() {
-    var hero = document.querySelector('[data-hero]');
+  /* --------------------------------------------------- hero: title card */
+  /* The headline tunes in from static: lines rise into place while the two
+     display words resolve character by character out of glyph noise. Hidden
+     and scrambled states are set here, in JS, so they can never persist
+     without it; a sweep forces the resting state as a safety net. */
+  function cineHero() {
+    var hero = document.querySelector('[data-cine-hero]');
     if (!hero) return;
+    if (reduced()) return;
 
-    var lines = slice(hero.querySelectorAll('[data-hero-line]'));
-    var bits = slice(hero.querySelectorAll('[data-hero-el]'));
-    var layer = hero.querySelector('[data-noise-layer]');
+    var lines = slice(hero.querySelectorAll('[data-cine-line]'));
+    var bits = slice(hero.querySelectorAll('[data-cine-el]'));
+    var carrier = hero.querySelector('[data-cine-carrier]');
+    var scrambles = slice(hero.querySelectorAll('[data-scramble]'));
+    var originals = scrambles.map(function (el) { return el.textContent; });
+    var glyphs = '#/\\|<>+=*';
 
-    if (reduced()) return;   // everything already in its resting state
-
-    // Hidden state is set here, in JS, so it can never persist without JS.
-    lines.forEach(function (l) { l.style.transform = 'translate3d(0,105%,0)'; });
+    lines.forEach(function (l) { l.style.transform = 'translate3d(0,110%,0)'; });
     bits.forEach(function (b) { b.style.opacity = '0'; b.style.transform = 'translate3d(0,16px,0)'; });
+    if (carrier) { carrier.style.transform = 'scaleX(0)'; carrier.style.transformOrigin = 'left'; }
 
     var settle = function () {
       lines.forEach(function (l, i) {
-        l.style.transition = 'transform 900ms cubic-bezier(.16,.84,.44,1) ' + (i * 90) + 'ms';
+        l.style.transition = 'transform 900ms cubic-bezier(.16,.84,.44,1) ' + (i * 110) + 'ms';
         l.style.transform = 'translate3d(0,0,0)';
       });
       bits.forEach(function (b, i) {
-        b.style.transition = 'opacity 620ms ease ' + (320 + i * 90) + 'ms, transform 760ms cubic-bezier(.16,.84,.44,1) ' + (320 + i * 90) + 'ms';
+        b.style.transition = 'opacity 620ms ease ' + (420 + i * 90) + 'ms, transform 760ms cubic-bezier(.16,.84,.44,1) ' + (420 + i * 90) + 'ms';
         b.style.opacity = '1';
         b.style.transform = 'translate3d(0,0,0)';
       });
-      if (layer) {
-        layer.style.transition = 'opacity 420ms ease';
-        layer.style.opacity = '0';
-        setTimeout(function () { layer.innerHTML = ''; }, 520);
+      if (carrier) {
+        carrier.style.transition = 'transform 1100ms cubic-bezier(.16,.84,.44,1) 480ms';
+        carrier.style.transform = 'scaleX(1)';
       }
     };
 
-    // Scatter a short burst of fragments over the headline, then clear them.
-    if (layer) {
-      var words = ['SIGNAL', 'NOISE', '////', 'CLARITY', '——', '01', 'TG', '###'];
-      var f = document.createDocumentFragment();
-      for (var i = 0; i < words.length; i++) {
-        var s = document.createElement('span');
-        s.textContent = words[i];
-        s.style.left = (Math.random() * 82) + '%';
-        s.style.top = (Math.random() * 74) + '%';
-        s.style.transform = 'rotate(' + (Math.random() * 16 - 8).toFixed(1) + 'deg)';
-        s.style.opacity = String(0.18 + Math.random() * 0.3);
-        s.style.transition = 'opacity 260ms linear';
-        f.appendChild(s);
-      }
-      layer.appendChild(f);
-      // Flicker the fragments briefly — the "noise" before it resolves.
-      var flicks = 0;
-      var flick = setInterval(function () {
-        slice(layer.children).forEach(function (c) {
-          c.style.opacity = String(0.12 + Math.random() * 0.34);
-        });
-        if (++flicks > 6) clearInterval(flick);
-      }, 90);
-    }
+    scrambles.forEach(function (el, n) {
+      var txt = originals[n];
+      var dur = 780;
+      var start = null;
+      var step = function (t) {
+        if (el.dataset.resolved) return;
+        if (!start) start = t;
+        var p = clamp((t - start) / dur, 0, 1);
+        var keep = Math.floor(p * txt.length);
+        var out = txt.slice(0, keep);
+        for (var i = keep; i < txt.length; i++) {
+          var c = txt.charAt(i);
+          out += (c === ' ' || c === '.') ? c : glyphs.charAt((Math.random() * glyphs.length) | 0);
+        }
+        el.textContent = out;
+        if (p < 1) requestAnimationFrame(step);
+        else { el.textContent = txt; el.dataset.resolved = '1'; }
+      };
+      setTimeout(function () { requestAnimationFrame(step); }, 360 + n * 200);
+    });
 
-    // Whole sequence lands inside ~1.2s.
-    requestAnimationFrame(function () { setTimeout(settle, 260); });
-    // Belt and braces: if anything above throws or is delayed, force the
-    // resting state so the headline can never stay off screen.
+    requestAnimationFrame(function () { setTimeout(settle, 240); });
+
+    // Belt and braces: whatever happens above, force the resting state.
     setTimeout(function () {
       lines.forEach(function (l) { l.style.transform = 'translate3d(0,0,0)'; });
       bits.forEach(function (b) { b.style.opacity = '1'; b.style.transform = 'none'; });
-      if (layer) layer.innerHTML = '';
-    }, 2400);
+      if (carrier) carrier.style.transform = 'scaleX(1)';
+      scrambles.forEach(function (el, n) { el.dataset.resolved = '1'; el.textContent = originals[n]; });
+    }, 2600);
   }
 
-  /* --------------------------------------------------- hero: noise/clarity rail */
-  function noiseRail() {
-    slice(document.querySelectorAll('[data-noise-rail]')).forEach(function (rail) {
-      var range = rail.querySelector('[data-noise-range]');
-      var demo = rail.querySelector('[data-noise-demo]');
-      if (!range || !demo) return;
-      var marks = slice(demo.querySelectorAll('.noise-demo__mark'));
-      var jitter = marks.map(function () { return { y: Math.random() * 16 - 8, r: Math.random() * 26 - 13 }; });
-      var update = function () {
-        var t = clamp(parseFloat(range.value) / 100, 0, 1);
-        marks.forEach(function (m, i) {
-          var j = jitter[i];
-          m.style.transform = 'translate3d(0,' + lerp(j.y, 0, t).toFixed(1) + 'px,0) rotate(' + lerp(j.r, 0, t).toFixed(1) + 'deg)';
-          m.style.opacity = String(lerp(0.4, 1, t));
-          m.style.background = t > 0.7 ? 'var(--cobalt)' : 'var(--stone)';
-        });
-        range.setAttribute('aria-valuetext', t < 0.34 ? 'Noise' : t < 0.7 ? 'Resolving' : 'Clarity');
-      };
-      range.addEventListener('input', update);
-      update();
+  /* -------------------------------------------------- services channels */
+  /* Four disciplines as channels: one open at a time, and the open one
+     floods with its own colour. Static markup renders every channel open;
+     collapse only exists once this has taken over. */
+  function channels() {
+    var sec = document.querySelector('[data-chan-sec]');
+    if (!sec) return;
+    var chans = slice(sec.querySelectorAll('[data-chan]'));
+    if (!chans.length) return;
+    sec.classList.add('chan-sec--enhanced');
+
+    var sync = function () {
+      chans.forEach(function (c) {
+        var b = c.querySelector('[data-chan-toggle]');
+        if (b) b.setAttribute('aria-expanded', c.classList.contains('is-open') ? 'true' : 'false');
+      });
+    };
+    sync();
+
+    chans.forEach(function (c) {
+      var btn = c.querySelector('[data-chan-toggle]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var willOpen = !c.classList.contains('is-open');
+        chans.forEach(function (o) { o.classList.toggle('is-open', o === c && willOpen); });
+        sync();
+      });
     });
   }
 
-  /* ------------------------------------------------------ transformation rows */
-  function transformReveal() {
-    var list = document.querySelector('[data-transform-list]');
-    if (!list) return;
-    var rows = slice(list.querySelectorAll('[data-transform-row]'));
-    if (!rows.length) return;
-    if (reduced() || !('IntersectionObserver' in window)) {
-      rows.forEach(function (r) { r.classList.add('is-resolved'); });
-      return;
-    }
-    list.classList.add('transform--enhanced');
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var i = rows.indexOf(e.target);
-        e.target.style.transitionDelay = (i % 4) * 90 + 'ms';
-        e.target.classList.add('is-resolved');
-        io.unobserve(e.target);
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.25 });
-    rows.forEach(function (r) { io.observe(r); });
-
-    var sweep = function () {
-      var pending = 0;
-      rows.forEach(function (r) {
-        if (r.classList.contains('is-resolved')) return;
-        if (r.getBoundingClientRect().top > window.innerHeight * 0.96) { pending++; return; }
-        r.classList.add('is-resolved');
-      });
-      if (!pending) window.removeEventListener('scroll', sweep);
-    };
-    setTimeout(sweep, 1600);
-    window.addEventListener('scroll', sweep, { passive: true });
-  }
-
-  /* ------------------------------------------------- services scroll takeover */
-  /* Each discipline holds the whole viewport in turn. Static markup is a plain
-     stack of coloured panels; this upgrades it to a pinned sequence, and tears
-     back down cleanly if the viewport becomes too small for it. */
-  function servicesTakeover() {
-    var svc = document.querySelector('[data-svc]');
-    if (!svc) return;
-    var stage = svc.querySelector('[data-svc-stage]');
-    var viewport = svc.querySelector('[data-svc-viewport]');
-    var panels = slice(svc.querySelectorAll('[data-svc-panel]'));
-    var rail = svc.querySelector('[data-svc-rail]');
-    if (!stage || !viewport || panels.length < 2) return;
-
-    var enhanced = false;
-    var active = -1;
-    var buttons = [];
-    var loopItem = null;
-
-    var fits = function () {
-      return !reduced() && window.innerWidth >= 760 && window.innerHeight >= 560;
-    };
-
-    function setActive(i, focusPanel) {
-      i = clamp(i, 0, panels.length - 1);
-      if (i === active) return;
-      active = i;
-      panels.forEach(function (p, n) { p.classList.toggle('is-active', n === i); });
-      buttons.forEach(function (b, n) { b.setAttribute('aria-current', n === i ? 'true' : 'false'); });
-      if (focusPanel) {
-        var h = panels[i].querySelector('.svc__title');
-        if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  /* ------------------------------------------------------ signal progress */
+  /* A cobalt line across the top of the viewport that charges with scroll —
+     the signal strengthening as the page plays. Created entirely here. */
+  function signalProgress() {
+    if (!document.body.classList.contains('home-broadcast') || reduced()) return;
+    var bar = document.createElement('div');
+    bar.className = 'signal-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    items.push({
+      el: document.documentElement,
+      run: function () {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0).toFixed(4) + ')';
       }
-    }
-
-    function scrollToPanel(i) {
-      // Document offset, not offsetTop — the stage sits inside a positioned
-      // parent, so offsetTop is relative to that and would land far short.
-      var docTop = stage.getBoundingClientRect().top + window.pageYOffset;
-      var top = docTop + (stage.offsetHeight - window.innerHeight) * (i / (panels.length - 1));
-      window.scrollTo({ top: top, behavior: reduced() ? 'auto' : 'smooth' });
-    }
-
-    function buildRail() {
-      if (!rail || buttons.length) return;
-      panels.forEach(function (p, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        var label = p.getAttribute('data-svc-label') || ('Section ' + (i + 1));
-        b.setAttribute('aria-label', label);
-        b.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-        b.addEventListener('click', function () { scrollToPanel(i); setActive(i, true); });
-        rail.appendChild(b);
-        buttons.push(b);
-      });
-    }
-
-    function measure() {
-      stage.style.height = (panels.length * window.innerHeight) + 'px';
-    }
-
-    function enable() {
-      if (enhanced) return;
-      enhanced = true;
-      svc.classList.add('svc--enhanced');
-      buildRail();
-      measure();
-      loopItem = {
-        el: stage,
-        run: function (r) {
-          var travel = stage.offsetHeight - window.innerHeight;
-          var p = clamp(-r.top / (travel || 1), 0, 1);
-          setActive(Math.round(p * (panels.length - 1)));
-        }
-      };
-      items.push(loopItem);
-      setActive(0);
-      schedule();
-    }
-
-    function disable() {
-      if (!enhanced) return;
-      enhanced = false;
-      svc.classList.remove('svc--enhanced');
-      stage.style.height = '';
-      panels.forEach(function (p) { p.classList.remove('is-active'); });
-      active = -1;
-      var idx = items.indexOf(loopItem);
-      if (idx > -1) items.splice(idx, 1);
-      loopItem = null;
-    }
-
-    function evaluate() { if (fits()) { enable(); measure(); } else { disable(); } }
-
-    evaluate();
-
-    // Keyboard: arrow keys move between disciplines while the rail has focus.
-    if (rail) {
-      rail.addEventListener('keydown', function (e) {
-        if (!enhanced) return;
-        var d = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1
-              : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
-        if (!d) return;
-        e.preventDefault();
-        var next = clamp(active + d, 0, panels.length - 1);
-        scrollToPanel(next);
-        setActive(next);
-        if (buttons[next]) buttons[next].focus();
-      });
-    }
-
-    var rt;
-    window.addEventListener('resize', function () {
-      clearTimeout(rt);
-      rt = setTimeout(evaluate, 150);
-    }, { passive: true });
+    });
+    schedule();
   }
 
   /* --------------------------------------------------------------- marquee */
@@ -414,99 +289,6 @@
 
     var rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 200); }, { passive: true });
-  }
-
-  /* ---------------------------------------------------------- process line */
-  /* One cobalt line that physically travels between the four stages, tangled at
-     the top of the section and resolved by the bottom. */
-  function processLine() {
-    var track = document.querySelector('[data-process-track]');
-    if (!track) return;
-    var svg = track.querySelector('[data-process-svg]');
-    var path = track.querySelector('[data-process-path]');
-    var steps = slice(track.querySelectorAll('[data-process-step]'));
-    if (!svg || !path || steps.length < 2) return;
-
-    track.classList.add('process--enhanced');
-
-    var pts = [];
-    var noise = [];
-    var W = 0, H = 0, len = 0;
-
-    function measure() {
-      var tr = track.getBoundingClientRect();
-      W = Math.round(tr.width); H = Math.round(track.offsetHeight);
-      svg.setAttribute('width', W);
-      svg.setAttribute('height', H);
-      svg.style.width = W + 'px';
-      svg.style.height = H + 'px';
-
-      pts = steps.map(function (s) {
-        var r = s.getBoundingClientRect();
-        var idx = s.querySelector('.process__step-index');
-        var ir = idx ? idx.getBoundingClientRect() : r;
-        return {
-          x: clamp(ir.left - tr.left + 4, 6, W - 6),
-          y: ir.top - tr.top + ir.height / 2
-        };
-      });
-      // A fixed wobble per segment, scaled down as the line resolves.
-      if (noise.length !== pts.length) {
-        noise = pts.map(function () {
-          return { a: (Math.random() * 2 - 1), b: (Math.random() * 2 - 1) };
-        });
-      }
-    }
-
-    function build(p) {
-      if (!pts.length) return '';
-      var amp = (1 - p) * Math.min(W * 0.42, 300);
-      var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
-      for (var i = 1; i < pts.length; i++) {
-        var a = pts[i - 1], b = pts[i];
-        var dy = (b.y - a.y) * 0.42;
-        var c1x = a.x + noise[i - 1].a * amp, c1y = a.y + dy;
-        var c2x = b.x + noise[i].b * amp, c2y = b.y - dy;
-        d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ', ' +
-                     c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ', ' +
-                     b.x.toFixed(1) + ' ' + b.y.toFixed(1);
-      }
-      return d;
-    }
-
-    function draw(p) {
-      path.setAttribute('d', build(p));
-      if (!len) { try { len = path.getTotalLength(); } catch (e) { len = 0; } }
-      if (len) {
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = (len * (1 - clamp(p * 1.15, 0, 1))).toFixed(1);
-      }
-      steps.forEach(function (s, i) {
-        s.classList.toggle('is-active', p >= (i / steps.length) * 0.92);
-      });
-    }
-
-    measure();
-
-    if (reduced()) { draw(1); return; }
-
-    draw(0);
-    items.push({
-      el: track,
-      run: function (r, vh) {
-        // 0 as the section arrives, 1 once it has travelled a screen past.
-        var p = clamp((vh * 0.85 - r.top) / (r.height * 0.85 + vh * 0.2), 0, 1);
-        draw(ease(p));
-      }
-    });
-
-    var rt;
-    window.addEventListener('resize', function () {
-      clearTimeout(rt);
-      rt = setTimeout(function () { len = 0; measure(); schedule(); }, 160);
-    }, { passive: true });
-
-    schedule();
   }
 
   /* ------------------------------------------------------- work hover preview */
@@ -632,14 +414,12 @@
     root.classList.add('js-motion');
 
     ident();
-    heroIntro();
-    noiseRail();
+    cineHero();
     rise();
     cropReveal();
-    transformReveal();
-    servicesTakeover();
+    channels();
     marquee();
-    processLine();
+    signalProgress();
     workPreview();
     mobileNav();
     routeWipe();
