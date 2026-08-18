@@ -24,25 +24,15 @@ They are never reused as decoration elsewhere on the site.
 
 ---
 
-## 2. Generated texture assets (original, made for this build)
+## 2. Texture system (CSS-only, no image assets)
 
-These are **not stock photography**. They were generated programmatically for
-this project (Python/Pillow, script recorded below) and are original work owned
-by TG Media. They carry the "Signal from Noise" idea — interference, halftone
-resolution, registration marks, film grain — without pretending to be
-photographs of anything.
-
-| File | What it is | Licence | Used on |
-|---|---|---|---|
-| `media/tex-grain.webp` | 256px tileable film-grain field | Original work, TG Media — free to use, modify, replace | Hero, services 04, work/studio intros, final CTAs |
-| `media/tex-halftone.webp` | Halftone dot field, chaotic at one edge resolving to an ordered grid at the other | Original work, TG Media | Services 03, homepage interlude, orange sections |
-| `media/tex-interference.webp` | Horizontal signal-interference bars, settling as they descend | Original work, TG Media | Homepage "problem" scene, services 01 figure |
-| `media/tex-marks.webp` | Print registration marks and crop rules | Original work, TG Media | Services 02, Tom scene, contact aside |
-
-Regenerate or edit them freely — they are decorative and nothing depends on
-their exact content. They are applied via CSS as low-opacity overlays
-(`.tex--grain`, `.tex--halftone`, `.tex--interference`, `.tex--marks`) and are
-inverted automatically on dark colour fields.
+The old grain/halftone/interference/registration-mark bitmaps have been
+retired along with Signal Orange. Every scene texture is now a `.tex--grid` /
+`.tex--grid-fine` overlay drawn with `repeating-linear-gradient()` — a fine
+exposed 1px grid, cobalt-tinted on the blueprint field and light-on-dark on
+ink/cobalt fields — rather than a rasterised image. There is nothing to
+licence or regenerate: the pattern is defined once in `styles.css` (`.tex`,
+`.tex::after`) and reused everywhere a scene needs atmospheric depth.
 
 ---
 
@@ -94,58 +84,7 @@ site makes, and is noted in the cookie policy).
 
 ## 5. Texture generation script
 
-Kept for reproducibility. Requires `pillow`.
-
-```python
-from PIL import Image, ImageDraw, ImageFilter
-import random
-random.seed(7)
-
-# tex-grain.webp — tileable grain
-g = Image.new('L', (512, 512))
-px = g.load()
-for y in range(512):
-    for x in range(512):
-        px[x, y] = random.randint(0, 255)
-g = g.filter(ImageFilter.GaussianBlur(0.4)).resize((256, 256), Image.LANCZOS)
-Image.merge('RGB', (g, g, g)).save('media/tex-grain.webp', 'WEBP', quality=60, method=6)
-
-# tex-halftone.webp — dots, chaotic left to ordered right
-W, H = 1600, 900
-ht = Image.new('L', (W, H), 255); d = ImageDraw.Draw(ht); step = 14
-for gy in range(0, H + step, step):
-    for gx in range(0, W + step, step):
-        t = gx / W
-        j = (1 - t) * step * 0.55
-        cx = gx + random.uniform(-j, j); cy = gy + random.uniform(-j, j)
-        r = step * 0.46 * (1 - t * 0.55)
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=0)
-ht.convert('L').resize((900, 506), Image.LANCZOS).save(
-    'media/tex-halftone.webp', 'WEBP', quality=52, method=6)
-
-# tex-interference.webp — displaced bars settling downward
-W, H = 1600, 900
-ib = Image.new('L', (W, H), 255); d = ImageDraw.Draw(ib); y = 0
-while y < H:
-    t = y / H
-    h = random.uniform(2, 26 * (1 - t) + 3)
-    off = random.uniform(-260, 260) * (1 - t) ** 2
-    d.rectangle([off, y, W + off, y + h], fill=random.choice([0, 0, 20, 45, 70]))
-    y += h + random.uniform(3, 20 * (1 - t) + 4)
-ib = ib.filter(ImageFilter.GaussianBlur(0.6))
-Image.merge('RGB', (ib, ib, ib)).save('media/tex-interference.webp', 'WEBP', quality=80, method=6)
-
-# tex-marks.webp — registration marks
-W = H = 1200
-rg = Image.new('L', (W, H), 255); d = ImageDraw.Draw(rg)
-for _ in range(26):
-    cx, cy = random.uniform(60, W - 60), random.uniform(60, H - 60)
-    r = random.uniform(10, 30)
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=0, width=2)
-    d.line([cx - r * 1.7, cy, cx + r * 1.7, cy], fill=0, width=2)
-    d.line([cx, cy - r * 1.7, cx, cy + r * 1.7], fill=0, width=2)
-for _ in range(40):
-    x1, y1 = random.uniform(0, W), random.uniform(0, H)
-    d.line([x1, y1, x1 + random.uniform(-90, 90), y1], fill=90, width=1)
-Image.merge('RGB', (rg, rg, rg)).save('media/tex-marks.webp', 'WEBP', quality=80, method=6)
-```
+Retired. The `media/tex-*.webp` bitmaps this section used to document
+(grain, halftone, interference, registration marks) have been removed from
+the repo along with Signal Orange — see §2. There is nothing left to
+regenerate; the grid overlay is pure CSS.

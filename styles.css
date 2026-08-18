@@ -1,8 +1,10 @@
 /* ==========================================================================
-   TG MEDIA — Signal from Noise
-   A scene-based design system. Pages are built from full-bleed "scenes" that
-   alternate colour field, density, type voice and reading rhythm — paper into
-   ink into cobalt into orange — rather than one white section repeated.
+   TG MEDIA — Exposed Structure
+   A scene-based design system built like a set of drawings pinned to a
+   gallery wall: paper into ink into cobalt, rules kept visible rather than
+   dressed up. Deconstructed-industrial, not streetwear-industrial — no
+   hazard marks, no diagonal tape, no quotation-mark irony. Just a frame, a
+   grid, and the occasional exposed measurement.
    Serif (Newsreader) carries statements; grotesk (Archivo) carries structure,
    navigation and the oversized display words.
    ========================================================================== */
@@ -14,16 +16,21 @@
   --stone: #a2a2a9;
   --graphite: #767676;
   --cobalt: #2445ff;
-  --signal: #ff3d1a;
 
   --rule: rgba(7, 7, 7, 0.12);
   --rule-strong: rgba(7, 7, 7, 0.16);
   --rule-on-dark: rgba(255, 255, 255, 0.18);
   --rule-on-dark-soft: rgba(255, 255, 255, 0.14);
 
+  /* Blueprint field: a pale cobalt-tinted ground used where the palette
+     needs a fourth register without introducing a fourth colour. */
+  --blueprint-bg: #eef1ff;
+  --blueprint-line: rgba(36, 69, 255, 0.22);
+  --blueprint-line-soft: rgba(36, 69, 255, 0.12);
+
   /* Text-only contrast overrides — narrow, scoped uses only. Never redefine
-     --ink/--paper/--fog/--stone/--graphite/--cobalt/--signal themselves. */
-  --error-text: #c72c10;       /* .field-error on paper: --signal itself is 3.54:1, this is 5.53:1 */
+     --ink/--paper/--fog/--stone/--graphite/--cobalt themselves. */
+  --error-text: #c72c10;       /* .field-error on paper: 5.53:1 */
   --fg-faint-on-light: #8a8a8a; /* --fg-faint resolved on .field-paper/.field-fog only */
   --cobalt-on-ink: #4d68ff;    /* small cobalt text hover on ink/dark fields: --cobalt itself is 3.23:1, this is 4.55:1 */
 
@@ -154,26 +161,30 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 .field-fog   { background: var(--fog); --fg-faint: var(--fg-faint-on-light); }
 .field-ink   { background: var(--ink);    --fg: var(--paper); --fg-soft: var(--stone); --fg-faint: var(--graphite); --line: var(--rule-on-dark); color: var(--paper); }
 .field-cobalt{ background: var(--cobalt); --fg: var(--paper); --fg-soft: rgba(255,255,255,.78); --fg-faint: rgba(255,255,255,.55); --line: rgba(255,255,255,.3); --accent: var(--paper); color: var(--paper); }
-.field-signal{ background: var(--signal); --fg: var(--ink); --fg-soft: rgba(7,7,7,.72); --fg-faint: rgba(7,7,7,.5); --line: rgba(7,7,7,.28); --accent: var(--ink); color: var(--ink); }
-.field-ink a, .field-cobalt a, .field-signal a { color: inherit; }
+/* Blueprint field — the fourth register. Pale cobalt ground with the grid
+   left legible under the type, ink text on top; reads as a drawing sheet
+   rather than a fourth brand colour. */
+.field-blueprint{ background: var(--blueprint-bg); --fg: var(--ink); --fg-soft: rgba(7,7,7,.68); --fg-faint: rgba(7,7,7,.48); --line: var(--blueprint-line); --accent: var(--cobalt); color: var(--ink); }
+.field-ink a, .field-cobalt a, .field-blueprint a { color: inherit; }
 
-/* Texture overlays — generated in-repo, applied as light atmospheric fields. */
+/* Texture overlays — CSS-only, no bitmap assets. A fine exposed grid stands
+   in for the old grain/halftone/interference images: it reads as a
+   blueprint or a technical drawing sheet rather than surface noise. */
 .tex { position: relative; isolation: isolate; }
 .tex::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image: var(--tex-src); background-size: var(--tex-size, 256px);
-  opacity: var(--tex-opacity, .06); mix-blend-mode: var(--tex-blend, multiply);
+  background-image:
+    repeating-linear-gradient(90deg, var(--tex-line, var(--rule)) 0 1px, transparent 1px var(--tex-cell, 64px)),
+    repeating-linear-gradient(0deg, var(--tex-line, var(--rule)) 0 1px, transparent 1px var(--tex-cell, 64px));
+  opacity: var(--tex-opacity, .5);
 }
 .tex > * { position: relative; z-index: 1; }
-.tex--grain { --tex-src: url('media/tex-grain.webp'); --tex-size: 256px; --tex-opacity: .085; }
-.tex--marks { --tex-src: url('media/tex-marks.webp'); --tex-size: 620px; --tex-opacity: .07; }
-.tex--interference { --tex-src: url('media/tex-interference.webp'); --tex-size: cover; --tex-opacity: .14; }
-.tex--halftone { --tex-src: url('media/tex-halftone.webp'); --tex-size: cover; --tex-opacity: .1; }
-/* The source textures are dark-on-light. On a dark field they have to be
-   inverted first, or multiply leaves a grey wash with the marks punched
-   through it — the texture reads as damage rather than atmosphere. */
-.field-ink.tex::after, .field-cobalt.tex::after { filter: invert(1); --tex-blend: screen; opacity: .07; }
-.field-ink.tex--interference::after, .field-cobalt.tex--interference::after { opacity: .1; }
+.tex--grid { --tex-cell: 56px; --tex-opacity: .6; }
+.tex--grid-fine { --tex-cell: 28px; --tex-opacity: .4; }
+/* On a dark or cobalt field the grid switches to a light line at low alpha,
+   so it stays a whisper rather than a scaffold. */
+.field-ink.tex, .field-cobalt.tex { --tex-line: var(--rule-on-dark-soft); }
+.field-blueprint.tex { --tex-line: var(--blueprint-line-soft); }
 
 /* Vertical edge labels — the running marginalia in the reference sites. */
 .edge {
@@ -200,7 +211,7 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 
 .signal-dot {
   display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--signal); flex: 0 0 auto; margin-right: 8px; position: relative; top: -1px;
+  background: var(--cobalt); flex: 0 0 auto; margin-right: 8px; position: relative; top: -1px;
 }
 
 /* --------------------------------------------------------------- skip link */
@@ -333,7 +344,7 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 .field-paper .btn:hover span, .btn:hover span { color: var(--paper); }
 .field-ink .btn:hover, .field-ink .btn:hover span,
 .field-cobalt .btn:hover, .field-cobalt .btn:hover span { color: var(--ink); }
-.field-signal .btn:hover, .field-signal .btn:hover span { color: var(--signal); }
+.field-blueprint .btn:hover, .field-blueprint .btn:hover span { color: var(--cobalt); }
 .btn--xl { padding: 22px 40px; font-size: clamp(17px, 1.4vw, 21px); }
 @media (prefers-reduced-motion: reduce) {
   .btn::before, .btn .arrow { transition: none; }
@@ -470,10 +481,16 @@ em, .accent-italic { font-family: var(--font-display); font-style: italic; }
 .signal-panel--ink { background: var(--ink); }
 .signal-panel::before {
   content: ''; position: absolute; inset: 0;
-  background-image: url('media/tex-halftone.webp'); background-size: cover; background-position: center;
-  opacity: .48; mix-blend-mode: multiply;
+  background-image:
+    repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 32px);
+  opacity: .6;
 }
-.signal-panel--ink::before { filter: invert(1); mix-blend-mode: screen; opacity: .2; }
+.signal-panel--ink::before { background-image:
+    repeating-linear-gradient(90deg, var(--rule-on-dark-soft) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, var(--rule-on-dark-soft) 0 1px, transparent 1px 32px);
+  opacity: .8;
+}
 .signal-panel__bar {
   position: relative; display: block; height: clamp(6px, 0.9vw, 11px);
   width: var(--w, 70%); border-radius: 1px; background: var(--ink);
@@ -547,6 +564,52 @@ figure { margin: 0; }
 .figcaption { font-size: 11px; color: var(--fg-faint); letter-spacing: 0.12em; text-transform: uppercase; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] { clip-path: none !important; } }
 
+/* Registration marks — four corner ticks that snap into place on hover, like
+   a crop mark locking onto a plate. Crisp and mechanical rather than
+   decorative; never present unless the pointer is actually there. */
+.mark-frame { position: relative; }
+.mark-frame::before, .mark-frame::after,
+.mark-frame > .mark-frame__tick { content: ''; }
+.mark-frame::before, .mark-frame::after {
+  position: absolute; width: 14px; height: 14px; pointer-events: none;
+  border: 1px solid var(--cobalt); opacity: 0; z-index: 2;
+  transition: opacity 200ms ease, transform 260ms cubic-bezier(.2,.8,.25,1);
+}
+.mark-frame::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; transform: translate3d(-4px,-4px,0); }
+.mark-frame::after   { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; transform: translate3d(4px,4px,0); }
+.mark-frame:hover::before, .mark-frame:focus-within::before,
+.mark-frame:hover::after, .mark-frame:focus-within::after { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .mark-frame::before, .mark-frame::after { transition: opacity 120ms ease; } }
+@media (hover: none) { .mark-frame::before, .mark-frame::after { display: none; } }
+
+/* --------------------------------------------------------------- image loading state */
+/* A blueprint-grid skeleton sits under every deferred image until it decodes,
+   then clears — no spinner, no shimmer sweep, just the drawing sheet showing
+   through until the plate lands on it. */
+.img-load { position: relative; background: var(--fog); overflow: hidden; }
+.img-load::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image:
+    repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 22px);
+  opacity: 1; transition: opacity 420ms ease;
+}
+.img-load img { position: relative; z-index: 1; opacity: 0; transition: opacity 420ms ease; }
+.img-load.is-loaded::before { opacity: 0; }
+.img-load.is-loaded img { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .img-load::before, .img-load img { transition: none; } }
+
+/* Structural lines that draw themselves in left-to-right, gated the same way
+   as every other hidden state: with JS off, or before it boots, the rule is
+   simply visible at full width. */
+.js-motion [data-draw] { transform: scaleX(0); transform-origin: left; }
+.js-motion [data-draw].is-in {
+  transform: scaleX(1);
+  transition: transform 700ms cubic-bezier(.2,.8,.25,1);
+  transition-delay: var(--d, 0ms);
+}
+@media (prefers-reduced-motion: reduce) { .js-motion [data-draw] { transform: none !important; transition: none !important; } }
+
 /* --------------------------------------------------------------- metadata rows */
 .meta-list { font-size: 15px; }
 .meta-row { display: flex; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -557,6 +620,31 @@ figure { margin: 0; }
 .meta-list--inline .meta-row { display: flex; gap: 12px; padding: 0; border: 0; }
 .meta-list--inline dt { flex: none; color: var(--fg-soft); }
 .meta-list--inline dd { margin: 0; }
+
+/* --------------------------------------------------------------- technical micro-copy */
+/* Hyper-literal, tabular-figure readouts — spec sheet, not decoration.
+   Applied to the numeric/labelled data already in the meta blocks so figures
+   line up on a fixed width instead of drifting with proportional spacing. */
+.meta-row dd, .meta-list--inline dd,
+.proj-meta dd, .studio-facts dd, .tomx__meta dd, .contact-aside__meta dd,
+.work-row__num, .work-row__meta,
+.archive-row__meta, .reel-frame__meta, .reel-frame__index,
+.chan__num, .routeband__index {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+.work-row__num, .reel-frame__index, .chan__num {
+  letter-spacing: 0.02em;
+}
+/* A spec-sheet label pair: DT set as a running code, DD as the reading. Used
+   sparingly to mark a fact as measured rather than written — e.g. dimensions,
+   dates, coordinates. */
+.spec {
+  display: flex; align-items: baseline; gap: 10px; font-size: 12px;
+  letter-spacing: 0.04em; color: var(--fg-soft);
+}
+.spec::before { content: '\2014'; color: var(--fg-faint); }
+.spec b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--fg); }
 
 /* --------------------------------------------------------------- archive rows */
 .archive-row {
@@ -608,7 +696,6 @@ a.archive-row:hover { color: var(--cobalt); }
 .ident__word--cobalt { color: var(--cobalt); }
 
 .route-veil { position: fixed; inset: 0; background: var(--cobalt); z-index: 120; transform: scaleY(0); transform-origin: bottom; pointer-events: none; }
-.route-veil--signal { background: var(--signal); }
 
 /* --------------------------------------------------------------- reveal primitives */
 /* Gated behind .js-motion, which shared.js sets on <html> only once it has
@@ -819,7 +906,7 @@ a.archive-row:hover { color: var(--cobalt); }
 /* Each channel floods its own colour when tuned in. */
 .chan--cobalt.is-open { background: var(--cobalt); color: var(--paper); --fg: var(--paper); --fg-soft: rgba(255,255,255,.8); --fg-faint: rgba(255,255,255,.58); --line: rgba(255,255,255,.32); --accent: var(--paper); }
 .chan--ink.is-open    { background: var(--ink); color: var(--paper); --fg: var(--paper); --fg-soft: var(--stone); --fg-faint: var(--graphite); --line: var(--rule-on-dark); --accent: var(--paper); }
-.chan--signal.is-open { background: var(--signal); color: var(--ink); --fg: var(--ink); --fg-soft: rgba(7,7,7,.72); --fg-faint: rgba(7,7,7,.52); --line: rgba(7,7,7,.28); --accent: var(--ink); }
+.chan--blueprint.is-open { background: var(--blueprint-bg); color: var(--ink); --fg: var(--ink); --fg-soft: rgba(7,7,7,.68); --fg-faint: rgba(7,7,7,.48); --line: var(--blueprint-line); --accent: var(--cobalt); }
 .chan--fog.is-open    { background: var(--fog); }
 
 .chan__body-clip { overflow: hidden; }

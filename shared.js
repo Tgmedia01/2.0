@@ -72,6 +72,53 @@
     window.addEventListener('scroll', sweep, { passive: true });
   }
 
+  /* [data-draw] rules draw themselves in left-to-right, once, the same way
+     [data-rise] fades content in — same observer shape, same sweep safety
+     net, just a scaleX transform instead of a translate. */
+  function drawLines() {
+    var nodes = slice(document.querySelectorAll('[data-draw]'));
+    if (!nodes.length) return;
+    var show = function (n) { n.classList.add('is-in'); };
+
+    if (reduced() || !('IntersectionObserver' in window)) {
+      nodes.forEach(show);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    nodes.forEach(function (n) { io.observe(n); });
+
+    var sweep = function () {
+      var pending = 0;
+      nodes.forEach(function (n) {
+        if (n.classList.contains('is-in')) return;
+        if (n.getBoundingClientRect().top > window.innerHeight * 0.96) { pending++; return; }
+        show(n);
+      });
+      if (!pending) window.removeEventListener('scroll', sweep);
+    };
+    setTimeout(sweep, 1400);
+    window.addEventListener('scroll', sweep, { passive: true });
+  }
+
+  /* Blueprint-grid skeleton on deferred images: .img-load wraps an <img>,
+     CSS shows the grid until this clears it on load. Already-cached images
+     (bfcache, instant decode) are caught immediately via .complete. */
+  function imgLoad() {
+    var wraps = slice(document.querySelectorAll('.img-load'));
+    if (!wraps.length) return;
+    wraps.forEach(function (w) {
+      var img = w.querySelector('img');
+      if (!img) return;
+      var done = function () { w.classList.add('is-loaded'); };
+      if (img.complete && img.naturalWidth) { done(); return; }
+      img.addEventListener('load', done, { once: true });
+      img.addEventListener('error', done, { once: true });
+    });
+  }
+
   /* Image crop reveals — clip-path opened on entry, applied by JS only. */
   function cropReveal() {
     var nodes = slice(document.querySelectorAll('[data-reveal]'));
@@ -388,8 +435,6 @@
       var href = a.getAttribute('href');
       if (!isInternalPage(href)) return;
       e.preventDefault();
-      // Alternate the wipe colour so navigation has a bit of life to it.
-      veil.classList.toggle('route-veil--signal', Math.random() > 0.5);
       veil.style.transformOrigin = 'top';
       veil.style.transition = 'transform 260ms cubic-bezier(.5,0,.2,1)';
       veil.style.transform = 'scaleY(1)';
@@ -416,7 +461,9 @@
     ident();
     cineHero();
     rise();
+    drawLines();
     cropReveal();
+    imgLoad();
     channels();
     marquee();
     signalProgress();
