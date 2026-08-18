@@ -24,17 +24,19 @@ privacy.html, cookies.html, terms.html    Legal pages
 styles.css                   All shared styles — colours, type, layout, components
 shared.js                    All shared behaviour — motion, nav, enquiry form
 barstudios-*.png             Real client assets shipped on the site
-media/tex-*.webp             Original generated textures (see IMAGE_SOURCES.md)
 IMAGE_SOURCES.md             Every image: origin, licence, where it is used
 robots.txt, sitemap.xml
 ```
 
-## Design system — Signal from Noise
+## Design system — Exposed Structure
 
 The site is built from full-bleed **scenes** rather than one white section
 repeated. Each scene commits to a colour field, a density and a type voice, and
 the page is composed so those alternate: paper into ink into fog into cobalt
-into orange, dense reading areas against wide typographic moments.
+into blueprint, dense reading areas against wide typographic moments. The
+vibe is a gallery frame mixed with a blueprint — deconstructed industrial,
+not streetwear industrial: no hazard marks, no diagonal tape, no quotation
+marks as decoration.
 
 The organising idea is a business turning confusion into clarity. Elements
 start fragmented, blurred, tangled or misaligned and resolve as you read — the
@@ -43,18 +45,26 @@ un-blur into alignment, and the process line untangles as it travels between
 the four stages. Roughly 70% confident/resolved to 30% controlled disruption.
 
 - **Colour** — ink `#070707`, paper `#ffffff`, fog `#f2f2f2`, stone `#a2a2a9`,
-  graphite `#797979`, cobalt `#2445ff`, signal orange `#ff3d1a`. Applied as
-  whole-scene fields via `.field-paper` / `.field-fog` / `.field-ink` /
-  `.field-cobalt` / `.field-signal`. Each field re-points `--fg`, `--fg-soft`,
-  `--fg-faint`, `--line` and `--accent`, so type, rules and links invert as a
-  set instead of being overridden one at a time.
+  graphite `#797979`, cobalt `#2445ff`, and a pale cobalt-tinted blueprint
+  ground `#eef1ff` for the fourth field. Applied as whole-scene fields via
+  `.field-paper` / `.field-fog` / `.field-ink` / `.field-cobalt` /
+  `.field-blueprint`. Each field re-points `--fg`, `--fg-soft`, `--fg-faint`,
+  `--line` and `--accent`, so type, rules and links invert as a set instead of
+  being overridden one at a time.
 - **Type** — Archivo (to 800) carries structure, navigation and every oversized
   display word; Newsreader carries statements and reading moments. Scales:
   `.mega` / `.mega-fit` / `.mega--serif` for display, `.h-a`…`.h-g` (serif) and
-  `.h-sans-a`…`.h-sans-c` (grotesk) beneath.
-- **Texture** — four original generated assets in `media/` applied through
-  `.tex--grain` / `.tex--halftone` / `.tex--interference` / `.tex--marks`. They
-  are inverted automatically on dark fields. See `IMAGE_SOURCES.md`.
+  `.h-sans-a`…`.h-sans-c` (grotesk) beneath. Meta/spec rows use tabular
+  figures (`font-variant-numeric: tabular-nums`) so numbers read like a
+  technical drawing's dimension line.
+- **Texture** — CSS-only, no bitmap assets. `.tex--grid` / `.tex--grid-fine`
+  draw a fine exposed 1px grid with `repeating-linear-gradient()`, tinted
+  cobalt on the blueprint field and inverted to a light line on dark fields.
+- **Structural detail** — `.mark-frame` snaps four cobalt registration ticks
+  onto a card's corners on hover/focus; `.img-load` shows a blueprint-grid
+  skeleton under an image until it decodes; `[data-draw]` rules draw
+  themselves in left-to-right on scroll, alongside the existing `[data-rise]`
+  fades and `[data-reveal]` clip-path opens.
 - **Layout** — `.wrap` for contained content, scenes for full-bleed colour,
   `.scene--overlap` to interlock two fields, `.edge` for the vertical
   marginalia. Max 4px radius; no gradients, shadows, glassmorphism or pills.
@@ -65,9 +75,9 @@ Each main page has its own composition rather than one reusable template:
 
 | Page | Direction |
 |---|---|
-| Home | Nine scenes: hero, ink problem, full-viewport transformation, sticky services takeover, orange interlude, black Tom, travelling process line, compact work strip, cobalt ending |
-| Services | Boldest type on the site. Four blocks alternating ink / paper / cobalt / fog, each with a different internal layout; orange ending |
-| Studio | Personal and dense — facts immediately, a numbered ladder, a black working section, one loud orange principle |
+| Home | Nine scenes: hero, ink problem, full-viewport transformation, sticky services takeover, blueprint interlude, black Tom, travelling process line, compact work strip, cobalt ending |
+| Services | Boldest type on the site. Four blocks alternating ink / paper / cobalt / fog, each with a different internal layout; blueprint ending |
+| Studio | Personal and dense — facts immediately, a numbered ladder, a black working section, one loud blueprint-field principle |
 | Work | Image-led opening, then an editorial index with oversized names and hover previews. Not an equal card grid |
 | Projects | Each opens in its own colour: Bar Studios monochrome, Westbury cobalt, Purple Granite stone |
 | Contact | Split — black colour field carrying the message, plain paper panel carrying the form |
@@ -86,7 +96,7 @@ SVG path animation for the process line.
   colour bands.
 - The process line is a single SVG path that untangles as it travels between
   stages; the marquee only animates while on screen.
-- Route changes use a fast cobalt/orange wipe with a timeout fallback.
+- Route changes use a fast cobalt wipe with a timeout fallback.
 
 **Two rules hold everywhere:**
 
